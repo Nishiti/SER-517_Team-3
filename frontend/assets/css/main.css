@@ -3247,6 +3247,7 @@
 				-ms-transform: translateY(4rem);
 				transform: translateY(4rem);
 				opacity: 0;
+
 			}
 
 		@media screen and (max-width: 980px) {
@@ -3504,6 +3505,7 @@
 			margin-bottom: 0;
 			padding-left: 0;
 			text-transform: uppercase;
+			
 		}
 
 			#nav ul.links li {
@@ -3550,6 +3552,7 @@
 			flex-shrink: 0;
 			margin-bottom: 0;
 		}
+		
 
 		@media screen and (max-width: 980px) {
 
