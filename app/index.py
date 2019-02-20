@@ -1,6 +1,10 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
+from mongoengine import connect
 
 app = Flask(__name__)
+
+#connect('ser517', host='mongodb://localhost/ser517')
+
 
 influencers = [
   { 'name': 'john', 'email': 'john@example.com' }
@@ -25,8 +29,14 @@ def get_brands():
   return jsonify(brands)
 
 @app.route('/brands', methods=['POST'])
-def signup():
+def signupbrands():
   influencers.append(request.get_json())
   #write to database table  - influeners
   return '', 204
-  
+
+@app.route('/', methods=['GET'])
+def home():
+  render_template('index.html')
+
+if __name__ == '__main__':
+    app.run(debug=True, port=5000)
