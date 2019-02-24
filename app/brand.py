@@ -1,7 +1,9 @@
 from mongoengine import Document
 from mongoengine import StringField, EmailField, BooleanField
+from flask_login import UserMixin, login_manager
 
-class Brand(Document):
+
+class Brand(UserMixin, Document):
     first_name = StringField(max_length=60, required=True)
     last_name = StringField(max_length=60, required=True)
     email = EmailField(required=True, unique=True)
@@ -13,3 +15,7 @@ class Brand(Document):
     brand_growth_option2 = BooleanField(null=False, default=False)
     brand_growth_option3 = BooleanField(null=False, default=False)
     isapproved = BooleanField(null=False, default=False)
+
+@login_manager.user_loader
+def load_user(user_id):
+    return Brand.objects(pk=user_id).first()

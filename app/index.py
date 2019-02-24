@@ -1,8 +1,16 @@
 from flask import Flask, jsonify, request, json
+from flask_restful import Resource, Api
+from flask_login import LoginManager
 from mongoengine import connect
 from brand import Brand
 
+
+
 app = Flask(__name__)
+api = Api(app)
+
+login_manager = LoginManager()
+login_manager.init_app(app)
 
 connect('ser517', host='mongodb://localhost/ser517')
 
@@ -21,6 +29,9 @@ def signup():
   influencers.append(request.get_json())
   #write to database table  - influeners
   return '', 204
+
+
+
 
 @app.route('/brands/signup', methods=['POST'])
 def signupbrands():
@@ -100,9 +111,20 @@ def signinbrands():
   return response
 
 
+class HelloWorld(Resource):
+    def post(self):
+        json_data = request.get_json(force=True)
+        un = json_data['username']
+        pw = json_data['password']
+        return jsonify(u=un, p=pw)
+
+api.add_resource(HelloWorld, '/testing')
+api.add_resource(HelloWorld, '/')
+
+
 # @app.route('/', methods=['GET'])
 # def home():
 #   render_template('index.html')
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(port=5000)
