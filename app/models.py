@@ -1,7 +1,7 @@
 from mongoengine import Document
 from mongoengine import StringField, EmailField
 
-CATEGORY = (('Atheletes','Musicians','Lifestyle',''))
+CATEGORY = (('Atheletes','Musicians','Lifestyle','Comedy','Tech','Deals','Travelers'))
 GENDER = (('M','F','NA'))
 class Influencer(Document):
     first_name = StringField(max_length=60, required=True)
