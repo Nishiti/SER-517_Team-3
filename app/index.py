@@ -3,6 +3,7 @@ from flask_restful import Resource, Api
 from flask_login import LoginManager
 from mongoengine import connect
 from brand import Brand
+from models import Influencer
 
 
 
@@ -24,13 +25,47 @@ influencers = [
 def get_influencers():
   return jsonify(influencers)
 
-@app.route('/influencers', methods=['POST'])
-def signup():
-  influencers.append(request.get_json())
-  #write to database table  - influeners
-  return '', 204
+@app.route('/influencers/signup', methods=['POST'])
+def signupInfluencers():
+  data = (request.get_json())
+  if Influencer.objects(email=data['email']):
+    data = {
+      "role": "influencer",
+      "message": "influencer already exists in database"
+    }
+    response = app.response_class(
+      response=json.dumps(data),
+      status=409,
+      mimetype='application/json'
+    )
 
+  else:
+    influencer = Brand(
+        first_name=data['first_name'],
+        last_name=data['last_name'],
+        category=data['category'],
+        youtube=data['youtube'],
+        IGStoryViews=data['IGStoryViews'],
+        followers=data['followers'],
+        AvgLikes=data['AvgLikes'],
+        AvgComments=data['AvgComments'],
+        Gender=data['Gender'],
+        email=data['email'],
+        website=data['website'],
+        social_media_handles=data['instagram_handle'],
+    ).save()
 
+    data = {
+      "role": "influencer",
+      "message": "new influencer is added in database"
+    }
+    response = app.response_class(
+      response=json.dumps(data),
+      status=201,
+      mimetype='application/json'
+    )
+
+  return response
 
 
 @app.route('/brands/signup', methods=['POST'])

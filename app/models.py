@@ -1,4 +1,4 @@
-from mongoengine import Document
+from mongoengine import Document, BooleanField, IntField
 from mongoengine import StringField, EmailField
 
 CATEGORY = (('Atheletes','Musicians','Lifestyle','Comedy','Tech','Deals','Travelers'))
