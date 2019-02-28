@@ -3754,6 +3754,29 @@
 
 		}
 
+    .tooltip {
+      position: relative;
+      display: inline-block;
+    }
+
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 120px;
+      background-color: black;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px 0;
+
+      /* Position the tooltip */
+      position: absolute;
+      z-index: 1;
+    }
+
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+    }
+
 /* Footer */
 
 	#footer {
@@ -4483,3 +4506,44 @@
 		}
 
 	}
+
+	.card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      max-width: 300px;
+      margin: auto;
+      text-align: center;
+      font-family: inherit;
+    }
+
+    .card > h1 {
+    default;
+    }
+
+    .cardTitle {
+      color: grey;
+      font-size: 18px;
+    }
+
+    .cardButton {
+      border: none;
+      outline: 0;
+      display: inline-block;
+      padding: 8px;
+      text-align: center;
+      cursor: pointer;
+      width: 100%;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card > a {
+      text-decoration: none;
+      font-size: 22px;
+      color: black;
+    }
+
+    .cardButton :hover, a:hover {
+      opacity: 0.7;
+    }
