@@ -68,7 +68,7 @@ def signupInfluencers():
   return response
 
 
-@app.route('/brands/signup', methods=['POST'])
+@app.route('/brand/signup', methods=['POST'])
 def signupbrands():
   data = (request.get_json())
   if Brand.objects(email=data['email']):
@@ -108,7 +108,7 @@ def signupbrands():
 
   return response
 
-@app.route('/brands/signin', methods=['POST'])
+@app.route('/brand/signin', methods=['POST'])
 def signinbrands():
   data = (request.get_json())
   if not Brand.objects(email=data['email']):
@@ -145,16 +145,48 @@ def signinbrands():
       )
   return response
 
+@app.route('/admin/approve/brandsingup', methods=['POST'])
+def admin_approve_brand_singup():
+  data = (request.get_json())
+  if not Brand.objects(email=data['email']):
+    data = {
+      "role": "brand",
+      "message": "brand is not found in database"
+    }
+    response = app.response_class(
+      response=json.dumps(data),
+      status=404,
+      mimetype='application/json'
+    )
 
-class HelloWorld(Resource):
-    def post(self):
-        json_data = request.get_json(force=True)
-        un = json_data['username']
-        pw = json_data['password']
-        return jsonify(u=un, p=pw)
+  else:
+    brand = Brand.objects(email=data['email'])
+    print(brand)
+    if brand.isapproved == False:
+      brand.isapproved = True
+      brand.save()
 
-api.add_resource(HelloWorld, '/testing')
-api.add_resource(HelloWorld, '/')
+      data = {
+        "role": "admin",
+        "message": "brand is approved in database"
+      }
+      response = app.response_class(
+        response=json.dumps(data),
+        status=200,
+        mimetype='application/json'
+      )
+
+  return response
+
+# class HelloWorld(Resource):
+#     def post(self):
+#         json_data = request.get_json(force=True)
+#         un = json_data['username']
+#         pw = json_data['password']
+#         return jsonify(u=un, p=pw)
+#
+# api.add_resource(HelloWorld, '/testing')
+# api.add_resource(HelloWorld, '/')
 
 
 # @app.route('/', methods=['GET'])
