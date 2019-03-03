@@ -4229,12 +4229,12 @@
 	}
 
 		#copyright input, #copyright select, #copyright textarea {
-			color: #1a1a1a;
+			color: #ffffff;
 		}
 
 		#copyright a {
-			color: #1a1a1a;
-			border-bottom-color: rgba(26, 26, 26, 0);
+			color: #ffffff;
+			border-bottom-color: rgba(255, 255, 255, 0.5);
 		}
 
 			#copyright a:hover {
