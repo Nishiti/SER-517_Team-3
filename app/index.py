@@ -161,21 +161,29 @@ def admin_approve_brand_singup():
 
   else:
     brand = Brand.objects(email=data['email'])
-    print(brand)
-    if brand.isapproved == False:
+    brand = brand[0]
+    if brand['isapproved'] == False:
       brand.isapproved = True
       brand.save()
-
       data = {
         "role": "admin",
-        "message": "brand is approved in database"
+        "message": "brand is approved and updated in database"
       }
       response = app.response_class(
         response=json.dumps(data),
         status=200,
         mimetype='application/json'
       )
-
+    else:
+      data = {
+        "role": "admin",
+        "message": "brand is already approved in database"
+      }
+      response = app.response_class(
+        response=json.dumps(data),
+        status=200,
+        mimetype='application/json'
+      )
   return response
 
 # class HelloWorld(Resource):
