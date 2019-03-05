@@ -23,7 +23,28 @@ influencers = [
 
 @app.route('/influencers')
 def get_influencers():
-  return jsonify(influencers)
+    influencers = Influencer.objects()
+    if influencers is None:
+        data = {
+        "role": "influencer",
+        "message": "No influencer data found in database!"
+        }
+        response = app.response_class(
+        response=json.dumps(data),
+        status=401,
+        mimetype='application/json'
+        )
+    else:
+        '''data = {
+            "role": "influencer",
+            "message": "Influencer data is found in database!"
+        }'''
+        response = app.response_class(
+        response=json.dumps(influencers),
+        status=200,
+        mimetype='application/json'
+        )
+    return response
 
 @app.route('/influencers/signup', methods=['POST'])
 def signupInfluencers():
