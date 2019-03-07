@@ -109,12 +109,7 @@ def signupbrands():
       last_name = data['last_name'],
       email = data['email'],
       password = data['password'],
-      website = data['website'],
-      instagram_handel = data['instagram_handel'],
-      need_help_with = data['need_help_with'],
-      brand_growth_option1 = data['brand_growth_option1'],
-      brand_growth_option2=data['brand_growth_option2'],
-      brand_growth_option3=data['brand_growth_option3']
+      website = data['website']
     ).save()
 
     data = {
@@ -124,6 +119,40 @@ def signupbrands():
     response = app.response_class(
       response=json.dumps(data),
       status=201,
+      mimetype='application/json'
+    )
+
+  return response
+
+@app.route('/brand/update', methods=['POST'])
+def updatebrands():
+  data = (request.get_json())
+  # handle case when email is not found
+  brand = Brand.objects(email=data['email'])
+  if not brand:
+    data = {
+      "role": "brand",
+      "message": "brand does not exists in database"
+    }
+    response = app.response_class(
+      response=json.dumps(data),
+      status=404,
+      mimetype='application/json'
+    )
+  else:
+    brand = brand[0]
+    data = request.get_json()
+    for key in data:
+      brand[key] = data[key]
+    brand.save()
+
+    data = {
+      "role": "brand",
+      "message": "brand updated in database"
+    }
+    response = app.response_class(
+      response=json.dumps(data),
+      status=200,
       mimetype='application/json'
     )
 
