@@ -4,8 +4,8 @@ from flask_login import LoginManager
 from mongoengine import connect
 from brand import Brand
 from models import Influencer
-
-
+from adminSignupAPI import AdminSignupAPI
+from adminSignInAPI import AdminSignInAPI
 
 app = Flask(__name__)
 api = Api(app)
@@ -236,6 +236,8 @@ def admin_approve_brand_singup():
       )
   return response
 
+
+
 # class HelloWorld(Resource):
 #     def post(self):
 #         json_data = request.get_json(force=True)
@@ -244,8 +246,8 @@ def admin_approve_brand_singup():
 #         return jsonify(u=un, p=pw)
 #
 # api.add_resource(HelloWorld, '/testing')
-# api.add_resource(HelloWorld, '/')
-
+api.add_resource(AdminSignupAPI, '/admin/signup')
+#api.add_resource(AdminSignInAPI, '/admin/signin')
 
 # @app.route('/', methods=['GET'])
 # def home():
