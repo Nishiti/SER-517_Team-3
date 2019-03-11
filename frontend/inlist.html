@@ -57,6 +57,78 @@
                     </div>
                     
                 </div>
+        <!-- Experimenting -->
+        <button class="open-button" onclick="openForm()">Search Form</button>
+        
+        <div class="form-popup" id="myForm">
+            <form action="/action_page.php" class="form-container">
+                <div class="field">
+                    <h3>Category</h3>
+                    <div class="6u 12u$(small)">
+                        <input type="checkbox" id="demo-post" name="demo-post">
+                            <label for="demo-post">Beauty</label>
+                            </div>
+                    <div class="6u 12u$(small)">
+                        <input type="checkbox" id="demo-product" name="demo-product">
+                            <label for="demo-product">Fashion</label>
+                            </div>
+                    <div class="6u 12u$(small)">
+                        <input type="checkbox" id="demo-product" name="demo-product">
+                            <label for="demo-product">Lifestyle</label>
+                            </div>
+                    <div class="6u$ 12u$(small)">
+                        <input type="checkbox" id="demo-strategy" name="demo-strategy">
+                            <label for="demo-strategy">Photography</label>
+                            </div>
+                </div>
+                <div class="field">
+                    <h3>Social Media Platform</h3>
+                    <div class="6u 12u$(small)">
+                        <input type="radio" id="demo-post" name="demo-campaign" value="gift">
+                            <label for="demo-post">Instagram</label>
+                            </div>
+                    <div class="6u 12u$(small)">
+                        <input type="radio" id="demo-product" name="demo-campaign" value="campaign">
+                            <label for="demo-product">Youtube</label>
+                            </div>
+                    <div class="6u 12u$(small)">
+                        <input type="radio" id="demo-product" name="demo-campaign" value="campaign">
+                            <label for="demo-product">Facebook</label>
+                            </div>
+                    <div class="6u 12u$(small)">
+                        <input type="radio" id="demo-product" name="demo-campaign" value="campaign">
+                            <label for="demo-product">Twitter</label>
+                            </div>
+                </div>
+                <div class="field">
+                    <h3>Amount of followers:</h3>
+                    <div class="6u 12u$(small)">
+                        <input type="radio" id="demo-post" name="demo-campaign" value="gift">
+                            <label for="demo-post">500 - 2k</label>
+                            </div>
+                    <div class="6u 12u$(small)">
+                        <input type="radio" id="demo-product" name="demo-campaign" value="campaign">
+                            <label for="demo-product">2k - 50k</label>
+                            </div>
+                    <div class="6u 12u$(small)">
+                        <input type="radio" id="demo-product" name="demo-campaign" value="campaign">
+                            <label for="demo-product">50k +</label>
+                            </div>
+                </div>
+                <h3>Location</h3>
+                <select name="followers" id="followers">
+                    <option value="0">Select...</option>
+                    <option value="1">Newyork</option>
+                    <option value="2">Los Angeles</option>
+                    <option value="3">Arizona</option>
+                </select>
+                
+                <h2></h2>
+                <button type="submit" class="btn">Submit</button>
+                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+            </form>
+            </div>
+            
         <!-- Search Bar -->
                 <form method="post" action="/action_page.php" class="alt">
                     <div class="row uniform">
