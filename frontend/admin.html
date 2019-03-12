@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 </head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
 <body class="is-loading">
 
 <!-- Wrapper -->
@@ -43,12 +46,13 @@
 
         <!-- Post -->
         <section class="posts">
-                <article>
+            <article>
                     <header>
                         <h2><a href="#">Brand Requests</a></h2>
                         <a href="#" class="previous round">&#8249;</a>
-                        <div class="card">
-                            <img src="images/pic05.jpg" alt="John" style="width:100%">
+                        <div  ng-app="myApp" ng-controller="customersCtrl">
+                        <div class="card" ng-repeat="x in names">
+                            <!--img src="images/pic05.jpg" alt="John" style="width:100%">
                             <h2>John Doe</h2>
                             <p class="cardTitle">CEO & Founder, Example</p>
                             <p>Harvard University</p>
@@ -57,10 +61,14 @@
                                 <a href="#"><i class="fa fa-twitter"></i></a>
                                 <a href="#"><i class="fa fa-linkedin"></i></a>
                                 <a href="#"><i class="fa fa-facebook"></i></a>
-                            </div>
+                            </div-->
+                            <p class="cardTitle">{{ x.Name }}</p>
+                            <p>{{ x.Description }}</p>
                             <p><button class="cardButton">Approve</button><button class="cardButton">Deny</button></p>
-                            </div>
-                            <a href="#" class="next round">&#8250;</a>
+
+                        </div>
+                        </div>
+                        <a href="#" class="next round">&#8250;</a>
                     </header>
                 </article>
                 <article>
@@ -94,12 +102,21 @@
             </div>
 </div>
 <!-- Scripts -->
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('customersCtrl', function($scope) {
+    $scope.names = [
+            {Name:"Controllers",Description :"Controllers in action"},
+            {Name:"Models",Description :"Models and binding data"},
+            {Name:"Directives",Description :"Flexibility of Directives"}
+        ]});
+    </script>
+
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/jquery.scrollex.min.js"></script>
 <script src="assets/js/jquery.scrolly.min.js"></script>
 <script src="assets/js/skel.min.js"></script>
 <script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
-
 </body>
 </html>
