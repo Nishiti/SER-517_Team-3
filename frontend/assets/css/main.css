@@ -3780,7 +3780,7 @@
 {box-sizing: border-box;}
 /* Button used to open the contact form - fixed at the bottom of the page */
 .open-button {
-  -moz-appearance: none;
+  		-moz-appearance: none;
 		-webkit-appearance: none;
 		-ms-appearance: none;
 		appearance: none;
@@ -3807,25 +3807,29 @@
 /* The popup form - hidden by default */
 .form-popup {
   display: none;
-  bottom: 0;
-  right: 15px;
-  border: 1.5px solid #000000;
-  z-index: 9;
-  box-sizing: border-box; 
+  position: static;
+  padding-top: 50px;
+  padding-right: 100px;
+  padding-bottom: 50px;
+  padding-left: 100px;
 }
 
 /* Add styles to the form container */
 .form-container {
-  max-width: 500px;
-  padding: 10px;
+	max-width: 800px;
+	position: static;
+	clear: both;
   background-color: white;
+  border: 1px solid black;
+  border-radius: 7px;
+  padding: 10px;
 }
 
 /* Full-width input fields */
 .form-container input[type=text], .form-container input[type=password] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
+  max-width: 500px;
+  position: absolute;
+  right: 0px;
   border: none;
   background: #f1f1f1;
 }
@@ -3850,7 +3854,7 @@
 		cursor: pointer;
 		display: inline-block;
 		font-family: "Source Sans Pro", Helvetica, sans-serif;
-		font-size: 0.8rem;
+		font-size: 0.9rem;
 		font-weight: 900;
 		letter-spacing: 0.075em;
 		height: 3rem;
@@ -3861,10 +3865,11 @@
 		white-space: nowrap;
   background-color: #4CAF50;
   color: white;
-  padding: 16px 20px;
-  border: none;
+  padding: 10px;
+  border: 1px solid white;
+  border-radius: 5px;
   cursor: pointer;
-  width: 100%;
+  width: 50%;
   margin-bottom:10px;
   opacity: 0.8;
 }
