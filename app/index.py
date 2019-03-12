@@ -5,6 +5,7 @@ from mongoengine import connect
 from brand import Brand
 from models import Influencer
 from adminSignupAPI import AdminSignupAPI
+from brandAPI import BrandAPI
 #from adminSignInAPI import AdminSignInAPI
 
 app = Flask(__name__)
@@ -89,74 +90,74 @@ def signupInfluencers():
   return response
 
 
-@app.route('/brand/signup', methods=['POST'])
-def signupbrands():
-  data = (request.get_json())
-  if Brand.objects(email=data['email']):
-    data = {
-      "role": "brand",
-      "message": "brand already exists in database"
-    }
-    response = app.response_class(
-      response=json.dumps(data),
-      status=409,
-      mimetype='application/json'
-    )
+# @app.route('/brand/signup', methods=['POST'])
+# def signupbrands():
+#   data = (request.get_json())
+#   if Brand.objects(email=data['email']):
+#     data = {
+#       "role": "brand",
+#       "message": "brand already exists in database"
+#     }
+#     response = app.response_class(
+#       response=json.dumps(data),
+#       status=409,
+#       mimetype='application/json'
+#     )
+#
+#   else:
+#     user = Brand(
+#       first_name=data['first_name'],
+#       last_name = data['last_name'],
+#       email = data['email'],
+#       password = data['password'],
+#       website = data['website']
+#     ).save()
+#
+#     data = {
+#       "role": "brand",
+#       "message": "new brand is added in database"
+#     }
+#     response = app.response_class(
+#       response=json.dumps(data),
+#       status=201,
+#       mimetype='application/json'
+#     )
+#
+#   return response
 
-  else:
-    user = Brand(
-      first_name=data['first_name'],
-      last_name = data['last_name'],
-      email = data['email'],
-      password = data['password'],
-      website = data['website']
-    ).save()
-
-    data = {
-      "role": "brand",
-      "message": "new brand is added in database"
-    }
-    response = app.response_class(
-      response=json.dumps(data),
-      status=201,
-      mimetype='application/json'
-    )
-
-  return response
-
-@app.route('/brand/update', methods=['POST'])
-def updatebrands():
-  data = (request.get_json())
-  # handle case when email is not found
-  brand = Brand.objects(email=data['email'])
-  if not brand:
-    data = {
-      "role": "brand",
-      "message": "brand does not exists in database"
-    }
-    response = app.response_class(
-      response=json.dumps(data),
-      status=404,
-      mimetype='application/json'
-    )
-  else:
-    brand = brand[0]
-    data = request.get_json()
-    for key in data:
-      brand[key] = data[key]
-    brand.save()
-
-    data = {
-      "role": "brand",
-      "message": "brand updated in database"
-    }
-    response = app.response_class(
-      response=json.dumps(data),
-      status=200,
-      mimetype='application/json'
-    )
-
-  return response
+# @app.route('/brand/update', methods=['POST'])
+# def updatebrands():
+#   data = (request.get_json())
+#   # handle case when email is not found
+#   brand = Brand.objects(email=data['email'])
+#   if not brand:
+#     data = {
+#       "role": "brand",
+#       "message": "brand does not exists in database"
+#     }
+#     response = app.response_class(
+#       response=json.dumps(data),
+#       status=404,
+#       mimetype='application/json'
+#     )
+#   else:
+#     brand = brand[0]
+#     data = request.get_json()
+#     for key in data:
+#       brand[key] = data[key]
+#     brand.save()
+#
+#     data = {
+#       "role": "brand",
+#       "message": "brand updated in database"
+#     }
+#     response = app.response_class(
+#       response=json.dumps(data),
+#       status=200,
+#       mimetype='application/json'
+#     )
+#
+#   return response
 
 @app.route('/brand/signin', methods=['POST'])
 def signinbrands():
@@ -238,14 +239,7 @@ def admin_approve_brand_singup():
 
 
 
-# class HelloWorld(Resource):
-#     def post(self):
-#         json_data = request.get_json(force=True)
-#         un = json_data['username']
-#         pw = json_data['password']
-#         return jsonify(u=un, p=pw)
-#
-# api.add_resource(HelloWorld, '/testing')
+api.add_resource(BrandAPI, '/brand')
 api.add_resource(AdminSignupAPI, '/admin/signup')
 #api.add_resource(AdminSignInAPI, '/admin/signin')
 
