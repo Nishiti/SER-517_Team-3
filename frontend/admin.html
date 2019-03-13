@@ -15,6 +15,7 @@
 </head>
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="assets/js/notificationdropdown.js"></script>
 
 <body class="is-loading">
 
@@ -34,7 +35,15 @@
             <li><a href="manage.html">Search/ Manage</a></li>
         </ul>
         <ul class="icons">
-            <li><a href="#" class="icon fa-bell"><span class="label"></span></a></li>
+            <div class="dropdown"></div>
+            <li><a onclick="notificationdropdown()" class="icon fa-bell">
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+                </a>
+            </li>
             <li><a href="https://twitter.com/nxstlab" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
             <li><a href="https://www.facebook.com/nxstlab/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
             <li><a href="https://www.instagram.com/nxstlab/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
