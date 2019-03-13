@@ -5,17 +5,22 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-<head>Admin</title>
+<head>
+    <title>Admin</title>
     <meta charset="utf-8" />
     <meta name="google" content="notranslate">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 </head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="assets/js/notificationdropdown.js"></script>
+
 <body class="is-loading">
 
 <!-- Wrapper -->
-<p id="wrapper">
+<div id="wrapper" class="fade-in">
 
     <!-- Header -->
     <header id="header">
@@ -26,11 +31,19 @@
     <!-- Nav -->
     <nav id="nav">
         <ul class="links">
-            <li class="active"><a href="admin.html">Home</a></li>
-            <li><a href="manageBrands.html">Brands</a></li>
-            <li><a href="manageInfluemncers.html">Influencers</a></li>
+            <li class="active"><a href="admin.html">Brands</a></li>
+            <li><a href="manage.html">Search/ Manage</a></li>
         </ul>
         <ul class="icons">
+            <div class="dropdown"></div>
+            <li><a onclick="notificationdropdown()" class="icon fa-bell">
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+                </a>
+            </li>
             <li><a href="https://twitter.com/nxstlab" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
             <li><a href="https://www.facebook.com/nxstlab/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
             <li><a href="https://www.instagram.com/nxstlab/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
@@ -42,10 +55,36 @@
 
         <!-- Post -->
         <section class="posts">
+            <article>
+                    <header>
+                        <h2><a href="#">Brand Requests</a></h2>
+                        <a href="#" class="previous round">&#8249;</a>
+                        <div  ng-app="myApp" ng-controller="customersCtrl">
+                        <div class="card" ng-repeat="x in names">
+                            <!--img src="images/pic05.jpg" alt="John" style="width:100%">
+                            <h2>John Doe</h2>
+                            <p class="cardTitle">CEO & Founder, Example</p>
+                            <p>Harvard University</p>
+                            <div style="margin: 24px 0;">
+                                <a href="#"><i class="fa fa-dribbble"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                            </div-->
+                            <p class="cardTitle">{{ x.Name }}</p>
+                            <p>{{ x.Description }}</p>
+                            <p><button class="cardButton">Approve</button><button class="cardButton">Deny</button></p>
+
+                        </div>
+                        </div>
+                        <a href="#" class="next round">&#8250;</a>
+                    </header>
+                </article>
                 <article>
                     <header>
-                        <h2><a href="#">Brand Approvals</a></h2>
-                        <a href="#" class="previous">&laquo; Previous</a>
+                        <h2><a href="#">Campaign Requests</a></h2>
+
+                        <a href="#" class="previous round">&#8249;</a>
                         <div class="card">
                             <img src="images/pic05.jpg" alt="John" style="width:100%">
                             <h2>John Doe</h2>
@@ -59,56 +98,34 @@
                             </div>
                             <p><button class="cardButton">Approve</button><button class="cardButton">Deny</button></p>
                         </div>
-                    <a href="#" class="next">Next &raquo;</a>
-                    </header>
-                </article>
-                <article>
-                    <header>
-                        <h2><a href="#">Brand Requests</a></h2>
-                    </header>
-                </article>
-                <article>
-                    <header>
-                        <h2><a href="#">Brands</a></h2>
-                    </header>
-                </article>
-                <article>
-                    <header>
-                        <h2><a href="#">Influencers</a></h2>
+                        <a href="#" class="next round">&#8250;</a>
                     </header>
                 </article>
             </section>
+    </div>
             <!-- Table -->
 
-            <hr />
             <!-- Social Media Links -->
-            <center>
-                <div class="6u$ 12u$(small)">
-                    <h3>Social Media Links</h3>
-                    <ul class="icons alt">
-                        <li><a href="https://www.facebook.com/nxstlab/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-                        <li><a href="https://www.instagram.com/nxstlab/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-                        <li><a href="https://twitter.com/nxstlab" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-                    </ul>
-                </div>
-            </center>
-            <footer id="footer">
-            </footer>
-            <!-- Copyright -->
             <div id="copyright">
                 <ul><li>Copyright &copy; 2017 new story telling lab</li><li>nxstlab</li><li>Kulina Inc.</li></ul>
             </div>
-
-        </section>
-    </div>
 </div>
 <!-- Scripts -->
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('customersCtrl', function($scope) {
+    $scope.names = [
+            {Name:"Controllers",Description :"Controllers in action"},
+            {Name:"Models",Description :"Models and binding data"},
+            {Name:"Directives",Description :"Flexibility of Directives"}
+        ]});
+    </script>
+
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/jquery.scrollex.min.js"></script>
 <script src="assets/js/jquery.scrolly.min.js"></script>
 <script src="assets/js/skel.min.js"></script>
 <script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
-
 </body>
 </html>

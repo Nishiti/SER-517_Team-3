@@ -16,6 +16,6 @@ class Brand(UserMixin, Document):
     brand_growth_option3 = BooleanField(null=False, default=False)
     isapproved = BooleanField(null=False, default=False)
 
-@login_manager.user_loader
-def load_user(user_id):
-    return Brand.objects(pk=user_id).first()
+# @login_manager.user_loader
+# def load_user(user_id):
+#     return Brand.objects(pk=user_id).first()
