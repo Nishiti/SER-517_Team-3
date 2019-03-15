@@ -39,3 +39,21 @@ class BrandAPI(Resource):
             brand.save()
             return make_response(jsonify(role='brand', message='brand details updated successfully in database'),
                                  status.HTTP_200_OK)
+    def get(self):
+        data = Brand.objects()
+        res = []
+        for brand in data:
+            res.append(brand)
+        return make_response(jsonify(data=res,role='brand', message='brand details updated successfully in database'),
+                             status.HTTP_200_OK)
+    def delete(self):
+        data = request.get_json(force=True)
+        if not Brand.objects(email=data['email']):
+            return make_response(jsonify(role='brand', message='brand does not exist in database'),
+                             status.HTTP_404_NOT_FOUND)
+        else:
+            brand = Brand.objects(email=data['email'])
+            brand = brand[0]
+            brand.delete()
+            return make_response(jsonify(role='brand', message='brand has been deleted from database'),
+                                 status.HTTP_200_OK)
