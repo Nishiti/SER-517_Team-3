@@ -6,6 +6,7 @@ from brand import Brand
 from models import Influencer
 from adminSignupAPI import AdminSignupAPI
 from brandAPI import BrandAPI
+import os
 #from adminSignInAPI import AdminSignInAPI
 
 app = Flask(__name__)
@@ -249,3 +250,5 @@ api.add_resource(AdminSignupAPI, '/admin/signup')
 
 if __name__ == '__main__':
     app.run(port=5000)
+    app = Flask(__name__)
+    app.secret_key = os.urandom(16)
