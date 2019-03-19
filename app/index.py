@@ -6,6 +6,7 @@ from brand import Brand
 from models import Influencer
 from adminSignupAPI import AdminSignupAPI
 from brandAPI import BrandAPI
+from adminAPIs import AdminDeactivateBrandAPI
 import os
 #from adminSignInAPI import AdminSignInAPI
 
@@ -216,6 +217,7 @@ def admin_approve_brand_singup():
     brand = brand[0]
     if brand['isapproved'] == False:
       brand.isapproved = True
+      brand.isactive = True
       brand.save()
       data = {
         "role": "admin",
@@ -242,6 +244,7 @@ def admin_approve_brand_singup():
 
 api.add_resource(BrandAPI, '/brand')
 api.add_resource(AdminSignupAPI, '/admin/signup')
+api.add_resource(AdminDeactivateBrandAPI, '/admin/deactivate')
 #api.add_resource(AdminSignInAPI, '/admin/signin')
 
 # @app.route('/', methods=['GET'])
