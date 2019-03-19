@@ -3859,6 +3859,31 @@
 		white-space: nowrap;
 }
 
+.open-card {
+  		-moz-appearance: none;
+		-webkit-appearance: none;
+		-ms-appearance: none;
+		appearance: none;
+		-moz-transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
+		-webkit-transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
+		-ms-transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
+		transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
+		border: 0;
+		cursor: pointer;
+		display: inline-block;
+		font-family: "Source Sans Pro", Helvetica, sans-serif;
+		font-size: 0.8rem;
+		font-weight: 900;
+		letter-spacing: 0.075em;
+		height: 3rem;
+		line-height: 3rem;
+		padding: 0 2rem;
+		text-align: center;
+		text-decoration: none;
+		text-transform: uppercase;
+		white-space: nowrap;
+}
+
 /* The popup form - hidden by default */
 .form-popup {
   display: none;
@@ -3867,6 +3892,18 @@
   padding-right: 100px;
   padding-bottom: 50px;
   padding-left: 100px;
+}
+
+.card-popup{
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	max-width: 300px;
+	margin: auto;
+	text-align: center;
+}
+
+.card-title{
+	color: grey;
+	font-size: 18px;
 }
 
 /* Add styles to the form container */
@@ -3881,9 +3918,9 @@
 }
 
 /* Full-width input fields */
-.form-container input[type=text], .form-container input[type=password] {
-  max-width: 500px;
-  position: absolute;
+.form-container input[type=text], .form-container input[type=password], .form-container input[type=message] {
+  max-width: 800px;
+  position: static;
   right: 0px;
   border: none;
   background: #f1f1f1;
