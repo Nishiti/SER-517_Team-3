@@ -4805,3 +4805,9 @@ width: 100%;
     color: black;
     border-radius: 50%;
 }
+
+.displayLists{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
