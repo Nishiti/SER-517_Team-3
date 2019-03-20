@@ -1790,9 +1790,8 @@
 		}
 
 	hr {
-		border: 0;
+		border: 1px solid black;
 		border-bottom: solid 2px;
-		margin: 3rem 0;
 	}
 
 		hr.major {
@@ -3895,10 +3894,12 @@
 }
 
 .card-popup{
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-	max-width: 300px;
-	margin: auto;
-	text-align: center;
+	display: none;
+  	position: static;
+  	padding-top: 20px;
+  	padding-right: 10px;
+  	padding-bottom: 5px;
+  	padding-left: 10px;
 }
 
 .card-title{
@@ -3917,9 +3918,24 @@
   padding: 10px;
 }
 
+.card-container {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	max-width: 300px;
+	border: 1px solid black;
+	text-align: center;
+}
+
 /* Full-width input fields */
 .form-container input[type=text], .form-container input[type=password], .form-container input[type=message] {
   max-width: 800px;
+  position: static;
+  right: 0px;
+  border: none;
+  background: #f1f1f1;
+}
+
+.card-container input[type=text], .card-container input[type=password] {
+  max-width: 300px;
   position: static;
   right: 0px;
   border: none;
@@ -3966,9 +3982,46 @@
   opacity: 0.8;
 }
 
+.card-container .btn {
+	-moz-appearance: none;
+		-webkit-appearance: none;
+		-ms-appearance: none;
+		appearance: none;
+		-moz-transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
+		-webkit-transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
+		-ms-transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
+		transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
+		border: 0;
+		cursor: pointer;
+		display: inline-block;
+		font-family: "Source Sans Pro", Helvetica, sans-serif;
+		font-size: 0.9rem;
+		font-weight: 900;
+		letter-spacing: 0.075em;
+		height: 3rem;
+		line-height: 3rem;
+		text-align: center;
+		text-decoration: none;
+		text-transform: uppercase;
+		white-space: nowrap;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  border: 1px solid white;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 50%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
 /* Add a red background color to the cancel button */
 .form-container .cancel {
   background-color: red;
+}
+
+.card-container .cancel {
+  background-color: grey;
 }
 
 /* Add some hover effects to buttons */
@@ -3976,6 +4029,9 @@
   opacity: 1;
 }
 
+.card-container .btn:hover, .open-card:hover {
+  opacity: 1;
+}
 /* Footer */
 
 	#footer {
