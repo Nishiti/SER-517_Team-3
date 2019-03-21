@@ -8,6 +8,7 @@ from adminSignupAPI import AdminSignupAPI
 from brandAPI import BrandAPI
 from adminAPIs import AdminDeactivateBrandAPI
 from adminAPIs import AdminApproveBrandSignupAPI
+from adminAPIs import AdminRemoveBrandAPI
 import os
 #from adminSignInAPI import AdminSignInAPI
 
@@ -244,8 +245,10 @@ def signinbrands():
 
 api.add_resource(BrandAPI, '/brand')
 api.add_resource(AdminSignupAPI, '/admin/signup')
-api.add_resource(AdminDeactivateBrandAPI, '/admin/deactivate')
+api.add_resource(AdminRemoveBrandAPI, '/admin/removebrand')
+api.add_resource(AdminDeactivateBrandAPI, '/admin/deactivatebrand')
 api.add_resource(AdminApproveBrandSignupAPI, '/admin/approve/brandsingup')
+
 #api.add_resource(AdminSignInAPI, '/admin/signin')
 
 # @app.route('/', methods=['GET'])

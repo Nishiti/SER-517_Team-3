@@ -7,11 +7,9 @@ from flask_api import status
 class BrandAPI(Resource):
     def post(self):
         data = request.get_json(force=True)
-
         if Brand.objects(email=data['email']):
             return make_response(jsonify(role='brand', message='brand already exists in database'),
                              status.HTTP_409_CONFLICT)
-
         else:
             Brand(
               first_name = data['first_name'],
@@ -31,8 +29,7 @@ class BrandAPI(Resource):
             return make_response(jsonify(role='brand', message='brand does not exist in database'),
                              status.HTTP_404_NOT_FOUND)
         else:
-            brand = Brand.objects(email=data['email'])
-            brand = brand[0]
+            brand = Brand.objects(email=data['email']).first()
             data = request.get_json()
             for key in data:
                 brand[key] = data[key]
@@ -40,20 +37,13 @@ class BrandAPI(Resource):
             return make_response(jsonify(role='brand', message='brand details updated successfully in database'),
                                  status.HTTP_200_OK)
     def get(self):
-        data = Brand.objects()
+        brands = [brand for brand in Brand.objects()]
         res = []
-        for brand in data:
-            res.append(brand)
-        return make_response(jsonify(data=res,role='brand', message='brand details updated successfully in database'),
+        for brand in brands:
+            temp = dict()
+            temp["first_name"] = brand.first_name
+            temp["last_name"] = brand.last_name
+            temp["email"] = brand.email
+            res.append(temp)
+        return make_response(jsonify(data=res, role='admin', message='list of brands'),
                              status.HTTP_200_OK)
-    def delete(self):
-        data = request.get_json(force=True)
-        if not Brand.objects(email=data['email']):
-            return make_response(jsonify(role='brand', message='brand does not exist in database'),
-                             status.HTTP_404_NOT_FOUND)
-        else:
-            brand = Brand.objects(email=data['email'])
-            brand = brand[0]
-            brand.delete()
-            return make_response(jsonify(role='brand', message='brand has been deleted from database'),
-                                 status.HTTP_200_OK)

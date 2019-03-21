@@ -3,6 +3,17 @@ from flask import jsonify, request, make_response
 from brand import Brand
 from flask_api import status
 
+class AdminRemoveBrandAPI(Resource):
+    def post(self):
+        data = request.get_json(force=True)
+        if not Brand.objects(email=data['email']):
+            return make_response(jsonify(role='admin', message='brand does not exist in database'),
+                                 status.HTTP_404_NOT_FOUND)
+        else:
+            brand = Brand.objects(email=data['email']).first()
+            brand.delete()
+            return make_response(jsonify(role='brand', message='brand has been removed from database'),
+                                 status.HTTP_200_OK)
 
 class AdminDeactivateBrandAPI(Resource):
     def post(self):
@@ -13,8 +24,7 @@ class AdminDeactivateBrandAPI(Resource):
                                  status.HTTP_404_NOT_FOUND)
 
         else:
-            brand = Brand.objects(email=data['email'])
-            brand = brand[0]
+            brand = Brand.objects(email=data['email']).first()
             brand['isactive'] = False
             brand.save()
 
@@ -30,8 +40,7 @@ class AdminApproveBrandSignupAPI(Resource):
                                  status.HTTP_404_NOT_FOUND)
 
         else:
-            brand = Brand.objects(email=data['email'])
-            brand = brand[0]
+            brand = Brand.objects(email=data['email']).first()
             if not brand['isapproved']:
                 brand.isapproved = True
                 brand.isactive = True
