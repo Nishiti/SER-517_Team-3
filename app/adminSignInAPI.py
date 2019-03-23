@@ -1,17 +1,18 @@
+from contextlib import redirect_stderr
+
 from flask_restful import Resource, Api
 from flask import Flask, jsonify, request, json, url_for, render_template, app, make_response, session
 from flask_api import status
 from admin import Admin
+from flask_login import current_user
 from werkzeug.security import check_password_hash
 from werkzeug.utils import redirect
 
 
 class AdminSignInAPI(Resource):
     def post(self):
-        data = request.get_json(force=True)
-
-    @app.route('/adminlogin', methods=['GET', 'POST'])
-    def login(self):
+        if current_user.is_authenticated:
+            return redirect(url_for('index'))
         data = request.get_json(force=True)
         if request.method == 'POST':
             session['email'] = request.form['email']

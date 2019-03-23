@@ -244,6 +244,7 @@ def signinbrands():
 
 
 api.add_resource(BrandAPI, '/brand')
+api.add_resource(AdminSignupAPI, '/admin/signin')
 api.add_resource(AdminSignupAPI, '/admin/signup')
 api.add_resource(AdminRemoveBrandAPI, '/admin/removebrand')
 api.add_resource(AdminDeactivateBrandAPI, '/admin/deactivatebrand')
