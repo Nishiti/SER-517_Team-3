@@ -10,11 +10,14 @@ from adminAPIs import AdminApproveBrandSignupAPI
 from adminAPIs import AdminRemoveBrandAPI
 from brandAPI import BrandSignInAPI
 from influencerAPI import InfluencerSignUpAPI
+from flask_cors import CORS
 import os
 #from adminSignInAPI import AdminSignInAPI
 
 app = Flask(__name__)
 api = Api(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
+CORS(app)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -203,7 +206,7 @@ def signinbrands():
 
 api.add_resource(BrandAPI, '/brand')
 api.add_resource(AdminSignupAPI, '/admin/signin')
-api.add_resource(AdminSignupAPI, '/admin/signup')
+#api.add_resource(AdminSignupAPI, '/admin/signup')
 api.add_resource(AdminRemoveBrandAPI, '/admin/removebrand')
 api.add_resource(AdminDeactivateBrandAPI, '/admin/deactivatebrand')
 api.add_resource(AdminApproveBrandSignupAPI, '/admin/approve/brandsingup')
