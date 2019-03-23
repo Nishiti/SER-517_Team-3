@@ -3,13 +3,13 @@ from flask_restful import Resource, Api
 from flask_login import LoginManager
 from mongoengine import connect
 from brand import Brand
-from models import Influencer
 from adminSignupAPI import AdminSignupAPI
 from brandAPI import BrandAPI
 from adminAPIs import AdminDeactivateBrandAPI
 from adminAPIs import AdminApproveBrandSignupAPI
 from adminAPIs import AdminRemoveBrandAPI
 from brandAPI import BrandSignInAPI
+from influencerAPI import InfluencerSignUpAPI
 import os
 #from adminSignInAPI import AdminSignInAPI
 
@@ -51,49 +51,6 @@ def get_influencers():
         mimetype='application/json'
         )
     return response
-
-@app.route('/influencers/signup', methods=['POST'])
-def signupInfluencers():
-  data = (request.get_json())
-  if Influencer.objects(email=data['email']):
-    data = {
-      "role": "influencer",
-      "message": "influencer already exists in database"
-    }
-    response = app.response_class(
-      response=json.dumps(data),
-      status=409,
-      mimetype='application/json'
-    )
-
-  else:
-    influencer = Brand(
-        first_name=data['first_name'],
-        last_name=data['last_name'],
-        category=data['category'],
-        youtube=data['youtube'],
-        IGStoryViews=data['IGStoryViews'],
-        followers=data['followers'],
-        AvgLikes=data['AvgLikes'],
-        AvgComments=data['AvgComments'],
-        Gender=data['Gender'],
-        email=data['email'],
-        website=data['website'],
-        social_media_handles=data['instagram_handle'],
-    ).save()
-
-    data = {
-      "role": "influencer",
-      "message": "new influencer is added in database"
-    }
-    response = app.response_class(
-      response=json.dumps(data),
-      status=201,
-      mimetype='application/json'
-    )
-
-  return response
-
 
 # @app.route('/brand/signup', methods=['POST'])
 # def signupbrands():
@@ -250,6 +207,8 @@ api.add_resource(AdminSignupAPI, '/admin/signup')
 api.add_resource(AdminRemoveBrandAPI, '/admin/removebrand')
 api.add_resource(AdminDeactivateBrandAPI, '/admin/deactivatebrand')
 api.add_resource(AdminApproveBrandSignupAPI, '/admin/approve/brandsingup')
+api.add_resource(InfluencerSignUpAPI, '/influencer/signup')
+
 
 if __name__ == '__main__':
     app.run(port=5000)
