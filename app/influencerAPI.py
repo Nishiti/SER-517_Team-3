@@ -1,7 +1,7 @@
 from flask_restful import Resource
 from flask import request, app
 from flask_restful.representations import json
-from models import Influencer
+from app.models import Influencer
 
 class InfluencerSignUpAPI(Resource):
     def post(self):
@@ -20,16 +20,16 @@ class InfluencerSignUpAPI(Resource):
             influencer = Influencer(
                 first_name=data['first_name'],
                 last_name=data['last_name'],
-                category=data['category'],
-                youtube=data['youtube'],
-                IGStoryViews=data['IGStoryViews'],
-                followers=data['followers'],
-                AvgLikes=data['AvgLikes'],
-                AvgComments=data['AvgComments'],
-                Gender=data['Gender'],
                 email=data['email'],
-                website=data['website'],
-                social_media_handles=data['instagram_handle']
+                password=data['password'],
+                confirm_password=data['confirm_password'],
+                big_deal_on_option1=data['big_deal_on_option1'],
+                big_deal_on_option2=data['big_deal_on_option2'],
+                big_deal_on_option3=data['big_deal_on_option3'],
+                big_deal_on_option4=data['big_deal_on_option4'],
+                big_deal_on_option5=data['big_deal_on_option5'],
+                website_social_media_handles=data['website'],
+                followers=data['followers']
             ).save()
             data = {
                 "role": "influencer",
