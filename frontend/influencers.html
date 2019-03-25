@@ -60,23 +60,30 @@
                 <h2><u>Sign Up Form</u></h2>
             </center>
             <form name="signupForm" method="post" action="#" class="alt">
-                <div class="6u 12u$(xsmall)">
-                    <input type="text" name="fname" id="fname" value="" placeholder="First Name" required/>
+                <div class="6u 12u$(xsmall) form-group">
+                    <input type="text" name="fname" id="fname" ng-model="fname" placeholder="First Name" required="required"/>
+                    <div ng-if="signupForm.fname.$touched || signupSubmitted">
+                        <p ng-show="signupForm.fname.$error.required" class="help-block">First Name is required</p>
+                    </div>
+                    <input type="text" name="lname" id="lname" ng-model="lname" placeholder="Last Name" required="required"/>
+                    <div ng-if="signupForm.lname.$touched || signupSubmitted">
+                        <p ng-show="signupForm.lname.$error.required" class="help-block">Last name is required</p>
+                    </div>
                 </div>
-                <div class="6u 12u$(xsmall)">
-                    <input type="text" name="lname" id="lname" value="" placeholder="Last Name" required/>
+                <div class="6u$ 12u$(xsmall) form-group">
+                    <input type="email" class="form-control"  ng-model="email" placeholder="Email" name="email" required="required"/>
+                    <div ng-if="signupForm.email.$touched || signupSubmitted">
+                        <p ng-show="signupForm.email.$error.required" class="help-block">Email is required</p>
+                    </div>
                 </div>
-                <div class="6u$ 12u$(xsmall)">
-                    <input type="email" name="email" id="email" value="" placeholder="Email" required/>
-                </div>
-                <div class="form-group">
+                <div class="6u$ 12u$(xsmall) form-group">
                     <input type="password" class="form-control"  ng-model="password" placeholder="Password" name="password" required="required" ng-minlength="6"/>
                     <div ng-if="signupForm.password.$touched || signupSubmitted">
                         <p ng-show="signupForm.password.$error.required" class="help-block">Password is required</p>
                         <p ng-show="signupForm.password.$error.minlength" class="help-block">Minimum 6 character</p>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="6u$ 12u$(xsmall) form-group">
                     <input type="password" class="form-control"  name="confirm_password" ng-model="confirm_password" placeholder="Confirm password" match-password="password" required>
                     <div ng-if="signupForm.confirm_password.$touched || signupSubmitted">
                         <p ng-show="signupForm.confirm_password.$error.required" class="help-block">Confirm password is required</p>
@@ -140,14 +147,11 @@
                     </ul>
                 </div>
             </center>
-            <footer id="footer">
-            </footer>
-            <!-- Copyright -->
-            <div id="copyright">
-                <ul><li>Copyright &copy; 2017 new story telling lab</li><li>nxstlab</li><li>Kulina Inc.</li></ul>
-            </div>
-
         </section>
+    </div>
+    <!-- Copyright -->
+    <div id="copyright">
+        <ul><li>Copyright &copy; 2017 new story telling lab</li><li>nxstlab</li><li>Kulina Inc.</li></ul>
     </div>
 </div>
 </body>
