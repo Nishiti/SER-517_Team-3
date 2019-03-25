@@ -1,9 +1,7 @@
-from contextlib import redirect_stderr
-
-from flask_restful import Resource, Api
-from flask import Flask, jsonify, request, json, url_for, render_template, app, make_response, session
+from flask_restful import Resource
+from flask import jsonify, request, url_for, render_template, make_response, session
 from flask_api import status
-from admin import Admin
+from app.admin import Admin
 from flask_login import current_user
 from werkzeug.security import check_password_hash
 from werkzeug.utils import redirect
