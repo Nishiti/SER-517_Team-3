@@ -3,13 +3,13 @@ from flask_restful import Resource, Api
 from flask_login import LoginManager
 from mongoengine import connect
 from brand import Brand
-from app.adminSignupAPI import AdminSignupAPI
+from adminSignupAPI import AdminSignupAPI
 from brandAPI import BrandAPI
 from adminAPIs import AdminDeactivateBrandAPI
 from adminAPIs import AdminApproveBrandSignupAPI
 from adminAPIs import AdminRemoveBrandAPI
 from brandAPI import BrandSignInAPI
-from app.influencerAPI import InfluencerSignUpAPI
+from influencerAPI import InfluencerSignUpAPI
 from flask_cors import CORS
 import os
 #from adminSignInAPI import AdminSignInAPI
