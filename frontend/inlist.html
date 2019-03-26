@@ -20,7 +20,7 @@
 	<!-- Header -->
 	<header id="header">
 		<a href="index.html" class="logo"><img src="images/logo.png" alt="" /></a>
-		<!--a href="#" class="image fit"><img src="images/logo.png" alt="" /></a->
+		<!--a href="#" class="image fit"><img src="images/logo.png" alt="" /></a-->
 	</header>
 
 	<!-- Nav -->
@@ -108,6 +108,24 @@
                 <button type="reset" class="reset-button" value="Reset">Reset</button>
                 <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
             </form>
+            <section>
+                <button class="open-card" onclick="openCard()" style="margin:15px">Profile Card</button>
+                <div class="card-popup" id="myCard">
+                    <form action="/action_page.php" class="card-container">
+                        <div class="field">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar6.png">
+                                <label for="cname"><b>Company Name</b></label>
+                                <label for="poc"><b>Company's Point of Contact</b></label>
+                                <label for="cadd"><b>Company Address</b></label>
+                                <label for="email"><b>Email Address</b></label>
+                                <label for="num"><b>Phone Number</b></label>
+                                <hr>
+                                <label for="plist"><b>Company Description and Products List</b></label>
+                                <button type="card" class="btn cancel" onclick="closeCard()">Close</button>
+                                </div>
+                    </form>
+                </div>
+            </section>
             </div>
        <footer id="footer">
         </footer>
