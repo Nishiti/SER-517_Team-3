@@ -8,26 +8,38 @@ app.secret_key = 'vihar'
 api = Api(app)
 
 users = [
-	{
-		'email':'bob',
-		'password':'abc'
-	}
+    {
+        'email':'bob',
+        'password':'abc'
+    }
 ]
 
 class InfluencerSignIn(Resource):
 
-	def post(self):
+    parser = reqparse.RequestParser()
+    parser.add_argument('email', type=str, required=True, help='This field cannot be blank.')
+    parser.add_argument('password', type=str, required=True, help='This field cannot be blank.')
 
-	data = InfluencerSignIn.parser.parse_args()
+    def post(self):
 
-	for user in users:
-		if user['email'] == data['email']:
-			if user['password'] == data['password']:
-				return {"message":"Login Successfull."}
-			else:
-				return {"message":"The email id and password combination is invalid."}
-		else:
-			{"message":"The given username doesn't exist."}
+        data = InfluencerSignIn.parser.parse_args()
+
+        user = next(filter(lambda x: x['email'] == data['email'], users),None)
+        if user and user['password'] == data['password']:
+
+            return {"message":"Login Successfull."}
+
+        return {"message":"Invalid credentials."}
+
+
+        # for user in users:
+        #     if user['email'] == data['email']:
+        #         if user['password'] == data['password']:
+        #             return {"message":"Login Successfull."}
+        #         else:
+        #             return {"message":"The email id and password combination is invalid."}
+        #     else:
+        #         {"message":"The given username doesn't exist."}
 
 
 api.add_resource(InfluencerSignIn, '/influencersignin')
