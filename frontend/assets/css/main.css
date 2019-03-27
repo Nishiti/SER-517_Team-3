@@ -4867,3 +4867,11 @@ width: 100%;
   margin: 0;
   padding: 0;
 }
+
+#page td {
+	padding: 0;
+	margin: 0;
+}
+#page{
+	border-collapse: collapse;
+}
