@@ -42,7 +42,7 @@
                     <a href="#">Link 2</a>
                     <a href="#">Link 3</a>
                 </div>
-                </a>
+            </a>
             </li>
             <li><a href="https://twitter.com/nxstlab" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
             <li><a href="https://www.facebook.com/nxstlab/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
@@ -56,70 +56,61 @@
         <!-- Post -->
         <section class="posts">
             <article>
-                    <header>
-                        <h2><a href="#">Brand Requests</a></h2>
-                        <a href="#" class="previous round">&#8249;</a>
-                        <div  ng-app="myApp" ng-controller="customersCtrl">
-                        <div class="card" ng-repeat="x in names">
-                            <!--img src="images/pic05.jpg" alt="John" style="width:100%">
-                            <h2>John Doe</h2>
-                            <p class="cardTitle">CEO & Founder, Example</p>
-                            <p>Harvard University</p>
-                            <div style="margin: 24px 0;">
-                                <a href="#"><i class="fa fa-dribbble"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-linkedin"></i></a>
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                            </div-->
-                            <p class="cardTitle">{{ x.Name }}</p>
-                            <p>{{ x.Description }}</p>
-                            <p><button class="cardButton">Approve</button><button class="cardButton">Deny</button></p>
+                <h2><a href="#">Brand Requests</a></h2>
+                <div class="container">
+                    <div class="card">
+                        <h2>Brand Name</h2>
+                        <p class="cardTitle">Email</p>
+                        <p>Description</p>
+                        <br/><br/><br/><br/><br/>
+                        <p><button class="cardButton">Approve</button>
+                            <button class="cardButton">Deny</button></p>
+                    </div>
+                    <a class="prev container-nav-a" onclick="">❮</a>
+                    <a class="next container-nav-a" onclick="">❯</a>
+                </div>
+            </article>
+            <article>
+                <h2><a href="#">Campaign Requests</a></h2>
+                <div class="container">
+                    <div class="card">
+                        <h2>Campaign Name</h2>
+                        <p class="cardTitle">Associated Brand</p>
+                        <p>Description</p>
+                        <p><a onclick="">Details</a></p>
+                        <br/><br/><br/>
+                        <p><button class="cardButton">Approve</button>
+                            <button class="cardButton">Deny</button></p>
+                    </div>
+                    <a class="prev container-nav-a" onclick="">❮</a>
+                    <a class="next container-nav-a" onclick="">❯</a>
+                </div>
 
-                        </div>
-                        </div>
-                        <a href="#" class="next round">&#8250;</a>
-                    </header>
-                </article>
-                <article>
-                    <header>
-                        <h2><a href="#">Campaign Requests</a></h2>
-
-                        <a href="#" class="previous round">&#8249;</a>
-                        <div class="card">
-                            <img src="images/pic05.jpg" alt="John" style="width:100%">
-                            <h2>John Doe</h2>
-                            <p class="cardTitle">CEO & Founder, Example</p>
-                            <p>Harvard University</p>
-                            <div style="margin: 24px 0;">
-                                <a href="#"><i class="fa fa-dribbble"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-linkedin"></i></a>
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                            </div>
-                            <p><button class="cardButton">Approve</button><button class="cardButton">Deny</button></p>
-                        </div>
-                        <a href="#" class="next round">&#8250;</a>
-                    </header>
-                </article>
-            </section>
+                <!--a href="#" class="prev">&#8249;</a>
+                <div class="card">
+                    <img src="images/pic05.jpg" alt="John" style="width:100%">
+                    <h2>John Doe</h2>
+                    <p class="cardTitle">CEO & Founder, Example</p>
+                    <p>Harvard University</p>
+                    <div style="margin: 24px 0;">
+                        <a href="#"><i class="fa fa-dribbble"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                    </div>
+                    <p><button class="cardButton">Approve</button><button class="cardButton">Deny</button></p>
+                </div>
+                <a href="#" class="next">&#8250;</a-->
+            </article>
+        </section>
     </div>
-            <!-- Table -->
+    <!-- Table -->
 
-            <!-- Social Media Links -->
-            <div id="copyright">
-                <ul><li>Copyright &copy; 2017 new story telling lab</li><li>nxstlab</li><li>Kulina Inc.</li></ul>
-            </div>
+    <!-- Social Media Links -->
+    <div id="copyright">
+        <ul><li>Copyright &copy; 2017 new story telling lab</li><li>nxstlab</li><li>Kulina Inc.</li></ul>
+    </div>
 </div>
-<!-- Scripts -->
-<script>
-    var app = angular.module('myApp', []);
-    app.controller('customersCtrl', function($scope) {
-    $scope.names = [
-            {Name:"Controllers",Description :"Controllers in action"},
-            {Name:"Models",Description :"Models and binding data"},
-            {Name:"Directives",Description :"Flexibility of Directives"}
-        ]});
-    </script>
 
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/jquery.scrollex.min.js"></script>

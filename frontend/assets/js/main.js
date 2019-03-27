@@ -271,6 +271,14 @@ function openForm() {
   document.getElementById("myForm").style.display = "block";
 }
 
+function openCard() {
+  document.getElementById("myCard").style.display = "block";
+}
+
+function closeCard() {
+  document.getElementById("myCard").style.display = "none";
+}
+
 function closeForm() {
   document.getElementById("myForm").style.display = "none";
 }

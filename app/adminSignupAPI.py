@@ -1,4 +1,4 @@
-from flask_restful import Resource, Api
+from flask_restful import Resource
 from flask import jsonify, request, make_response
 from admin import Admin
 from flask_api import status

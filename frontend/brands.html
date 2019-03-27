@@ -62,43 +62,42 @@
                 <h2><u>Sign Up Form</u></h2>
                 </center>
 			<form method="post" action="#" class="alt">
-				<div class="row uniform">
-					<div class="6u 12u$(xsmall)">
-						<input type="text" name="demo-name" id="demo-name" value="" placeholder="First Name" />
-					</div>
-                    <div class="6u 12u$(xsmall)">
-                        <input type="text" name="demo-name" id="demo-name" value="" placeholder="Last Name" />
-                    </div>
-					<div class="6u$ 12u$(xsmall)">
-						<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
-					</div>
-                    <div class="12u$">
+                <div class="field">
+                    <label for="cname"><b><h3>Company Name</h3></b></label>
+                    <input type="text" placeholder="Enter Company Name" name="cname" required>
+                        </div>
+                <div class="field">
+                    <label for="cadd"><b><h3>Company Address</h3></b></label>
+                    <input type="text" placeholder="Enter Company Address" name="cadd" required>
+                        </div>
+                <div class="field">
+                    <label for="num"><b><h3>Phone Number</h3></b></label>
+                    <input type="text" placeholder="Enter Phone Number" name="num">
+                        </div>
+                <div class="field">
+                    <label for="email"><b><h3>Email Address</h3></b></label>
+                    <input type="text" placeholder="Enter Email Address" name="email" required>
+                        </div>
                     <div class="field">
-                        <h3>I'm looking to grow my brand through...</h3>
+                        <h3>Looking for the following services...</h3>
                         <div class="6u 12u$(small)">
                             <input type="checkbox" id="demo-post" name="demo-post">
-                                <label for="demo-post">Local, targeted influencers posting about me</label>
+                                <label for="demo-post">Collaboration with Influencers</label>
                                 </div>
                         <div class="6u 12u$(small)">
                             <input type="checkbox" id="demo-product" name="demo-product">
-                                <label for="demo-product">Getting my product or service in the hands of influencers</label>
+                                <label for="demo-product">Give Away Products for Endorsement</label>
                                 </div>
                         <div class="6u$ 12u$(small)">
                             <input type="checkbox" id="demo-strategy" name="demo-strategy">
-                                <label for="demo-strategy">I need a new digital strategy to sell more!</label>
+                                <label for="demo-strategy">Digital Strategy for selling more</label>
                                 </div>
                     </div>
-                    </div>
-					<!-- Break -->
-                    <div class="12u$">
+                    <div class="field">
                         <h3>Website and Social Media Handles?</h3>
-                        <textarea name="demo-message" id="demo-message" placeholder="Enter here" rows="1"></textarea>
+                        <textarea name="demo-message" id="demo-message" placeholder="Enter here" rows="0"></textarea>
                     </div>
-					<!-- Break -->
-					<div class="12u$">
-						<h3>We need help with...</h3>
-                        <textarea name="demo-message" id="demo-message" placeholder="Enter here" rows="6"></textarea>
-					</div>
+    
                     <ul class="actions">
                         <li><input type="submit" value="Submit" /></li>
                     </ul>

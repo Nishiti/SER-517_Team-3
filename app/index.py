@@ -3,92 +3,51 @@ from flask_restful import Resource, Api
 from flask_login import LoginManager
 from mongoengine import connect
 from brand import Brand
-from models import Influencer
 from adminSignupAPI import AdminSignupAPI
 from brandAPI import BrandAPI
+from adminAPIs import AdminDeactivateBrandAPI
+from adminAPIs import AdminApproveBrandSignupAPI
+from adminAPIs import AdminRemoveBrandAPI
+from brandAPI import BrandSignInAPI
+from influencerAPI import InfluencerSignUpAPI
+from flask_cors import CORS
+import os
 #from adminSignInAPI import AdminSignInAPI
 
 app = Flask(__name__)
 api = Api(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
+CORS(app)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
 
 connect('ser517', host='mongodb://localhost/ser517')
 
-
-influencers = [
-  { 'name': 'john', 'email': 'john@example.com' }
-]
-
-
-@app.route('/influencers')
-def get_influencers():
-    influencers = Influencer.objects()
-    if influencers is None:
-        data = {
-        "role": "influencer",
-        "message": "No influencer data found in database!"
-        }
-        response = app.response_class(
-        response=json.dumps(data),
-        status=401,
-        mimetype='application/json'
-        )
-    else:
-        '''data = {
-            "role": "influencer",
-            "message": "Influencer data is found in database!"
-        }'''
-        response = app.response_class(
-        response=json.dumps(influencers),
-        status=200,
-        mimetype='application/json'
-        )
-    return response
-
-@app.route('/influencers/signup', methods=['POST'])
-def signupInfluencers():
-  data = (request.get_json())
-  if Influencer.objects(email=data['email']):
-    data = {
-      "role": "influencer",
-      "message": "influencer already exists in database"
-    }
-    response = app.response_class(
-      response=json.dumps(data),
-      status=409,
-      mimetype='application/json'
-    )
-
-  else:
-    influencer = Brand(
-        first_name=data['first_name'],
-        last_name=data['last_name'],
-        category=data['category'],
-        youtube=data['youtube'],
-        IGStoryViews=data['IGStoryViews'],
-        followers=data['followers'],
-        AvgLikes=data['AvgLikes'],
-        AvgComments=data['AvgComments'],
-        Gender=data['Gender'],
-        email=data['email'],
-        website=data['website'],
-        social_media_handles=data['instagram_handle'],
-    ).save()
-
-    data = {
-      "role": "influencer",
-      "message": "new influencer is added in database"
-    }
-    response = app.response_class(
-      response=json.dumps(data),
-      status=201,
-      mimetype='application/json'
-    )
-
-  return response
-
+# @app.route('/influencers')
+# def get_influencers():
+#     influencers = Influencer.objects()
+#     if influencers is None:
+#         data = {
+#         "role": "influencer",
+#         "message": "No influencer data found in database!"
+#         }
+#         response = app.response_class(
+#         response=json.dumps(data),
+#         status=401,
+#         mimetype='application/json'
+#         )
+#     else:
+#         '''data = {
+#             "role": "influencer",
+#             "message": "Influencer data is found in database!"
+#         }'''
+#         response = app.response_class(
+#         response=json.dumps(influencers),
+#         status=200,
+#         mimetype='application/json'
+#         )
+#     return response
 
 # @app.route('/brand/signup', methods=['POST'])
 # def signupbrands():
@@ -196,56 +155,59 @@ def signinbrands():
       )
   return response
 
-@app.route('/admin/approve/brandsingup', methods=['POST'])
-def admin_approve_brand_singup():
-  data = (request.get_json())
-  if not Brand.objects(email=data['email']):
-    data = {
-      "role": "brand",
-      "message": "brand is not found in database"
-    }
-    response = app.response_class(
-      response=json.dumps(data),
-      status=404,
-      mimetype='application/json'
-    )
-
-  else:
-    brand = Brand.objects(email=data['email'])
-    brand = brand[0]
-    if brand['isapproved'] == False:
-      brand.isapproved = True
-      brand.save()
-      data = {
-        "role": "admin",
-        "message": "brand is approved and updated in database"
-      }
-      response = app.response_class(
-        response=json.dumps(data),
-        status=200,
-        mimetype='application/json'
-      )
-    else:
-      data = {
-        "role": "admin",
-        "message": "brand is already approved in database"
-      }
-      response = app.response_class(
-        response=json.dumps(data),
-        status=200,
-        mimetype='application/json'
-      )
-  return response
-
+# @app.route('/admin/approve/brandsingup', methods=['POST'])
+# def admin_approve_brand_singup():
+#   data = (request.get_json())
+#   if not Brand.objects(email=data['email']):
+#     data = {
+#       "role": "brand",
+#       "message": "brand is not found in database"
+#     }
+#     response = app.response_class(
+#       response=json.dumps(data),
+#       status=404,
+#       mimetype='application/json'
+#     )
+#
+#   else:
+#     brand = Brand.objects(email=data['email'])
+#     brand = brand[0]
+#     if brand['isapproved'] == False:
+#       brand.isapproved = True
+#       brand.isactive = True
+#       brand.save()
+#       data = {
+#         "role": "admin",
+#         "message": "brand is approved and updated in database"
+#       }
+#       response = app.response_class(
+#         response=json.dumps(data),
+#         status=200,
+#         mimetype='application/json'
+#       )
+#     else:
+#       data = {
+#         "role": "admin",
+#         "message": "brand is already approved in database"
+#       }
+#       response = app.response_class(
+#         response=json.dumps(data),
+#         status=200,
+#         mimetype='application/json'
+#       )
+#   return response
 
 
 api.add_resource(BrandAPI, '/brand')
-api.add_resource(AdminSignupAPI, '/admin/signup')
-#api.add_resource(AdminSignInAPI, '/admin/signin')
+api.add_resource(AdminSignupAPI, '/admin/signin')
+#api.add_resource(AdminSignupAPI, '/admin/signup')
+api.add_resource(AdminRemoveBrandAPI, '/admin/removebrand')
+api.add_resource(AdminDeactivateBrandAPI, '/admin/deactivatebrand')
+api.add_resource(AdminApproveBrandSignupAPI, '/admin/approve/brandsingup')
+api.add_resource(InfluencerSignUpAPI, '/influencer/signup')
 
-# @app.route('/', methods=['GET'])
-# def home():
-#   render_template('index.html')
 
 if __name__ == '__main__':
+    app.secret_key = os.urandom(16)
     app.run(port=5000)
+
