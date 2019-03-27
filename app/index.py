@@ -24,12 +24,6 @@ login_manager.init_app(app)
 
 connect('ser517', host='mongodb://localhost/ser517')
 
-
-influencers = [
-  { 'name': 'john', 'email': 'john@example.com' }
-]
-
-
 # @app.route('/influencers')
 # def get_influencers():
 #     influencers = Influencer.objects()
@@ -214,6 +208,6 @@ api.add_resource(InfluencerSignUpAPI, '/influencer/signup')
 
 
 if __name__ == '__main__':
-    app.run(port=5000)
-    app = Flask(__name__)
     app.secret_key = os.urandom(16)
+    app.run(port=5000)
+
