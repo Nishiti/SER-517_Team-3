@@ -2,6 +2,7 @@ from flask_restful import Resource
 from flask import jsonify, request, make_response
 from brand import Brand
 from flask_api import status
+from models import Influencer
 
 class AdminRemoveBrandAPI(Resource):
     def post(self):
@@ -35,13 +36,29 @@ class AdminRemoveInfluencerAPI(Resource):
     def post(self):
         data = request.get_json(force=True)
         if not Influencer.objects(email=data['email']):
-            return make_response(jsonify(role='admin', message='brand does not exist in database'),
+            return make_response(jsonify(role='admin', message='influencer does not exist in database'),
                                  status.HTTP_404_NOT_FOUND)
         else:
-            brand = Brand.objects(email=data['email']).first()
-            brand.delete()
-            return make_response(jsonify(role='brand', message='brand has been removed from database'),
+            user = Influencer.objects(email=data['email']).first()
+            user.delete()
+            return make_response(jsonify(role='admin', message='influencer has been removed from database'),
                                  status.HTTP_200_OK)
+
+
+class AdminDeactivateBrandAPI(Resource):
+    def post(self):
+        data = request.get_json(force=True)
+
+        if not Influencer.objects(email=data['email']):
+            return make_response(jsonify(role='admin', message='Influencer does not exists in database'),
+                                 status.HTTP_404_NOT_FOUND)
+
+        else:
+            user = Influencer.objects(email=data['email']).first()
+            user['isactive'] = False
+            user.save()
+
+            return make_response(jsonify(role='admin', message='Influencer has been deactivated'), status.HTTP_200_OK)
 
 
 class AdminApproveBrandSignupAPI(Resource):
