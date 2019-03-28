@@ -4032,6 +4032,23 @@
 .card-container .btn:hover, .open-card:hover {
   opacity: 1;
 }
+
+/* Profile Card */
+.imge {
+	display: inline;
+	margin: 0 auto;
+	height: 100%;
+	width: auto;
+}
+
+.imge-cropper{
+	width: 100px;
+	height: 100px;
+	position: relative;
+	overflow: hidden;
+	border-radius: 50%;
+}
+
 /* Footer */
 
 	#footer {
