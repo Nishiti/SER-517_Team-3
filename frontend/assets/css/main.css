@@ -47,6 +47,9 @@
 	body {
 		-webkit-text-size-adjust: none;
 	}
+	nav {
+		position: sticky;
+	}
 
 /* Box Model */
 
