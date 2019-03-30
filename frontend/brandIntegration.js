@@ -45,6 +45,11 @@ app.controller('myCtrl', function($scope,$http) {
 
 });
 
+$('.mspr').click(function(){
+    console.log("hehehe")
+    $(this).addClass('selected');
+});
+
 
 
 
