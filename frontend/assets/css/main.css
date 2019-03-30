@@ -4893,3 +4893,28 @@ width: 100%;
 #page{
 	border-collapse: collapse;
 }
+
+img{margin:10px;}
+.selected{
+	box-shadow:100px 10px 8px 100px #ccfffd;
+}
+
+.parts{
+	float: left;
+	margin-bottom: 0px;
+	padding: 0px;
+}
+
+.container{
+	margin: 0px;
+	padding: 0px;
+}
+input[type=button]{
+	margin-left: 80px;
+	margin-right: 20px;
+	margin-bottom: 0px;
+}
+.activeone{
+	border:7px solid #37a4ff;
+
+}

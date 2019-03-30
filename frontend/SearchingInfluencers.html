@@ -16,8 +16,11 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <script src="assets/js/notificationdropdown.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
+<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <body class="is-loading">
 
 <!-- Wrapper -->
@@ -56,69 +59,109 @@
 
         <!-- Post -->
         <section class="posts">
-           <div>
-               <input type="range" max="100" min="18"/>
-               <div class="table-responsive">
-               <table class="table" id="page">
+           <div class="parts">
+
+                   <div data-role="main" class="ui-content">
+
+                       <div data-role="rangeslider">
+                           <label for="price-min">Age:</label>
+                           <input type="range" name="price-min" id="price-min" value="18" min="0" max="110">
+                           <label for="price-max">Age:</label>
+                           <input type="range" name="price-max" id="price-max" value="40" min="0" max="110">
+                       </div>
+                   </div>
+           </div>
+            <div class="parts">
+
+                   <h2>Gender:</h2>
+
+                        <input type="button" value="Male" class="parts" />
+                        <input type="button" value="Female" class="parts"/>
+
+           </div><div class="container">
+                   <script>
+                       $('document').ready(function(){
+
+                           $('.image').click(function(){
+
+                               $(this).addClass('activeone');
+
+
+                           });
+
+                       });
+                       //$('img').click(function(){
+                         //  console.log()
+                           //$(this).addClass('selected');
+                       //});
+                   </script>
+               <table class="table-wrapper" id="page">
                    <tbody>
                    <tr>
-                       <td><img src="images/searchFilterImages/animals.jpg" ></td>
-                       <td><img src="images/searchFilterImages/art.jpg" ></td>
-                       <td><img src="images/searchFilterImages/books.jpg" ></td>
-                       <td><img src="images/searchFilterImages/science.jpg" ></td>
+                       <td><img src="images/searchFilterImages/animals.jpg" class="image"/></td>
+                       <td><img src="images/searchFilterImages/art.jpg" class="image"/></td>
+                       <td><img src="images/searchFilterImages/books.jpg" class="image" /> </td>
+                       <td><img src="images/searchFilterImages/science.jpg" class="image" /></td>
+                   </tr>
+                   <tr >
+                       <td><img src="images/searchFilterImages/tech.jpg" class="image" /></td>
+                       <td><img src="images/searchFilterImages/business.jpg" class="image" /></td>
+                       <td><img src="images/searchFilterImages/causes.jpg" class="image" /></td>
+                       <td><img src="images/searchFilterImages/comedy.jpg" class="image" /></td>
+                   </tr>
+                   <tr >
+                       <td><img src="images/searchFilterImages/dance.jpg" class="image" /></td>
+                       <td><img src="images/searchFilterImages/sport.jpg" class="image" /></td>
+                       <td><img src="images/searchFilterImages/education.jpg" class="image"  /></td>
+                       <td><img src="images/searchFilterImages/style.jpg" class="image" /></td>
+                   </tr>
+                   <tr >
+                       <td><img src="images/searchFilterImages/entertainment.jpg" class="image" /></td>
+                       <td><img src="images/searchFilterImages/beauty.jpg" class="image" /></td>
+                       <td><img src="images/searchFilterImages/photograph.jpg" class="image"  /></td>
+                       <td><img src="images/searchFilterImages/family.jpg" class="image" /></td>
+                   </tr>
+                   <tr >
+                       <td><img src="images/searchFilterImages/fashion.jpg" class="image" /></td>
+                       <td><img src="images/searchFilterImages/fitness.jpg" class="image" /></td>
+                       <td><img src="images/searchFilterImages/tv.jpg" class="image" /></td>
+                       <td><img src="images/searchFilterImages/film.jpg" class="image" /></td>
+                   </tr>
+                   <tr >
+                       <td><img src="images/searchFilterImages/DIY.jpg" class="image" /></td>
+                       <td><img src="images/searchFilterImages/food.jpg" class="image" /></td>
+                       <td><img src="images/searchFilterImages/gaming.jpg" class="image" /></td>
+                       <td><img src="images/searchFilterImages/lifestyle.jpg" class="image" /></td>
+                   </tr>
+                   <tr >
+                       <td><img src="images/searchFilterImages/politics.jpg" class="image" /></td>
+                       <td><img src="images/searchFilterImages/news.jpg" class="image" /></td>
+                       <td><img src="images/searchFilterImages/journalism.jpg" class="image" /></td>
+                       <td><img src="images/searchFilterImages/travel.jpg" class="image" /></td>
                    </tr>
                    <tr>
-                       <td><img src="images/searchFilterImages/tech.jpg" ></td>
-                       <td><img src="images/searchFilterImages/business.jpg" ></td>
-                       <td><img src="images/searchFilterImages/causes.jpg" ></td>
-                       <td><img src="images/searchFilterImages/comedy.jpg" ></td>
-                   </tr>
-                   <tr>
-                       <td><img src="images/searchFilterImages/dance.jpg" ></td>
-                       <td><img src="images/searchFilterImages/sport.jpg" ></td>
-                       <td><img src="images/searchFilterImages/education.jpg" ></td>
-                       <td><img src="images/searchFilterImages/style.jpg" ></td>
-                   </tr>
-                   <tr>
-                       <td><img src="images/searchFilterImages/entertainment.jpg" ></td>
-                       <td><img src="images/searchFilterImages/beauty.jpg" ></td>
-                       <td><img src="images/searchFilterImages/photograph.jpg" ></td>
-                       <td><img src="images/searchFilterImages/family.jpg" ></td>
-                   </tr>
-                   <tr>
-                       <td><img src="images/searchFilterImages/fashion.jpg" ></td>
-                       <td><img src="images/searchFilterImages/fitness.jpg" ></td>
-                       <td><img src="images/searchFilterImages/tv.jpg" ></td>
-                       <td><img src="images/searchFilterImages/film.jpg" ></td>
-                   </tr>
-                   <tr>
-                       <td><img src="images/searchFilterImages/DIY.jpg" ></td>
-                       <td><img src="images/searchFilterImages/food.jpg" ></td>
-                       <td><img src="images/searchFilterImages/gaming.jpg" ></td>
-                       <td><img src="images/searchFilterImages/lifestyle.jpg" ></td>
-                   </tr>
-                   <tr>
-                       <td><img src="images/searchFilterImages/politics.jpg" ></td>
-                       <td><img src="images/searchFilterImages/news.jpg" ></td>
-                       <td><img src="images/searchFilterImages/journalism.jpg" ></td>
-                       <td><img src="images/searchFilterImages/travel.jpg" ></td>
-                   </tr>
-                   <tr>
-                       <td><img src="images/searchFilterImages/radio.jpg" ></td>
-                       <td><img src="images/searchFilterImages/music.jpg" ></td>
+                       <td><img src="images/searchFilterImages/radio.jpg" class="image" /></td>
+                       <td><img src="images/searchFilterImages/music.jpg" class="image" /></td>
 
 
                    </tr>
 
                    </tbody>
                </table>
+
+                       <input type="button" value="Search" style="border-color: #ccfffd"/>
+
                </div>
 
 
 
+
            </div>
+
+
         </section>
     </div>
+
     <!-- Table -->
 
     <!-- Social Media Links -->
