@@ -45,6 +45,8 @@ class BrandAPI(Resource):
             temp['company_name'] = brand.company_name
             temp['address'] = brand.address
             temp['email'] = brand.email
+            temp['isapproved'] = brand.isapproved
+            temp['isactive'] = brand.isactive
             res.append(temp)
         return make_response(jsonify(data=res, role='admin', message='list of brands'),
                              status.HTTP_200_OK)
