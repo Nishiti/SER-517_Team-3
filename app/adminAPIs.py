@@ -1,8 +1,8 @@
 from flask_restful import Resource
 from flask import jsonify, request, make_response
-from brand import Brand
+from app.brand import Brand
 from flask_api import status
-from models import Influencer
+from app.models import Influencer
 
 class AdminRemoveBrandAPI(Resource):
     def post(self):

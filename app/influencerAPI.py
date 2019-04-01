@@ -1,7 +1,7 @@
 from flask_restful import Resource
 from flask import request, app
 from flask_restful.representations import json
-from models import Influencer
+from app.models import Influencer
 
 class InfluencerSignUpAPI(Resource):
     def post(self):

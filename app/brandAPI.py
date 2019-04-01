@@ -1,6 +1,6 @@
 from flask_restful import Resource
 from flask import jsonify, request, make_response, session, url_for
-from brand import Brand
+from app.brand import Brand
 from flask_api import status
 from werkzeug.security import check_password_hash
 from werkzeug.utils import redirect

@@ -2,15 +2,15 @@ from flask import Flask, jsonify, request, json
 from flask_restful import Resource, Api
 from flask_login import LoginManager
 from mongoengine import connect
-from brand import Brand
-from adminSignupAPI import AdminSignupAPI
-from brandAPI import BrandAPI
-from adminAPIs import AdminDeactivateBrandAPI
-from adminAPIs import AdminApproveBrandSignupAPI
-from adminAPIs import AdminRemoveBrandAPI
-from brandAPI import BrandSignInAPI
-from influencerAPI import InfluencerSignUpAPI
-from adminAPIs import AdminGetBrandsWithFilterAPI
+from app.brand import Brand
+from app.adminSignupAPI import AdminSignupAPI
+from app.brandAPI import BrandAPI
+from app.adminAPIs import AdminDeactivateBrandAPI
+from app.adminAPIs import AdminApproveBrandSignupAPI
+from app.adminAPIs import AdminRemoveBrandAPI
+#from brandAPI import BrandSignInAPI
+from app.influencerAPI import InfluencerSignUpAPI
+from app.adminAPIs import AdminGetBrandsWithFilterAPI
 from flask_cors import CORS
 import os
 #from adminSignInAPI import AdminSignInAPI
