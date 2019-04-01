@@ -4,6 +4,7 @@ from flask_login import LoginManager
 from mongoengine import connect
 from app.brand import Brand
 from app.adminSignupAPI import AdminSignupAPI
+from app.adminSignInAPI import AdminSignInAPI
 from app.brandAPI import BrandAPI
 from app.adminAPIs import AdminDeactivateBrandAPI
 from app.adminAPIs import AdminApproveBrandSignupAPI
@@ -13,7 +14,6 @@ from app.influencerAPI import InfluencerSignUpAPI
 from app.adminAPIs import AdminGetBrandsWithFilterAPI
 from flask_cors import CORS
 import os
-#from adminSignInAPI import AdminSignInAPI
 
 app = Flask(__name__)
 api = Api(app)
@@ -200,7 +200,7 @@ def signinbrands():
 
 
 api.add_resource(BrandAPI, '/brand')
-#api.add_resource(AdminSignupAPI, '/admin/signin')
+api.add_resource(AdminSignInAPI, '/admin/signin')
 api.add_resource(AdminSignupAPI, '/admin/signup')
 api.add_resource(AdminRemoveBrandAPI, '/admin/removebrand')
 api.add_resource(AdminDeactivateBrandAPI, '/admin/deactivatebrand')
