@@ -10,6 +10,7 @@ from adminAPIs import AdminApproveBrandSignupAPI
 from adminAPIs import AdminRemoveBrandAPI
 from brandAPI import BrandSignInAPI
 from influencerAPI import InfluencerSignUpAPI
+from adminAPIs import AdminGetBrandsWithFilterAPI
 from flask_cors import CORS
 import os
 #from adminSignInAPI import AdminSignInAPI
@@ -204,6 +205,7 @@ api.add_resource(AdminSignupAPI, '/admin/signup')
 api.add_resource(AdminRemoveBrandAPI, '/admin/removebrand')
 api.add_resource(AdminDeactivateBrandAPI, '/admin/deactivatebrand')
 api.add_resource(AdminApproveBrandSignupAPI, '/admin/approve/brandsingup')
+api.add_resource(AdminGetBrandsWithFilterAPI, '/admin/getBrands')
 api.add_resource(InfluencerSignUpAPI, '/influencer/signup')
 
 

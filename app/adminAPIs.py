@@ -78,3 +78,20 @@ class AdminApproveBrandSignupAPI(Resource):
                 return make_response(jsonify(role='admin', message='brand is approved'), status.HTTP_200_OK)
             else:
                 return make_response(jsonify(role='admin', message='brand is already approved'), status.HTTP_200_OK)
+
+class AdminGetBrandsWithFilterAPI(Resource):
+    def post(self):
+        data = request.get_json(force=True)
+
+        brands = [brand for brand in Brand.objects(__raw__=data)]
+        res = []
+        for brand in brands:
+            temp = dict()
+            temp['company_name'] = brand.company_name
+            temp['address'] = brand.address
+            temp['email'] = brand.email
+            temp['isapproved'] = brand.isapproved
+            temp['isactive'] = brand.isactive
+            res.append(temp)
+        return make_response(jsonify(data=res, role='admin', message='list of brands for given filter'),
+                             status.HTTP_200_OK)
