@@ -1,6 +1,6 @@
 from flask_restful import Resource
 from flask import jsonify, request, make_response, session, url_for
-from brand import Brand
+from app.brand import Brand
 from flask_api import status
 from werkzeug.security import check_password_hash
 from werkzeug.utils import redirect
@@ -45,6 +45,8 @@ class BrandAPI(Resource):
             temp['company_name'] = brand.company_name
             temp['address'] = brand.address
             temp['email'] = brand.email
+            temp['isapproved'] = brand.isapproved
+            temp['isactive'] = brand.isactive
             res.append(temp)
         return make_response(jsonify(data=res, role='admin', message='list of brands'),
                              status.HTTP_200_OK)
