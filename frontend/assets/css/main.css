@@ -2810,11 +2810,15 @@
 	.table-wrapper {
 		-webkit-overflow-scrolling: touch;
 		overflow-x: auto;
+		padding: 0px;
 	}
 
 	table {
 		margin: 0 0 2rem 0;
 		width: 100%;
+		padding: 0px;
+		border-collapse: collapse;
+
 	}
 
 		table tbody tr {
@@ -2884,9 +2888,7 @@
 		border-color: #eeeeee;
 	}
 
-		table tbody tr:nth-child(2n + 1) {
-			background-color: rgba(220, 220, 220, 0.25);
-		}
+
 
 	table th {
 		color: #212931;
