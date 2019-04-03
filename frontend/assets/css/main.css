@@ -4040,13 +4040,12 @@
 
 /* Profile Card */
 .card {
-	padding: 5px;
+padding: none;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 300px;
-  margin: auto;
-  text-align: center;
-  font-family: arial;
-  border: 1px solid black;
+  margin: none;
+  border: 0.4px solid black;
+  border-radius: 5px;
 }
 
 .title {
