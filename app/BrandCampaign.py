@@ -1,4 +1,5 @@
-from mongoengine import *
+from mongoengine import Document
+from mongoengine import StringField, EmailField, BooleanField
 
 class BrandCampaign(Document):
 	campaign_name = StringField(max_length=50, required=True)
