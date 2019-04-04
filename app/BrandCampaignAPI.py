@@ -16,7 +16,7 @@ class BrandCampaignRequestAPI(Resource):
 	parser.add_argument('campaign_information_requirements', type=str, required=True, help='This field cannot be blank.')
 
 	def post(self):
-		data = BrandCampaignRequest.parser.parse_args()
+		data = BrandCampaignRequestAPI.parser.parse_args()
 		if BrandCampaign.objects(email=data['email'], campaign_name=data['campaign_name']):
 			return {"message":"A campaign with this name already exists."}
 		else:
@@ -29,5 +29,5 @@ class BrandCampaignRequestAPI(Resource):
 			return {"message":"Campaign successfully added to the database."}
 
 
-api.add_resource(BrandCampaignRequest, '/brandcampaignrequest')
+api.add_resource(BrandCampaignRequestAPI, '/brandcampaignrequest')
 app.run(port=5000, debug=True)
