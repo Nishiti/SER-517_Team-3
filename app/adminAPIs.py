@@ -95,3 +95,26 @@ class AdminGetBrandsWithFilterAPI(Resource):
             res.append(temp)
         return make_response(jsonify(data=res, role='admin', message='list of brands for given filter'),
                              status.HTTP_200_OK)
+
+
+class AdminGetInfluencersWithFilterAPI(Resource):
+    def post(self):
+        data = request.get_json(force=True)
+
+        influencers = [influencer for influencer in Influencer.objects(__raw__=data)]
+        res = []
+        for user in influencers:
+            temp = dict()
+            temp['first_name'] = user.first_name
+            temp['last_name'] = user.last_name
+            temp['email'] = user.email
+            temp['website_social_media_handles'] = user.website_social_media_handles
+            temp['big_deal_on_option1'] = user.big_deal_on_option1
+            temp['big_deal_on_option2'] = user.big_deal_on_option2
+            temp['big_deal_on_option3'] = user.big_deal_on_option3
+            temp['big_deal_on_option4'] = user.big_deal_on_option4
+            temp['big_deal_on_option5'] = user.big_deal_on_option5
+            temp['followers'] = user.followers
+            res.append(temp)
+        return make_response(jsonify(data=res, role='admin', message='list of influencers for given filter'),
+                             status.HTTP_200_OK)
