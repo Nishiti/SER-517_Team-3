@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from flask_restful import Resource, Api, reqparse
 from BrandCampaign import BrandCampaign
 from mongoengine import connect
@@ -27,6 +27,22 @@ class BrandCampaignRequestAPI(Resource):
 				campaign_information_requirements = data['campaign_information_requirements']
 				).save()
 			return {"message":"Campaign successfully added to the database."}
+
+	def get(self):
+		brand_campaign = [brand_campaign for brand_campaign in BrandCampaign.objects()]
+		result = []
+		for campaign in brand_campaign:
+			data = dict()
+			data['campaign_name'] = campaign.campaign_name
+			data['email'] = campaign.email
+			data['gift_campaign'] = campaign.gift_campaign
+			data['gift_code'] = campaign.gift_code
+			data['website_social_media_handles'] = campaign.website_social_media_handles
+			data['campaign_information_requirements'] = campaign.campaign_information_requirements
+			data['isApproved'] = campaign.isApproved
+			data['isDenied'] = campaign.isDenied
+			result.append(data)
+		return jsonify({"list": result})
 
 
 api.add_resource(BrandCampaignRequestAPI, '/brandcampaignrequest')
