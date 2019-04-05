@@ -1,11 +1,11 @@
 from flask import Flask, request, jsonify
 from flask_restful import Resource, Api, reqparse
-from BrandCampaign import BrandCampaign
+from app.BrandCampaign import BrandCampaign
 from mongoengine import connect
 
-app = Flask(__name__)
-api = Api(app)
-connect('BrandCampaign')
+# app = Flask(__name__)
+# api = Api(app)
+# connect('BrandCampaign')
 
 class BrandCampaignRequestAPI(Resource):
 
@@ -45,5 +45,5 @@ class BrandCampaignRequestAPI(Resource):
 		return jsonify({"list": result})
 
 
-api.add_resource(BrandCampaignRequestAPI, '/brandcampaignrequest')
-app.run(port=5000, debug=True)
+# api.add_resource(BrandCampaignRequestAPI, '/brandcampaignrequest')
+# app.run(port=5000, debug=True)
