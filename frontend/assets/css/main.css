@@ -3901,7 +3901,7 @@
 .card-popup{
 	display: none;
   	position: static;
-  	padding-top: 20px;
+  	padding-top: 10px;
   	padding-right: 10px;
   	padding-bottom: 5px;
   	padding-left: 10px;
@@ -3914,7 +3914,7 @@
 
 /* Add styles to the form container */
 .form-container {
-	max-width: 605px;
+	max-width: 600px;
 	position: static;
 	clear: both;
   background-color: white;
@@ -3934,7 +3934,7 @@
 
 /* Full-width input fields */
 .form-container input[type=text], .form-container input[type=password], .form-container input[type=message] {
-  max-width: 500px;
+  max-width: 580px;
   position: static;
   right: 0px;
   border: 0.2px solid grey;
