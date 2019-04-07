@@ -17,11 +17,13 @@ class AdminSignInAPI(Resource):
         else:
             print('not logged in!')
             if admin:
-                if check_password_hash(admin['password'], data['password']):
-                    print('password match!Success')
+                if admin['password'] == data['password']:
+                    print('password match!')
                     admin.authenticated=True
                     print('saving ..')
                     admin.save()
+                    return make_response(jsonify(role='admin', message='login successful!'),
+                                         status.HTTP_200_OK)
                     # session['email'] = admin['email']
                     # return redirect(url_for('admin.html'))
                 else:
@@ -32,5 +34,3 @@ class AdminSignInAPI(Resource):
                 return make_response(jsonify(role='admin', message='Incorrect user email address!'),
                                      status.HTTP_401_UNAUTHORIZED)
         #return render_template('adminlogin.html')
-
-

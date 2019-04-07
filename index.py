@@ -14,6 +14,7 @@ from app.influencerAPI import InfluencerSignUpAPI
 from app.adminAPIs import AdminGetBrandsWithFilterAPI
 from app.adminAPIs import AdminGetInfluencersWithFilterAPI
 from app.BrandCampaignAPI import BrandCampaignRequestAPI
+from app.AdminSignoutAPI import AdminSignoutAPI
 from flask_cors import CORS
 import os
 
@@ -79,6 +80,7 @@ api.add_resource(AdminGetBrandsWithFilterAPI, '/admin/getBrands')
 api.add_resource(AdminGetInfluencersWithFilterAPI, '/admin/getInfluencers')
 api.add_resource(InfluencerSignUpAPI, '/influencer/signup')
 api.add_resource(BrandCampaignRequestAPI, '/brandcampaignrequest')
+#api.add_resource(AdminSignoutAPI, '/admin/signout')
 
 if __name__ == '__main__':
     app.secret_key = os.urandom(16)
