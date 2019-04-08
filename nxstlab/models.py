@@ -15,4 +15,4 @@ class Influencer(Document):
     big_deal_on_option4 = BooleanField(null=False, default=False)
     big_deal_on_option5 = BooleanField(null=False, default=False)
     website_social_media_handles = StringField(max_length=120)
-    followers = IntField()
+    followers = StringField(max_length=60)

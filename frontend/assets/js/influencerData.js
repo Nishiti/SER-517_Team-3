@@ -18,7 +18,7 @@ app.directive("matchPassword", function () {
     };
 });
 
-$scope.areas = [];
+//$scope.areas = [];
 $('document').ready(function(){
 
     $('.image1').click(function(){
@@ -384,10 +384,10 @@ $('document').ready(function(){
 
 });
 
-app.controller('myCtrl', function($scope,$http) {
+app.controller('inglucontroller', function($scope,$http) {
     //console.log($scope.cname)
 
-    $scope.update = function() {
+    $scope.updateinflu = function() {
 
         var data =
         {
@@ -402,8 +402,7 @@ app.controller('myCtrl', function($scope,$http) {
             "big_deal_on_option4" : $scope.facebook,
             "big_deal_on_option5" : $scope.other,
             "website_social_media_handles" : $scope.socialmedia,
-            "followers" : $scope.followers,
-            "areaOfInterest" : $scope.areas
+            "followers" : $scope.followers
 
         }
 
