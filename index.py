@@ -2,19 +2,18 @@ from flask import Flask, jsonify, request, json
 from flask_restful import Resource, Api
 from flask_login import LoginManager
 from mongoengine import connect
-from app.brand import Brand
-from app.adminSignupAPI import AdminSignupAPI
-from app.adminSignInAPI import AdminSignInAPI
-from app.brandAPI import BrandAPI
-from app.adminAPIs import AdminDeactivateBrandAPI
-from app.adminAPIs import AdminApproveBrandSignupAPI
-from app.adminAPIs import AdminRemoveBrandAPI
+from nxstlab.adminSignupAPI import AdminSignupAPI
+from nxstlab.adminSignInAPI import AdminSignInAPI
+from nxstlab.brandAPI import BrandAPI
+from nxstlab.adminAPIs import AdminDeactivateBrandAPI
+from nxstlab.adminAPIs import AdminApproveBrandSignupAPI
+from nxstlab.adminAPIs import AdminRemoveBrandAPI
 #from brandAPI import BrandSignInAPI
-from app.influencerAPI import InfluencerSignUpAPI
-from app.adminAPIs import AdminGetBrandsWithFilterAPI
-from app.adminAPIs import AdminGetInfluencersWithFilterAPI
-from app.BrandCampaignAPI import BrandCampaignRequestAPI
-from app.AdminSignoutAPI import AdminSignoutAPI
+from nxstlab.influencerAPI import InfluencerSignUpAPI
+from nxstlab.adminAPIs import AdminGetBrandsWithFilterAPI
+from nxstlab.adminAPIs import AdminGetInfluencersWithFilterAPI
+from nxstlab.BrandCampaignAPI import BrandCampaignRequestAPI
+from nxstlab.AdminSignoutAPI import AdminSignoutAPI
 from flask_cors import CORS
 import os
 
@@ -30,7 +29,7 @@ connect('ser517', host='mongodb://localhost/ser517')
 
 
 
-@app.route('/brand/signin', methods=['POST'])
+'''@app.route('/brand/signin', methods=['POST'])
 def signinbrands():
   data = (request.get_json())
   if not Brand.objects(email=data['email']):
@@ -65,7 +64,7 @@ def signinbrands():
         status=200,
         mimetype='application/json'
       )
-  return response
+  return response'''
 
 
 

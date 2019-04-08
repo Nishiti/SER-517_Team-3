@@ -3,9 +3,9 @@ from flask_restful import Resource, Api, reqparse
 from flask_jwt import JWT
 from werkzeug.security import safe_str_cmp
 
-app = Flask(__name__)
+'''app = Flask(__name__)
 app.secret_key = 'vihar'
-api = Api(app)
+api = Api(app)'''
 
 users = [
     {
@@ -42,6 +42,6 @@ class InfluencerSignIn(Resource):
         #         {"message":"The given username doesn't exist."}
 
 
-api.add_resource(InfluencerSignIn, '/influencersignin')
-app.run(port=5000, debug=True)
+'''api.add_resource(InfluencerSignIn, '/influencersignin')
+app.run(port=5000, debug=True)'''
 

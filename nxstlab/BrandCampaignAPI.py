@@ -1,6 +1,6 @@
 from flask import jsonify
 from flask_restful import Resource, reqparse
-from app.BrandCampaign import BrandCampaign
+from nxstlab.BrandCampaign import BrandCampaign
 
 # app = Flask(__name__)
 # api = Api(app)

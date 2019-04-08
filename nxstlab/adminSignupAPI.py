@@ -1,6 +1,6 @@
 from flask_restful import Resource
 from flask import jsonify, request, make_response
-from app.admin import Admin
+from nxstlab.admin import Admin
 from flask_api import status
 from werkzeug.security import generate_password_hash, check_password_hash
 

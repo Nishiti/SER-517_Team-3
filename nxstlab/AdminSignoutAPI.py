@@ -1,7 +1,7 @@
 from flask_restful import Resource
 from flask import jsonify, request, url_for, render_template, make_response, session
 from flask_api import status
-from app.admin import Admin
+from nxstlab.admin import Admin
 
 class AdminSignoutAPI(Resource):
     def post(self):
