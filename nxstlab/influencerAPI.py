@@ -2,7 +2,7 @@ from flask_restful import Resource
 from flask import jsonify,request, app, make_response
 from flask_api import status
 from flask_restful.representations import json
-from app.models import Influencer
+from nxstlab.models import Influencer
 
 
 class InfluencerSignUpAPI(Resource):
