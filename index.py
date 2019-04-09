@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, json
+from flask import Flask, render_template
 from flask_restful import Resource, Api
 from flask_login import LoginManager
 from mongoengine import connect
@@ -27,46 +27,10 @@ login_manager.init_app(app)
 
 connect('ser517', host='mongodb://localhost/ser517')
 
-
-
-'''@app.route('/brand/signin', methods=['POST'])
-def signinbrands():
-  data = (request.get_json())
-  if not Brand.objects(email=data['email']):
-    data = {
-      "role": "brand",
-      "message": "brand is not found in database"
-    }
-    response = app.response_class(
-      response=json.dumps(data),
-      status=404,
-      mimetype='application/json'
-    )
-
-  else:
-    if not Brand.objects(email=data['email'],password=data['password']):
-      data = {
-        "role": "brand",
-        "message": "brand is found in database but password is not matching"
-      }
-      response = app.response_class(
-        response=json.dumps(data),
-        status=401,
-        mimetype='application/json'
-      )
-    else:
-      data = {
-        "role": "brand",
-        "message": "brand is found in database"
-      }
-      response = app.response_class(
-        response=json.dumps(data),
-        status=200,
-        mimetype='application/json'
-      )
-  return response'''
-
-
+@app.route("/")
+def hello():
+    message = "Hello, World"
+    return render_template('./index.html', message=message)
 
 
 api.add_resource(BrandAPI, '/brand')
@@ -83,5 +47,5 @@ api.add_resource(BrandCampaignRequestAPI, '/brandcampaignrequest')
 
 if __name__ == '__main__':
     app.secret_key = os.urandom(16)
+    app.debug = True
     app.run(port=5000)
-
