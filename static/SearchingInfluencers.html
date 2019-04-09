@@ -1,0 +1,199 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+    <title>Admin</title>
+    <meta charset="utf-8" />
+    <meta name="google" content="notranslate">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="assets/js/notificationdropdown.js"></script>
+
+<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<body class="is-loading">
+
+<!-- Wrapper -->
+<div id="wrapper" class="fade-in">
+
+    <!-- Header -->
+    <header id="header">
+        <a href="index.html" class="logo"><img src="images/logo.png" alt="" /></a>
+        <!--a href="#" class="image fit"><img src="images/logo.png" alt="" /></a-->
+    </header>
+
+    <!-- Nav -->
+    <nav id="nav">
+        <ul class="links">
+            <li class="active"><a href="admin.html">Brands</a></li>
+            <li><a href="manage.html">Search Manage</a></li>
+        </ul>
+        <ul class="icons">
+            <div class="dropdown"></div>
+            <li><a onclick="notificationdropdown()" class="icon fa-bell">
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </a>
+            </li>
+            <li><a href="https://twitter.com/nxstlab" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="https://www.facebook.com/nxstlab/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="https://www.instagram.com/nxstlab/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+        </ul>
+    </nav>
+
+    <!-- Main -->
+    <div id="main">
+
+        <!-- Post -->
+        <section class="posts">
+           <div class="parts">
+
+                   <div data-role="main" class="ui-content">
+
+                       <div data-role="rangeslider">
+                           <label for="price-min">Age:</label>
+                           <input type="range" name="price-min" id="price-min" value="18" min="0" max="65">
+                           <label for="price-max">Age:</label>
+                           <input type="range" name="price-max" id="price-max" value="40" min="0" max="65">
+                       </div>
+                   </div>
+           </div>
+            <div class="parts">
+
+                   <h3>Gender:</h3>
+
+                        <input type="button" value="Male" class="parts" />
+                        <input type="button" value="Female" class="parts"/>
+
+           </div><div class="container">
+                  <!-- <script>
+                       $('document').ready(function(){
+
+                           $('.image1').click(function(){
+                               if($('.image1').hasClass('activeone')){
+                                   $('.image1').removeClass('activeone');
+                               }// addClass('activeone');)
+                               //$('.image').removeClass('activeone');
+                               else
+                               {
+                                   $(this).addClass('activeone');
+                               }
+
+                           });
+
+                           $('.image2').click(function(){
+                               if($('.image2').hasClass('activeone')){
+                                   $('.image2').removeClass('activeone');
+                               }
+                               else
+                               {
+                                   $(this).addClass('activeone');
+                               }
+                           });
+                       });
+                       //$('img').click(function(){
+                         //  console.log()
+                           //$(this).addClass('selected');
+                       //});
+                   </script>-->
+               <table class="table-wrapper" id="page">
+                   <tbody>
+                   <tr>
+                       <td><img src="images/searchFilterImages/animals.jpg" class="image1"/></td>
+                       <td><img src="images/searchFilterImages/art.jpg" class="image2"/></td>
+                       <td><img src="images/searchFilterImages/books.jpg" class="image3" /> </td>
+                       <td><img src="images/searchFilterImages/science.jpg" class="image4" /></td>
+                   </tr>
+                   <tr >
+                       <td><img src="images/searchFilterImages/tech.jpg" class="image5" /></td>
+                       <td><img src="images/searchFilterImages/business.jpg" class="image6" /></td>
+                       <td><img src="images/searchFilterImages/causes.jpg" class="image7" /></td>
+                       <td><img src="images/searchFilterImages/comedy.jpg" class="image8" /></td>
+                   </tr>
+                   <tr >
+                       <td><img src="images/searchFilterImages/dance.jpg" class="image9" /></td>
+                       <td><img src="images/searchFilterImages/sport.jpg" class="image10" /></td>
+                       <td><img src="images/searchFilterImages/education.jpg" class="image11"  /></td>
+                       <td><img src="images/searchFilterImages/style.jpg" class="image12" /></td>
+                   </tr>
+                   <tr >
+                       <td><img src="images/searchFilterImages/entertainment.jpg" class="image13" /></td>
+                       <td><img src="images/searchFilterImages/beauty.jpg" class="image14" /></td>
+                       <td><img src="images/searchFilterImages/photograph.jpg" class="image15"  /></td>
+                       <td><img src="images/searchFilterImages/family.jpg" class="image16" /></td>
+                   </tr>
+                   <tr >
+                       <td><img src="images/searchFilterImages/fashion.jpg" class="image17" /></td>
+                       <td><img src="images/searchFilterImages/fitness.jpg" class="image18" /></td>
+                       <td><img src="images/searchFilterImages/tv.jpg" class="image19" /></td>
+                       <td><img src="images/searchFilterImages/film.jpg" class="image20" /></td>
+                   </tr>
+                   <tr >
+                       <td><img src="images/searchFilterImages/DIY.jpg" class="image21" /></td>
+                       <td><img src="images/searchFilterImages/food.jpg" class="image22" /></td>
+                       <td><img src="images/searchFilterImages/gaming.jpg" class="image23" /></td>
+                       <td><img src="images/searchFilterImages/lifestyle.jpg" class="image24" /></td>
+                   </tr>
+                   <tr >
+                       <td><img src="images/searchFilterImages/politics.jpg" class="image25" /></td>
+                       <td><img src="images/searchFilterImages/news.jpg" class="image26" /></td>
+                       <td><img src="images/searchFilterImages/journalism.jpg" class="image27" /></td>
+                       <td><img src="images/searchFilterImages/travel.jpg" class="image28" /></td>
+                   </tr>
+                   <tr>
+                       <td><img src="images/searchFilterImages/radio.jpg" class="image29" /></td>
+                       <td><img src="images/searchFilterImages/music.jpg" class="image30" /></td>
+
+
+                   </tr>
+
+                   </tbody>
+               </table>
+
+                       <input type="button" value="Search" style="border-color: #ccfffd"/>
+
+               </div>
+
+
+
+
+           </div>
+
+
+        </section>
+    </div>
+
+    <!-- Table -->
+
+    <!-- Social Media Links -->
+    <div id="copyright">
+        <ul><li>Copyright &copy; 2017 new story telling lab</li><li>nxstlab</li><li>Kulina Inc.</li>
+            <li><a href="https://twitter.com/nxstlab" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="https://www.facebook.com/nxstlab/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="https://www.instagram.com/nxstlab/" class="icon fa-instagram"><span class="label">Instagram</span></a></li></ul>
+
+    </div>
+</div>
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/skel.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="searchingFilterSelectionAbility.js"></script>
+</body>
+</html>

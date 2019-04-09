@@ -2446,7 +2446,7 @@
 
 		.image.fit {
 			display: block;
-			margin: 2.5rem 0;
+			margin: 0.5rem 0;
 			width: 100%;
 		}
 
@@ -2475,11 +2475,11 @@
 		@media screen and (max-width: 736px) {
 
 			.image.fit {
-				margin: 2rem 0;
+				margin: 0.3rem 0;
 			}
 
 			.image.main {
-				margin: 2rem 0;
+				margin: 0.3rem 0;
 			}
 
 		}
@@ -3943,7 +3943,7 @@
 
 .card-container input[type=text], .card-container input[type=password] {
   max-width: 300px;
-  position: static;
+  position: absolute;
   right: 0px;
   border: none;
   background: #f1f1f1;
@@ -4054,6 +4054,97 @@ padding: none;
 	color: grey;
   font-size: 18px;
 }
+
+.circle-text {
+display: table-cell;
+height: 60px; /*change this and the width
+for the size of your initial circle*/
+width: 60px;
+text-align: center;
+vertical-align: middle;
+border-radius: 50%;
+/*make it pretty*/
+background: #737373;
+color: #fff;
+font: 18px "josefin sans", arial; /*change this
+for font-size and font-family*/
+}
+
+.square-text {
+display: table-cell;
+height: 32px; /*change this and the width
+for the size of your initial circle*/
+width: 85px;
+text-align: center;
+vertical-align: middle;
+border-radius: 10px;
+/*make it pretty*/
+background: #DC143C;
+color: #fff;
+font: 18px "josefin sans", arial; /*change this
+for font-size and font-family*/
+}
+
+.square-text2 {
+display: table-cell;
+height: 32px; /*change this and the width
+for the size of your initial circle*/
+width: 85px;
+text-align: center;
+vertical-align: middle;
+border-radius: 10px;
+/*make it pretty*/
+background: #1E90FF;
+color: #fff;
+font: 18px "josefin sans", arial; /*change this
+for font-size and font-family*/
+}
+
+.square-text3 {
+display: table-cell;
+height: 32px; /*change this and the width
+for the size of your initial circle*/
+width: 85px;
+text-align: center;
+vertical-align: middle;
+border-radius: 10px;
+/*make it pretty*/
+background: #3CB371;
+color: #fff;
+font: 18px "josefin sans", arial; /*change this
+for font-size and font-family*/
+}
+
+.square-text4 {
+display: table-cell;
+height: 32px; /*change this and the width
+for the size of your initial circle*/
+width: 85px;
+text-align: center;
+vertical-align: middle;
+border-radius: 10px;
+/*make it pretty*/
+background: #9932CC;
+color: #fff;
+font: 18px "josefin sans", arial; /*change this
+for font-size and font-family*/
+}
+
+.square-text5 {
+display: table-cell;
+height: 32px; /*change this and the width
+for the size of your initial circle*/
+width: 85px;
+text-align: center;
+vertical-align: middle;
+border-radius: 10px;
+/*make it pretty*/
+background: #D2691E;
+color: #fff;
+font: 18px "josefin sans", arial; /*change this
+for font-size and font-family*/
+}
+
 
 
 /* Footer */
