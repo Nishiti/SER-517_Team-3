@@ -5,16 +5,39 @@ var indexController = app.controller("indexController", function ($scope, $windo
 
     $scope.companyName = "nxstlab";
     
-    $scope.attack = function () {
-        
-        
+    $scope.popupGreet = function(){
         $window.alert("Hi there " + $scope.companyName);
     };    
     
 });
 
+var brandController = app.controller("brandController", function ($scope, $window) {
+
+    
+});
+
+
+var brandController = app.controller("influencerController", function ($scope, $window) {
+
+    
+});
+
+
+var brandController = app.controller("loginController", function ($scope, $window) {
+
+    
+});
+
+
+
 app.config(['$routeProvider', function ($routeProvider) {
-    $routeProvider.when('/login', {
+    $routeProvider.when('/brand', {
+        templateUrl: "/views/brand.html",
+        controller: "brandController"
+    }).when('/influencer', {
+        templateUrl: "/views/influencer.html",
+        controller: "influencerController"
+    }).when('/login', {
         templateUrl: "/views/login.html",
         controller: "loginController"
     }).otherwise({
