@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, send_file
 from flask_restful import Resource, Api
 from flask_login import LoginManager
 from mongoengine import connect
@@ -29,8 +29,7 @@ connect('ser517', host='mongodb://localhost/ser517')
 
 @app.route("/")
 def hello():
-    message = "Hello, World"
-    return render_template('./index.html', message=message)
+    return send_file('templates/index.html')
 
 
 api.add_resource(BrandAPI, '/brand')

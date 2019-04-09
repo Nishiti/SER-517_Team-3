@@ -31,17 +31,19 @@ var brandController = app.controller("loginController", function ($scope, $windo
 
 
 app.config(['$routeProvider', function ($routeProvider) {
-    $routeProvider.when('/brand', {
-        templateUrl: "/views/brand.html",
-        controller: "brandController"
-    }).when('/influencer', {
-        templateUrl: "/views/influencer.html",
-        controller: "influencerController"
-    }).when('/login', {
-        templateUrl: "/views/login.html",
-        controller: "loginController"
-    }).otherwise({
-        templateUrl: "/views/home.html",
+    $routeProvider.when('/', {
+        templateUrl: 'static/partials/home.html',
         controller: "indexController"
+    }).when('/brand', {
+        templateUrl: 'static/partials/brand.html',
+        controller: "indexController"
+    }).when('/influencer', {
+        templateUrl: 'static/partials/influencer.html',
+        controller: "indexController"
+    }).when('/login', {
+        templateUrl: 'static/partials/login.html',
+        controller: "indexController"
+    }).otherwise({
+        redirectTo: '/'
     })
 }]);
