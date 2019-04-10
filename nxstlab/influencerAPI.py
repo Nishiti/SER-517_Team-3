@@ -37,7 +37,8 @@ class InfluencerSignUpAPI(Resource):
                 big_deal_on_option4=data['big_deal_on_option4'],
                 big_deal_on_option5=data['big_deal_on_option5'],
                 website_social_media_handles=data['website_social_media_handles'],
-                followers=data['followers']
+                followers=data['followers'],
+                areas_of_interest=data['areas_of_interest']
             ).save()
             """data = {
                 "role": "influencer",

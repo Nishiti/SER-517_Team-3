@@ -1,5 +1,5 @@
 from mongoengine import Document
-from mongoengine import StringField, EmailField, BooleanField, IntField
+from mongoengine import StringField, EmailField, BooleanField, ListField
 
 CATEGORY = (('Atheletes','Musicians','Lifestyle',''))
 GENDER = (('M','F','NA'))
@@ -16,3 +16,4 @@ class Influencer(Document):
     big_deal_on_option5 = BooleanField(null=False, default=False)
     website_social_media_handles = StringField(max_length=120)
     followers = StringField(max_length=60)
+    areas_of_interest = ListField(StringField())
