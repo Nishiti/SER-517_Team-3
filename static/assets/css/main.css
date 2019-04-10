@@ -3568,6 +3568,15 @@
 
 /* Main */
 
+	#main2 {
+		background-color: none;
+		position: relative;
+		margin: 0 auto;
+		width: calc(100% - 4rem);
+		max-width: 72rem;
+		z-index: 2;
+	}
+
 	#main {
 		background-color: #ffffff;
 		position: relative;
@@ -3925,6 +3934,7 @@
 }
 
 .card-container {
+	background-color: white;
 	box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.3);
 	max-width: 300px;
 	border: 0.4px solid grey;
