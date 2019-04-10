@@ -13,6 +13,7 @@ from nxstlab.influencerAPI import InfluencerSignUpAPI
 from nxstlab.adminAPIs import AdminGetBrandsWithFilterAPI
 from nxstlab.adminAPIs import AdminGetInfluencersWithFilterAPI
 from nxstlab.BrandCampaignAPI import BrandCampaignRequestAPI
+from nxstlab.BrandCampaignRequestApprove import BrandCampaignRequestApproveAPI
 from nxstlab.AdminSignoutAPI import AdminSignoutAPI
 from flask_cors import CORS
 import os
@@ -42,6 +43,7 @@ api.add_resource(AdminGetBrandsWithFilterAPI, '/admin/getBrands')
 api.add_resource(AdminGetInfluencersWithFilterAPI, '/admin/getInfluencers')
 api.add_resource(InfluencerSignUpAPI, '/influencer/signup')
 api.add_resource(BrandCampaignRequestAPI, '/brandcampaignrequest')
+api.add_resource(BrandCampaignRequestApproveAPI, '/brandcampaignrequestapprove')
 #api.add_resource(AdminSignoutAPI, '/admin/signout')
 
 if __name__ == '__main__':

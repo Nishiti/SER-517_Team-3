@@ -1,11 +1,11 @@
 from flask import Flask, request
 from flask_restful import Resource, Api, reqparse
-from BrandCampaign import BrandCampaign
+from nxstlab.BrandCampaign import BrandCampaign
 from mongoengine import connect
 
-app = Flask(__name__)
-api = Api(app)
-connect('BrandCampaign')
+# app = Flask(__name__)
+# api = Api(app)
+# connect('BrandCampaign')
 
 class BrandCampaignRequestApproveAPI(Resource):
 
@@ -29,5 +29,5 @@ class BrandCampaignRequestApproveAPI(Resource):
 			return {"message":"Campaign request denied"}
 
 	
-api.add_resource(BrandCampaignRequestApproveAPI, '/brandcampaignrequestapprove')
-app.run(port=5000, debug=True)
+# api.add_resource(BrandCampaignRequestApproveAPI, '/brandcampaignrequestapprove')
+# app.run(port=5000, debug=True)
