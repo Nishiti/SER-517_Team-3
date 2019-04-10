@@ -50,6 +50,9 @@ app.config(['$routeProvider', function ($routeProvider) {
     }).when('/icampaign', {
         templateUrl: 'static/partials/icampaign.html',
         controller: "influencerController"
+    }).when('/adminSignUp',{
+        templateUrl:'static/partials/adminSignUp.html',
+        controller : "adminController"
     }).otherwise({
         redirectTo: '/'
     })
