@@ -18,7 +18,7 @@ app.directive("matchPassword", function () {
     };
 });
 
-//$scope.areas = [];
+$scope.areas = [];
 $('document').ready(function(){
 
     $('.image1').click(function(){
@@ -38,10 +38,12 @@ $('document').ready(function(){
     $('.image2').click(function(){
         if($('.image2').hasClass('activeone')){
             $('.image2').removeClass('activeone');
+            $scope.areas.splice(index, 2);
         }
         else
         {
             $(this).addClass('activeone');
+            $scope.areas.push($('.image2'));
         }
     });
 
@@ -402,7 +404,8 @@ app.controller('inglucontroller', function($scope,$http) {
             "big_deal_on_option4" : $scope.facebook,
             "big_deal_on_option5" : $scope.other,
             "website_social_media_handles" : $scope.socialmedia,
-            "followers" : $scope.followers
+            "followers" : $scope.followers,
+            "areas": $scope.areas
 
         }
 
