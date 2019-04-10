@@ -1,0 +1,45 @@
+<!-- Main -->
+    <div id="main">
+
+        <!-- Post -->
+        <section class="posts">
+            <div class="parts" ng-controller="adminController">
+                <h2>Brands</h2>
+
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Interested in</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="brand in brands track by $index" ng-click="showBrand(brand)">
+                        <<td>{{ brand.name }}</td>
+                        <td>{{ brand.email }}</td>
+                        <td>{{ brand.service }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <article>
+                <h2><a href="#">Influencers</a></h2>
+                <ul class="displayLists">
+                    <li><a onclick="getInfluencerDetails()">Influencer 1</a></li>
+                    <li><a onclick="getInfluencerDetails()">Influencer 2</a></li>
+                    <li><a onclick="getInfluencerDetails()">Influencer 3</a></li>
+                </ul>
+            </article>
+        </section>
+    </div>
+    <!-- Table -->
+
+    <!-- Social Media Links -->
+    <div id="copyright">
+        <ul><li>Copyright &copy; 2017 new story telling lab</li><li>nxstlab</li><li>Kulina Inc.</li></ul>
+    </div>
+</div>
+
+</body>
+</html>

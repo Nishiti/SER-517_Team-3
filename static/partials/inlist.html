@@ -1,0 +1,98 @@
+<!-- Main -->
+	<div id="main">
+
+		<!-- Post -->
+		<section class="post">
+			<header class="major">
+                <h2> Search Influencers Here </h2>
+                <p>Find influencers that you know
+                or
+                Click on the Search form below.</br>
+                Submit your preferences
+                and wait for us to get back to you. </p>
+                <!-- Lists -->
+                <form method="post" action="/action_page.php" class="alt">
+                    <div class="row uniform">
+                        <div class="6u 12u$(xsmall)">
+                            <h3><left>Already have an influencer in mind?</left></h3>
+                        </div>
+                        <div class="6u 12u$(xsmall">
+                            <input type="text" name="search" placeholder="Search...">
+                                </div>
+                    </div>
+                </form>
+        <!-- Experimenting -->
+        <button class="open-button" onclick="openForm()">Search Form</button>
+        
+        <div class="form-popup" id="myForm">
+            <form action="/action_page.php" class="form-container">
+                <div class="field">
+                    <h3>Category</h3>
+                        <input type="checkbox" id="beauty" name="beauty">
+                            <label for="beauty">Beauty</label>
+                        <input type="checkbox" id="fashion" name="fashion">
+                            <label for="fashion">Fashion</label>
+                        <input type="checkbox" id="lifestyle" name="lifestyle">
+                            <label for="lifestyle">Lifestyle</label>
+                        <input type="checkbox" id="photography" name="photography">
+                            <label for="photography">Photography</label>
+                </div>
+                <div class="field">
+                    <h3>Social Media Platform</h3>
+                        <input type="radio" id="instagram" name="SMP" value="Instagram">
+                            <label for="instagram">Instagram</label>
+                        <input type="radio" id="youtube" name="SMP" value="Youtube">
+                            <label for="youtube">Youtube</label>
+                        <input type="radio" id="facebook" name="SMP" value="Facebook">
+                            <label for="facebook">Facebook</label>
+                        <input type="radio" id="twitter" name="SMP" value="Twitter">
+                            <label for="twitter">Twitter</label>
+                </div>
+                <div class="field">
+                    <h3>Amount of followers:</h3>
+                        <input type="radio" id="first" name="demo-campaign" value="gift">
+                            <label for="first">500 - 2k</label>
+                        <input type="radio" id="second" name="demo-campaign" value="campaign">
+                            <label for="second">2k - 50k</label>
+                        <input type="radio" id="third" name="demo-campaign" value="campaign">
+                            <label for="third">50k +</label>
+                </div>
+                <h3>Location</h3>
+                <select name="followers" id="followers">
+                    <option value="0">Select...</option>
+                    <option value="1">Newyork</option>
+                    <option value="2">Los Angeles</option>
+                    <option value="3">Arizona</option>
+                </select>
+                <button type="submit" class="btn">Submit</button>
+                <button type="reset" class="reset-button" value="Reset">Reset</button>
+                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+            </form>
+            <section>
+                <button class="open-card" onclick="openCard()" style="margin:15px">Profile Card</button>
+                <div class="card-popup" id="myCard">
+                    <form action="/action_page.php" class="card-container">
+                        <div class="field">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar6.png">
+                                <label for="cname"><b>Company Name</b></label>
+                                <label for="poc"><b>Company's Point of Contact</b></label>
+                                <label for="cadd"><b>Company Address</b></label>
+                                <label for="email"><b>Email Address</b></label>
+                                <label for="num"><b>Phone Number</b></label>
+                                <hr>
+                                <label for="plist"><b>Company Description and Products List</b></label>
+                                <button type="card" class="btn cancel" onclick="closeCard()">Close</button>
+                                </div>
+                    </form>
+                </div>
+            </section>
+            </div>
+       <footer id="footer">
+        </footer>
+
+	<!-- Copyright -->
+	<div id="copyright">
+		<ul><li>Copyright &copy; 2017 new story telling lab</li><li>nxstlab</li><li>Kulina Inc.</li></ul>
+	</div>
+
+</div>

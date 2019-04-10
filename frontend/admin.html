@@ -56,32 +56,36 @@
         <!-- Post -->
         <section class="posts">
             <article>
-                <h2><a href="#">Brand Requests</a></h2>
+                <h2>Brand Requests</h2>
                 <div class="container">
-                    <div class="card">
-                        <h2>Brand Name</h2>
-                        <p class="cardTitle">Email</p>
-                        <p>Description</p>
-                        <br/><br/><br/><br/><br/>
-                        <p><button class="cardButton">Approve</button>
-                            <button class="cardButton">Deny</button></p>
-                    </div>
                     <a class="prev container-nav-a" onclick="">❮</a>
+                    <form action="/action_page.php" class="card-container">
+                        <div class="field">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar6.png">
+                                <label for="cname"><b>Company Name</b></label>
+                                <label for="plist"><b>Company Description and Products List</b></label>
+                                <button>Approve</button>
+                                <button>Deny   </button>
+                                <h3></h3>
+                                </div>
+                    </form>
                     <a class="next container-nav-a" onclick="">❯</a>
-                </div>
+                    </div>
             </article>
             <article>
                 <h2><a href="#">Campaign Requests</a></h2>
                 <div class="container">
-                    <div class="card">
-                        <h2>Campaign Name</h2>
-                        <p class="cardTitle">Associated Brand</p>
-                        <p>Description</p>
-                        <p><a onclick="">Details</a></p>
-                        <br/><br/><br/>
-                        <p><button class="cardButton">Approve</button>
-                            <button class="cardButton">Deny</button></p>
-                    </div>
+                    <form action="/action_page.php" class="card-container">
+                        <div class="field">
+                            <img class="image fit" src="images/pic04.jpg">
+                                <label for="camname"><b>Campaign Name</b></label>
+                                <label for="assbrand"><b>Associated Brand</b></label>
+                                <label for="plist"><b>Campaign Description and Details</b></label>
+                                <button>Approve</button>
+                                <button>Deny   </button>
+                                <h3></h3>
+                                </div>
+                    </form>
                     <a class="prev container-nav-a" onclick="">❮</a>
                     <a class="next container-nav-a" onclick="">❯</a>
                 </div>

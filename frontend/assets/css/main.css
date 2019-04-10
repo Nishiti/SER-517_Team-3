@@ -47,6 +47,9 @@
 	body {
 		-webkit-text-size-adjust: none;
 	}
+	nav {
+		position: sticky;
+	}
 
 /* Box Model */
 
@@ -2443,7 +2446,7 @@
 
 		.image.fit {
 			display: block;
-			margin: 2.5rem 0;
+			margin: 0.5rem 0;
 			width: 100%;
 		}
 
@@ -2472,11 +2475,11 @@
 		@media screen and (max-width: 736px) {
 
 			.image.fit {
-				margin: 2rem 0;
+				margin: 0.3rem 0;
 			}
 
 			.image.main {
-				margin: 2rem 0;
+				margin: 0.3rem 0;
 			}
 
 		}
@@ -2807,11 +2810,15 @@
 	.table-wrapper {
 		-webkit-overflow-scrolling: touch;
 		overflow-x: auto;
+		padding: 0px;
 	}
 
 	table {
 		margin: 0 0 2rem 0;
 		width: 100%;
+		padding: 0px;
+		border-collapse: collapse;
+
 	}
 
 		table tbody tr {
@@ -2881,9 +2888,7 @@
 		border-color: #eeeeee;
 	}
 
-		table tbody tr:nth-child(2n + 1) {
-			background-color: rgba(220, 220, 220, 0.25);
-		}
+
 
 	table th {
 		color: #212931;
@@ -3887,16 +3892,16 @@
 .form-popup {
   display: none;
   position: static;
-  padding-top: 50px;
-  padding-right: 100px;
-  padding-bottom: 50px;
-  padding-left: 100px;
+  padding-top: 30px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-left: 50px;
 }
 
 .card-popup{
 	display: none;
   	position: static;
-  	padding-top: 20px;
+  	padding-top: 10px;
   	padding-right: 10px;
   	padding-bottom: 5px;
   	padding-left: 10px;
@@ -3909,34 +3914,36 @@
 
 /* Add styles to the form container */
 .form-container {
-	max-width: 800px;
+	max-width: 600px;
 	position: static;
 	clear: both;
   background-color: white;
-  border: 1px solid black;
-  border-radius: 7px;
-  padding: 10px;
+  border: 0.4px solid grey;
+  border-radius: 5px;
+  padding: 0;
+  box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.2);
 }
 
 .card-container {
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.3);
 	max-width: 300px;
-	border: 1px solid black;
+	border: 0.4px solid grey;
+	border-radius: 5px;
 	text-align: center;
 }
 
 /* Full-width input fields */
 .form-container input[type=text], .form-container input[type=password], .form-container input[type=message] {
-  max-width: 800px;
+  max-width: 580px;
   position: static;
   right: 0px;
-  border: none;
+  border: 0.2px solid grey;
   background: #f1f1f1;
 }
 
 .card-container input[type=text], .card-container input[type=password] {
   max-width: 300px;
-  position: static;
+  position: absolute;
   right: 0px;
   border: none;
   background: #f1f1f1;
@@ -4032,6 +4039,114 @@
 .card-container .btn:hover, .open-card:hover {
   opacity: 1;
 }
+
+/* Profile Card */
+.card {
+padding: none;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: none;
+  border: 0.4px solid black;
+  border-radius: 5px;
+}
+
+.title {
+	color: grey;
+  font-size: 18px;
+}
+
+.circle-text {
+display: table-cell;
+height: 60px; /*change this and the width
+for the size of your initial circle*/
+width: 60px;
+text-align: center;
+vertical-align: middle;
+border-radius: 50%;
+/*make it pretty*/
+background: #737373;
+color: #fff;
+font: 18px "josefin sans", arial; /*change this
+for font-size and font-family*/
+}
+
+.square-text {
+display: table-cell;
+height: 32px; /*change this and the width
+for the size of your initial circle*/
+width: 85px;
+text-align: center;
+vertical-align: middle;
+border-radius: 10px;
+/*make it pretty*/
+background: #DC143C;
+color: #fff;
+font: 18px "josefin sans", arial; /*change this
+for font-size and font-family*/
+}
+
+.square-text2 {
+display: table-cell;
+height: 32px; /*change this and the width
+for the size of your initial circle*/
+width: 85px;
+text-align: center;
+vertical-align: middle;
+border-radius: 10px;
+/*make it pretty*/
+background: #1E90FF;
+color: #fff;
+font: 18px "josefin sans", arial; /*change this
+for font-size and font-family*/
+}
+
+.square-text3 {
+display: table-cell;
+height: 32px; /*change this and the width
+for the size of your initial circle*/
+width: 85px;
+text-align: center;
+vertical-align: middle;
+border-radius: 10px;
+/*make it pretty*/
+background: #3CB371;
+color: #fff;
+font: 18px "josefin sans", arial; /*change this
+for font-size and font-family*/
+}
+
+.square-text4 {
+display: table-cell;
+height: 32px; /*change this and the width
+for the size of your initial circle*/
+width: 85px;
+text-align: center;
+vertical-align: middle;
+border-radius: 10px;
+/*make it pretty*/
+background: #9932CC;
+color: #fff;
+font: 18px "josefin sans", arial; /*change this
+for font-size and font-family*/
+}
+
+.square-text5 {
+display: table-cell;
+height: 32px; /*change this and the width
+for the size of your initial circle*/
+width: 85px;
+text-align: center;
+vertical-align: middle;
+border-radius: 10px;
+/*make it pretty*/
+background: #D2691E;
+color: #fff;
+font: 18px "josefin sans", arial; /*change this
+for font-size and font-family*/
+}
+
+
+
 /* Footer */
 
 	#footer {
@@ -4874,4 +4989,29 @@ width: 100%;
 }
 #page{
 	border-collapse: collapse;
+}
+
+img{margin:10px;}
+.selected{
+	box-shadow:100px 10px 8px 100px #ccfffd;
+}
+
+.parts{
+	float: left;
+	margin-bottom: 0px;
+	padding: 0px;
+}
+
+.container{
+	margin: 0px;
+	padding: 0px;
+}
+input[type=button]{
+	margin-left: 80px;
+	margin-right: 20px;
+	margin-bottom: 0px;
+}
+.activeone{
+	border:3.5px solid #37a4ff;
+
 }

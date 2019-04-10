@@ -15,7 +15,7 @@
 <body class="is-loading">
 
 <!-- Wrapper -->
-<div id="wrapper">
+<div id="wrapper" ng-app="mainApp" ng-controller="myCtrl">
 
 	<!-- Header -->
 	<header id="header">
@@ -58,21 +58,21 @@
 			</center>
 
 
-			<form method="post" action="#" class="alt">
+			<div  class="alt">
 				<div class="row uniform">
 					<div class="6u$ 12u$(xsmall)">
-						<input type="email" name="email" id="email" value="" placeholder="Email" />
+						<input type="email" name="email" id="email" value="" placeholder="Email" ng-model="email" required/>
 					</div>
 					<div class="6u$ 12u$(xsmall)">
-						<input type="password" name="pwd" id="pwd" value="" placeholder="Password" />
+						<input type="password" name="pwd" id="pwd" value="" placeholder="Password" ng-model="password" required/>
 					</div>
 					<ul class="actions">
-						<li><input type="submit" value="Login" /></li>
-						<li><a href="brands.html">Don't have an account? Sign-up here</a></li>
+						<li><input type="submit" value="Login" ng-click="login()"/></li>
+						<li><a href="brands.html">Don't have an account? Brands Sign-up here</a></li>
 					</ul>
 
 				</div>
-			</form>
+			</div>
 
 			<hr />
 			<!-- Social Media Links -->
@@ -103,6 +103,7 @@
 <script src="assets/js/skel.min.js"></script>
 <script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
-
+<script src="assets/js/angular.min.js"></script>
+<script src="assets/scripts/login.js"></script>
 </body>
 </html>
