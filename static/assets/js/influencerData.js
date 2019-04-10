@@ -18,19 +18,18 @@ app.directive("matchPassword", function () {
     };
 });
 
-$scope.areas = [];
+//var images=[];
+
 $('document').ready(function(){
 
     $('.image1').click(function(){
         if($('.image1').hasClass('activeone')){
             $('.image1').removeClass('activeone');
-            $scope.areas.splice(index, 1);
         }// addClass('activeone');)
         //$('.image').removeClass('activeone');
         else
         {
             $(this).addClass('activeone');
-            $scope.areas.push($('.image1'));
         }
 
     });
@@ -386,10 +385,23 @@ $('document').ready(function(){
 
 });
 
+
+
 app.controller('inglucontroller', function($scope,$http) {
+
+    for(i=1; i<=30; i++){
+        if($('.image'+i).hasClass('activeone'))
+            $scope.areas.push('image'+i);
+    }
+
     //console.log($scope.cname)
 
     $scope.updateinflu = function() {
+
+        f
+
+        if($('.image1').hasClass('activeone'))
+
 
         var data =
         {
@@ -408,8 +420,6 @@ app.controller('inglucontroller', function($scope,$http) {
             "areas": $scope.areas
 
         }
-
-
 
         $http.post('http://localhost:5000/influencer/signup', data).then(function (response) {
 
