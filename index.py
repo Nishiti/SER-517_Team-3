@@ -1,9 +1,12 @@
+import jwt
 from flask import Flask, render_template, send_file
 from flask_restful import Resource, Api
 from flask_login import LoginManager
 from mongoengine import connect
+
+from nxstlab.admin import Admin
 from nxstlab.adminSignupAPI import AdminSignupAPI
-from nxstlab.adminSignInAPI import AdminSignInAPI
+from nxstlab.adminSignInAPI import AdminSignInAPI, SecretResource
 from nxstlab.brandAPI import BrandAPI
 from nxstlab.adminAPIs import AdminDeactivateBrandAPI
 from nxstlab.adminAPIs import AdminApproveBrandSignupAPI
@@ -15,6 +18,7 @@ from nxstlab.adminAPIs import AdminGetInfluencersWithFilterAPI
 from nxstlab.BrandCampaignAPI import BrandCampaignRequestAPI
 from nxstlab.BrandCampaignRequestApprove import BrandCampaignRequestApproveAPI
 from nxstlab.AdminSignoutAPI import AdminSignoutAPI
+from flask_jwt_extended import JWTManager
 from flask_cors import CORS
 import os
 
@@ -32,7 +36,6 @@ connect('ser517', host='mongodb://localhost/ser517')
 def hello():
     return send_file('templates/index.html')
 
-
 api.add_resource(BrandAPI, '/brand')
 api.add_resource(AdminSignInAPI, '/admin/signin')
 api.add_resource(AdminSignupAPI, '/admin/signup')
@@ -46,7 +49,12 @@ api.add_resource(BrandCampaignRequestAPI, '/brandcampaignrequest')
 api.add_resource(BrandCampaignRequestApproveAPI, '/brandcampaignrequestapprove')
 #api.add_resource(AdminSignoutAPI, '/admin/signout')
 
+# Test Resource
+api.add_resource(SecretResource, '/admin/secret')
+
 if __name__ == '__main__':
     app.secret_key = os.urandom(16)
+    app.config['JWT_SECRET_KEY'] = 'jwt-secret-string'
+    jwt = JWTManager(app)
     app.debug = True
     app.run(port=5000)
