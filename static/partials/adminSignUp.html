@@ -1,6 +1,7 @@
 <div id="main">
 	<section>
-		<input type="text" placeholder="Enter Email ID" name="aemail" required>
-		<input type="password" placeholder="Enter a Password" name="apass" required>
+		<input type="text" placeholder="Enter Email ID" name="aemail" ng-model="adminemail" required>
+		<input type="password" placeholder="Enter a Password" name="apass" ng-model="adminpassword" required>
+        <input type="button" ng-click=adminSignup()> Submit</input>
 	</section>
 </div>

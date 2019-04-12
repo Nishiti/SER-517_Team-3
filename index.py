@@ -30,7 +30,14 @@ CORS(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
-connect('ser517', host='mongodb://localhost/ser517')
+configFile = open("config.txt")
+config = dict()
+for line in configFile:
+    arr = line[:-1].split("=")
+    config[arr[0]] = arr[1]
+configFile.close()
+print(config)
+connect(config['dbname'], host=config['host'])
 
 @app.route("/")
 def hello():
