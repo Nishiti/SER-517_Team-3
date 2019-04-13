@@ -1,20 +1,5 @@
 var app = angular.module("mainApp", ["ngRoute"]);
 
-// index contorller will deal with only functions required on index page
-var indexController = app.controller("indexController", function ($scope, $window) {
-
-    $scope.companyName = "nxstlab";
-    
-    $scope.popupGreet = function(){
-        $window.alert("Hi there " + $scope.companyName);
-    };
-
-
-    // here we will have login api which would return session/token and role for that user
-    // based on role we can hide/show necessary tabs using ng if. Currently showing all
-    //
-    
-});
 
 app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/', {
