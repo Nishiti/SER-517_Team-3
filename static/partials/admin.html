@@ -4,42 +4,111 @@
 
         <!-- Post -->
         <section class="posts">
-            <article class="bapprovals">
+            <article>
                 <h2>Brand Requests</h2>
                 <br>
-          <article class="card-bapprovals">
-                    <div class="card-container">
-                        <a class="prev article-nav-a" onclick="">❮</a>
-                        <div class="field">
-                            <br>
-                            <img src="https://bootdey.com/img/Content/avatar/avatar6.png">
-                                <label for="cname"><b>Company Name</b></label>
-                                <label for="plist"><b>Company Description and Products List</b></label>
-                                <button>Approve</button>
-                                <button>Deny   </button>
-                                <h3></h3>
-                                </div>
-                                            <a class="next article-nav-a" onclick="">❯</a>
-                    </div>
-                    </article>
+          <div class="cards-container">
+              <div class="myCards fade">
+                  <center>
+                  <form class="card-container">
+                      <div class="field">
+                          <img src="https://bootdey.com/img/Content/avatar/avatar6.png">
+                              <label for="cname"><b>Company Name</b></label>
+                              <label for="plist"><b>Company Description and Products List</b></label>
+                              <button>Approve</button>
+                              <button>Deny   </button>
+                              <h3></h3>
+                              </div>
+                      </form>
+                  </center>
+              </div>
+              <div class="myCards fade">
+                  <center>
+                  <form class="card-container">
+                  <div class="field">
+                      <img class="image fit" src="/static/images/pic05.jpg">
+                          <label for="cname"><b>Company Name</b></label>
+                          <label for="plist"><b>Company Description and Products List</b></label>
+                          <button>Approve</button>
+                          <button>Deny   </button>
+                          <h3></h3>
+                          </div>
+                  </form>
+                  </center>
+                  </div>
+              <div class="myCards fade">
+                  <center>
+                  <form class="card-container">
+                      <div class="field">
+                          <img class="image fit" src="/static/images/pic02.jpg">
+                              <label for="cname"><b>Company Name</b></label>
+                              <label for="plist"><b>Company Description and Products List</b></label>
+                              <button>Approve</button>
+                              <button>Deny   </button>
+                              <h3></h3>
+                              </div>
+                  </form>
+                  </center>
+              </div>
+              <a class="prev" onclick="plusCards(-1)">&#10094;</a>
+              <a class="next" onclick="plusCards(1)">&#10095;</a>
+              </div>
             </article>
+            
             <article>
-                <h2><a href="#">Campaign Requests</a></h2>
-                <div class="container">
-                    <a class="prev container-nav-a" onclick="">❮</a>
-                    <form action="/action_page.php" class="card-container">
+                <h2>Campaign Requests</h2>
+                <br>
+            <div class="camp-container">
+                <div class="myCamp fade">
+                    <center>
+                    <form class="card-container">
                         <div class="field">
                             <img class="image fit" src="/static/images/pic04.jpg">
-                                <label for="camname"><b>Campaign Name</b></label>
-                                <label for="assbrand"><b>Associated Brand</b></label>
-                                <label for="plist"><b>Campaign Description and Details</b></label>
-                                <button>Approve</button>
+                            <label for="camname"><b>Campaign Name</b></label>
+                            <label for="assbrand"><b>Associated Brand</b></label>
+                            <label for="clist"><b>Campaign Description and Details</b></label>                                     <button>Approve</button>
                                 <button>Deny   </button>
                                 <h3></h3>
                                 </div>
                     </form>
-                    <a class="next container-nav-a" onclick="">❯</a>
+                    </center>
                 </div>
+                <div class="myCamp fade">
+                    <center>
+                        <form class="card-container">
+                            <div class="field">
+                                <img class="image fit" src="/static/images/pic01.jpg">
+                                    <label for="camname"><b>Campaign Name</b></label>
+                                    <label for="assbrand"><b>Associated Brand</b></label>
+                                    <label for="clist"><b>Campaign Description and Details</b></label>                                     <button>Approve</button>
+                                    <button>Deny   </button>
+                                    <h3></h3>
+                                    </div>
+                        </form>
+                    </center>
+                </div>
+                <div class="myCamp fade">
+                    <center>
+                        <form class="card-container">
+                            <div class="field">
+                                <img class="image fit" src="/static/images/pic02.jpg">
+                                    <label for="camname"><b>Campaign Name</b></label>
+                                    <label for="assbrand"><b>Associated Brand</b></label>
+                                    <label for="clist"><b>Campaign Description and Details</b></label>                                     <button>Approve</button>
+                                    <button>Deny   </button>
+                                    <h3></h3>
+                                    </div>
+                        </form>
+                    </center>
+                </div>
+                <a class="prev" onclick="plusCamp(-1)">&#10094;</a>
+                <a class="next" onclick="plusCamp(1)">&#10095;</a>
+            </div>
             </article>
         </section>
     </div>
+<script>
+    showCards(cardIndex);
+        showCamp(cardCamp);
+    </script>
+
