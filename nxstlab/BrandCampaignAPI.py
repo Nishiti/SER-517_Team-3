@@ -2,6 +2,7 @@ from flask import jsonify, make_response
 from flask_api import status
 from flask_restful import Resource, reqparse
 from nxstlab.BrandCampaign import BrandCampaign
+from nxstlab.brand import Brand
 
 # app = Flask(__name__)
 # api = Api(app)
@@ -51,16 +52,13 @@ class BrandCampaignRequestAPI(Resource):
                           for brand_campaign in BrandCampaign.objects(isApproved=False, isDenied=False)]
         result = []
         for campaign in brand_campaign:
+            associated_brand = Brand.objects(email=campaign.email).first()
             data = dict()
             data['campaign_name'] = campaign.campaign_name
-            data['email'] = campaign.email
-            data['gift_campaign'] = campaign.gift_campaign
-            data['gift_code'] = campaign.gift_code
+            data['associated_brand'] = associated_brand.company_name
             data[
                 'campaign_info_rqmts'
                 ] = campaign.campaign_information_requirements
-            data['isApproved'] = campaign.isApproved
-            data['isDenied'] = campaign.isDenied
             result.append(data)
         if not result:
             return make_response(jsonify(role='admin', message='No campaign requests left to be approved/denied'),
