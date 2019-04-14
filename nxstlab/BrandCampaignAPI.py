@@ -17,6 +17,8 @@ class BrandCampaignRequestAPI(Resource):
     parser.add_argument('email', type=str,
                         required=True,
                         help='This field cannot be blank.')
+    parser.add_argument('gift_campaign', type=bool)
+    parser.add_argument('gift_code', type=bool)
     # parser.add_argument('website_social_media_handles', type=str)
     parser.add_argument('campaign_info_rqmts',
                         type=str,
@@ -33,13 +35,16 @@ class BrandCampaignRequestAPI(Resource):
             BrandCampaign(
                 campaign_name=data['campaign_name'],
                 email=data['email'],
-                website_social_media_handles=data[
-                                                'website_social_media_handles'
-                                                ],
+                # website_social_media_handles=data[
+                #                                 'website_social_media_handles'
+                #                                 ],
+                gift_campaign=data['gift_campaign'],
+                gift_code=data['gift_code'],
                 campaign_information_requirements=data[
                                                     'campaign_info_rqmts']
                 ).save()
-            return {"message": "Campaign successfully added to the database."}
+            return make_response(jsonify(role='brand', message='Campaign: ' + data['campaign_name'] + ' request successfully created!'),
+                                 status.HTTP_201_CREATED)
 
     def get(self):
         brand_campaign = [brand_campaign
