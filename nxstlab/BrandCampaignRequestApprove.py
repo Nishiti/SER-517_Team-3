@@ -1,4 +1,5 @@
-from flask import Flask, request
+from flask import Flask, jsonify, request, make_response
+from flask_api import status
 from flask_restful import Resource, Api, reqparse
 from nxstlab.BrandCampaign import BrandCampaign
 from mongoengine import connect
@@ -21,12 +22,14 @@ class BrandCampaignRequestApproveAPI(Resource):
 			campaign.isApproved = True
 			campaign.isDenied = False
 			campaign.save()
-			return {"message":"Campaign request approved"}
+			return make_response(jsonify(role='admin', message='Campaign: ' + data['campaign_name'] + ' request approved!'),
+                                 status.HTTP_201_CREATED)
 		else:
 			campaign.isApproved = False
 			campaign.isDenied = True
 			campaign.save()
-			return {"message":"Campaign request denied"}
+			return make_response(jsonify(role='admin', message='Campaign: ' + data['campaign_name'] + ' request denied!'),
+                                 status.HTTP_201_CREATED)
 
 	
 # api.add_resource(BrandCampaignRequestApproveAPI, '/brandcampaignrequestapprove')
