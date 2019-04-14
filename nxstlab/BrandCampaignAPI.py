@@ -1,4 +1,5 @@
-from flask import jsonify
+from flask import jsonify, make_response
+from flask_api import status
 from flask_restful import Resource, reqparse
 from nxstlab.BrandCampaign import BrandCampaign
 
@@ -16,7 +17,7 @@ class BrandCampaignRequestAPI(Resource):
     parser.add_argument('email', type=str,
                         required=True,
                         help='This field cannot be blank.')
-    parser.add_argument('website_social_media_handles', type=str)
+    # parser.add_argument('website_social_media_handles', type=str)
     parser.add_argument('campaign_info_rqmts',
                         type=str,
                         required=True,
@@ -26,7 +27,8 @@ class BrandCampaignRequestAPI(Resource):
         data = BrandCampaignRequestAPI.parser.parse_args()
         if BrandCampaign.objects(email=data['email'],
                                  campaign_name=data['campaign_name']):
-            return {"message": "A campaign with this name already exists."}
+            return make_response(jsonify(role='brand', message='Campaign: ' + data['campaign_name'] + ' already exists!'),
+                                 status.HTTP_409_CONFLICT)
         else:
             BrandCampaign(
                 campaign_name=data['campaign_name'],
