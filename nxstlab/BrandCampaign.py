@@ -7,7 +7,7 @@ class BrandCampaign(Document):
     email = EmailField(required=True)
     gift_campaign = BooleanField(null=False, default=False)
     gift_code = BooleanField(null=False, default=False)
-    website_social_media_handles = StringField(max_length=150)
+    # website_social_media_handles = StringField(max_length=150)
     campaign_information_requirements = StringField(max_length=500,
                                                     required=True)
     isApproved = BooleanField(null=False, default=False)
