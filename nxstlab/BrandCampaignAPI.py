@@ -48,7 +48,7 @@ class BrandCampaignRequestAPI(Resource):
 
     def get(self):
         brand_campaign = [brand_campaign
-                          for brand_campaign in BrandCampaign.objects()]
+                          for brand_campaign in BrandCampaign.objects(isApproved=False, isDenied=False)]
         result = []
         for campaign in brand_campaign:
             data = dict()
@@ -57,14 +57,14 @@ class BrandCampaignRequestAPI(Resource):
             data['gift_campaign'] = campaign.gift_campaign
             data['gift_code'] = campaign.gift_code
             data[
-                'web_social_media_handle'
-                ] = campaign.website_social_media_handles
-            data[
                 'campaign_info_rqmts'
                 ] = campaign.campaign_information_requirements
             data['isApproved'] = campaign.isApproved
             data['isDenied'] = campaign.isDenied
             result.append(data)
+        if not result:
+            return make_response(jsonify(role='admin', message='No campaign requests left to be approved/denied'),
+                                 status.HTTP_204_NO_CONTENT)
         return jsonify({"list": result})
 
 
