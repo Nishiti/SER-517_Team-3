@@ -12,7 +12,7 @@
                   <center>
                   <form class="card-container">
                       <div class="field">
-                          <img src="https://bootdey.com/img/Content/avatar/avatar6.png">
+                          <img class="image fit" src="/static/images/pic03.jpg">
                               <label for="cname"><b>Company Name</b></label>
                               <label for="plist"><b>Company Description and Products List</b></label>
                               <button>Approve</button>
@@ -54,12 +54,12 @@
               <a class="next" onclick="plusCards(1)">&#10095;</a>
               </div>
             </article>
-            
+    <script>showCards(cardIndex);</script>
             <article>
                 <h2>Campaign Requests</h2>
                 <br>
-            <div class="camp-container">
-                <div class="myCamp fade">
+            <div class="camps-container">
+                <div class="myCamps fade">
                     <center>
                     <form class="card-container">
                         <div class="field">
@@ -73,7 +73,7 @@
                     </form>
                     </center>
                 </div>
-                <div class="myCamp fade">
+                <div class="myCamps fade">
                     <center>
                         <form class="card-container">
                             <div class="field">
@@ -87,7 +87,7 @@
                         </form>
                     </center>
                 </div>
-                <div class="myCamp fade">
+                <div class="myCamps fade">
                     <center>
                         <form class="card-container">
                             <div class="field">
@@ -101,14 +101,12 @@
                         </form>
                     </center>
                 </div>
-                <a class="prev" onclick="plusCamp(-1)">&#10094;</a>
-                <a class="next" onclick="plusCamp(1)">&#10095;</a>
+                <a class="prev" onclick="plusCamps(-1)">&#10094;</a>
+                <a class="next" onclick="plusCamps(1)">&#10095;</a>
             </div>
             </article>
+            <script>showCamps(campIndex);</script>
         </section>
     </div>
-<script>
-    showCards(cardIndex);
-        showCamp(cardCamp);
-    </script>
+
 
