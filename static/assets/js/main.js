@@ -317,5 +317,49 @@ function w3RemoveClass(element, name) {
 	element.className = arr1.join(" ");
 }
 
+/* Admin Page */
+var cardIndex = 1;
+showCards(cardIndex);
 
+function plusCards(n) {
+	showCards(cardIndex += n);
+}
+
+function currentCard(n) {
+	showCards(cardIndex = n);
+}
+
+function showCards(n) {
+	var i;
+	var cards = document.getElementsByClassName("myCards");
+	if(n>cards.length) {cardIndex = 1}
+	if (n < 1) {cardIndex = cards.length}
+  	for (i = 0; i < cards.length; i++) {
+    	cards[i].style.display = "none"; 
+	}
+	cards[cardIndex-1].style.display = "block";
+}
+
+/* Admin Page - Campaign part */
+var campIndex = 1;
+showCamps(campIndex);
+
+function plusCamps(n) {
+	showCamps(campIndex += n);
+}
+
+function currentCamp(n) {
+	showCamps(campIndex = n);
+}
+
+function showCamps(n) {
+	var i;
+	var camps = document.getElementsByClassName("myCamps");
+	if(n>camps.length) {campIndex = 1}
+	if (n < 1) {campIndex = camps.length}
+  	for (i = 0; i < camps.length; i++) {
+    	camps[i].style.display = "none"; 
+	}
+	camps[campIndex-1].style.display = "block";
+}
 
