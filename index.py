@@ -1,6 +1,5 @@
-import jwt
-from flask import Flask, render_template, send_file
-from flask_restful import Resource, Api
+from flask import Flask, send_file
+from flask_restful import Api
 from flask_login import LoginManager
 from mongoengine import connect
 
@@ -17,17 +16,24 @@ from nxstlab.adminAPIs import AdminGetBrandsWithFilterAPI
 from nxstlab.adminAPIs import AdminGetInfluencersWithFilterAPI
 from nxstlab.BrandCampaignAPI import BrandCampaignRequestAPI
 from nxstlab.BrandCampaignRequestApprove import BrandCampaignRequestApproveAPI
-from nxstlab.AdminSignoutAPI import AdminSignoutAPI
+from nxstlab.AdminSignoutAPI import UserLogoutAccess, UserLogoutRefresh
 from flask_jwt_extended import JWTManager
+from nxstlab.revokedtoken import RevokedToken
 from flask_cors import CORS
 import os
 
-from nxstlab.revokedtoken import RevokedToken
 
 app = Flask(__name__)
 api = Api(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 CORS(app)
+
+# JWT Configuration
+app.config['JWT_SECRET_KEY'] = 'jwt-secret-string'
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = 60
+app.config['JWT_BLACKLIST_ENABLED'] = True
+app.config['JWT_BLACKLIST_TOKEN_CHECKS'] = ['access', 'refresh']
+jwt = JWTManager(app)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -47,6 +53,7 @@ def hello():
 
 @jwt.token_in_blacklist_loader
 def check_if_token_in_blacklist(decrypted_token):
+    print('In check_if_token_in_blacklist...')
     jti = decrypted_token['jti']
     return RevokedToken.is_jti_blacklisted(jti)
 
@@ -62,18 +69,13 @@ api.add_resource(InfluencerSignUpAPI, '/influencer/signup')
 api.add_resource(BrandCampaignRequestAPI, '/brandcampaignrequest')
 api.add_resource(BrandCampaignRequestApproveAPI, '/brandcampaignrequestapprove')
 # api.add_resource(AdminSignoutAPI, '/admin/signout')
-api.add_resource(AdminSignoutAPI, '/admin/signoutaccess')
-api.add_resource(AdminSignoutAPI, '/admin/signoutrefresh')
+api.add_resource(UserLogoutAccess, '/admin/signoutaccess')
+api.add_resource(UserLogoutRefresh, '/admin/signoutrefresh')
 
 # Test Resource
 api.add_resource(SecretResource, '/admin/secret')
 
 if __name__ == '__main__':
     app.secret_key = os.urandom(16)
-    app.config['JWT_SECRET_KEY'] = 'jwt-secret-string'
-    app.config['JWT_ACCESS_TOKEN_EXPIRES'] = 60
-    app.config['JWT_BLACKLIST_ENABLED'] = True
-    app.config['JWT_BLACKLIST_TOKEN_CHECKS'] = ['access', 'refresh']
-    jwt = JWTManager(app)
     app.debug = True
     app.run(port=5000)

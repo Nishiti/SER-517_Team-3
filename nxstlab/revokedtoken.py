@@ -15,7 +15,7 @@ class RevokedToken(Document):
     def is_jti_blacklisted(jti):
         query = Admin.objects(jti=jti).first()
         print('query = ', query)
-        return bool(query)
+        return True if query else False
 
     @classmethod
     def is_jti_blacklisted(cls, jti):
