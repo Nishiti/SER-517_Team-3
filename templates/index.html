@@ -23,7 +23,7 @@
 		<h1>nxstlab</h1>
 		<p>We are growing community of creative influencers & brands.</p>
 		<ul class="actions">
-			<li><a href="index.html" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
+			<li><a href="#/" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
 		</ul>
 	</div>
 	<!-- Header -->
@@ -35,7 +35,7 @@
 	<!-- Nav -->
 	<nav id="nav">
 		<ul class="links">
-			<li class="active"><a href="#/">Home</a></li>
+			<li><a href="#/">Home</a></li>
 			<li><a href="#/adminSignUp">Admin Signup</a></li>
 			<li><a href="#/influencer">Influencers Signup</a></li>
 			<li><a href="#/brand">Brands Signup</a></li>
@@ -46,14 +46,17 @@
 			<li><a href="#/admin">Pending Requests</a></li>
 			<li><a href="#/manage">Search/Manage</a></li>
 	 <!--for brand. search is common for admin and brand -->
+<!--
  			<li><a href="#/blogin">Brand Profile</a></li>
 			<li><a href="#/inlist">Search Influencers</a></li>
 			<li><a href="#/campaign">campaign request</a></li>
+-->
 	 <!--for influencer  -->
+<!--
 			<li><a href="#/ilogin">Influencer Home</a></li>
 			<li><a href="#/icampaign">Influencer Campaign</a></li>
-
-
+-->
+            <li ng-click="logout()"><a>Logout</a></li>
 
 		</ul>
 		<ul class="icons">
@@ -82,7 +85,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-route.min.js"></script>
 <script src="static/scripts/app.js"></script>
-<script src="static/scripts/influencerController.js"></script>    
+<script src="static/scripts/indexController.js"></script>    
 <script src="static/scripts/adminController.js"></script>
 <script src="static/scripts/influencerController.js"></script>
 <script src="static/scripts/brandController.js"></script>

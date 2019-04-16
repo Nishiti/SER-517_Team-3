@@ -1,23 +1,27 @@
 // index contorller will deal with only functions required on index page
-var indexController = app.controller("indexController", function ($scope, $window) {
+var indexController = app.controller("indexController", function ($scope, $window, $http,$location) {
 
     $scope.companyName = "nxstlab";
     
+    function checkIfSessionActive(){
+        
+        return false;
+        
+    }
+    
     
 
-    $scope.adminSignup = function(){
+    $scope.login = function(){
 
-        var email = $scope.adminemail;
-        var password = $scope.adminpassword;
+        var email = $scope.email;
+        var password = $scope.password;
 
         var data = {
-            'first_name' : email,
-            'last_name' : email,
             'email' : email,
             'password' : password
         };
 
-        $http.post('http://localhost:5000/admin/signup', data).then(function (response) {
+        $http.post('http://localhost:5000/admin/signin', data).then(function (response) {
             
             
             data = response.data;
@@ -28,20 +32,38 @@ var indexController = app.controller("indexController", function ($scope, $windo
                 'refresh_token' : data.refresh_token,
                 'role' : data.role
             };
+            
             $window.localStorage.nxtlabUser = JSON.stringify(temp);
-
+            $scope.logged = true;
             $http.defaults.headers.common.Authorization = 'Bearer ' + data.access_token;
+            
+            
+//        $http.get('http://localhost:5000/admin/secret').then(function (response) {
+//            data = response.data;
+//            console.log(data);
+//        }, function (errResponse) {
+//            console.log(errResponse);
+//        });
+            
             if(data.role == "admin"){
                $location.path( "/admin" );
             }
-            
-            
+                
         }, function (errResponse) {
             console.log(errResponse);
         });
-
+        
     };
     
+    $scope.logout = function(){
+        console.log("logout called!");
+        $window.localStorage.removeItem('nxtlabUser');
+        // call logout apis
+        $location.path( "/" );
+    }
+    
+    $window.localStorage.removeItem('nxtlabUser');
+
     
     
 });

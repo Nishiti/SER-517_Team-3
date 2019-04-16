@@ -1,20 +1,32 @@
 app.controller("adminController", function ($scope, $window, $http, $location) {
 
-    var brand = [{
-        name: "Brand 1",
-        email: "abc@xyz.com",
-        service: "Collab",
-    }, {
-        name: "Brand 2",
-        email: "abc@xyz.com",
-        service: "Gifting",
-    }, {
-        name: "Brand 3",
-        email: "abc@xyz.com",
-        service: "Digital Strategy",
-    }];
+    $scope.searchBrands = function(){
+        $scope.filterBrand = {};
 
-    $scope.brands = brand;
+        $http.post('http://localhost:5000/admin/getBrands', $scope.filterBrand).then(function (response) {
+            $scope.brands = response.data.data;
+
+//            var brand = [{
+//                company_name: "Brand 1",
+//                email: "abc@xyz.com",
+//                address: "Collab",
+//            }, {
+//                company_name: "Brand 2",
+//                email: "abc@xyz.com",
+//                address: "Gifting",
+//            }, {
+//                company_name: "Brand 3",
+//                email: "abc@xyz.com",
+//                address: "Digital Strategy",
+//            }];
+
+            //console.log($scope.brands);
+
+        }, function (errResponse) {
+            console.log(errResponse);
+        });
+
+    }
 
 
     $scope.adminSignup = function(){
@@ -30,32 +42,39 @@ app.controller("adminController", function ($scope, $window, $http, $location) {
         };
 
         $http.post('http://localhost:5000/admin/signup', data).then(function (response) {
-            
-            
             data = response.data;
             console.log(data);
-            var temp = {
-                'access_token':data.access_token,
-                'email' : data.email,
-                'refresh_token' : data.refresh_token,
-                'role' : data.role
-            };
-            $window.localStorage.nxtlabUser = JSON.stringify(temp);
+            $location.path( "/login" );
 
-            $http.defaults.headers.common.Authorization = 'Bearer ' + data.access_token;
-            if(data.role == "admin"){
-               $location.path( "/admin" );
-            }
-            
-            
         }, function (errResponse) {
             console.log(errResponse);
         });
 
     };
 
-
-
+    $scope.removeBrand = function(i){
+        var brand = $scope.brands[i];
+        
+        data = {
+          "email" : brand.email  
+        };
+        
+        $scope.brands.splice(i, 1);
+        
+        
+        $http.post('http://localhost:5000/admin/removebrand', data).then(function (response) {
+            data = response.data;
+            console.log(data);
+            //$scope.brands = $scope.brands.filter(item => item !== $scope.brand);
+            
+        }, function (errResponse) {
+            console.log(errResponse);
+        });        
+        
+    }
+    
+    
+    $scope.searchBrands();
 
 
 });

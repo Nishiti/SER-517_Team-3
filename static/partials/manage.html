@@ -3,22 +3,23 @@
 
         <!-- Post -->
         <section class="posts">
-            <div class="parts" ng-controller="adminController">
+            <div class="parts">
                 <h2>Brands</h2>
-
-                <table>
+                <div ng-show="brands.length < 1">There are no brands in database</div>
+                <table ng-show = "brands.length > 0">
                     <thead>
                     <tr>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>Interested in</th>
+                        <th>Address </th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="brand in brands track by $index" ng-click="showBrand(brand)">
-                        <td>{{ brand.name }}</td>
+                    <tr ng-repeat="brand in brands">
+                        <td>{{ brand.company_name }}</td>
                         <td>{{ brand.email }}</td>
-                        <td>{{ brand.service }}</td>
+                        <td>{{ brand.address }}</td>
+                        <td><button ng-click=removeBrand($index) type="button">remove</button></td>
                     </tr>
                     </tbody>
                 </table>
