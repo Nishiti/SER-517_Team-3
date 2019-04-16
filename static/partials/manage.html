@@ -5,6 +5,21 @@
         <section class="posts">
             <div class="parts">
                 <h2>Brands</h2>
+                <!-- Comment out the code within the comments and the code for list display disappears dunno what to do here?-->
+                <!--<form method="post" action="/action_page.php" class="alt">-->
+                    <div class="row uniform" ng-app="adminApp" ng-controller="adminCtrl">
+                        <div class="6u 12u$(xsmall)">
+                            <h3><left>Search for Brands</left></h3>
+                        </div>
+                        <div class="6u 12u$(xsmall">
+                            <ul class="actions">
+                                <input for="brandsearch" type="text" name="search" placeholder="Search...">
+                                <button type="submit" style="display:none">hidden submit</button>
+                            </ul>
+                            
+                            </div>
+                    </div>
+                <!--</form>-->
                 <div ng-show="brands.length < 1">There are no brands in database</div>
                 <table ng-show = "brands.length > 0">
                     <thead>
