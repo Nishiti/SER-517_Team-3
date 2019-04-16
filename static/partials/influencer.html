@@ -8,7 +8,7 @@
         <center>
             <h2><u>Sign Up Form</u></h2>
         </center>
-        <div class="alt">
+        <form name="signupForm" method="post" action="#" class="alt">
             <div class="6u 12u$(xsmall) form-group">
                 <input type="text" name="fname" id="fname" ng-model="fname" placeholder="First Name" required="required"/>
                 <div ng-if="signupForm.fname.$touched || signupSubmitted">
@@ -127,7 +127,7 @@
             <ul class="actions">
                 <li><input type="submit" value="Sign-up" ng-click="updateinflu()"/></li>
             </ul>
-        </div>
+        </form>
         <hr />
         <!-- Social Media Links -->
         <center>
