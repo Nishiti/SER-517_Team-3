@@ -1,3 +1,4 @@
+from flask_jwt_extended import jwt_required
 from flask_restful import Resource
 from flask import jsonify, request, make_response
 from nxstlab.brand import Brand
@@ -5,6 +6,7 @@ from flask_api import status
 from nxstlab.models import Influencer
 
 class AdminRemoveBrandAPI(Resource):
+    @jwt_required
     def post(self):
         data = request.get_json(force=True)
         if not Brand.objects(email=data['email']):
