@@ -1,9 +1,3 @@
-<script src="/static/assets/js/jquery.min.js"></script>
-<script src="/static/assets/js/jquery.scrollex.min.js"></script>
-<script src="/static/assets/js/jquery.scrolly.min.js"></script>
-<script src="/static/assets/js/influencerData.js"></script>
-
-
 <!-- Main -->
 <div id="main" ng-app="app" ng-controller="influencerController">
 
@@ -14,7 +8,7 @@
         <center>
             <h2><u>Sign Up Form</u></h2>
         </center>
-        <form name="signupForm" method="post" action="#" class="alt">
+        <div class="alt">
             <div class="6u 12u$(xsmall) form-group">
                 <input type="text" name="fname" id="fname" ng-model="fname" placeholder="First Name" required="required"/>
                 <div ng-if="signupForm.fname.$touched || signupSubmitted">
@@ -87,61 +81,53 @@
                 <table class="table-wrapper" id="page">
                     <tbody>
                     <tr>
-                        <td><img src="/static/images/searchFilterImages/animals.jpg" class="image1"/></td>
-                        <td><img src="/static/images/searchFilterImages/art.jpg" class="image2"/></td>
-                        <td><img src="/static/images/searchFilterImages/books.jpg" class="image3" /> </td>
-                        <td><img src="/static/images/searchFilterImages/science.jpg" class="image4" /></td>
-                    </tr>
-                    <tr >
-                        <td><img src="/static/images/searchFilterImages/tech.jpg" class="image5" /></td>
-                        <td><img src="/static/images/searchFilterImages/business.jpg" class="image6" /></td>
-                        <td><img src="/static/images/searchFilterImages/causes.jpg" class="image7" /></td>
-                        <td><img src="/static/images/searchFilterImages/comedy.jpg" class="image8" /></td>
-                    </tr>
-                    <tr >
-                        <td><img src="/static/images/searchFilterImages/dance.jpg" class="image9" /></td>
-                        <td><img src="/static/images/searchFilterImages/sport.jpg" class="image10" /></td>
-                        <td><img src="/static/images/searchFilterImages/education.jpg" class="image11"  /></td>
-                        <td><img src="/static/images/searchFilterImages/style.jpg" class="image12" /></td>
-                    </tr>
-                    <tr >
-                        <td><img src="/static/images/searchFilterImages/entertainment.jpg" class="image13" /></td>
-                        <td><img src="/static/images/searchFilterImages/beauty.jpg" class="image14" /></td>
-                        <td><img src="/static/images/searchFilterImages/photograph.jpg" class="image15"  /></td>
-                        <td><img src="/static/images/searchFilterImages/family.jpg" class="image16" /></td>
-                    </tr>
-                    <tr>
-                        <td><img src="/static/images/searchFilterImages/fashion.jpg" class="image17" /></td>
-                        <td><img src="/static/images/searchFilterImages/fitness.jpg" class="image18" /></td>
-                        <td><img src="/static/images/searchFilterImages/tv.jpg" class="image19" /></td>
-                        <td><img src="/static/images/searchFilterImages/film.jpg" class="image20" /></td>
-                    </tr>
-                    <tr >
-                        <td><img src="/static/images/searchFilterImages/DIY.jpg" class="image21" /></td>
-                        <td><img src="/static/images/searchFilterImages/food.jpg" class="image22" /></td>
-                        <td><img src="/static/images/searchFilterImages/gaming.jpg" class="image23" /></td>
-                        <td><img src="/static/images/searchFilterImages/lifestyle.jpg" class="image24" /></td>
-                    </tr>
-                    <tr >
-                        <td><img src="/static/images/searchFilterImages/politics.jpg" class="image25" /></td>
-                        <td><img src="/static/images/searchFilterImages/news.jpg" class="image26" /></td>
-                        <td><img src="/static/images/searchFilterImages/journalism.jpg" class="image27" /></td>
-                        <td><img src="/static/images/searchFilterImages/travel.jpg" class="image28" /></td>
-                    </tr>
-                    <tr>
-                        <td><img src="/static/images/searchFilterImages/radio.jpg" class="image29" /></td>
-                        <td><img src="/static/images/searchFilterImages/music.jpg" class="image30" /></td>
+                    <td ng-repeat="x in records1">
+                        <img src={{x.path}} class= {{x.class}} ng-click='addClass1(x.index)'/>
 
+                    </td></tr>
+                    <tr>
+                        <td ng-repeat="x in records2">
+                            <img src={{x.path}} class= {{x.class}} ng-click='addClass2(x.index)'/>
 
-                    </tr>
+                        </td></tr>
+                    <tr>
+                        <td ng-repeat="x in records3">
+                            <img src={{x.path}} class= {{x.class}} ng-click='addClass3(x.index)'/>
+
+                        </td></tr>
+                    <tr>
+                        <td ng-repeat="x in records4">
+                            <img src={{x.path}} class= {{x.class}} ng-click='addClass4(x.index)'/>
+
+                        </td></tr>
+                    <tr>
+                        <td ng-repeat="x in records5">
+                            <img src={{x.path}} class= {{x.class}} ng-click='addClass5(x.index)'/>
+
+                        </td></tr>
+                    <tr>
+                        <td ng-repeat="x in records6">
+                            <img src={{x.path}} class= {{x.class}} ng-click='addClass6(x.index)'/>
+
+                        </td></tr>
+                    <tr>
+                        <td ng-repeat="x in records7">
+                            <img src={{x.path}} class= {{x.class}} ng-click='addClass7(x.index)'/>
+
+                        </td></tr>
+                    <tr>
+                        <td ng-repeat="x in records8">
+                            <img src={{x.path}} class= {{x.class}} ng-click='addClass8(x.index)'/>
+
+                        </td></tr>
 
                     </tbody>
                 </table>
             </div>
             <ul class="actions">
-                <li><input type="submit" value="Submit"  ng-click="updateinflu()"/></li>
+                <li><input type="submit" value="Sign-up" ng-click="updateinflu()"/></li>
             </ul>
-        </form>
+        </div>
         <hr />
         <!-- Social Media Links -->
         <center>
