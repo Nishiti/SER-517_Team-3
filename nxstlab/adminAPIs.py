@@ -84,8 +84,8 @@ class AdminApproveBrandSignupAPI(Resource):
 class AdminGetBrandsWithFilterAPI(Resource):
     def post(self):
         data = request.get_json(force=True)
-
-        brands = [brand for brand in Brand.objects(__raw__=data)]
+        name = data['company_name']
+        brands = [brand for brand in Brand.objects(company_name__contains=name)]
         res = []
         for brand in brands:
             temp = dict()

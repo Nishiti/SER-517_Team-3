@@ -1,26 +1,17 @@
 app.controller("adminController", function ($scope, $window, $http, $location) {
 
     $scope.searchBrands = function(){
-        $scope.filterBrand = {};
+        
+        if ($scope.brandName == undefined){
+            $scope.brandName = "";
+        }
+        
+        $scope.filterBrand = {
+            'company_name' : $scope.brandName 
+        };
 
         $http.post('http://localhost:5000/admin/getBrands', $scope.filterBrand).then(function (response) {
             $scope.brands = response.data.data;
-
-//            var brand = [{
-//                company_name: "Brand 1",
-//                email: "abc@xyz.com",
-//                address: "Collab",
-//            }, {
-//                company_name: "Brand 2",
-//                email: "abc@xyz.com",
-//                address: "Gifting",
-//            }, {
-//                company_name: "Brand 3",
-//                email: "abc@xyz.com",
-//                address: "Digital Strategy",
-//            }];
-
-            //console.log($scope.brands);
 
         }, function (errResponse) {
             console.log(errResponse);
