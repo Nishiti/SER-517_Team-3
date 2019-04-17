@@ -50,15 +50,15 @@
                   </form>
                   </center>
               </div>
-              <a class="prev" onclick="plusCards(-1)">&#10094;</a>
-              <a class="next" onclick="plusCards(1)">&#10095;</a>
+              <a class="prev" onclick="plusCards(-1, 0)">&#10094;</a>
+              <a class="next" onclick="plusCards(1, 0)">&#10095;</a>
               </div>
             </article>
     <script>showCards(cardIndex);</script>
             <article>
                 <h2>Campaign Requests</h2>
                 <br>
-            <div class="camps-container">
+            <div class="cards-container">
                 <div class="myCamps fade">
                     <center>
                     <form class="card-container">
@@ -101,12 +101,32 @@
                         </form>
                     </center>
                 </div>
-                <a class="prev" onclick="plusCamps(-1)">&#10094;</a>
-                <a class="next" onclick="plusCamps(1)">&#10095;</a>
+                <a class="prev" onclick="plusCards(-1, 1)">&#10094;</a>
+                <a class="next" onclick="plusCards(1, 1)">&#10095;</a>
             </div>
             </article>
-            <script>showCamps(campIndex);</script>
         </section>
     </div>
+<script>
+    var cardIndex = [1,1];
+    var cardId = ["myCards", "myCamps"]
+    showCards(1, 0);
+    showCards(1, 1);
+    
+    function plusCards(n, no) {
+        showCards(cardIndex[no] += n, no);
+    }
+
+function showCards(n, no) {
+    var i;
+    var x = document.getElementsByClassName(cardId[no]);
+    if (n > x.length) {cardIndex[no] = 1}
+    if (n < 1) {cardIndex[no] = x.length}
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+    }
+    x[cardIndex[no]-1].style.display = "block";
+}
+</script>
 
 
