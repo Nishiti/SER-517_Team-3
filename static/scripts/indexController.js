@@ -1,6 +1,8 @@
 // index contorller will deal with only functions required on index page
 var indexController = app.controller("indexController", function ($scope, $window, $http,$location) {
-
+    
+    $scope.needlogin = true;
+    
     $scope.companyName = "nxstlab";
     
     function checkIfSessionActive(){
@@ -34,7 +36,7 @@ var indexController = app.controller("indexController", function ($scope, $windo
             };
             
             $window.localStorage.nxtlabUser = JSON.stringify(temp);
-            $scope.logged = true;
+            $scope.needlogin = false;
             $http.defaults.headers.common.Authorization = 'Bearer ' + data.access_token;
             
             
@@ -54,16 +56,6 @@ var indexController = app.controller("indexController", function ($scope, $windo
         });
         
     };
-    
-    $scope.logout = function(){
-        console.log("logout called!");
-        $window.localStorage.removeItem('nxtlabUser');
-        // call logout apis
-        $location.path( "/" );
-    }
-    
-    $window.localStorage.removeItem('nxtlabUser');
-
     
     
 });
