@@ -21,13 +21,12 @@
 			<center>
 				<h2><u>Campaign Request</u></h2>
 			</center>
-			<form method="post" action="#" class="alt">
 				<div class="row uniform">
 					<div class="6u 12u$(xsmall)">
-						<input type="text" name="demo-campaign-name" id="demo-name" value="" placeholder="Campaign Name" />
+						<input type="text" name="campaignName" id="campaignName" ng-model="campaignName" value="" placeholder="Campaign Name" />
 					</div>
 					<div class="6u 12u$(xsmall)">
-						<input type="text" name="demo-email" id="demo-email" value="" placeholder="Email" />
+						<input type="text" name="campaignEmail" id="campaignEmail" ng-model="campaignEmail" value="" placeholder="Email" />
 					</div>
 					<div class="6u$ 12u$(xsmall)">
 					<!--	<input type="text" name="demo-links" id="demo-links" value="" placeholder="Social Media Links" />-->
@@ -36,19 +35,19 @@
 						<div class="field">
 							<h3>Type of Campaign</h3>
 							<div class="6u 12u$(small)">
-								<input type="radio" id="demo-post" name="demo-campaign" value="gift">
-								<label for="demo-post">Gifting Campaign</label>
+								<input type="radio" id="cType" name="cType" value="gift" ng-model="cType">
+								<label for="cType">Gifting Campaign</label>
 							</div>
 							<div class="6u 12u$(small)">
-								<input type="radio" id="demo-product" name="demo-campaign" value="campaign">
-								<label for="demo-product">Campaign</label>
+								<input type="radio" id="cType" name="cType" value="campaign" ng-model="cType">
+								<label for="cType">Campaign</label>
 							</div>
 							<h3>Are you offering Gift Code to the Influencers? </h3>
 							<div class="6u 12u$(small)">
-								<input type="radio" id="demo-code" name="demo-campaign2" value="giftcode">
-								<label for="demo-code">Yes</label>
-								<input type="radio" id="demo-no-code" name="demo-campaign2" value="nogiftcode">
-								<label for="demo-no-code">No</label>
+								<input type="radio" id="gCode" name="gCode" value="giftcode" ng-model="gCode">
+								<label for="gCode">Yes</label>
+								<input type="radio" id="gCode" name="gCode" value="nogiftcode" ng-model="gCode">
+								<label for="gCode">No</label>
 
 						</div>
 					</div>
@@ -60,14 +59,13 @@
 					<!-- Break -->
 					<div class="12u$">
 						<h3>Campaign Information and Requirements</h3>
-						<textarea name="demo-message" id="demo-message" placeholder="Enter here" rows="6"></textarea>
+						<textarea name="cInfo" id="cInfo" placeholder="Enter here" rows="6" ng-model="cInfo"></textarea>
 					</div>
 					<ul class="actions">
 						<br>
-						<li><input type="submit" value="Submit Campaign Request" /></li>
-					</ul>
+						<li><input type="button" ng-click=submitCampRequest() value="Submit Campaign Request"/></li>
+						</ul>
 				</div>
-			</form>
 
 
 
