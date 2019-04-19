@@ -3924,6 +3924,17 @@
   box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.2);
 }
 
+.signup-container {
+	max-width: 1250px;
+	position: static;
+	clear: both;
+  background-color: white;
+  border: 0.4px solid grey;
+  border-radius: 5px;
+  padding: 0;
+  box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.4);
+}
+
 .card-container {
 	box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.3);
 	max-width: 300px;
@@ -3935,6 +3946,14 @@
 /* Full-width input fields */
 .form-container input[type=text], .form-container input[type=password], .form-container input[type=message] {
   max-width: 580px;
+  position: static;
+  right: 0px;
+  border: 0.2px solid grey;
+  background: #f1f1f1;
+}
+
+.signup-container input[type=text], .form-container input[type=password], .form-container input[type=message] {
+  max-width: 1180px;
   position: static;
   right: 0px;
   border: 0.2px solid grey;
