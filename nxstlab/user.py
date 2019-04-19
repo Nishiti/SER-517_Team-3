@@ -1,11 +1,11 @@
 from mongoengine import Document
-from mongoengine import StringField, EmailField, BooleanField, IntField
+from mongoengine import StringField, EmailField, BooleanField
 from passlib.hash import pbkdf2_sha256 as sha256
 
-class Admin(Document):
+class User(Document):
     email = EmailField(required=True, unique=True)
     password = StringField(max_length=160, required=True)
-    # confirm_password = StringField(max_length=160, required=True)
+    role = StringField(max_length=30)
     authenticated=BooleanField(default=False)
 
     def is_authenticated(self):

@@ -2,24 +2,27 @@ from flask_restful import Resource
 from flask import jsonify, request, make_response
 from nxstlab.admin import Admin
 from flask_api import status
-from werkzeug.security import generate_password_hash, check_password_hash
-from flask_jwt_extended import (create_access_token, create_refresh_token, jwt_required, jwt_refresh_token_required, get_jwt_identity, get_raw_jwt)
+from flask_jwt_extended import create_access_token, create_refresh_token
+from nxstlab.user import User
+
 
 class AdminSignupAPI(Resource):
     def post(self):
       print('AdminSignup!')
       data = request.get_json(force=True)
-
       if Admin.objects(email=data['email']):
         return make_response(jsonify(role='admin', message='Email Address: ' + data['email'] + ' already exists!'),
                              status.HTTP_409_CONFLICT)
       else:
 
         admin = Admin(
-          first_name = data['first_name'],
-          last_name = data['last_name'],
           email = data['email'],
           password=Admin.generate_hash(data['password'])
+        ).save()
+        User(
+            email=data['email'],
+            password=User.generate_hash(data['password']),
+            role='admin'
         ).save()
         try:
             access_token = create_access_token(identity=data['email'])

@@ -2,32 +2,34 @@
     <div id="main">
 
         <!-- Post -->
+        <article class="post featured">
         <section class="posts">
-            <div class="parts">
-                <h2>Brands</h2>
-                <!-- Comment out the code within the comments and the code for list display disappears dunno what to do here?-->
+            <div>
+                <h2 style="margin-top: 0px">Brands</h2>
+
                 
                 <!--<form method="post" action="/action_page.php" class="alt">-->
                     <div class="row uniform">
                         <div class="6u 12u$(xsmall)">
-                            <h3><left>Search for Brands</left></h3>
+                            <!--<h3><left>Search for Brands</left></h3>-->
                         </div>
                     </div>
-                    <div class="row uniform">
-                        <div class="6u 12u$(xsmall">
+
+
                             <ul class="actions">
-                                <input  ng-model = "brandName" for="brandsearch" type="text" name="search" placeholder="Search by name">
-                                <button ng-click="searchBrands()" type="submit">Find</button>
-                            </ul>                            
-                        </div>
-                    </div>
+                                <input  ng-model = "brandName" for="brandsearch" type="text" name="search" placeholder="Search by brand name" style="width: 60%; display: inline; ">
+                                <button ng-click="searchBrands()" type="submit" style="margin-top: 10px; display: inline" >Find</button>
+                            </ul>
+
+
+            </div>
                 <!--</form>-->
-                
+            <div>
                 <div ng-show="brands.length < 1">There are no brands with this name in database</div>
                 <table ng-show = "brands.length > 0">
                     <thead>
                     <tr>
-                        <th>Name</th>
+                        <th align="center">Name</th>
                         <th>Email</th>
                         <th>Address </th>
                     </tr>
@@ -37,23 +39,17 @@
                         <td>{{ brand.company_name }}</td>
                         <td>{{ brand.email }}</td>
                         <td>{{ brand.address }}</td>
+                        <td><button type="button">deactivate</button></td>
                         <td><button ng-click=removeBrand($index) type="button">remove</button></td>
                     </tr>
                     </tbody>
                 </table>
+
             </div>
-            <article>
-                <h2><a href="#">Influencers</a></h2>
-                <ul class="displayLists">
-                    <li><a onclick="getInfluencerDetails()">Influencer 1</a></li>
-                    <li><a onclick="getInfluencerDetails()">Influencer 2</a></li>
-                    <li><a onclick="getInfluencerDetails()">Influencer 3</a></li>
-                </ul>
-            </article>
         </section>
     </div>
     <!-- Table -->
-
+</article>
 </div>
 
 </body>
