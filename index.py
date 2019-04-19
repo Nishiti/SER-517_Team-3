@@ -18,6 +18,8 @@ from nxstlab.BrandCampaignAPI import BrandCampaignRequestAPI
 from nxstlab.BrandCampaignRequestApprove import BrandCampaignRequestApproveAPI
 from nxstlab.AdminSignoutAPI import UserLogoutAccess, UserLogoutRefresh
 from flask_jwt_extended import JWTManager
+
+from nxstlab.models import Influencer
 from nxstlab.revokedtoken import RevokedToken
 from flask_cors import CORS
 import os
@@ -47,6 +49,10 @@ configFile.close()
 print(config)
 connect(config['dbname'], host=config['host'])
 
+i = Influencer.objects()
+i.delete()
+
+
 @app.route("/")
 def hello():
     return send_file('templates/index.html')
@@ -58,7 +64,7 @@ def check_if_token_in_blacklist(decrypted_token):
     return RevokedToken.is_jti_blacklisted(jti)
 
 api.add_resource(BrandAPI, '/brand')
-api.add_resource(UserSignInAPI, '/admin/signin')
+api.add_resource(UserSignInAPI, '/user/signin')
 api.add_resource(AdminSignupAPI, '/admin/signup')
 api.add_resource(AdminRemoveBrandAPI, '/admin/removebrand')
 api.add_resource(AdminDeactivateBrandAPI, '/admin/deactivatebrand')
