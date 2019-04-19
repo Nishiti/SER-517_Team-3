@@ -1,7 +1,6 @@
 from flask_restful import Resource
 from flask import jsonify, request, make_response
 from flask_api import status
-from nxstlab.admin import Admin
 from nxstlab.user import User
 from flask_jwt_extended import (create_access_token, create_refresh_token, jwt_required, jwt_refresh_token_required, get_jwt_identity)
 

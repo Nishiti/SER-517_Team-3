@@ -5,7 +5,7 @@ from mongoengine import connect
 
 from nxstlab.admin import Admin
 from nxstlab.adminSignupAPI import AdminSignupAPI
-from nxstlab.adminSignInAPI import UserSignInAPI, SecretResource
+from nxstlab.UserSignInAPI import UserSignInAPI, SecretResource
 from nxstlab.brandAPI import BrandAPI
 from nxstlab.adminAPIs import AdminDeactivateBrandAPI
 from nxstlab.adminAPIs import AdminApproveBrandSignupAPI
