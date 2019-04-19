@@ -38,10 +38,10 @@
                     <p ng-show="signupForm.confirm_password.$error.matchPassword && !signupForm.confirm_password.$error.required" class="help-block">Confirm password didn't match</p>
                 </div>
             </div>
-            <div class="12u$">
+            <br>
+<div class="12u$">
                 <div class="field">
                     <h3>Kind of a big deal on... ?</h3>
-                    <div class="6u 12u$(small)">
                         <input type="checkbox" id="website" name="website" ng-model="big_deal.website">
                         <label for="website">Own website/ Blog</label>
                         <input type="checkbox" id="insta" name="insta" ng-model="big_deal.insta">
@@ -52,21 +52,22 @@
                         <label for="facebook">Facebook</label>
                         <input type="checkbox" id="other" name="other" ng-model="big_deal.other">
                         <label for="other">Other</label>
-                    </div>
                 </div>
             </div>
+<br>
             <div class="12u$">
-                <h3>Website and Social Media Handles?</h3>
-                <textarea name="socialmedia" id="socialmedia" placeholder="Enter here" rows="1" ng-model="socialmedia"></textarea>
+                <textarea name="socialmedia" id="socialmedia" placeholder="Enter Website and Social Media Handles here" rows="1" ng-model="socialmedia"></textarea>
             </div>
+            <br>
             <div class="12u$">
-                <h3>Number of followers</h3>
                 <select name="followers" id="followers" ng-model="followers">
+                    <option value="" selected disabled><b>Click to Select No. of Followers</b></option>
                     <option value="low">500-2k</option>
                     <option value="moderate">2k-50k</option>
                     <option value="high">50k+</option>
                 </select>
             </div>
+            <br>
             <div class="12u$">
                 <h3>Area of Interest</h3>
                 <table class="table-wrapper" id="page">
