@@ -5,6 +5,9 @@ from flask_api import status
 from werkzeug.security import check_password_hash
 from werkzeug.utils import redirect
 
+from nxstlab.user import User
+
+
 class BrandAPI(Resource):
     def post(self):
         data = request.get_json(force=True)
@@ -14,11 +17,15 @@ class BrandAPI(Resource):
         else:
             Brand(
               company_name=data['company_name'],
-              address=data['address'],
+              company_address=data['company_address'],
               email=data['email'],
               password=data['password']
             ).save()
-
+            User(
+                email=data['email'],
+                password=User.generate_hash(data['password']),
+                role='influencer'
+            ).save()
             return make_response(jsonify(role='brand', message='brand added successfully in database'),
                              status.HTTP_201_CREATED)
 
