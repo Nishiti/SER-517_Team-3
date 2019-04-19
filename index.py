@@ -5,7 +5,7 @@ from mongoengine import connect
 
 from nxstlab.admin import Admin
 from nxstlab.adminSignupAPI import AdminSignupAPI
-from nxstlab.adminSignInAPI import AdminSignInAPI, SecretResource
+from nxstlab.adminSignInAPI import UserSignInAPI, SecretResource
 from nxstlab.brandAPI import BrandAPI
 from nxstlab.adminAPIs import AdminDeactivateBrandAPI
 from nxstlab.adminAPIs import AdminApproveBrandSignupAPI
@@ -58,7 +58,7 @@ def check_if_token_in_blacklist(decrypted_token):
     return RevokedToken.is_jti_blacklisted(jti)
 
 api.add_resource(BrandAPI, '/brand')
-api.add_resource(AdminSignInAPI, '/admin/signin')
+api.add_resource(UserSignInAPI, '/admin/signin')
 api.add_resource(AdminSignupAPI, '/admin/signup')
 api.add_resource(AdminRemoveBrandAPI, '/admin/removebrand')
 api.add_resource(AdminDeactivateBrandAPI, '/admin/deactivatebrand')
