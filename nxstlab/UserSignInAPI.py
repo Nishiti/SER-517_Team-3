@@ -11,8 +11,8 @@ class UserSignInAPI(Resource):
         data = request.get_json(force=True)
         user = User.objects(email=data['email']).first()
         print('password in db = ', data['password'])
-        print('password received = ', user['password'])
         if user:
+            print('password received = ', user['password'])
             if User.verify_hash(data['password'], user['password']):
                 print('password match!')
                 user.authenticated=True
