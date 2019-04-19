@@ -20,6 +20,9 @@ app.config(['$routeProvider', function ($routeProvider) {
     }).when('/manage', {
         templateUrl: 'static/partials/manage.html',
         controller: "adminController"
+    }).when('/influmanage', {
+        templateUrl: 'static/partials/influmanage.html',
+        controller: "adminController"
     }).when('/blogin', {
         templateUrl: 'static/partials/blogin.html',
         controller: "brandController"
