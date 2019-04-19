@@ -102,8 +102,9 @@ class AdminGetBrandsWithFilterAPI(Resource):
 class AdminGetInfluencersWithFilterAPI(Resource):
     def post(self):
         data = request.get_json(force=True)
-
-        influencers = [influencer for influencer in Influencer.objects(__raw__=data)]
+        name = data['name']
+        influencers = [influencer for influencer in Influencer.objects(first_name__contains=name)]
+        influencers.extend([influencer for influencer in Influencer.objects(last_name__contains=name)])
         res = []
         for user in influencers:
             temp = dict()
