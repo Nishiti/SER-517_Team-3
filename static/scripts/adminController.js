@@ -19,6 +19,46 @@ app.controller("adminController", function ($scope, $window, $http, $location) {
 
     }
 
+    $scope.searchInfluencers = function(){
+
+        if ($scope.influencerName == undefined){
+            $scope.influencerName = "";
+        }
+
+        $scope.filterInfluencers = {
+            'name' : $scope.influencerName
+        };
+
+        $http.post('http://localhost:5000/admin/getInfluencers', $scope.filterInfluencers).then(function (response) {
+            $scope.influencers = response.data.data;
+
+        }, function (errResponse) {
+            console.log(errResponse);
+        });
+
+    }
+
+    $scope.removeInfluencer = function(i){
+        var influencer = $scope.influencers[i];
+
+        data = {
+            "email" : influencer.email
+        };
+
+        $scope.influencers.splice(i, 1);
+
+
+        $http.post('http://localhost:5000/admin/removeInfluencers ', data).then(function (response) {
+            data = response.data;
+            console.log(data);
+            //$scope.brands = $scope.brands.filter(item => item !== $scope.brand);
+
+        }, function (errResponse) {
+            console.log(errResponse);
+        });
+
+    }
+
 
     $scope.adminSignup = function(){
 
