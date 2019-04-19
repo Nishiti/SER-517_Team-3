@@ -12,7 +12,9 @@ class RevokedToken(Document):
         print('add')'''
 
     @classmethod
-    def is_jti_blacklisted(jti):
-        query = Admin.objects(jti=jti).first()
+    def is_jti_blacklisted(self, jti):
+        print('###################is_jti_blacklisted...', jti)
+        print('###RT objects = ', RevokedToken.objects())
+        query = RevokedToken.objects(jti=jti).first()
         print('query = ', query)
         return True if query else False

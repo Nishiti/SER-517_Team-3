@@ -6,7 +6,7 @@ from flask_api import status
 from nxstlab.models import Influencer
 
 class AdminRemoveBrandAPI(Resource):
-    #@jwt_required
+    @jwt_required
     def post(self):
         data = request.get_json(force=True)
         if not Brand.objects(email=data['email']):
