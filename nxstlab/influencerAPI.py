@@ -15,19 +15,17 @@ class InfluencerSignUpAPI(Resource):
                                  status.HTTP_409_CONFLICT)
         else:
             print("Influencer Signup!")
-            influencer = Influencer(
+            influencer = Influencer()
+            for key in data:
+                influencer[key] = data[key]
+            influencer.save()
+            '''influencer = Influencer(
                 first_name=data['first_name'],
                 last_name=data['last_name'],
                 email=data['email'],
                 password=data['password'],
                 confirm_password=data['confirm_password']
             ).save()
-            User(
-                email=data['email'],
-                password=User.generate_hash(data['password']),
-                role='influencer'
-            ).save()
-
             if 'big_deal_on_option1' in data:
                 influencer.save(big_deal_on_option1=data['big_deal_on_option1'])
             if 'big_deal_on_option2' in data:
@@ -44,7 +42,12 @@ class InfluencerSignUpAPI(Resource):
             if 'followers' in data:
                 influencer.save(followers=data['followers'])
             if 'areas_of_interest' in data:
-                influencer.save(areas_of_interest=data['areas_of_interest'])
+                influencer.save(areas_of_interest=data['areas_of_interest'])'''
+            User(
+                email=data['email'],
+                password=User.generate_hash(data['password']),
+                role='influencer'
+            ).save()
 
             return make_response(jsonify(role='influencer', message='Influencer added to the database'),
                                  status.HTTP_201_CREATED)
