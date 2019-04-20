@@ -63,9 +63,14 @@ app.controller("adminController", function ($scope, $window, $http, $location) {
         });        
         
     }
+
+    $http.get("http://localhost:5000/brandcampaignrequest")
+      .then(function(response) {
+          $scope.campaignData = response.data;
+      });
+
     
-    
-    $scope.searchBrands();
+
 
 
 });

@@ -589,6 +589,7 @@ app.controller("influencerController", function ($scope, $window, $http, $locati
             if (response.data)
 
                 $scope.msg = "Post Data Submitted Successfully!";
+                console.log($scope.msg);
 
         }, function (response) {
 
