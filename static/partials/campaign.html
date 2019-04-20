@@ -18,9 +18,6 @@
 					<div class="6u 12u$(xsmall)">
 						<input type="text" name="campaignEmail" id="campaignEmail" ng-model="campaignEmail" value="" placeholder="Email" />
 					</div>
-					<div class="6u$ 12u$(xsmall)">
-					<!--	<input type="text" name="demo-links" id="demo-links" value="" placeholder="Social Media Links" />-->
-					</div>
 					<div class="12u$">
 						<div class="field">
 							<h3>Type of Campaign</h3>
@@ -30,13 +27,13 @@
 								<input type="radio" id="cType2" name="cType" value="false" ng-model="cType2">
 								<label for="cType2">Campaign</label>
 							</div>
+                            <h4></h4>
 							<h3>Are you offering Gift Code to the Influencers? </h3>
 							<div class="6u 12u$(small)">
 								<input type="radio" id="gCode1" name="gCode" value="true" ng-model="gCode">
 								<label for="gCode1">Yes</label>
 								<input type="radio" id="gCode2" name="gCode" value="false" ng-model="gCode">
 								<label for="gCode2">No</label>
-
 						</div>
 					</div>
 					<!-- Break -->
@@ -45,9 +42,14 @@
 						<textarea name="demo-message" id="demo-message" placeholder="Enter here" rows="1"></textarea>
 					</div>-->
 					<!-- Break -->
+                      <h4></h4>
 					<div class="12u$">
 						<h3>Campaign Information and Requirements</h3>
-						<textarea name="cInfo" id="cInfo" placeholder="Enter here" rows="6" ng-model="cInfo"></textarea>
+                        <p> Specify details about the following:- Any Specific wording or desired phrases - Hashtags to include
+                - Number of Influencers Desired
+                        - Number of posts
+                    - Possible long term partnership </p>
+						<textarea name="cInfo" id="cInfo" placeholder="Enter here" rows="5" ng-model="cInfo"></textarea>
 					</div>
 					<ul class="actions">
 						<br>
