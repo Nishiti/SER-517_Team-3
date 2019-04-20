@@ -21,9 +21,10 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="influencers in influencers">
+                    <tr ng-repeat="influencers in influencers ">
                         <td>{{ influencers.first_name }}</td>
                         <td>{{ influencers.last_name }}</td>
+                        <td>{{ influencers.email }}</td>
                         <td>{{ influencers.website_social_media_handles }}</td>
 
                         <td><button type="button">deactivate</button></td>

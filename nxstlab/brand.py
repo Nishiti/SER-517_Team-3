@@ -1,5 +1,5 @@
 from mongoengine import Document
-from mongoengine import StringField, EmailField
+from mongoengine import StringField, EmailField, BooleanField
 from flask_login import UserMixin
 
 
@@ -9,4 +9,4 @@ class Brand(UserMixin, Document):
     email = EmailField(required=True, unique=True)
     password = StringField(min_length=6, max_length=60, required=True)
     confirm_password = StringField(min_length=6, max_length=60, required=True)
-
+    isapproved = BooleanField(null=False, default=False)

@@ -19,7 +19,8 @@ class BrandAPI(Resource):
               company_name=data['company_name'],
               address=data['address'],
               email=data['email'],
-              password=data['password']
+              password=data['password'],
+              confirm_password=data['confirm_password']
             ).save()
             User(
                 email=data['email'],

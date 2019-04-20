@@ -96,6 +96,33 @@ class AdminGetBrandsWithFilterAPI(Resource):
         return make_response(jsonify(data=res, role='admin', message='list of brands for given filter'),
                              status.HTTP_200_OK)
 
+class AdminGetBrandsWithFilterAPIAll(Resource):
+    def post(self):
+        data = request.get_json(force=True)
+        brands = [brand for brand in Brand.objects(__raw__ = data)]
+        res = []
+        for brand in brands:
+            temp = dict()
+            temp['company_name'] = brand.company_name
+            temp['address'] = brand.address
+            temp['email'] = brand.email
+            res.append(temp)
+        return make_response(jsonify(data=res, role='admin', message='list of brands for given filter'),
+                             status.HTTP_200_OK)
+class AdminGetInfluencerWithFilterAPIAll(Resource):
+    def post(self):
+        data = request.get_json(force=True)
+        brands = [brand for brand in Brand.objects(__raw__ = data)]
+        res = []
+        for brand in brands:
+            temp = dict()
+            temp['company_name'] = brand.company_name
+            temp['address'] = brand.address
+            temp['email'] = brand.email
+            res.append(temp)
+        return make_response(jsonify(data=res, role='admin', message='list of brands for given filter'),
+                             status.HTTP_200_OK)
+
 
 class AdminGetInfluencersWithFilterAPI(Resource):
     def post(self):

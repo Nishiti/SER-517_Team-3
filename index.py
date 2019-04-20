@@ -12,6 +12,8 @@ from nxstlab.adminAPIs import AdminApproveBrandSignupAPI
 from nxstlab.adminAPIs import AdminRemoveBrandAPI
 from nxstlab.adminAPIs import AdminRemoveInfluencerAPI
 from nxstlab.influencerAPI import InfluencerSignUpAPI
+from nxstlab.adminAPIs import AdminGetBrandsWithFilterAPIAll
+from nxstlab.adminAPIs import AdminGetInfluencerWithFilterAPIAll
 from nxstlab.adminAPIs import AdminGetBrandsWithFilterAPI
 from nxstlab.adminAPIs import AdminGetInfluencersWithFilterAPI
 from nxstlab.BrandCampaignAPI import BrandCampaignRequestAPI
@@ -69,7 +71,11 @@ api.add_resource(AdminSignupAPI, '/admin/signup')
 api.add_resource(AdminRemoveBrandAPI, '/admin/removebrand')
 api.add_resource(AdminDeactivateBrandAPI, '/admin/deactivatebrand')
 api.add_resource(AdminApproveBrandSignupAPI, '/admin/approve/brandsingup')
+#Brand Search name and all
 api.add_resource(AdminGetBrandsWithFilterAPI, '/admin/getBrands')
+api.add_resource(AdminGetBrandsWithFilterAPIAll, '/admin/getAllBrands')
+#Influencer search - name and all
+api.add_resource(AdminGetInfluencerWithFilterAPIAll, '/admin/getAllInfluencer')
 api.add_resource(AdminGetInfluencersWithFilterAPI, '/admin/getInfluencers')
 api.add_resource(AdminRemoveInfluencerAPI, '/admin/removeInfluencers')
 api.add_resource(InfluencerSignUpAPI, '/influencer/signup')
