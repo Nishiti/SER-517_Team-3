@@ -23,8 +23,7 @@ var indexController = app.controller("indexController", function ($scope, $windo
             'password' : password
         };
 
-        $http.post('http://localhost:5000/admin/signin', data).then(function (response) {
-            
+        $http.post('http://localhost:5000/user/signin', data).then(function (response) {
             
             data = response.data;
             console.log(data);

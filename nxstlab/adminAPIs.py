@@ -92,8 +92,6 @@ class AdminGetBrandsWithFilterAPI(Resource):
             temp['company_name'] = brand.company_name
             temp['address'] = brand.address
             temp['email'] = brand.email
-            temp['isapproved'] = brand.isapproved
-            temp['isactive'] = brand.isactive
             res.append(temp)
         return make_response(jsonify(data=res, role='admin', message='list of brands for given filter'),
                              status.HTTP_200_OK)
@@ -102,8 +100,11 @@ class AdminGetBrandsWithFilterAPI(Resource):
 class AdminGetInfluencersWithFilterAPI(Resource):
     def post(self):
         data = request.get_json(force=True)
-
-        influencers = [influencer for influencer in Influencer.objects(__raw__=data)]
+        name = data['name']
+        print('name = ', name)
+        influencers = [influencer for influencer in Influencer.objects(first_name__contains=name)]
+        print('influencers = ', influencers)
+        influencers.extend([influencer for influencer in Influencer.objects(last_name__contains=name)])
         res = []
         for user in influencers:
             temp = dict()

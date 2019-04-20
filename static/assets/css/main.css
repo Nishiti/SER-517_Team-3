@@ -5061,7 +5061,12 @@ width: 100%;
 	border-collapse: collapse;
 }
 
-img{margin:10px;}
+img{
+	display: block;
+			width: 100%;
+			padding-left: 2.5px;
+			padding-right: 2.5px;
+			margin:15px;}
 .selected{
 	box-shadow:100px 10px 8px 100px #ccfffd;
 }
