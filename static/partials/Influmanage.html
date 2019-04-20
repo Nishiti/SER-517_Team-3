@@ -14,14 +14,16 @@
                 <table ng-show = "influencers.length > 0">
                     <thead>
                     <tr>
-                        <th align="center">Name</th>
+                        <th align="center">First Name</th>
+                        <th>Last Name</th>
                         <th>Social Media Handles</th>
 
                     </tr>
                     </thead>
                     <tbody>
                     <tr ng-repeat="influencers in influencers">
-                        <td>{{ influencers.name }}</td>
+                        <td>{{ influencers.first_name }}</td>
+                        <td>{{ influencers.last_name }}</td>
                         <td>{{ influencers.website_social_media_handles }}</td>
 
                         <td><button type="button">deactivate</button></td>
