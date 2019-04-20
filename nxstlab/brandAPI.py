@@ -17,7 +17,7 @@ class BrandAPI(Resource):
         else:
             Brand(
               company_name=data['company_name'],
-              company_address=data['company_address'],
+              address=data['address'],
               email=data['email'],
               password=data['password']
             ).save()
@@ -52,8 +52,6 @@ class BrandAPI(Resource):
             temp['company_name'] = brand.company_name
             temp['address'] = brand.address
             temp['email'] = brand.email
-            temp['isapproved'] = brand.isapproved
-            temp['isactive'] = brand.isactive
             res.append(temp)
         return make_response(jsonify(data=res, role='admin', message='list of brands'),
                              status.HTTP_200_OK)

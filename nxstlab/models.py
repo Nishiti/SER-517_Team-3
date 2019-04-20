@@ -1,5 +1,5 @@
 from mongoengine import Document
-from mongoengine import StringField, EmailField, BooleanField, ListField
+from mongoengine import StringField, EmailField, BooleanField, ListField, FileField
 
 class Influencer(Document):
     first_name = StringField(max_length=60, required=True)
@@ -15,3 +15,4 @@ class Influencer(Document):
     website_social_media_handles = StringField(max_length=120)
     followers = StringField(max_length=60)
     areas_of_interest = ListField(StringField())
+    image = FileField()
