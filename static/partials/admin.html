@@ -3,8 +3,7 @@
     <div id="main">
 
         <!-- Post -->
-        <script>showCards(1, 0);
-            showCards(1, 1);</script>
+
         <section class="posts">
             <article>
                 <h2>Brand Requests</h2>
@@ -15,7 +14,7 @@
                   <form class="card-container">
                       <div class="field">
                           <img class="image fit" src="/static/images/pic03.jpg">
-                              <label for="cname"><b>Company Name</b></label>
+                              <label for="cname"><b>{{campaignData.campaign_name}}</b></label>
                               <label for="plist"><b>Company Description and Products List</b></label>
                               <button>Approve</button>
                               <button>Deny   </button>
@@ -56,53 +55,26 @@
               <a class="next" onclick="plusCards(1, 0)">&#10095;</a>
               </div>
             </article>
-    <script>showCards(cardIndex);</script>
             <article>
                 <h2>Campaign Requests</h2>
                 <br>
             <div class="cards-container">
-                <div class="myCamps fade">
+                <div class="myCamps fade" ng-repeat="x in campaignData">
                     <center>
                     <form class="card-container">
                         <div class="field">
                             <img class="image fit" src="/static/images/pic04.jpg">
-                            <label for="camname"><b>Campaign Name</b></label>
-                            <label for="assbrand"><b>Associated Brand</b></label>
-                            <label for="clist"><b>Campaign Description and Details</b></label>                                     <button>Approve</button>
-                                <button>Deny   </button>
-                                <h3></h3>
-                                </div>
+                            <label for="camname"><b>{{x.campaign_name}}</b></label>
+                            <label for="assbrand"><b>{{x.associated_brand}}</b></label>
+                            <label for="clist"><b>{{x.campaign_info_rqmts}}</b></label>
+                            <button>Approve</button>
+                            <button>Deny   </button>
+                            <h3></h3>
+                            </div>
                     </form>
                     </center>
                 </div>
-                <div class="myCamps fade">
-                    <center>
-                        <form class="card-container">
-                            <div class="field">
-                                <img class="image fit" src="/static/images/pic01.jpg">
-                                    <label for="camname"><b>Campaign Name</b></label>
-                                    <label for="assbrand"><b>Associated Brand</b></label>
-                                    <label for="clist"><b>Campaign Description and Details</b></label>                                     <button>Approve</button>
-                                    <button>Deny   </button>
-                                    <h3></h3>
-                                    </div>
-                        </form>
-                    </center>
-                </div>
-                <div class="myCamps fade">
-                    <center>
-                        <form class="card-container">
-                            <div class="field">
-                                <img class="image fit" src="/static/images/pic02.jpg">
-                                    <label for="camname"><b>Campaign Name</b></label>
-                                    <label for="assbrand"><b>Associated Brand</b></label>
-                                    <label for="clist"><b>Campaign Description and Details</b></label>                                     <button>Approve</button>
-                                    <button>Deny   </button>
-                                    <h3></h3>
-                                    </div>
-                        </form>
-                    </center>
-                </div>
+
                 <a class="prev" onclick="plusCards(-1, 1)">&#10094;</a>
                 <a class="next" onclick="plusCards(1, 1)">&#10095;</a>
             </div>
@@ -114,10 +86,11 @@
     var cardId = ["myCards", "myCamps"]
     showCards(1, 0);
     showCards(1, 1);
-    
+
     function plusCards(n, no) {
         showCards(cardIndex[no] += n, no);
     }
+
 
 function showCards(n, no) {
     var i;
