@@ -104,7 +104,7 @@ app.controller("adminController", function ($scope, $window, $http, $location) {
         
     }
     
-    
+    // if logged in then only call this
     $scope.searchBrands();
 
 
