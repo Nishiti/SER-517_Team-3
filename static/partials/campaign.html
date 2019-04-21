@@ -51,12 +51,104 @@
                     - Possible long term partnership </p>
 						<textarea name="cInfo" id="cInfo" placeholder="Enter here" rows="5" ng-model="cInfo"></textarea>
 					</div>
+                    <br>
+                    <h3> Select Influencers </h3>
+                    <br>
+                    <div class="cards-container">
+                        <div class="myCards fade">
+                            <div class="row">
+                                <div class="column">
+                            <form class="pic-container">
+                                <div class="field">
+                                    <img class="image fit" src="/static/images/pic01.jpg">
+                                        <label for="iname"><b>Influencer 1</b></label>
+                                        </div>
+                                </form>
+                            </div>
+                                <div class="column">
+                                    <form class="pic-container">
+                                        <div class="field">
+                                            <img class="image fit" src="/static/images/pic02.jpg">
+                                                <label for="inamet"><b>Influencer 2</b></label>
+                                                </div>
+                                    </form>
+                                </div>
+                                <div class="column">
+                                    <form class="pic-container">
+                                        <div class="field">
+                                            <img class="image fit" src="/static/images/pic03.jpg">
+                                                <label for="inameth"><b>Influencer 3</b></label>
+                                                </div>
+                                    </form>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="myCards fade">
+                                <div class="row">
+                                    <div class="column">
+                                        <form class="pic-container">
+                                            <div class="field">
+                                                <img class="image fit" src="/static/images/pic04.jpg">
+                                                    <label for="iname"><b>Influencer 4</b></label>
+                                                    </div>
+                                        </form>
+                                    </div>
+                                    <div class="column">
+                                        <form class="pic-container">
+                                            <div class="field">
+                                                <img class="image fit" src="/static/images/pic05.jpg">
+                                                    <label for="inamet"><b>Influencer 5</b></label>
+                                                    </div>
+                                        </form>
+                                    </div>
+                                    <div class="column">
+                                        <form class="pic-container">
+                                            <div class="field">
+                                                <img class="image fit" src="/static/images/pic06.jpg">
+                                                    <label for="inameth"><b>Influencer 6</b></label>
+                                                    </div>
+                                        </form>
+                                    </div>
+                                </div>
+                        </div>
+                            <div class="myCards fade">
+                                <div class="row">
+                                    <div class="column">
+                                        <form class="pic-container">
+                                            <div class="field">
+                                                <img class="image fit" src="/static/images/pic07.jpg">
+                                                    <label for="iname"><b>Influencer 7</b></label>
+                                                    </div>
+                                        </form>
+                                    </div>
+                                    <div class="column">
+                                        <form class="pic-container">
+                                            <div class="field">
+                                                <img class="image fit" src="/static/images/pic08.jpg">
+                                                    <label for="inamet"><b>Influencer 8</b></label>
+                                                    </div>
+                                        </form>
+                                    </div>
+                                    <div class="column">
+                                        <form class="pic-container">
+                                            <div class="field">
+                                                <img class="image fit" src="/static/images/pic09.jpg">
+                                                    <label for="inameth"><b>Influencer 9</b></label>
+                                                    </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        <a class="prevv" onclick="plusCards(-1)">&#10094;</a>
+                        <a class="nextt" onclick="plusCards(1)">&#10095;</a>
+                    
 					<ul class="actions">
 						<br>
 						<li><input type="button" ng-click=submitCampRequest() value="Submit Campaign Request"/></li>
 						</ul>
 				</div>
-
+                        <script>showCards(cardIndex);</script>
 
 
 	<!-- Footer -->
