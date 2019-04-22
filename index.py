@@ -3,7 +3,7 @@ from flask_restful import Api
 from flask_login import LoginManager
 from mongoengine import connect
 
-from nxstlab.admin import Admin
+from nxstlab.InfluencerUpdateProfile import InfluencerUpdateProfile
 from nxstlab.adminSignupAPI import AdminSignupAPI
 from nxstlab.UserSignInAPI import UserSignInAPI, SecretResource
 from nxstlab.brandAPI import BrandAPI
@@ -34,7 +34,7 @@ CORS(app)
 
 # JWT Configuration
 app.config['JWT_SECRET_KEY'] = 'jwt-secret-string'
-app.config['JWT_ACCESS_TOKEN_EXPIRES'] = 600
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = False
 app.config['JWT_BLACKLIST_ENABLED'] = True
 app.config['JWT_BLACKLIST_TOKEN_CHECKS'] = ['access', 'refresh']
 jwt = JWTManager(app)
@@ -84,6 +84,8 @@ api.add_resource(BrandCampaignRequestApproveAPI, '/brandcampaignrequestapprove')
 # api.add_resource(AdminSignoutAPI, '/admin/signout')
 api.add_resource(UserLogoutAccess, '/admin/signoutaccess')
 api.add_resource(UserLogoutRefresh, '/admin/signoutrefresh')
+api.add_resource(InfluencerUpdateProfile, '/influencer/updateprofile')
+
 
 # Test Resource
 api.add_resource(SecretResource, '/admin/secret')
