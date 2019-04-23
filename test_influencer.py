@@ -23,7 +23,7 @@ class ProjectTestCase(unittest.TestCase):
 		self.app = index.app.test_client()
 
 
-	def test_influencer_signup(self):
+	def test_signup_valid(self):
 
 		#tests the addition of new user to the database
 		res = self.app.post('/influencer/signup', data = json.dumps({"first_name":"first",
@@ -34,6 +34,8 @@ class ProjectTestCase(unittest.TestCase):
 
 		self.assertEqual(res.status_code, 201)
 		
+	def test_signup_invalid(self):
+
 		#tests addition of an already existing user
 		res = self.app.post('/influencer/signup', data = json.dumps({"first_name":"first",
 													"last_name":"first",
