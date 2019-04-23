@@ -3943,6 +3943,9 @@
 }
 
 .pic-container {
+	padding-top: 12px;
+	padding-right: 7px;
+	padding-left: 7px;
 	background-color: white;
 	box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.3);
 	max-width: 250px;
@@ -4086,31 +4089,32 @@ padding: none;
 
 .circle-text {
 display: table-cell;
-height: 60px; /*change this and the width
+height: 30px; /*change this and the width
 for the size of your initial circle*/
-width: 60px;
+width: 40px;
 text-align: center;
 vertical-align: middle;
-border-radius: 50%;
+border-radius: 13%;
 /*make it pretty*/
 background: #737373;
 color: #fff;
-font: 18px "josefin sans", arial; /*change this
+margin-left: 2px;
+font: 15px "josefin sans", arial; /*change this
 for font-size and font-family*/
 }
 
 .square-text {
 display: table-cell;
-height: 32px; /*change this and the width
+height: 30px; /*change this and the width
 for the size of your initial circle*/
-width: 85px;
+width: 40px;
 text-align: center;
 vertical-align: middle;
-border-radius: 10px;
+border-radius: 13%;
 /*make it pretty*/
 background: #DC143C;
 color: #fff;
-font: 18px "josefin sans", arial; /*change this
+font: 15px "josefin sans", arial; /*change this
 for font-size and font-family*/
 }
 
