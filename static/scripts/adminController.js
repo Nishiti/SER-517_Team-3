@@ -1,13 +1,13 @@
 app.controller("adminController", function ($scope, $window, $http, $location) {
 
     $scope.searchBrands = function(){
-        
+
         if ($scope.brandName == undefined){
             $scope.brandName = "";
         }
-        
+
         $scope.filterBrand = {
-            'company_name' : $scope.brandName 
+            'company_name' : $scope.brandName
         };
 
         $http.post('http://localhost:5000/admin/getBrands', $scope.filterBrand).then(function (response) {
@@ -113,6 +113,48 @@ app.controller("adminController", function ($scope, $window, $http, $location) {
 
     // if logged in then only call this
     $scope.searchBrands();
+
+    $scope.approveCampaign = function(){
+
+            var data =
+                     {
+                         "campaign_name" : $scope.cname,
+                         "email" : $scope.bname,
+                         "status": false
+                     }
+
+
+            $http.post('http://localhost:5000/brandcampaignrequestapprove', data).then(function (response) {
+                data = response.data;
+                console.log(data);
+                //$scope.brands = $scope.brands.filter(item => item !== $scope.brand);
+
+            }, function (errResponse) {
+                console.log(errResponse);
+            });
+
+        }
+
+    $scope.denyCampaign = function(){
+
+                var data =
+                         {
+                             "campaign_name" : $scope.cname,
+                             "email" : $scope.bname,
+                             "status": false
+                         }
+
+
+                $http.post('http://localhost:5000/brandcampaignrequestapprove', data).then(function (response) {
+                    data = response.data;
+                    console.log(data);
+                    //$scope.brands = $scope.brands.filter(item => item !== $scope.brand);
+
+                }, function (errResponse) {
+                    console.log(errResponse);
+                });
+
+            }
 
 
 
