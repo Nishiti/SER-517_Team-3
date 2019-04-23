@@ -590,6 +590,7 @@ app.controller("influencerController", function ($scope, $window, $http, $locati
 
                 $scope.msg = "Post Data Submitted Successfully!";
                 console.log($scope.msg);
+                $location.path( "/login" );
 
         }, function (response) {
 

@@ -64,12 +64,11 @@
                     <form class="card-container">
                         <div class="field">
                             <img class="image fit" src="/static/images/pic04.jpg">
-                            <label for="camname"><b>{{x.campaign_name}}</b></label>
-                            <label for="assbrand"><b>{{x.associated_brand}}</b></label>
-                            <label for="clist"><b>{{x.campaign_info_rqmts}}</b></label>
-                            <button>Approve</button>
-                            <button>Deny   </button>
-                            <h3></h3>
+                            <label ng-model="cname"><b>{{x.campaign_name}}</b></label>
+                            <label ng-model="bname"><b>{{x.associated_brand}}</b></label>
+                            <!--<label ng-model="cinfo"><b>{{x.campaign_info_rqmts}}</b></label>-->
+                            <button ng-click="approveCampaign()">Approve</button>
+                            <button ng-click="denyCampaign()">Deny   </button>
                             </div>
                     </form>
                     </center>

@@ -44,6 +44,9 @@ app.config(['$routeProvider', function ($routeProvider) {
     }).when('/logout',{
         templateUrl:'static/partials/home.html',
         controller : "logoutController"
+    }).when('/admin',{
+              templateUrl:'static/partials/admin.html',
+              controller : "adminController"
     }).otherwise({
         redirectTo: '/'
     })
