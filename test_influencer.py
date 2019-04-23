@@ -6,15 +6,7 @@ import json
 from mongoengine import connect
 from flask_mongoengine import MongoEngine
 
-# app = Flask(__name__)
-# api = Api(app)
-
-# index.app.config['TESTING'] = True
-# index.app.config['MONGO_DBNAME'] = 'ser517'
-# index.app.config['MONGO_URI'] = 'mongodb://localhost/ser517'
-# index.app.config['DEBUG'] = True
-
-class ProjectTestCase(unittest.TestCase):
+class TestInfluencer(unittest.TestCase):
 
 	def setUp(self):
 		connect('test_ser517', host = 'mongodb://localhost/test_ser517')
@@ -23,7 +15,7 @@ class ProjectTestCase(unittest.TestCase):
 		self.app = index.app.test_client()
 
 
-	def test_signup_valid(self):
+	def test_signup_correct(self):
 
 		#tests the addition of new user to the database
 		res = self.app.post('/influencer/signup', data = json.dumps({"first_name":"first",
@@ -34,7 +26,7 @@ class ProjectTestCase(unittest.TestCase):
 
 		self.assertEqual(res.status_code, 201)
 		
-	def test_signup_invalid(self):
+	def test_signup_incorrect(self):
 
 		#tests addition of an already existing user
 		res = self.app.post('/influencer/signup', data = json.dumps({"first_name":"first",
