@@ -47,7 +47,7 @@ class AdminRemoveInfluencerAPI(Resource):
                                  status.HTTP_200_OK)
 
 
-class AdminDeactivateBrandAPI(Resource):
+class AdminDeactivateInfluencerAPI(Resource):
     def post(self):
         data = request.get_json(force=True)
 

@@ -18,6 +18,7 @@ from nxstlab.adminAPIs import AdminGetBrandsWithFilterAPI
 from nxstlab.adminAPIs import AdminGetInfluencersWithFilterAPI
 from nxstlab.BrandCampaignAPI import BrandCampaignRequestAPI
 from nxstlab.BrandCampaignRequestApprove import BrandCampaignRequestApproveAPI
+from nxstlab.adminAPIs import AdminDeactivateInfluencerAPI
 from nxstlab.AdminSignoutAPI import UserLogoutAccess, UserLogoutRefresh
 from flask_jwt_extended import JWTManager
 
@@ -70,6 +71,7 @@ api.add_resource(UserSignInAPI, '/user/signin')
 api.add_resource(AdminSignupAPI, '/admin/signup')
 api.add_resource(AdminRemoveBrandAPI, '/admin/removebrand')
 api.add_resource(AdminDeactivateBrandAPI, '/admin/deactivatebrand')
+api.add_resource(AdminDeactivateInfluencerAPI, '/admin/deactivateinf')
 api.add_resource(AdminApproveBrandSignupAPI, '/admin/approve/brandsingup')
 #Brand Search name and all
 api.add_resource(AdminGetBrandsWithFilterAPI, '/admin/getBrands')
