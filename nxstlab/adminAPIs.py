@@ -47,6 +47,8 @@ class AdminRemoveInfluencerAPI(Resource):
         else:
             user = Influencer.objects(email=data['email']).first()
             user.delete()
+            user = User.objects(email=data['email']).first()
+            user.delete()
             return make_response(jsonify(role='admin', message='influencer has been removed from database'),
                                  status.HTTP_200_OK)
 

@@ -25,10 +25,13 @@ class AdminSignupAPI(Resource):
             role='admin'
         ).save()
         try:
-            access_token = create_access_token(identity=data['email'])
-            refresh_token = create_refresh_token(identity=data['email'])
-            return make_response(jsonify(role='admin', message='admin added successfully in database', access_token=access_token,
-                                         refresh_token=refresh_token, email=data['email']), status.HTTP_201_CREATED)
+            #access_token = create_access_token(identity=data['email'])
+            #refresh_token = create_refresh_token(identity=data['email'])
+            #return make_response(jsonify(role='admin', message='admin added successfully in database', access_token=access_token,
+            #                             refresh_token=refresh_token, email=data['email']), status.HTTP_201_CREATED)
+            return make_response(
+                jsonify(role='admin', message='admin added successfully in database', email=data['email']),
+                status.HTTP_201_CREATED)
         except:
             return make_response(jsonify(role='admin', message='Admin registration failed!'),
                            status.HTTP_500_INTERNAL_SERVER_ERROR)
