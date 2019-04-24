@@ -84,30 +84,33 @@ app.controller("adminController", function ($scope, $window, $http, $location) {
     };
 
     $scope.removeBrand = function(i){
+
         var brand = $scope.brands[i];
-        
-        data = {
-          "email" : brand.email  
+
+        var data = {
+            "email" : brand.email  
         };
-        
+
         $scope.brands.splice(i, 1);
-        
-        
+
         $http.post('http://localhost:5000/admin/removebrand', data).then(function (response) {
             data = response.data;
             console.log(data);
-            //$scope.brands = $scope.brands.filter(item => item !== $scope.brand);
-            
-        }, function (errResponse) {
-            console.log(errResponse);
+        }, function (response) {
+            status = response.status;
+            if(status >= 500){
+                alert("Something went wrong with server");
+            }else if(status == 404){
+                alert("This brand does not exisits in system");         
+            }
         });        
-        
+
     }
 
     $http.get("http://localhost:5000/brandcampaignrequest")
-      .then(function(response) {
-          $scope.campaignData = response.data;
-      });
+        .then(function(response) {
+        $scope.campaignData = response.data;
+    });
 
 
 
@@ -116,45 +119,45 @@ app.controller("adminController", function ($scope, $window, $http, $location) {
 
     $scope.approveCampaign = function(){
 
-            var data =
-                     {
-                         "campaign_name" : $scope.cname,
-                         "email" : $scope.bname,
-                         "status": false
-                     }
+        var data =
+            {
+                "campaign_name" : $scope.cname,
+                "email" : $scope.bname,
+                "status": false
+            }
 
 
-            $http.post('http://localhost:5000/brandcampaignrequestapprove', data).then(function (response) {
-                data = response.data;
-                console.log(data);
-                //$scope.brands = $scope.brands.filter(item => item !== $scope.brand);
+        $http.post('http://localhost:5000/brandcampaignrequestapprove', data).then(function (response) {
+            data = response.data;
+            console.log(data);
+            //$scope.brands = $scope.brands.filter(item => item !== $scope.brand);
 
-            }, function (errResponse) {
-                console.log(errResponse);
-            });
+        }, function (errResponse) {
+            console.log(errResponse);
+        });
 
-        }
+    }
 
     $scope.denyCampaign = function(){
 
-                var data =
-                         {
-                             "campaign_name" : $scope.cname,
-                             "email" : $scope.bname,
-                             "status": false
-                         }
-
-
-                $http.post('http://localhost:5000/brandcampaignrequestapprove', data).then(function (response) {
-                    data = response.data;
-                    console.log(data);
-                    //$scope.brands = $scope.brands.filter(item => item !== $scope.brand);
-
-                }, function (errResponse) {
-                    console.log(errResponse);
-                });
-
+        var data =
+            {
+                "campaign_name" : $scope.cname,
+                "email" : $scope.bname,
+                "status": false
             }
+
+
+        $http.post('http://localhost:5000/brandcampaignrequestapprove', data).then(function (response) {
+            data = response.data;
+            console.log(data);
+            //$scope.brands = $scope.brands.filter(item => item !== $scope.brand);
+
+        }, function (errResponse) {
+            console.log(errResponse);
+        });
+
+    }
 
 
 

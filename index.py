@@ -52,10 +52,6 @@ configFile.close()
 #print(config)
 connect(config['dbname'], host=config['host'])
 
-i = Influencer.objects()
-i.delete()
-
-
 @app.route("/")
 def hello():
     return send_file('templates/index.html')
