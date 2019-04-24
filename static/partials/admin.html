@@ -58,25 +58,25 @@
             <article>
                 <h2>Campaign Requests</h2>
                 <br>
-            <div class="cards-container">
-                <div class="myCamps fade" ng-repeat="x in campaignData">
-                    <center>
-                    <form class="card-container">
-                        <div class="field">
-                            <img class="image fit" src="/static/images/pic04.jpg">
-                            <label ng-model="cname"><b>{{x.campaign_name}}</b></label>
-                            <label ng-model="bname"><b>{{x.associated_brand}}</b></label>
-                            <!--<label ng-model="cinfo"><b>{{x.campaign_info_rqmts}}</b></label>-->
-                            <button ng-click="approveCampaign()">Approve</button>
-                            <button ng-click="denyCampaign()">Deny   </button>
-                            </div>
-                    </form>
-                    </center>
-                </div>
+                <div class="cards-container">
+                    <div class="myCamps fade" ng-repeat="x in campaignData" ng-init="index = 1">
+                        <center>
+                            <form class="card-container">
+                                <div class="field">
+                                    <img class="image fit" src="/static/images/pic04.jpg">
+                                    <label><b>{{x.campaign_name}}</b></label>
+                                    <label><b>{{x.associated_brand}}</b></label>
+                                    <!--<label ng-model="cinfo"><b>{{x.campaign_info_rqmts}}</b></label>-->
+                                    <button ng-click="approveCampaign(x)">Approve</button>
+                                    <button ng-click="denyCampaign(x)">Deny   </button>
+                                </div>
+                            </form>
+                        </center>
+                    </div>
 
-                <a class="prev" onclick="plusCards(-1, 1)">&#10094;</a>
-                <a class="next" onclick="plusCards(1, 1)">&#10095;</a>
-            </div>
+                    <a class="prev" onclick="plusCards(-1, 1)">&#10094;</a>
+                    <a class="next" onclick="plusCards(1, 1)">&#10095;</a>
+                </div>
             </article>
         </section>
     </div>

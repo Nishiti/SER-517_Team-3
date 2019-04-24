@@ -107,6 +107,7 @@ app.controller("adminController", function ($scope, $window, $http, $location) {
 
     }
 
+    $scope.campaignData=[];
     $http.get("http://localhost:5000/brandcampaignrequest")
         .then(function(response) {
         $scope.campaignData = response.data;
@@ -117,35 +118,43 @@ app.controller("adminController", function ($scope, $window, $http, $location) {
     // if logged in then only call this
     $scope.searchBrands();
 
-    $scope.approveCampaign = function(){
+    $scope.approveCampaign = function(x){
 
-        var data =
-            {
-                "campaign_name" : $scope.cname,
-                "email" : $scope.bname,
-                "status": false
-            }
+            var data =
+                     {
+                         "campaign_name" : x.campaign_name,
+                         "email" : x.email,
+                         "status": true
+                     }
+
+            var index=$scope.campaignData.indexOf(x)
+                                  $scope.campaignData.splice(index,1);
 
 
-        $http.post('http://localhost:5000/brandcampaignrequestapprove', data).then(function (response) {
-            data = response.data;
-            console.log(data);
-            //$scope.brands = $scope.brands.filter(item => item !== $scope.brand);
 
-        }, function (errResponse) {
-            console.log(errResponse);
-        });
+            $http.post('http://localhost:5000/brandcampaignrequestapprove', data).then(function (response) {
+                data = response.data;
+                console.log(data);
+                //$scope.brands = $scope.brands.filter(item => item !== $scope.brand);
+
+
+            }, function (errResponse) {
+                console.log(errResponse);
+            });
 
     }
 
-    $scope.denyCampaign = function(){
+    $scope.denyCampaign = function(x){
 
-        var data =
-            {
-                "campaign_name" : $scope.cname,
-                "email" : $scope.bname,
-                "status": false
-            }
+                var data =
+                         {
+                             "campaign_name" : x.campaign_name,
+                             "email" : x.email,
+                             "status": false
+                         }
+
+                var index=$scope.campaignData.indexOf(x)
+                          $scope.campaignData.splice(index,1);
 
 
         $http.post('http://localhost:5000/brandcampaignrequestapprove', data).then(function (response) {
