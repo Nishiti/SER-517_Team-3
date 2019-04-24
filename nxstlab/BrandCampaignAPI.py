@@ -55,16 +55,14 @@ class BrandCampaignRequestAPI(Resource):
             associated_brand = Brand.objects(email=campaign.email).first()
             data = dict()
             data['campaign_name'] = campaign.campaign_name
-            data['associated_brand'] = associated_brand.company_name
-            data[
-                'campaign_info_rqmts'
-                ] = campaign.campaign_information_requirements
+            data['email'] = campaign.email
+            data['campaign_info_rqmts'] = campaign.campaign_information_requirements
+            data['isApproved'] = campaign.isApproved
             result.append(data)
         if not result:
             return make_response(jsonify(role='admin', message='No campaign requests left to be approved/denied'),
                                  status.HTTP_204_NO_CONTENT)
-        return jsonify({"list": result})
-
+        return jsonify(result)
 
 # api.add_resource(BrandCampaignRequestAPI, '/brandcampaignrequest')
 # app.run(port=5000, debug=True)
