@@ -4,6 +4,7 @@ from flask import jsonify, request, make_response
 from nxstlab.brand import Brand
 from flask_api import status
 from nxstlab.models import Influencer
+from nxstlab.user import User
 
 class AdminRemoveBrandAPI(Resource):
     @jwt_required
@@ -15,6 +16,9 @@ class AdminRemoveBrandAPI(Resource):
         else:
             brand = Brand.objects(email=data['email']).first()
             brand.delete()
+            user = User.objects(email=data['email']).first()
+            user.delete()
+
             return make_response(jsonify(role='brand', message='brand has been removed from database'),
                                  status.HTTP_200_OK)
 
@@ -47,7 +51,7 @@ class AdminRemoveInfluencerAPI(Resource):
                                  status.HTTP_200_OK)
 
 
-class AdminDeactivateBrandAPI(Resource):
+class AdminDeactivateInfluencerAPI(Resource):
     def post(self):
         data = request.get_json(force=True)
 

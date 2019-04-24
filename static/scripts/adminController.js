@@ -84,44 +84,52 @@ app.controller("adminController", function ($scope, $window, $http, $location) {
     };
 
     $scope.removeBrand = function(i){
+
         var brand = $scope.brands[i];
-        
-        data = {
-          "email" : brand.email  
+
+        var data = {
+            "email" : brand.email  
         };
-        
+
         $scope.brands.splice(i, 1);
-        
-        
+
         $http.post('http://localhost:5000/admin/removebrand', data).then(function (response) {
             data = response.data;
             console.log(data);
-            //$scope.brands = $scope.brands.filter(item => item !== $scope.brand);
-            
-        }, function (errResponse) {
-            console.log(errResponse);
+        }, function (response) {
+            status = response.status;
+            if(status >= 500){
+                alert("Something went wrong with server");
+            }else if(status == 404){
+                alert("This brand does not exisits in system");         
+            }
         });        
-        
+
     }
 
+    $scope.campaignData=[];
     $http.get("http://localhost:5000/brandcampaignrequest")
-      .then(function(response) {
-          $scope.campaignData = response.data;
-      });
+        .then(function(response) {
+        $scope.campaignData = response.data;
+    });
 
 
 
     // if logged in then only call this
     $scope.searchBrands();
 
-    $scope.approveCampaign = function(){
+    $scope.approveCampaign = function(x){
 
             var data =
                      {
-                         "campaign_name" : $scope.cname,
-                         "email" : $scope.bname,
-                         "status": false
+                         "campaign_name" : x.campaign_name,
+                         "email" : x.email,
+                         "status": true
                      }
+
+            var index=$scope.campaignData.indexOf(x)
+                                  $scope.campaignData.splice(index,1);
+
 
 
             $http.post('http://localhost:5000/brandcampaignrequestapprove', data).then(function (response) {
@@ -129,32 +137,36 @@ app.controller("adminController", function ($scope, $window, $http, $location) {
                 console.log(data);
                 //$scope.brands = $scope.brands.filter(item => item !== $scope.brand);
 
+
             }, function (errResponse) {
                 console.log(errResponse);
             });
 
-        }
+    }
 
-    $scope.denyCampaign = function(){
+    $scope.denyCampaign = function(x){
 
                 var data =
                          {
-                             "campaign_name" : $scope.cname,
-                             "email" : $scope.bname,
+                             "campaign_name" : x.campaign_name,
+                             "email" : x.email,
                              "status": false
                          }
 
+                var index=$scope.campaignData.indexOf(x)
+                          $scope.campaignData.splice(index,1);
 
-                $http.post('http://localhost:5000/brandcampaignrequestapprove', data).then(function (response) {
-                    data = response.data;
-                    console.log(data);
-                    //$scope.brands = $scope.brands.filter(item => item !== $scope.brand);
 
-                }, function (errResponse) {
-                    console.log(errResponse);
-                });
+        $http.post('http://localhost:5000/brandcampaignrequestapprove', data).then(function (response) {
+            data = response.data;
+            console.log(data);
+            //$scope.brands = $scope.brands.filter(item => item !== $scope.brand);
 
-            }
+        }, function (errResponse) {
+            console.log(errResponse);
+        });
+
+    }
 
 
 
