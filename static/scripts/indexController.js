@@ -48,6 +48,8 @@ var indexController = app.controller("indexController", function ($scope, $windo
             
             if(data.role == "admin"){
                $location.path( "/admin" );
+            }else if(data.role == "brand"){
+                $location.path("/blogin");
             }
                 
         }, function (errResponse) {

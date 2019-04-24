@@ -49,7 +49,7 @@ for line in configFile:
     arr = line[:-1].split("=")
     config[arr[0]] = arr[1]
 configFile.close()
-print(config)
+#print(config)
 connect(config['dbname'], host=config['host'])
 
 i = Influencer.objects()
