@@ -15,9 +15,9 @@ class TestInfluencer(unittest.TestCase):
 		self.app = index.app.test_client()
 
 
+#tests the addition of new user to the database
 	def test_signup_correct(self):
 
-		#tests the addition of new user to the database
 		res = self.app.post('/influencer/signup', data = json.dumps({"first_name":"first",
 													"last_name":"first",
 													"email":"zux@mail.com",
@@ -26,9 +26,9 @@ class TestInfluencer(unittest.TestCase):
 
 		self.assertEqual(res.status_code, 201)
 		
+#tests addition of an already existing user
 	def test_signup_incorrect(self):
 
-		#tests addition of an already existing user
 		res = self.app.post('/influencer/signup', data = json.dumps({"first_name":"first",
 													"last_name":"first",
 													"email":"zux@mail.com",
