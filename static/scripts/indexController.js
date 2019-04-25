@@ -51,7 +51,7 @@ var indexController = app.controller("indexController", function ($scope, $windo
             }else if(data.role == "brand"){
                 $location.path("/blogin");
             }else if(data.role == "influencer") {
-                $location.path("/influencer");
+                $location.path("/ilogin");
             }
                 
         }, function (errResponse) {

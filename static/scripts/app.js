@@ -9,7 +9,7 @@ app.config(['$routeProvider', function ($routeProvider) {
         templateUrl: 'static/partials/brand.html',
         controller: "brandController"
     }).when('/influencer', {
-        templateUrl: 'static/partials/ilogin.html',
+        templateUrl: 'static/partials/influencer.html',
         controller: "influencerController"
     }).when('/login', {
         templateUrl: 'static/partials/login.html',
@@ -44,6 +44,12 @@ app.config(['$routeProvider', function ($routeProvider) {
     }).when('/logout',{
         templateUrl:'static/partials/home.html',
         controller : "logoutController"
+    }).when('/campaign2',{
+        templateUrl:'static/partials/campaign2.html',
+        controller : "brandController"
+    }).when('/inlist2',{
+        templateUrl:'static/partials/inlist2.html',
+        controller : "adminController"
     }).when('/admin',{
               templateUrl:'static/partials/admin.html',
               controller : "adminController"

@@ -593,15 +593,12 @@ app.controller("influencerController", function ($scope, $window, $http, $locati
                 $location.path( "/login" );
 
         }, function (response) {
-
-            $scope.msg = "Service not Exists";
-
-            $scope.statusval = response.status;
-
-            $scope.statustext = response.statusText;
-
-            $scope.headers = response.headers();
-
+            status = response.status;
+            if(status >= 500){
+                alert("something went wrong with server");
+            }else if(status == 409){
+                alert("Influencer with this email id already exisits");
+            }
         });
 
     };

@@ -16,3 +16,4 @@ class Influencer(Document):
     followers = StringField(max_length=60)
     areas_of_interest = ListField(StringField())
     image = FileField()
+    gender = StringField(required=True)
