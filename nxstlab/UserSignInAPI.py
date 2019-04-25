@@ -37,6 +37,7 @@ class UserSignInAPI(Resource):
                     temp['followers'] = influencer.followers
                     temp['areas_of_interest'] = influencer.areas_of_interest
                     temp['gender'] = influencer.gender
+                    temp['dob'] = influencer.dob
                 elif user['role'] == 'brand':
                     brand = Brand.objects(email=data['email']).first()
                     temp = {}

@@ -119,6 +119,11 @@ class AdminGetInfluencerWithFilterAPIAll(Resource):
     def post(self):
         data = request.get_json(force=True)
         users = [user for user in Influencer.objects(__raw__=data)]
+        users = [user for user in Influencer.objects.find({"areas_of_interest": {"$all": ["fashion"]}})]
+        #users = Influencer.objects.filter(data)#name='xyz').only(*req_fields).select_related()
+
+        #areas_of_interest = data['areas_of_interest']
+        #print('type of areas of interest = ', type(areas_of_interest), areas_of_interest)
         res = []
         for user in users:
             temp = dict()
@@ -132,6 +137,8 @@ class AdminGetInfluencerWithFilterAPIAll(Resource):
             temp['big_deal_on_option5'] = user.big_deal_on_option5
             temp['website_social_media_handles'] = user.website_social_media_handles
             temp['followers'] = user.followers
+            temp['dob'] = user.dob
+            temp['gender'] = user.gender
             res.append(temp)
         return make_response(jsonify(data=res, role='admin', message='list of brands for given filter'),
                              status.HTTP_200_OK)
@@ -158,6 +165,8 @@ class AdminGetInfluencersWithFilterAPI(Resource):
             temp['big_deal_on_option4'] = user.big_deal_on_option4
             temp['big_deal_on_option5'] = user.big_deal_on_option5
             temp['followers'] = user.followers
+            temp['gender'] = user.gender
+            temp['dob'] = user.dob
             res.append(temp)
         return make_response(jsonify(data=res, role='admin', message='list of influencers for given filter'),
                              status.HTTP_200_OK)

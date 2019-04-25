@@ -35,7 +35,9 @@ class InfluencerUpdateProfile(Resource):
             temp['website_social_media_handles'] = influencer.website_social_media_handles
             temp['followers'] = influencer.followers
             temp['areas_of_interest'] = influencer.areas_of_interest
-            temp['image'] = influencer.image
+            temp['dob'] = influencer.dob
+            temp['gender'] = influencer.gender
+            #temp['image'] = influencer.image
             print('image retreived')
             # temp['image'] = json.loads(temp['image'].data.decode('utf-8'))
             temp['image'] = temp['image'].data.decode('utf-8')

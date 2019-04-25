@@ -44,6 +44,8 @@ class BrandCampaignRequestAPI(Resource):
                 campaign_information_requirements=data[
                                                     'campaign_info_rqmts']
                 ).save()
+            if 'requested_influencers' in data:
+                BrandCampaign.save(requested_influencers=data['requested_influencers'])
             return make_response(jsonify(role='brand', message='Campaign: ' + data['campaign_name'] + ' request successfully created!'),
                                  status.HTTP_201_CREATED)
 
@@ -58,6 +60,7 @@ class BrandCampaignRequestAPI(Resource):
             data['email'] = campaign.email
             data['campaign_info_rqmts'] = campaign.campaign_information_requirements
             data['isApproved'] = campaign.isApproved
+            data['requested_influencers'] = campaign.requested_influencers
             result.append(data)
         if not result:
             return make_response(jsonify(role='admin', message='No campaign requests left to be approved/denied'),

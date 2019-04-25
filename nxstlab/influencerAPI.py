@@ -19,7 +19,7 @@ class InfluencerSignUpAPI(Resource):
             for key in data:
                 influencer[key] = data[key]
             influencer.save()
-            '''influencer = Influencer(
+            influencer = Influencer(
                 first_name=data['first_name'],
                 last_name=data['last_name'],
                 email=data['email'],
@@ -42,7 +42,11 @@ class InfluencerSignUpAPI(Resource):
             if 'followers' in data:
                 influencer.save(followers=data['followers'])
             if 'areas_of_interest' in data:
-                influencer.save(areas_of_interest=data['areas_of_interest'])'''
+                influencer.save(areas_of_interest=data['areas_of_interest'])
+            if 'dob' in data:
+                influencer.save(dob=data['dob'])
+            if 'gender' in data:
+                influencer.save(gender=data['gender'])
             User(
                 email=data['email'],
                 password=User.generate_hash(data['password']),

@@ -1,5 +1,5 @@
 from mongoengine import Document
-from mongoengine import StringField, EmailField, BooleanField
+from mongoengine import StringField, EmailField, BooleanField, ListField
 
 
 class BrandCampaign(Document):
@@ -12,3 +12,4 @@ class BrandCampaign(Document):
                                                     required=True)
     isApproved = BooleanField(null=False, default=False)
     isDenied = BooleanField(null=False, default=False)
+    requested_influencers = ListField(StringField())
