@@ -68,12 +68,18 @@ class TestAdmin(unittest.TestCase):
 		res = self.app.post('/admin/approve/brandsingup', data = json.dumps({"email":"lays@mail.com"}), content_type = 'application/json')
 		self.assertEqual(res.status_code, 200)
 
-#tests whether the brands with certain filters are fetched from the database
+#tests whether the brands with company name as filter, are fetched from the database
 	def test_get_brand_filter(self):
 
-		res = self.app.post('/admin/getBrands', data = json.dumps({"company_name":"z"}), content_type = 'application/json')
+		res = self.app.post('/admin/getBrands', data = json.dumps({"company_name":"lays"}), content_type = 'application/json')
 		self.assertEqual(res.status_code, 200)
 
+#tests that brands that satisfy multiple filters are fetched from the database
+	def test_get_all_brands(self):
+
+		res = self.app.post('/admin/getAllBrands', data = json.dumps({"email":"ruffles@mail.com"}), content_type = 'application/json')
+		print("here=", json.loads(res.data)['data'])
+		self.assertEqual(res.status_code, 200)
 
 if __name__ == "__main__":
     unittest.main()
