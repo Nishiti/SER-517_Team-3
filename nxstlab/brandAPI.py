@@ -42,6 +42,11 @@ class BrandAPI(Resource):
             for key in data:
                 brand[key] = data[key]
             brand.save()
+            User(
+                email=data['email'],
+                password=User.generate_hash(data['password']),
+                role='brand'
+            ).save()
             return make_response(jsonify(role='brand', message='brand details updated successfully in database'),
                                  status.HTTP_200_OK)
 

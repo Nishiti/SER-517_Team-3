@@ -5,6 +5,9 @@ from flask_restful import Resource
 from flask import jsonify, request, make_response
 from flask_api import status
 
+from nxstlab.user import User
+
+
 class InfluencerUpdateProfile(Resource):
     def post(self):
         data = dict()
@@ -20,6 +23,11 @@ class InfluencerUpdateProfile(Resource):
             for file in files:
                 influencer.image.put(file)
             influencer.save()
+            User(
+                email=data['email'],
+                password=User.generate_hash(data['password']),
+                role='influencer'
+            ).save()
             return make_response(jsonify(role='influencer', message='Influencer details updated successfully in database'),
                                  status.HTTP_200_OK)
 
