@@ -56,6 +56,14 @@ class TestBrands(unittest.TestCase):
 													"campaign_info_rqmts":"campaign for chips"}), content_type = 'application/json')
 		self.assertEqual(res.status_code, 409)
 
+#tests the approval of brand campaign request which is already in the database
+	def test_request_approve(self):
+
+		res = self.app.post('/brandcampaignrequestapprove', data = json.dumps({"campaign_name":"chips",
+													"email":"ruffles@mail.com",
+													"status":False}), content_type = 'application/json')
+		self.assertEqual(res.status_code, 201)
+
 
 if __name__ == "__main__":
     unittest.main()
