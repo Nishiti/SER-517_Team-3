@@ -10,3 +10,4 @@ class Brand(UserMixin, Document):
     password = StringField(min_length=6, max_length=60, required=True)
     confirm_password = StringField(min_length=6, max_length=60, required=True)
     isapproved = BooleanField(null=False, default=False)
+    isactive = BooleanField(null=False, default=False)
