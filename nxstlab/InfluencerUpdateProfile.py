@@ -6,22 +6,19 @@ from flask import jsonify, request, make_response
 from flask_api import status
 
 class InfluencerUpdateProfile(Resource):
-    def put(self):
-        data = request.get_json(force=True)
+    def post(self):
+        data = dict()
+        data['email'] = request.form['email']
+
         if not Influencer.objects(email=data['email']):
             return make_response(jsonify(role='influencer', message='Influencer does not exist in database'),
                              status.HTTP_404_NOT_FOUND)
         else:
             influencer = Influencer.objects(email=data['email']).first()
             data = request.get_json()
-            for key in data:
-                if key == 'image':
-                    file = request.files['image']
-                    # extension = os.path.splitext(file.filename)[1]
-                    #influencer['image'] = imagefile.read()
-                    influencer.image.put(file)
-                else:
-                    influencer[key] = data[key]
+            files = request.files['file']
+            for file in files:
+                influencer.image.put(file)
             influencer.save()
             return make_response(jsonify(role='influencer', message='Influencer details updated successfully in database'),
                                  status.HTTP_200_OK)
