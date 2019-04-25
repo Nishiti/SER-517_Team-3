@@ -4,6 +4,7 @@ from flask import jsonify, request, make_response
 from nxstlab.brand import Brand
 from flask_api import status
 from nxstlab.models import Influencer
+from nxstlab.user import User
 
 class AdminRemoveBrandAPI(Resource):
     @jwt_required
@@ -15,6 +16,9 @@ class AdminRemoveBrandAPI(Resource):
         else:
             brand = Brand.objects(email=data['email']).first()
             brand.delete()
+            user = User.objects(email=data['email']).first()
+            user.delete()
+
             return make_response(jsonify(role='brand', message='brand has been removed from database'),
                                  status.HTTP_200_OK)
 
@@ -43,11 +47,13 @@ class AdminRemoveInfluencerAPI(Resource):
         else:
             user = Influencer.objects(email=data['email']).first()
             user.delete()
+            user = User.objects(email=data['email']).first()
+            user.delete()
             return make_response(jsonify(role='admin', message='influencer has been removed from database'),
                                  status.HTTP_200_OK)
 
 
-class AdminDeactivateBrandAPI(Resource):
+class AdminDeactivateInfluencerAPI(Resource):
     def post(self):
         data = request.get_json(force=True)
 
@@ -112,13 +118,20 @@ class AdminGetBrandsWithFilterAPIAll(Resource):
 class AdminGetInfluencerWithFilterAPIAll(Resource):
     def post(self):
         data = request.get_json(force=True)
-        brands = [brand for brand in Brand.objects(__raw__ = data)]
+        users = [user for user in Influencer.objects(__raw__=data)]
         res = []
-        for brand in brands:
+        for user in users:
             temp = dict()
-            temp['company_name'] = brand.company_name
-            temp['address'] = brand.address
-            temp['email'] = brand.email
+            temp['first_name'] = user.first_name
+            temp['last_name'] = user.last_name
+            temp['email'] = user.email
+            temp['big_deal_on_option1'] = user.big_deal_on_option1
+            temp['big_deal_on_option2'] = user.big_deal_on_option2
+            temp['big_deal_on_option3'] = user.big_deal_on_option3
+            temp['big_deal_on_option4'] = user.big_deal_on_option4
+            temp['big_deal_on_option5'] = user.big_deal_on_option5
+            temp['website_social_media_handles'] = user.website_social_media_handles
+            temp['followers'] = user.followers
             res.append(temp)
         return make_response(jsonify(data=res, role='admin', message='list of brands for given filter'),
                              status.HTTP_200_OK)

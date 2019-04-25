@@ -1,5 +1,23 @@
 
     <!-- Main -->
+    <nav id="nav">
+        <ul class="links">
+
+
+            <li class="active"><a href="#/admin">Admin</a></li>
+            <li><a href="#/influmanage">Influ Manage</a></li>
+            <li><a href="#/manage">Search/Manage</a></li>
+            <li><a href="#/inlist">Search Influencers</a></li>
+            <li><a href="#/campaign">campaign request</a></li>
+
+        </ul>
+        <ul class="icons">
+            <li><a href="#/logout" class="icon fa-sign-out" alt="Sign Out" title="Sign Out"></a></li>
+            <li><a href="https://twitter.com/nxstlab" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="https://www.facebook.com/nxstlab/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="https://www.instagram.com/nxstlab/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+        </ul>
+    </nav>
     <div id="main">
 
         <!-- Post -->
@@ -8,75 +26,48 @@
             <article>
                 <h2>Brand Requests</h2>
                 <br>
-          <div class="cards-container">
-              <div class="myCards fade">
-                  <center>
-                  <form class="card-container">
-                      <div class="field">
-                          <img class="image fit" src="/static/images/pic03.jpg">
-                              <label for="cname"><b>{{campaignData.campaign_name}}</b></label>
-                              <label for="plist"><b>Company Description and Products List</b></label>
-                              <button>Approve</button>
-                              <button>Deny   </button>
-                              <h3></h3>
-                              </div>
-                      </form>
-                  </center>
-              </div>
-              <div class="myCards fade">
-                  <center>
-                  <form class="card-container">
-                  <div class="field">
-                      <img class="image fit" src="/static/images/pic05.jpg">
-                          <label for="cname"><b>Company Name</b></label>
-                          <label for="plist"><b>Company Description and Products List</b></label>
-                          <button>Approve</button>
-                          <button>Deny   </button>
-                          <h3></h3>
-                          </div>
-                  </form>
-                  </center>
-                  </div>
-              <div class="myCards fade">
-                  <center>
-                  <form class="card-container">
-                      <div class="field">
-                          <img class="image fit" src="/static/images/pic02.jpg">
-                              <label for="cname"><b>Company Name</b></label>
-                              <label for="plist"><b>Company Description and Products List</b></label>
-                              <button>Approve</button>
-                              <button>Deny   </button>
-                              <h3></h3>
-                              </div>
-                  </form>
-                  </center>
-              </div>
-              <a class="prev" onclick="plusCards(-1, 0)">&#10094;</a>
-              <a class="next" onclick="plusCards(1, 0)">&#10095;</a>
-              </div>
+                <div class="cards-container">
+                    <div class="myCards fade" ng-repeat="x in brandData">
+                        <center>
+                            <form class="card-container">
+                                <div class="field">
+                                    <img class="image fit" src="/static/images/pic05.jpg">
+                                    <label><b>{{x.company_name}}</b></label>
+                                    <label><b>{{x.address}}</b></label>
+                                    <!--<label ng-model="cinfo"><b>{{x.campaign_info_rqmts}}</b></label>-->
+                                    <button ng-click="approveBrand(x)">Approve</button>
+                                    <button ng-click="denyBrand(x)">Deny   </button>
+                                </div>
+                            </form>
+                        </center>
+                    </div>
+
+                    <a class="prev" onclick="plusCards(-1, 0)">&#10094;</a>
+                    <a class="next" onclick="plusCards(1, 0)">&#10095;</a>
+                </div>
             </article>
             <article>
                 <h2>Campaign Requests</h2>
                 <br>
-            <div class="cards-container">
-                <div class="myCamps fade" ng-repeat="x in campaignData">
-                    <center>
-                    <form class="card-container">
-                        <div class="field">
-                            <img class="image fit" src="/static/images/pic04.jpg">
-                            <label ng-model="cname"><b>{{x.campaign_name}}</b></label>
-                            <label ng-model="bname"><b>{{x.associated_brand}}</b></label>
-                            <!--<label ng-model="cinfo"><b>{{x.campaign_info_rqmts}}</b></label>-->
-                            <button ng-click="approveCampaign()">Approve</button>
-                            <button ng-click="denyCampaign()">Deny   </button>
-                            </div>
-                    </form>
-                    </center>
-                </div>
+                <div class="cards-container">
+                    <div class="myCamps fade" ng-repeat="y in campaignData">
+                        <center>
+                            <form class="card-container">
+                                <div class="field">
+                                    <img class="image fit" src="/static/images/pic04.jpg">
+                                    <label><b>{{y.campaign_name}}</b></label>
+                                    <label><b>{{y.associated_brand}}</b></label>
+                                    <!--<label ng-model="cinfo"><b>{{x.campaign_info_rqmts}}</b></label>-->
+                                    <button ng-click="approveCampaign(y)">Approve</button>
+                                    <button ng-click="denyCampaign(y)">Deny   </button>
+                                </div>
+                            </form>
+                        </center>
+                    </div>
 
-                <a class="prev" onclick="plusCards(-1, 1)">&#10094;</a>
-                <a class="next" onclick="plusCards(1, 1)">&#10095;</a>
-            </div>
+                    <a class="prev" onclick="plusCards(-1, 1)">&#10094;</a>
+                    <a class="next" onclick="plusCards(1, 1)">&#10095;</a>
+                </div>
             </article>
         </section>
     </div>

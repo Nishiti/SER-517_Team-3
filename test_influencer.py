@@ -15,9 +15,9 @@ class TestInfluencer(unittest.TestCase):
 		self.app = index.app.test_client()
 
 
+#tests the addition of new user to the database
 	def test_signup_correct(self):
 
-		#tests the addition of new user to the database
 		res = self.app.post('/influencer/signup', data = json.dumps({"first_name":"first",
 													"last_name":"first",
 													"email":"zux@mail.com",
@@ -26,15 +26,54 @@ class TestInfluencer(unittest.TestCase):
 
 		self.assertEqual(res.status_code, 201)
 		
+#tests addition of an already existing user
 	def test_signup_incorrect(self):
 
-		#tests addition of an already existing user
 		res = self.app.post('/influencer/signup', data = json.dumps({"first_name":"first",
 													"last_name":"first",
 													"email":"zux@mail.com",
 													"password":"abcdefgh",
 													"confirm_password":"abcdefgh"}), content_type = 'application/json')
 		self.assertEqual(res.status_code, 409)
+
+#tests whether the influencers with name as filter are fetched from the database
+	def test_get_influencer_filter(self):
+
+		res = self.app.post('/admin/getInfluencers', data = json.dumps({"name":"k"}), content_type = 'application/json')
+		# print("here=", json.loads(res.data)['data'])
+		self.assertEqual(res.status_code, 200)
+
+#tests that the influencers that satisfy multiple filters are fetched from the database
+	def test_get_all_influencers(self):
+
+		res = self.app.post('/admin/getAllInfluencer', data = json.dumps({"first_name":"first"}), content_type = 'application/json')
+		# print("here=", json.loads(res.data)['data'])
+		self.assertEqual(res.status_code, 200)
+
+#tests the removal of an invalid influencer from database, by the admin
+	def test_remove_influencer_invalid(self):
+
+		res = self.app.post('/admin/removeInfluencers', data = json.dumps({"email":"first"}), content_type = 'application/json')
+		self.assertEqual(res.status_code, 404)
+
+#tests the removal of an valid influencer from database, by the admin
+	def test_remove_influencer_valid(self):
+
+		res = self.app.post('/admin/removeInfluencers', data = json.dumps({"email":"zux@mail.com"}), content_type = 'application/json')
+		self.assertEqual(res.status_code, 200)
+
+#tests the updation of invalid influencer profile
+	def test_incorrect_influencer_update(self):
+
+		res = self.app.put('/influencer/updateprofile', data = json.dumps({"email":"first"}), content_type = 'application/json')
+		self.assertEqual(res.status_code, 404)
+
+#tests the updation of valid influencer profile
+	def test_correct_influencer_update(self):
+
+		res = self.app.put('/influencer/updateprofile', data = json.dumps({"email":"zux@mail.com"}), content_type = 'application/json')
+		self.assertEqual(res.status_code, 200)
+
 
 if __name__ == "__main__":
     unittest.main()

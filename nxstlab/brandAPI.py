@@ -53,6 +53,10 @@ class BrandAPI(Resource):
             temp['company_name'] = brand.company_name
             temp['address'] = brand.address
             temp['email'] = brand.email
+            temp['isapproved'] = brand.isapproved
             res.append(temp)
-        return make_response(jsonify(data=res, role='admin', message='list of brands'),
-                             status.HTTP_200_OK)
+        make_response(jsonify(data=res, role='admin', message='list of brands'), status.HTTP_200_OK)
+        if not res:
+            return make_response(jsonify(role='admin', message='No brand requests left to be approved/denied'),
+                                 status.HTTP_204_NO_CONTENT)
+        return jsonify(res)

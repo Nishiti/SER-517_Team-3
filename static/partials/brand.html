@@ -1,3 +1,40 @@
+<!-- Nav -->
+<!-- Nav -->
+<nav id="nav">
+    <ul class="links">
+        <li><a href="#/">Home</a></li>
+        <li><a href="#/adminSignUp">Admin Signup</a></li>
+        <li><a href="#/influencer">Influencers Signup</a></li>
+        <li><a href="#/brand">Brands Signup</a></li>
+        <li><a href="#/login">Log In</a></li>
+        <!--<li><a href="#/campaign">Campaign</a></li>
+        <li><a href="#/login">Log In</a></li>
+        <li><a href="#/blogin">Brand Profile</a></li>
+
+show above only before log in then depending on role show below
+ for admin
+        <li><a href="#/admin">Admin</a></li>
+        <li><a href="#/influmanage">Influ Manage</a></li>
+        <li><a href="#/manage">Search/Manage</a></li>
+ for brand. search is common for admin and brand
+
+        <li><a href="#/inlist">Search Influencers</a></li>
+        <li><a href="#/campaign">campaign request</a></li>
+
+ for influencer
+
+        <li><a href="#/ilogin">Influencer Home</a></li>
+        <li><a href="#/icampaign">Influencer Campaign</a></li>
+
+        <li><a href="#/logout">Logout</a></li>-->
+
+    </ul>
+    <ul class="icons">
+        <li><a href="https://twitter.com/nxstlab" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+        <li><a href="https://www.facebook.com/nxstlab/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+        <li><a href="https://www.instagram.com/nxstlab/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+    </ul>
+</nav>
 
 	<!-- Main -->
 	<div id="main">
@@ -8,19 +45,19 @@
 				<h2>brands x products x services</h2>
 			</header>
                 <h2><u>Sign Up Form</u></h2>
-			<form method="post" action="#" class="alt">
+			<div class="alt">
                 <div class="6u 12u$(xsmall) form-group">
-                    <input type="text" placeholder="Enter Company Name" name="cname" required>
-                    <input type="text" placeholder="Enter Company Address" name="cadd" required>
-                    <input type="text" placeholder="Enter Email Address" name="email" required>
-                    <input type="text" placeholder="Enter Password" name="password" required>
-                    <input type="text" placeholder="Re-Enter Password" name="pass2" required>
+                    <input ng-model="cname" type="text" placeholder="Enter Company Name" name="cname" required>
+                    <input ng-model="address" type="text" placeholder="Enter Company Address" name="cadd" required>
+                    <input ng-model="email" type="text" placeholder="Enter Email Address" name="email" required>
+                    <input ng-model="password" type="text" placeholder="Enter Password" name="password" required>
+                    <input ng-model="confirm_password" type="text" placeholder="Re-Enter Password" name="pass2" required>
                         </div>
                     <ul class="actions">
-                        <li><input type="submit" value="Submit" /></li>
+                        <li><input type="submit" value="Submit" ng-click="brandsignup()" /></li>
                     </ul>
 				</div>
-			</form>
+			</div>
             
     <!-- Social Media Links -->
     <center>

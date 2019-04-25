@@ -1,0 +1,80 @@
+<html>
+   <body ng-app="myApp">
+        <div ng-controller="myCtrl">
+            <input type="file" file-upload />
+            <input ng-click="save()" type = "submit"/>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+        <script>
+       
+       var app = angular.module('myApp', []);
+
+app.directive('fileUpload', function () {
+    return {
+        scope: true,        //create a new scope
+        link: function (scope, el, attrs) {
+            el.bind('change', function (event) {
+                var files = event.target.files;
+                //iterate files since 'multiple' may be specified on the element
+                for (var i = 0;i<files.length;i++) {
+                    //emit event upward
+                    scope.$emit("fileSelected", { file: files[i] });
+                }                                       
+            });
+        }
+    };
+});
+
+app.controller('myCtrl', function($scope, $http) {
+
+    //a simple model to bind to and send to the server
+    $scope.model = {
+       "first_name" : "",
+        "last_name" : ""
+    };
+
+    //an array of files selected
+    $scope.files = [];
+
+    //listen for the file selected event
+    $scope.$on("fileSelected", function (event, args) {
+        $scope.$apply(function () {            
+            //add the file object to the scope's files collection
+            $scope.files.push(args.file);
+        });
+    });
+
+    //the save method
+    $scope.save = function() {
+        $http({
+            method: 'POST',
+            url: "http://localhost:5000/file/upload",
+            headers: { 'Content-Type': false },
+            transformRequest: function (data) {
+                var formData = new FormData();
+                formData.append("model", angular.toJson(data.model));
+                for (var i = 0; i < data.files; i++) {
+                    formData.append("file" + i, data.files[i]);
+                }
+                return formData;
+            },
+            data: { model: $scope.model, files: $scope.files }
+        }).
+        success(function (data, status, headers, config) {
+            alert("success!");
+        }).
+        error(function (data, status, headers, config) {
+            alert("failed!");
+        });
+    };
+
+
+});
+       
+       </script>
+
+
+   </body>
+</html>

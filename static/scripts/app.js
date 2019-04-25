@@ -9,7 +9,7 @@ app.config(['$routeProvider', function ($routeProvider) {
         templateUrl: 'static/partials/brand.html',
         controller: "brandController"
     }).when('/influencer', {
-        templateUrl: 'static/partials/influencer.html',
+        templateUrl: 'static/partials/ilogin.html',
         controller: "influencerController"
     }).when('/login', {
         templateUrl: 'static/partials/login.html',
