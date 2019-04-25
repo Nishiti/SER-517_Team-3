@@ -19,12 +19,13 @@ class InfluencerSignUpAPI(Resource):
             for key in data:
                 influencer[key] = data[key]
             influencer.save()
-            influencer = Influencer(
+            '''influencer = Influencer(
                 first_name=data['first_name'],
                 last_name=data['last_name'],
                 email=data['email'],
                 password=data['password'],
-                confirm_password=data['confirm_password']
+                confirm_password=data['confirm_password'],
+                gender=data['gender']
             ).save()
             if 'big_deal_on_option1' in data:
                 influencer.save(big_deal_on_option1=data['big_deal_on_option1'])
@@ -42,11 +43,12 @@ class InfluencerSignUpAPI(Resource):
             if 'followers' in data:
                 influencer.save(followers=data['followers'])
             if 'areas_of_interest' in data:
-                influencer.save(areas_of_interest=data['areas_of_interest'])
+                temp = []
+                for ele in data['areas_of_interest']:
+                    temp.append(ele)
+                influencer.save(areas_of_interest=temp)
             if 'dob' in data:
-                influencer.save(dob=data['dob'])
-            if 'gender' in data:
-                influencer.save(gender=data['gender'])
+                influencer.save(dob=data['dob'])'''
             User(
                 email=data['email'],
                 password=User.generate_hash(data['password']),
