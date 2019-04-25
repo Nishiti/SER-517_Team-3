@@ -7,10 +7,10 @@ from nxstlab.user import User
 
 class InfluencerSignUpAPI(Resource):
     def post(self):
-        print("Influencer Signup - Exists!")
         data = request.get_json()
         print('data = ', data)
         if Influencer.objects(email=data['email']):
+            print("Influencer Signup - Exists!")
             return make_response(jsonify(role='influencer', message='Influencer already exists in the database'),
                                  status.HTTP_409_CONFLICT)
         else:
