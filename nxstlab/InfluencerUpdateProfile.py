@@ -1,9 +1,10 @@
 from flask_restful.representations import json
-
 from nxstlab.models import Influencer
 from flask_restful import Resource
 from flask import jsonify, request, make_response
 from flask_api import status
+from werkzeug.utils import secure_filename
+import os
 
 from nxstlab.user import User
 
@@ -18,10 +19,11 @@ class InfluencerUpdateProfile(Resource):
                              status.HTTP_404_NOT_FOUND)
         else:
             influencer = Influencer.objects(email=data['email']).first()
-            data = request.get_json()
-            files = request.files['file']
-            for file in files:
-                influencer.image.put(file)
+            file = request.files['file']
+            filename = secure_filename(file.filename)
+            fileLocation = os.path.join('static/uploads/influencer_profile/', filename)
+            file.save(fileLocation)
+            influencer.image = '/' + fileLocation
             influencer.save()
             User(
                 email=data['email'],
@@ -32,7 +34,7 @@ class InfluencerUpdateProfile(Resource):
                                  status.HTTP_200_OK)
 
 
-    def get(self, id):
+    def get(self):
         influencers = [influencer for influencer in Influencer.objects()]
         res = []
         for influencer in influencers:
@@ -45,11 +47,7 @@ class InfluencerUpdateProfile(Resource):
             temp['areas_of_interest'] = influencer.areas_of_interest
             temp['dob'] = influencer.dob
             temp['gender'] = influencer.gender
-            #temp['image'] = influencer.image
-            print('image retreived')
-            # temp['image'] = json.loads(temp['image'].data.decode('utf-8'))
-            temp['image'] = temp['image'].data.decode('utf-8')
-            print('image decoded')
+            temp['image'] = influencer.image
             res.append(temp)
         return make_response(jsonify(data=res, role='influencer', message='Influencer profile details'),
                              status.HTTP_200_OK)

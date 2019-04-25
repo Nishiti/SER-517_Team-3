@@ -18,3 +18,4 @@ class Influencer(Document):
     image = FileField()
     gender = StringField(required=True)
     dob = StringField()
+    image = StringField(required=False, default='/static/uploads/influencer_profile/default.png')
