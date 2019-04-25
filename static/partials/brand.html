@@ -44,19 +44,36 @@ show above only before log in then depending on role show below
 				<h2>brands x products x services</h2>
 			</header>
                 <h2><u>Sign Up Form</u></h2>
-			<div class="alt">
+			<form name="signupForm" class="alt">
                 <div class="6u 12u$(xsmall) form-group">
-                    <input ng-model="cname" type="text" placeholder="Enter Company Name" name="cname" required>
-                    <input ng-model="address" type="text" placeholder="Enter Company Address" name="cadd" required>
-                    <input ng-model="email" type="text" placeholder="Enter Email Address" name="email" required>
-                    <input ng-model="password" type="text" placeholder="Enter Password" name="password" required>
-                    <input ng-model="confirm_password" type="text" placeholder="Re-Enter Password" name="pass2" required>
+                    <input ng-model="cname" id="cname" type="text" placeholder="Enter Company Name" name="cname" required>
+                        <div ng-if="signupForm.cname.$touched || signupSubmitted">
+                            <p ng-show="signupForm.cname.$error.required" class="help-block">Company Name is required</p>
+                        </div>
+                    <input ng-model="address" id="address" type="text" placeholder="Enter Company Address" name="address" required>
+                        <div ng-if="signupForm.address.$touched || signupSubmitted">
+                            <p ng-show="signupForm.address.$error.required" class="help-block">Address is required</p>
+                        </div>
+                    <input ng-model="email" id="email" type="text" placeholder="Enter Email Address" name="email" required>
+                        <div ng-if="signupForm.email.$touched || signupSubmitted">
+                            <p ng-show="signupForm.email.$error.required" class="help-block">Email is required</p>
+                        </div>
+                    <input ng-model="password" type="password" placeholder="Enter Password" name="password" required ng-minlength="6">
+                        <div ng-if="signupForm.password.$touched || signupSubmitted">
+                            <p ng-show="signupForm.password.$error.required" class="help-block">Password is required</p>
+                            <p ng-show="signupForm.password.$error.minlength" class="help-block">Minimum 6 character</p>
+                        </div>
+                    <input ng-model="confirm_password" type="password" placeholder="Re-Enter Password" name="confirm_password" match-password="password" required>
+                        <div ng-if="signupForm.confirm_password.$touched || signupSubmitted">
+                            <p ng-show="signupForm.confirm_password.$error.required" class="help-block">Confirm password is required</p>
+                            <p ng-show="signupForm.confirm_password.$error.matchPassword && !signupForm.confirm_password.$error.required" class="help-block">Confirm password didn't match</p>
+                        </div>
                         </div>
                     <ul class="actions">
                         <li><input type="submit" value="Submit" ng-click="brandsignup()" /></li>
                     </ul>
 				</div>
-			</div>
+			</form>
             
     <!-- Social Media Links -->
     <center>
