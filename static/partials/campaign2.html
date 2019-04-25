@@ -1,0 +1,230 @@
+
+<nav id="nav">
+    <ul class="links">
+
+
+        <li><a href="#/blogin">Brand Profile</a></li>
+        <li><a href="#/inlist2">Search Influencers</a></li>
+        <li class="active"><a href="#/campaign2">campaign request</a></li>
+
+    </ul>
+    <ul class="icons">
+        <li><a href="#/logout" class="icon fa-sign-out" alt="Sign Out" title="Sign Out"></a></li>
+        <li><a href="https://twitter.com/nxstlab" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+        <li><a href="https://www.facebook.com/nxstlab/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+        <li><a href="https://www.instagram.com/nxstlab/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+    </ul>
+</nav>
+
+<!-- Main -->
+	<div id="main">
+
+		<!-- Post -->
+		<section class="post">
+			<header class="major">
+				<h1>Brand's Campaign Request</h1>
+			</header>
+			<!-- Table -->
+			<!-- Form -->
+			<center>
+				<h2><u>Campaign Request</u></h2>
+			</center>
+				<div class="row uniform">
+					<div class="6u 12u$(xsmall)">
+						<input type="text" name="campaignName" id="campaignName" ng-model="campaignName" value="" placeholder="Campaign Name" />
+					</div>
+					<div class="6u 12u$(xsmall)">
+						<input type="text" name="campaignEmail" id="campaignEmail" ng-model="campaignEmail" value="" placeholder="Email" />
+					</div>
+					<div class="12u$">
+						<div class="field">
+							<h3>Type of Campaign</h3>
+							<div class="6u 12u$(small)">
+								<input type="radio" id="cType1" name="cType" value="true" ng-model="cType">
+								<label for="cType1">Gifting Campaign</label>
+								<input type="radio" id="cType2" name="cType" value="false" ng-model="cType2">
+								<label for="cType2">Campaign</label>
+							</div>
+                            <h4></h4>
+							<h3>Are you offering Gift Code to the Influencers? </h3>
+							<div class="6u 12u$(small)">
+								<input type="radio" id="gCode1" name="gCode" value="true" ng-model="gCode">
+								<label for="gCode1">Yes</label>
+								<input type="radio" id="gCode2" name="gCode" value="false" ng-model="gCode">
+								<label for="gCode2">No</label>
+						</div>
+					</div>
+                      <h4></h4>
+					<div class="12u$">
+						<h3>Campaign Information and Requirements</h3>
+                        <p> Specify details about the following:- Any Specific wording or desired phrases - Hashtags to include
+                - Number of Influencers Desired
+                        - Number of posts
+                    - Possible long term partnership </p>
+						<textarea name="cInfo" id="cInfo" placeholder="Enter here" rows="5" ng-model="cInfo"></textarea>
+					</div>
+                    <br>
+                    <h3> Select Influencers </h3>
+                    <br>
+                    <div class="cards-container">
+                        <div class="myCards fade">
+                            <div class="row">
+                                <div class="column">
+                            <div class="pic-container">
+                                <div class="field">
+                                    <img class="image fit" src="/static/images/pic01.jpg">
+                                        <label for="iname"><b>Influencer 1</b></label>
+                                        </div>
+                                </div>
+                            </div>
+                                <div class="column">
+                                    <div class="pic-container">
+                                        <div class="field">
+                                            <img class="image fit" src="/static/images/pic02.jpg">
+                                                <label for="inamet"><b>Influencer 2</b></label>
+                                                </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="pic-container">
+                                        <div class="field">
+                                            <img class="image fit" src="/static/images/pic03.jpg">
+                                                <label for="inameth"><b>Influencer 3</b></label>
+                                                </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="myCards fade">
+                                <div class="row">
+                                    <div class="column">
+                                        <div class="pic-container">
+                                            <div class="field">
+                                                <img class="image fit" src="/static/images/pic04.jpg">
+                                                    <label for="iname"><b>Influencer 4</b></label>
+                                                    </div>
+                                        </div>
+                                    </div>
+                                    <div class="column">
+                                        <div class="pic-container">
+                                            <div class="field">
+                                                <img class="image fit" src="/static/images/pic05.jpg">
+                                                    <label for="inamet"><b>Influencer 5</b></label>
+                                                    </div>
+                                        </div>
+                                    </div>
+                                    <div class="column">
+                                        <div class="pic-container">
+                                            <div class="field">
+                                                <img class="image fit" src="/static/images/pic06.jpg">
+                                                    <label for="inameth"><b>Influencer 6</b></label>
+                                                    </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                            <div class="myCards fade">
+                                <div class="row">
+                                    <div class="column">
+                                        <div class="pic-container">                                            <div class="field">
+                                                <img class="image fit" src="/static/images/pic07.jpg">
+                                                    <label for="iname"><b>Influencer 7</b></label>
+                                                    </div>
+                                        </div>
+                                    </div>
+                                    <div class="column">
+                                        <div class="pic-container">
+                                            <div class="field">
+                                                <img class="image fit" src="/static/images/pic08.jpg">
+                                                    <label for="inamet"><b>Influencer 8</b></label>
+                                                    </div>
+                                        </div>
+                                    </div>
+                                    <div class="column">
+                                        <div class="pic-container">
+                                            <div class="field">
+                                                <img class="image fit" src="/static/images/pic09.jpg">
+                                                    <label for="inameth"><b>Influencer 9</b></label>
+                                                    </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        <a class="prevv" onclick="plusCards(-1)">&#10094;</a>
+                        <a class="nextt" onclick="plusCards(1)">&#10095;</a>
+                    
+					<ul class="actions">
+						<br>
+						<li><input type="button" ng-click=submitCampRequest() value="Submit Campaign Request"/></li>
+						</ul>
+				</div>
+                        <script>showCards(cardIndex);</script>
+
+
+	<!-- Footer -->
+	<!--<footer id="footer">
+		<input>
+			<br method="post" action="#">
+				<div class="field">
+					<label for="name">Campaign Name</label>
+					<input type="text" name="name" id="name" />
+				</div>
+
+					<label for="name">Campaign Type</label>
+					<input type="radio"  />Gift Campaign</br>
+				<input type="radio" /> Campaign
+
+
+				<div class="field">
+					<label for="email">Email</label>
+					<input type="text" name="email" id="email" />
+				</div>
+				<div class="field">
+					<label for="socialmedialinks">Social Media Links</label>
+					<input type="text" name="socialmedialinks" id="socialmedialinks" />
+				</div>
+				<div class="field">
+					<label for="message">Campaign Information</label>
+					<textarea name="message" id="message" rows="3"></textarea>
+				</div>
+				<ul class="actions">
+					<li><input type="submit" value="Submit Campaign Request" /></li>
+				</ul>
+			</form>
+		</section>-->
+		<!--
+		<section class="split contact">
+			<section class="alt">
+				<h3>Address</h3>
+				<p>1234 Somewhere Road #87257<br />
+					Nashville, TN 00000-0000</p>
+			</section>
+			<section>
+				<h3>Phone</h3>
+				<p><a href="#">(000) 000-0000</a></p>
+			</section>
+			<section>
+				<h3>Email</h3>
+				<p><a href="#">info@untitled.tld</a></p>
+			</section>
+			<section>
+				<h3>Social</h3>
+				<ul class="icons alt">
+					<li><a href="https://twitter.com/nxstlab" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+					<li><a href="https://www.facebook.com/nxstlab/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+					<li><a href="https://www.instagram.com/nxstlab/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+					<li><a href="#" class="icon alt fa-github"><span class="label">GitHub</span></a></li>
+				</ul>
+			</section>
+		</section>-->
+	</footer>
+
+	<!-- Copyright -->
+	<div id="copyright">
+		<ul><li>&copy; nxstlab</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li><li>Distributor: <a href="https://themewagon.com/">ThemeWagon</a></li></ul>
+	</div>
+
+	</div>
+</section>
+</div>
