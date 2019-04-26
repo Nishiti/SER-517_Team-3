@@ -32,7 +32,7 @@
                         <center>
                             <form class="card-container">
                                 <div class="field">
-                                    <img class="image fit" src="/static/images/pic05.jpg">
+                                    <img class="image fit" src={{x.image}}>
                                     <label><b>{{x.company_name}}</b></label>
                                     <label><b>{{x.address}}</b></label>
                                     <!--<label ng-model="cinfo"><b>{{x.campaign_info_rqmts}}</b></label>-->
@@ -43,8 +43,8 @@
                         </center>
                     </div>
 
-                    <a class="prev" onclick="plusCards(-1, 0)">&#10094;</a>
-                    <a class="next" onclick="plusCards(1, 0)">&#10095;</a>
+                    <!--<a class="prev" onclick="plusCards(-1, 0)">&#10094;</a>-->
+                    <!--<a class="next" onclick="plusCards(1, 0)">&#10095;</a>-->
                 </div>
             </article>
             <article>
@@ -55,7 +55,7 @@
                         <center>
                             <form class="card-container">
                                 <div class="field">
-                                    <img class="image fit" src="/static/images/pic04.jpg">
+                                    <img class="image fit" src={{y.image}}>
                                     <label><b>{{y.campaign_name}}</b></label>
                                     <label><b>{{y.associated_brand}}</b></label>
                                     <!--<label ng-model="cinfo"><b>{{x.campaign_info_rqmts}}</b></label>-->
@@ -66,8 +66,8 @@
                         </center>
                     </div>
 
-                    <a class="prev" onclick="plusCards(-1, 1)">&#10094;</a>
-                    <a class="next" onclick="plusCards(1, 1)">&#10095;</a>
+                    <!--<a class="prev" onclick="plusCards(-1, 1)">&#10094;</a>-->
+                    <!--<a class="next" onclick="plusCards(1, 1)">&#10095;</a>-->
                 </div>
             </article>
         </section>

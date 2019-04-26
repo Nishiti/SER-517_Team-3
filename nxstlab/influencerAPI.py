@@ -19,36 +19,6 @@ class InfluencerSignUpAPI(Resource):
             for key in data:
                 influencer[key] = data[key]
             influencer.save()
-            '''influencer = Influencer(
-                first_name=data['first_name'],
-                last_name=data['last_name'],
-                email=data['email'],
-                password=data['password'],
-                confirm_password=data['confirm_password'],
-                gender=data['gender']
-            ).save()
-            if 'big_deal_on_option1' in data:
-                influencer.save(big_deal_on_option1=data['big_deal_on_option1'])
-            if 'big_deal_on_option2' in data:
-                influencer.save(big_deal_on_option2=data['big_deal_on_option2'])
-            if 'big_deal_on_option3' in data:
-                influencer.save(big_deal_on_option3=data['big_deal_on_option3'])
-            if 'big_deal_on_option4' in data:
-                influencer.save(big_deal_on_option4=data['big_deal_on_option4'])
-            if 'big_deal_on_option5' in data:
-                influencer.save(big_deal_on_option5=data['big_deal_on_option5'])
-
-            if 'website_social_media_handles' in data:
-                influencer.save(website_social_media_handles=data['website_social_media_handles'])
-            if 'followers' in data:
-                influencer.save(followers=data['followers'])
-            if 'areas_of_interest' in data:
-                temp = []
-                for ele in data['areas_of_interest']:
-                    temp.append(ele)
-                influencer.save(areas_of_interest=temp)
-            if 'dob' in data:
-                influencer.save(dob=data['dob'])'''
             User(
                 email=data['email'],
                 password=User.generate_hash(data['password']),

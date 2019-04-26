@@ -13,3 +13,4 @@ class BrandCampaign(Document):
     isApproved = BooleanField(null=False, default=False)
     isDenied = BooleanField(null=False, default=False)
     requested_influencers = ListField(StringField())
+    image = StringField(required=False, default='/static/uploads/campaign_profile/default.jpg')

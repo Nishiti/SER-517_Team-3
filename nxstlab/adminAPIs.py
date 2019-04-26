@@ -1,6 +1,8 @@
 from flask_jwt_extended import jwt_required
 from flask_restful import Resource
 from flask import jsonify, request, make_response
+from mongoengine import Q
+
 from nxstlab.brand import Brand
 from flask_api import status
 from nxstlab.models import Influencer
@@ -118,14 +120,39 @@ class AdminGetBrandsWithFilterAPIAll(Resource):
 class AdminGetInfluencerWithFilterAPIAll(Resource):
     def post(self):
         data = request.get_json(force=True)
-        users = [user for user in Influencer.objects(__raw__=data)]
-        users = [user for user in Influencer.objects.find({"areas_of_interest": {"$all": ["fashion"]}})]
-        #users = Influencer.objects.filter(data)#name='xyz').only(*req_fields).select_related()
+        #users = [user for user in Influencer.objects(__raw__=data)]
+        #users = Influencer.objects(Q(__raw__=data) | Q(areas_of_interest__contains='fashion'))
+        print('data = ', data)
+        newdata = {}
+        interestList = []
+        finalList = []
+        for key in data:
+            print('key = ', key)
+            if key == 'areas_of_interest':
+                continue
+            else:
+                newdata[key] = data[key]
+        print('newdata = ', newdata)
+        if newdata:
+            users = [user for user in Influencer.objects(__raw__=newdata)]
+            for u in users:
+                print('u = ', u.first_name)
+            finalList += users
+        if 'areas_of_interest' in data:
+            for interest in data['areas_of_interest']:
+                # temp1 = Influencer.objects(Q(areas_of_interest__contains=interest)).select_related()
+                temp1 = Influencer.objects(areas_of_interest=interest)
+                interestList += temp1
+            print('interestlist = ', interestList)
+            finalList += interestList
 
-        #areas_of_interest = data['areas_of_interest']
-        #print('type of areas of interest = ', type(areas_of_interest), areas_of_interest)
+        '''for f in interestList:
+            print('f = ', f.first_name)
+        for final in finalList:
+            print('final = ', final.first_name)'''
         res = []
-        for user in users:
+        #for user in users:
+        for user in finalList:
             temp = dict()
             temp['first_name'] = user.first_name
             temp['last_name'] = user.last_name
