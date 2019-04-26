@@ -56,6 +56,9 @@ app.config(['$routeProvider', function ($routeProvider) {
     }).when('/profileImage',{
         templateUrl:'static/partials/uploadProfileImage.html',
         controller : "influencerController"
+    }).when('/approvecamp',{
+        templateUrl:'static/partials/approvecamp.html',
+        controller : "adminController"
     }).otherwise({
         redirectTo: '/'
     })
