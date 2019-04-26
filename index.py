@@ -2,12 +2,14 @@ from flask import Flask, send_file
 from flask_restful import Api
 from flask_login import LoginManager
 from mongoengine import connect
+
+from nxstlab.InfluencerCampaign import InfluencerCampaign
 from nxstlab.InfluencerUpdateProfile import InfluencerProfile
 from nxstlab.InfluencerUpdateProfile import InfluencerUpdateProfile
 from nxstlab.UploadProfileImage import UploadProfileImage
 from nxstlab.adminSignupAPI import AdminSignupAPI
 from nxstlab.UserSignInAPI import UserSignInAPI, SecretResource
-from nxstlab.brandAPI import BrandAPI
+from nxstlab.brandAPI import BrandAPI, BrandGetProfileDetails
 from nxstlab.adminAPIs import AdminDeactivateBrandAPI
 from nxstlab.adminAPIs import AdminApproveBrandSignupAPI
 from nxstlab.adminAPIs import AdminRemoveBrandAPI
@@ -17,9 +19,11 @@ from nxstlab.adminAPIs import AdminGetBrandsWithFilterAPIAll
 from nxstlab.adminAPIs import AdminGetInfluencerWithFilterAPIAll
 from nxstlab.adminAPIs import AdminGetBrandsWithFilterAPI
 from nxstlab.adminAPIs import AdminGetInfluencersWithFilterAPI
-from nxstlab.BrandCampaignAPI import BrandCampaignRequestAPI
+from nxstlab.BrandCampaignAPI import BrandCampaignRequestAPI, UpdateCampaignImage
 from nxstlab.BrandCampaignRequestApprove import BrandCampaignRequestApproveAPI
 from nxstlab.adminAPIs import AdminDeactivateInfluencerAPI
+from nxstlab.BrandCampaignAPI import BrandGetInfluencerWithFilterAPIAll
+
 from nxstlab.AdminSignoutAPI import UserLogoutAccess, UserLogoutRefresh
 from flask_jwt_extended import JWTManager
 
@@ -64,6 +68,7 @@ def check_if_token_in_blacklist(decrypted_token):
     return RevokedToken.is_jti_blacklisted(jti)
 
 api.add_resource(BrandAPI, '/brand')
+api.add_resource(BrandGetProfileDetails, '/brand/getProfileDetails')
 api.add_resource(UserSignInAPI, '/user/signin')
 api.add_resource(AdminSignupAPI, '/admin/signup')
 api.add_resource(AdminRemoveBrandAPI, '/admin/removebrand')
@@ -86,6 +91,9 @@ api.add_resource(UserLogoutRefresh, '/admin/signoutrefresh')
 api.add_resource(InfluencerUpdateProfile, '/influencer/updateprofile')
 api.add_resource(UploadProfileImage, '/influencer/uploadProfileImage')
 api.add_resource(InfluencerProfile, '/influencer/profile')
+api.add_resource(InfluencerCampaign, '/influencer/updatecampaign')
+api.add_resource(BrandGetInfluencerWithFilterAPIAll, '/brand/brandGetInfluencers')
+api.add_resource(UpdateCampaignImage, '/brand/updatecampaignimage')
 
 # Test Resource
 api.add_resource(SecretResource, '/admin/secret')

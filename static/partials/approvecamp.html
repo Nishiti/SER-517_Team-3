@@ -1,0 +1,61 @@
+
+<nav id="nav">
+    <ul class="links">
+
+
+        <li><a href="#/admin">Admin</a></li>
+        <li><a href="#/influmanage">Influ Manage</a></li>
+        <li class="active"><a href="#/manage">Search/Manage</a></li>
+        <li><a href="#/inlist">Search Influencers</a></li>
+        <li><a href="#/adminSignUp">Admin Signup</a></li>
+
+
+    </ul>
+    <ul class="icons">
+        <li><a href="#/logout" class="icon fa-sign-out" alt="Sign Out" title="Sign Out"></a></li>
+        <li><a href="https://twitter.com/nxstlab" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+        <li><a href="https://www.facebook.com/nxstlab/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+        <li><a href="https://www.instagram.com/nxstlab/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+    </ul>
+</nav>
+
+<!-- Main -->
+    <div id="main">
+
+        <!-- Post -->
+        <article class="post featured">
+        <section class="posts">
+            <div>
+                <h2 style="margin-top: 0px">Approved Campaigns</h2>
+            </div>
+                <!--</form>-->
+            <div>
+                <div ng-show="brands.length < 1">There are no campaigns with this name in database</div>
+                <table ng-show = "brands.length > 0">
+                    <thead>
+                    <tr>
+                        <th align="center">Name</th>
+                        <th>Email</th>
+                        <th>Address </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="brand in brands">
+                        <td>{{ brand.company_name }}</td>
+                        <td>{{ brand.email }}</td>
+                        <td>{{ brand.address }}</td>
+                        <td><button type="button">deactivate</button></td>
+                        <td><button ng-click=removeBrand($index) type="button">remove</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </section>
+    </div>
+    <!-- Table -->
+</article>
+</div>
+
+</body>
+</html>

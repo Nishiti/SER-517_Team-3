@@ -1,3 +1,5 @@
+import datetime
+
 from flask_jwt_extended import jwt_required
 from flask_restful import Resource
 from flask import jsonify, request, make_response
@@ -96,10 +98,13 @@ class AdminGetBrandsWithFilterAPI(Resource):
         brands = [brand for brand in Brand.objects(company_name__contains=name)]
         res = []
         for brand in brands:
-            temp = dict()
-            temp['company_name'] = brand.company_name
-            temp['address'] = brand.address
-            temp['email'] = brand.email
+            if brand.isapproved == False:
+                continue
+            else:
+                temp = dict()
+                temp['company_name'] = brand.company_name
+                temp['address'] = brand.address
+                temp['email'] = brand.email
             res.append(temp)
         return make_response(jsonify(data=res, role='admin', message='list of brands for given filter'),
                              status.HTTP_200_OK)
@@ -126,18 +131,38 @@ class AdminGetInfluencerWithFilterAPIAll(Resource):
         newdata = {}
         interestList = []
         finalList = []
+        startage = endage = 0
         for key in data:
             print('key = ', key)
             if key == 'areas_of_interest':
                 continue
+            elif key == 'startage':
+                startage = data[key]
+            elif key == 'endage':
+                endage = data[key]
             else:
                 newdata[key] = data[key]
-        print('newdata = ', newdata)
+        #print('newdata = ', newdata, ' startage = ', startage, ' endage = ', endage)
+
+
+        '''if startage and endage:
+            current_year = datetime.datetime.now().year
+            # get the birth year given the age
+            startYear = current_year - int(startage)
+            endYear = current_year - int(endage)
+            print('start and end year = ', startYear, endYear)
+            # query
+            agesList = Influencer.objects(Q(dob__gte=str(datetime.datetime(endYear, 1, 1))) & Q(
+                dob__lte=str(datetime.datetime(startYear, 1, 1)))).all().select_related()
+            for a in agesList:
+                print('a = ', a.first_name)
+            finalList = agesList'''
+
         if newdata:
             users = [user for user in Influencer.objects(__raw__=newdata)]
             for u in users:
                 print('u = ', u.first_name)
-            finalList += users
+            finalList = users
         if 'areas_of_interest' in data:
             for interest in data['areas_of_interest']:
                 # temp1 = Influencer.objects(Q(areas_of_interest__contains=interest)).select_related()
@@ -145,6 +170,7 @@ class AdminGetInfluencerWithFilterAPIAll(Resource):
                 interestList += temp1
             print('interestlist = ', interestList)
             finalList += interestList
+        finalList = list(set(finalList))
 
         '''for f in interestList:
             print('f = ', f.first_name)
@@ -166,6 +192,8 @@ class AdminGetInfluencerWithFilterAPIAll(Resource):
             temp['followers'] = user.followers
             temp['dob'] = user.dob
             temp['gender'] = user.gender
+            temp['image'] = user.image
+            temp['campaignImage'] = user.campaignImages
             res.append(temp)
         return make_response(jsonify(data=res, role='admin', message='list of brands for given filter'),
                              status.HTTP_200_OK)

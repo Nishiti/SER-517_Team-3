@@ -1,20 +1,15 @@
 // index contorller will deal with only functions required on index page
 var indexController = app.controller("indexController", function ($scope, $window, $http,$location) {
-    
-    $scope.needlogin = true;
-    
+
+    $window.localStorage.needlogin = "true";
+    $scope.showUnauthorozed = false;
+    $scope.showNotFound = false;
     $scope.companyName = "nxstlab";
     
-    function checkIfSessionActive(){
-        
-        return false;
-        
-    }
     
-    
-
     $scope.login = function(){
-
+        $scope.showUnauthorozed = false;
+        $scope.showNotFound = false;
         var email = $scope.email;
         var password = $scope.password;
 
@@ -35,17 +30,10 @@ var indexController = app.controller("indexController", function ($scope, $windo
             };
             
             $window.localStorage.nxtlabUser = JSON.stringify(temp);
-            $scope.needlogin = false;
+            $window.localStorage.needlogin = "false";
             $http.defaults.headers.common.Authorization = 'Bearer ' + data.access_token;
             
-            
-//        $http.get('http://localhost:5000/admin/secret').then(function (response) {
-//            data = response.data;
-//            console.log(data);
-//        }, function (errResponse) {
-//            console.log(errResponse);
-//        });
-            
+                        
             if(data.role == "admin"){
                $location.path( "/admin" );
             }else if(data.role == "brand"){
@@ -56,6 +44,14 @@ var indexController = app.controller("indexController", function ($scope, $windo
                 
         }, function (errResponse) {
             console.log(errResponse);
+            status = errResponse.status;
+            if(status >= 500){
+                 alert("something went wrong with server");
+            }else if(status == 404){
+                $scope.showNotFound = true;     
+            }else if(status == 401){
+                $scope.showUnauthorozed = true;
+            }
         });
         
     };

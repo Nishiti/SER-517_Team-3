@@ -2447,7 +2447,7 @@
 		.image.fit {
 			display: block;
 			margin: 0.5rem 0;
-			width: 100%;
+			width: 200px;
 		}
 
 			.image.fit:first-child {
@@ -3923,7 +3923,7 @@
 
 /* Add styles to the form container */
 .form-container {
-	max-width: 600px;
+	width: 100%;
 	position: static;
 	clear: both;
   background-color: white;
@@ -3958,7 +3958,7 @@
 
 /* Full-width input fields */
 .form-container input[type=text], .form-container input[type=password], .form-container input[type=message] {
-  max-width: 580px;
+  width: 97%;
   position: static;
   right: 0px;
   border: 0.2px solid grey;
@@ -4196,6 +4196,19 @@ for font-size and font-family*/
 
 .myCamps {
 	display: none;
+}
+
+.pic-container-sel {
+        padding-top: 12px;
+        padding-right: 7px;
+        padding-left: 7px;
+        background-color: lightskyblue;
+        box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.3);
+        max-width: 250px;
+        border: 0.4px solid grey;
+        border-radius: 5px;
+        text-align: center;
+        margin-left: 27px;
 }
 
 .prevv{
@@ -5154,4 +5167,12 @@ input[type=button]{
 .activeone{
 	border:3.5px solid #37a4ff;
 
+}
+
+image{
+	display: inline;
+}
+.fitt{
+	width: 300px;
+	height: 300px;
 }

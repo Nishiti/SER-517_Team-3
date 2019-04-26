@@ -3,7 +3,6 @@
 <nav id="nav">
     <ul class="links">
         <li class="active"><a href="#/ilogin">Influencer Home</a></li>
-        <li><a href="#/icampaign">Influencer Campaign</a></li>
 
 
     </ul>
@@ -25,7 +24,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<script src="dist/js/BsMultiSelect.js"></script>
+
 
 <!-- Main -->
 <div id="main">
@@ -33,23 +32,28 @@
         <div class="row">
 
             <div class="col-sm-10">
-                <form action="http://localhost:5000/influencer/updateprofile" class="form-container">
+                <form action="http://localhost:5000/influencer/updateprofile" class="form-container" method="POST" enctype="multipart/form-data">
                     <div class="field">
-                        <img src="/static/uploads/influencer_profile/default.png" class="image fit" alt="">
+                        <img ng-src={{profileImage}} class="image fit" alt="">
                         <h6>Upload a different photo...</h6>
-                        <input type="file" class="form-control">
+                        <input type="file" name="file1" class="form-control">
+                    </div>
+                    <div class="field">
+                        <img ng-src={{cimage}} class="image fit" alt="">
+                        <h6>Add campaign image</h6>
+                        <input type="file" name="file2" multiple>
                     </div>
                     <div class="field">
                         <label for="fname"><b>First Name</b></label>
-                        <input ng-model="firstname" type="text" placeholder="Enter here" name="fname">
+                        <input ng-model="firstname" type="text" placeholder="Enter here" name="first_name">
                     </div>
                     <div class="field">
                         <label for="lname"><b>Last Name</b></label>
-                        <input ng-model="lastname" type="text" placeholder="Enter here" name="lname">
+                        <input ng-model="lastname" type="text" placeholder="Enter here" name="last_name">
                     </div>
                     <div class="field">
                         <label for="handle1"><b>Instagram handle</b></label>
-                        <input ng-model="handle" type="text" placeholder="Enter" name="handle1">
+                        <input ng-model="handle" type="text" placeholder="Enter" name="website_social_media_handles">
                     </div>
                     <div class="field">
                         <label><b>Number of Followers:</b></label>
@@ -60,27 +64,17 @@
                             <option value="high">50k+</option>
                         </select>
                     </div>
-<!--
                     <div class="field">
-                        <label><b>Areas of Interest:</b></label>
-                        <select ng-model="areaofinterest" multiple="true" name="aoi">
-                            
-<option value="" selected disabled><b>Click to Select Areas of Interest</b></option>
-<option value="1">Beauty</option>
-<option value="2">Food</option>
-<option value="3">Travel</option>
-
-                        </select>
+                        <label><b>Email:</b></label>
+                        <input name="email" ng-model="email" type = "text" readonly>
                     </div>
--->
-                    
                     <div class="field">
                         <label for="pass1"><b>Password</b></label>
                         <input ng-model = "password" type="text" placeholder="Enter Password" name="password">
                     </div>
                     <div class="field">
                         <button type="submit" class="btn">Save</button>
-                        <button type="reset" class="reset-button" value ="Reset">Reset</button
+                        <button type="reset" class="reset-button" value ="Reset">Reset</button>
                     </div>
                     
                 </form>
