@@ -41,7 +41,7 @@ class TestUserSignin(unittest.TestCase):
                                                     "password": "abcdefgh"
                                                     }),
                             content_type='application/json')
-        self.assertEqual(res.status_code, 401)
+        self.assertEqual(res.status_code, 404)
 
 
 if __name__ == "__main__":
