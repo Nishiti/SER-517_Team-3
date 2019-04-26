@@ -56,8 +56,8 @@ class UserSignInAPI(Resource):
                 return make_response(jsonify(role=user['role'], message='Incorrect password!'),
                                         status.HTTP_401_UNAUTHORIZED)
         else:
-            return make_response(jsonify(message='Incorrect user email address!'),
-                                     status.HTTP_401_UNAUTHORIZED)
+            return make_response(jsonify(message='Email not found'),
+                                     status.HTTP_404_NOT_FOUND)
 
 # Example resource protected by JWT, to be removed later
 class SecretResource(Resource):

@@ -35,9 +35,6 @@ app.config(['$routeProvider', function ($routeProvider) {
     }).when('/ilogin', {
         templateUrl: 'static/partials/ilogin.html',
         controller: "influencerController"
-    }).when('/icampaign', {
-        templateUrl: 'static/partials/icampaign.html',
-        controller: "influencerController"
     }).when('/adminSignUp',{
         templateUrl:'static/partials/adminSignUp.html',
         controller : "adminController"
