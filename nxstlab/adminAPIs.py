@@ -139,10 +139,10 @@ class AdminGetInfluencerWithFilterAPIAll(Resource):
                 endage = data[key]
             else:
                 newdata[key] = data[key]
-        print('newdata = ', newdata, ' startage = ', startage, ' endage = ', endage)
+        #print('newdata = ', newdata, ' startage = ', startage, ' endage = ', endage)
 
 
-        if startage and endage:
+        '''if startage and endage:
             current_year = datetime.datetime.now().year
             # get the birth year given the age
             startYear = current_year - int(startage)
@@ -153,13 +153,13 @@ class AdminGetInfluencerWithFilterAPIAll(Resource):
                 dob__lte=str(datetime.datetime(startYear, 1, 1)))).all().select_related()
             for a in agesList:
                 print('a = ', a.first_name)
-            finalList = agesList
+            finalList = agesList'''
 
         if newdata:
             users = [user for user in Influencer.objects(__raw__=newdata)]
             for u in users:
                 print('u = ', u.first_name)
-            finalList += users
+            finalList = users
         if 'areas_of_interest' in data:
             for interest in data['areas_of_interest']:
                 # temp1 = Influencer.objects(Q(areas_of_interest__contains=interest)).select_related()
