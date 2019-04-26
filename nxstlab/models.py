@@ -15,7 +15,7 @@ class Influencer(Document):
     website_social_media_handles = StringField(max_length=120)
     followers = StringField(max_length=60)
     areas_of_interest = ListField(StringField())
-    image = FileField()
     gender = StringField(required=True)
     dob = StringField()
     image = StringField(required=False, default='/static/uploads/influencer_profile/default.png')
+    campaignImages = ListField(StringField())

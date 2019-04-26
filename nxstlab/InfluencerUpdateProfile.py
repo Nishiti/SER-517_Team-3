@@ -33,11 +33,16 @@ class InfluencerUpdateProfile(Resource):
             return make_response(jsonify(role='influencer', message='Influencer details updated successfully in database'),
                                  status.HTTP_200_OK)
 
+class InfluencerProfile(Resource):
 
-    def get(self):
-        influencers = [influencer for influencer in Influencer.objects()]
-        res = []
-        for influencer in influencers:
+    def post(self):
+        data = request.get_json(force=True)
+        influencer = Influencer.objects(email=data['email']).first()
+
+        if not Influencer.objects(email=data['email']):
+            return make_response(jsonify(role='influencer', message='Influencer does not exist in database'),
+                             status.HTTP_404_NOT_FOUND)
+        else:
             temp = dict()
             temp['first_name'] = influencer.first_name
             temp['last_name'] = influencer.last_name
@@ -48,6 +53,7 @@ class InfluencerUpdateProfile(Resource):
             temp['dob'] = influencer.dob
             temp['gender'] = influencer.gender
             temp['image'] = influencer.image
-            res.append(temp)
-        return make_response(jsonify(data=res, role='influencer', message='Influencer profile details'),
+            temp['campaignImage'] = influencer.campaignImages
+
+            return make_response(jsonify(data=temp, role='influencer', message='Influencer profile details'),
                              status.HTTP_200_OK)
