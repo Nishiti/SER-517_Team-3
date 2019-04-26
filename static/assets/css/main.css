@@ -2447,7 +2447,7 @@
 		.image.fit {
 			display: block;
 			margin: 0.5rem 0;
-			width: 100%;
+			width: 200px;
 		}
 
 			.image.fit:first-child {
@@ -3923,7 +3923,7 @@
 
 /* Add styles to the form container */
 .form-container {
-	max-width: 600px;
+	width: 100%;
 	position: static;
 	clear: both;
   background-color: white;
@@ -3958,7 +3958,7 @@
 
 /* Full-width input fields */
 .form-container input[type=text], .form-container input[type=password], .form-container input[type=message] {
-  max-width: 580px;
+  width: 97%;
   position: static;
   right: 0px;
   border: 0.2px solid grey;
@@ -5167,4 +5167,12 @@ input[type=button]{
 .activeone{
 	border:3.5px solid #37a4ff;
 
+}
+
+image{
+	display: inline;
+}
+.fitt{
+	width: 300px;
+	height: 300px;
 }
