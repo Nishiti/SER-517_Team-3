@@ -1,9 +1,11 @@
+import os
+
 from flask_restful import Resource
 from flask import jsonify, request, make_response, session, url_for
 from nxstlab.brand import Brand
 from flask_api import status
 from werkzeug.security import check_password_hash
-from werkzeug.utils import redirect
+from werkzeug.utils import redirect, secure_filename
 
 from nxstlab.user import User
 
@@ -31,22 +33,33 @@ class BrandAPI(Resource):
                              status.HTTP_201_CREATED)
 
     def put(self):
-        data = request.get_json(force=True)
-        # handle case for invalid request
+        print('Brand Update Profile!')
+        data = dict()
+        for key in request.form:
+            data[key] = request.form[key]
         if not Brand.objects(email=data['email']):
             return make_response(jsonify(role='brand', message='brand does not exist in database'),
                              status.HTTP_404_NOT_FOUND)
         else:
             brand = Brand.objects(email=data['email']).first()
-            data = request.get_json()
+            file = request.files['file']
+            filename = secure_filename(file.filename)
+            fileLocation = os.path.join('static/uploads/brand_profile/', filename)
+            file.save(fileLocation)
+            brand.image = '/' + fileLocation
+
             for key in data:
-                brand[key] = data[key]
+                if key == 'image':
+                    continue
+                else:
+                    brand[key] = data[key]
             brand.save()
-            User(
-                email=data['email'],
-                password=User.generate_hash(data['password']),
-                role='brand'
-            ).save()
+            if 'password' in data:
+                User(
+                    email=data['email'],
+                    password=User.generate_hash(data['password']),
+                    role='brand'
+                ).save()
             return make_response(jsonify(role='brand', message='brand details updated successfully in database'),
                                  status.HTTP_200_OK)
 
