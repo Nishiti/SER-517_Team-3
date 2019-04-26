@@ -20,12 +20,13 @@
     <!-- Post -->
     <section class="post">
         <div class="field">
-            <b>Select profile picture:</b>
             <form action="http://localhost:5000/brand/updatecampaignimage" method="POST" enctype = "multipart/form-data" target="_blank">
+<!--                <h4>Please submit campaign request first and then upload campaign images</h4>-->
+<!--                <h4></h4>-->
                 <b>Select image for campaign:</b>
                 <input type="file" name="file1">
-                <input type="text" name="campaign_name" value={{campaignName}} readonly>
-                <input type="text" name="email" ng-model="campaignEmail" readonly>
+                <input type="text" placeholder="your campaign name" name="campaign_name" value={{campaignName}} readonly>
+                <input type="text" placeholder="your campaign email" name="email" ng-model="campaignEmail" readonly>
                 <input type="submit">
             </form>
 
