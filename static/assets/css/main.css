@@ -4198,6 +4198,19 @@ for font-size and font-family*/
 	display: none;
 }
 
+.pic-container-sel {
+        padding-top: 12px;
+        padding-right: 7px;
+        padding-left: 7px;
+        background-color: lightskyblue;
+        box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.3);
+        max-width: 250px;
+        border: 0.4px solid grey;
+        border-radius: 5px;
+        text-align: center;
+        margin-left: 27px;
+}
+
 .prevv{
 	cursor: pointer;
 	position: absolute;

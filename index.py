@@ -20,6 +20,8 @@ from nxstlab.adminAPIs import AdminGetInfluencersWithFilterAPI
 from nxstlab.BrandCampaignAPI import BrandCampaignRequestAPI
 from nxstlab.BrandCampaignRequestApprove import BrandCampaignRequestApproveAPI
 from nxstlab.adminAPIs import AdminDeactivateInfluencerAPI
+from nxstlab.BrandCampaignAPI import BrandGetInfluencerWithFilterAPIAll
+
 from nxstlab.AdminSignoutAPI import UserLogoutAccess, UserLogoutRefresh
 from flask_jwt_extended import JWTManager
 
@@ -86,6 +88,7 @@ api.add_resource(UserLogoutRefresh, '/admin/signoutrefresh')
 api.add_resource(InfluencerUpdateProfile, '/influencer/updateprofile')
 api.add_resource(UploadProfileImage, '/influencer/uploadProfileImage')
 api.add_resource(InfluencerProfile, '/influencer/profile')
+api.add_resource(BrandGetInfluencerWithFilterAPIAll, '/brand/brandGetInfluencers')
 
 # Test Resource
 api.add_resource(SecretResource, '/admin/secret')
