@@ -98,10 +98,13 @@ class AdminGetBrandsWithFilterAPI(Resource):
         brands = [brand for brand in Brand.objects(company_name__contains=name)]
         res = []
         for brand in brands:
-            temp = dict()
-            temp['company_name'] = brand.company_name
-            temp['address'] = brand.address
-            temp['email'] = brand.email
+            if brand.isapproved == False:
+                continue
+            else:
+                temp = dict()
+                temp['company_name'] = brand.company_name
+                temp['address'] = brand.address
+                temp['email'] = brand.email
             res.append(temp)
         return make_response(jsonify(data=res, role='admin', message='list of brands for given filter'),
                              status.HTTP_200_OK)
