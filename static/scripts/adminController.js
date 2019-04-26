@@ -398,7 +398,7 @@ $scope.searchCampaigns();
                       }
                   for (var i=0; i<2; i++) {
                         if($scope.records8[i].class === "activeone")
-                              $scope.areas.push($scope.records8[i].label);
+                              $scope.influData.push($scope.influencers[i].email);
                       }
 
                   var data2 ={
