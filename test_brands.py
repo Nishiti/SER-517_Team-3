@@ -55,7 +55,7 @@ class TestBrands(unittest.TestCase):
                             content_type='application/json')
         self.assertEqual(res.status_code, 201)
 
-# Tests the brand campaign request which is already in the database
+# Tests the addition of brand campaign request which is already in the database
     def test_incorrect_brand_campaign_request(self):
 
         res = self.app.post('/brandcampaignrequest', data=json.dumps({
@@ -72,7 +72,7 @@ class TestBrands(unittest.TestCase):
 # Tests the approval of brand campaign request which is already in the database
     def test_request_approve(self):
 
-        res = self.app.get('/brandcampaignrequestapprove', data=json.dumps({
+        res = self.app.post('/brandcampaignrequestapprove', data=json.dumps({
                                                     "campaign_name": "chips",
                                                     "email":
                                                     "ruffles@mail.com",
@@ -80,6 +80,56 @@ class TestBrands(unittest.TestCase):
                             content_type='application/json')
         self.assertEqual(res.status_code, 201)
 
+# Tests the retrieval of profile details for brand that does not exist in the database
+    def test_get_incorrect_brand_profile(self):
+
+        res = self.app.get('/brand/getProfileDetails', data=json.dumps({
+                                                    "email":
+                                                    "ruff@mail.com"}),
+                            content_type='application/json')
+        self.assertEqual(res.status_code, 404)
+
+# Tests the retrieval of profile details for brand that exist in the database
+    def test_get_correct_brand_profile(self):
+
+        res = self.app.get('/brand/getProfileDetails', data=json.dumps({
+                                                    "email":
+                                                    "ruffles@mail.com"}),
+                            content_type='application/json')
+        self.assertEqual(res.status_code, 200)
+
+# Tests the updation of campaign image for a campaign
+# that does not exist in the database
+    def test_update_incorrect_campaign_image(self):
+
+        res = self.app.post('/brand/updatecampaignimage', data=json.dumps({
+                                                    "email":
+                                                    "ruff@mail.com",
+                                                    "campaign_name":
+                                                    "chips"}),
+                            content_type='application/json')
+        self.assertEqual(res.status_code, 404)
+
+# Tests the updation of campaign image for a campaign
+# that exist in the database
+    def test_update_incorrect_campaign_image(self):
+
+        res = self.app.post('/brand/updatecampaignimage', data=json.dumps({
+                                                    "email":
+                                                    "ruff@mail.com",
+                                                    "campaign_name":
+                                                    "chips"}),
+                            content_type='application/json')
+        self.assertEqual(res.status_code, 200)
+
+# Tests the retrieval of influencers for brands
+    def test_get_influencers_for_brand(self):
+
+        res = self.app.get('/brand/brandGetInfluencers', data=json.dumps({
+                                                    "first_name":
+                                                    "first"}),
+                            content_type='application/json')
+        self.assertEqual(res.status_code, 200)
 
 if __name__ == "__main__":
     unittest.main()

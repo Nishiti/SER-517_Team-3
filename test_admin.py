@@ -32,7 +32,7 @@ class TestAdmin(unittest.TestCase):
                             content_type='application/json')
         self.assertEqual(res.status_code, 409)
 
-# Tests the removal of brand from the database
+# Tests the removal of nonexisting brand from the database
     def test_remove_invalid_brand(self):
 
         res = self.app.post('/admin/removebrand', data=json.dumps({
@@ -105,6 +105,25 @@ class TestAdmin(unittest.TestCase):
                                                     "ruffles@mail.com"}),
                             content_type='application/json')
         print("here=", json.loads(res.data)['data'])
+        self.assertEqual(res.status_code, 200)
+
+# Tests the deactivation of an influencer that does not exist in the database,
+# by admin
+    def test_incorrect_influencer_deactivate(self):
+
+        res = self.app.post('/admin/deactivateinf', data=json.dumps({
+                                                        "email":
+                                                        "lax@mail.com"}),
+                            content_type='application/json')
+        self.assertEqual(res.status_code, 404)
+
+# Tests the deactivation of a valid influencer
+    def test_correct_influencer_deactivate(self):
+
+        res = self.app.post('/admin/deactivateinf', data=json.dumps({
+                                                        "email":
+                                                        "zux@mail.com"}),
+                            content_type='application/json')
         self.assertEqual(res.status_code, 200)
 
 

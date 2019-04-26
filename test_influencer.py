@@ -46,7 +46,6 @@ class TestInfluencer(unittest.TestCase):
         res = self.app.post('/admin/getInfluencers', data=json.dumps({
                                                         "name": "k"}),
                             content_type='application/json')
-        # print("here=", json.loads(res.data)['data'])
         self.assertEqual(res.status_code, 200)
 
 # Tests that the influencers that satisfy multiple filters
@@ -86,6 +85,61 @@ class TestInfluencer(unittest.TestCase):
     def test_correct_influencer_update(self):
 
         res = self.app.put('/influencer/updateprofile', data=json.dumps({
+                                                        "email":
+                                                        "zux@mail.com"}),
+                           content_type='application/json')
+        self.assertEqual(res.status_code, 200)
+
+# Tests the uploading of profile image for valid influencer
+    def test_correct_influencer_update(self):
+
+        res = self.app.post('/influencer/uploadProfileImage', data=json.dumps({
+                                                        "email":
+                                                        "zux@mail.com"}),
+                           content_type='application/json')
+        self.assertEqual(res.status_code, 200)
+
+# Tests the uploading of profile image for invalid influencer
+# that does not exist in the database
+    def test_incorrect_influencer_update(self):
+
+        res = self.app.post('/influencer/uploadProfileImage', data=json.dumps({
+                                                        "email":
+                                                        "zu@mail.com"}),
+                           content_type='application/json')
+        self.assertEqual(res.status_code, 404)
+
+# Tests the updating of campaign details for valid influencer
+    def test_correct_influencer_update(self):
+
+        res = self.app.post('/influencer/updatecampaign', data=json.dumps({
+                                                        "email":
+                                                        "zux@mail.com"}),
+                           content_type='application/json')
+        self.assertEqual(res.status_code, 200)
+
+# Tests the updating of campaign details for invalid influencer
+    def test_incorrect_influencer_update(self):
+
+        res = self.app.post('/influencer/updatecampaign', data=json.dumps({
+                                                        "email":
+                                                        "zu@mail.com"}),
+                           content_type='application/json')
+        self.assertEqual(res.status_code, 404)
+
+# Tests the retrieval of an invalid influencer profile
+    def test_incorrect_influencer_profile(self):
+
+        res = self.app.post('/influencer/profile', data=json.dumps({
+                                                        "email":
+                                                        "zu@mail.com"}),
+                           content_type='application/json')
+        self.assertEqual(res.status_code, 404)
+
+# Tests the retrieval of a valid influencer profile
+    def test_correct_influencer_profile(self):
+
+        res = self.app.post('/influencer/profile', data=json.dumps({
                                                         "email":
                                                         "zux@mail.com"}),
                            content_type='application/json')

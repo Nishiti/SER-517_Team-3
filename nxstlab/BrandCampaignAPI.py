@@ -5,14 +5,9 @@ from flask_api import status
 from flask_restful import Resource, reqparse
 from flask import jsonify, request, make_response
 from werkzeug.utils import secure_filename
-
 from nxstlab.BrandCampaign import BrandCampaign
 from nxstlab.models import Influencer
 from nxstlab.brand import Brand
-
-# app = Flask(__name__)
-# api = Api(app)
-# connect('BrandCampaign')
 
 
 class BrandCampaignRequestAPI(Resource):
@@ -26,7 +21,6 @@ class BrandCampaignRequestAPI(Resource):
                         help='This field cannot be blank.')
     parser.add_argument('gift_campaign', type=bool)
     parser.add_argument('gift_code', type=bool)
-    # parser.add_argument('website_social_media_handles', type=str)
     parser.add_argument('campaign_info_rqmts',
                         type=str,
                         required=True,
@@ -42,9 +36,6 @@ class BrandCampaignRequestAPI(Resource):
             BrandCampaign(
                 campaign_name=data['campaign_name'],
                 email=data['email'],
-                # website_social_media_handles=data[
-                #                                 'website_social_media_handles'
-                #                                 ],
                 gift_campaign=data['gift_campaign'],
                 gift_code=data['gift_code'],
                 campaign_information_requirements=data[
