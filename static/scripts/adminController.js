@@ -94,8 +94,7 @@ app.controller("adminController", function ($scope, $window, $http, $location) {
         $http.post('http://localhost:5000/admin/signup', data).then(function (response) {
             data = response.data;
             console.log(data);
-            $location.path( "/login" );
-
+            alert("signup is successful");
         }, function (errResponse) {
             console.log(errResponse);
         });
