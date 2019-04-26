@@ -11,25 +11,43 @@ from nxstlab.user import User
 
 class InfluencerUpdateProfile(Resource):
     def post(self):
+        print('INFLUENCER')
         data = dict()
-        data['email'] = request.form['email']
-
+        # data['email'] = request.form['email']
+        for key in request.form:
+            print('key = ', key, request.form['email'])
+            data[key] = request.form[key]
         if not Influencer.objects(email=data['email']):
             return make_response(jsonify(role='influencer', message='Influencer does not exist in database'),
                              status.HTTP_404_NOT_FOUND)
         else:
             influencer = Influencer.objects(email=data['email']).first()
-            file = request.files['profileimage']
-            filename = secure_filename(file.filename)
+            #images = request.files.to_dict()
+            images = []
+            profileimage = request.files['profileimage']
+            filename = secure_filename(profileimage.filename)
             fileLocation = os.path.join('static/uploads/influencer_profile/', filename)
-            file.save(fileLocation)
+            profileimage.save(fileLocation)
             influencer.image = '/' + fileLocation
+
+            campaignimages = request.files['campaignimages']
+            tempImageLocation = []
+            for image in campaignimages:
+                filename = secure_filename(image.filename)
+                fileLocation = os.path.join('static/uploads/influencer_campaign/', filename)
+                image.save(fileLocation)
+                fileLocation = '/' + fileLocation
+                tempImageLocation.append(fileLocation)
+            influencer.campaignImages = tempImageLocation
+            for key in data:
+                influencer[key] = data[key]
             influencer.save()
-            User(
-                email=data['email'],
-                password=User.generate_hash(data['password']),
-                role='influencer'
-            ).save()
+            if 'password' in data:
+                User(
+                    email=data['email'],
+                    password=User.generate_hash(data['password']),
+                    role='influencer'
+                ).save()
             return make_response(jsonify(role='influencer', message='Influencer details updated successfully in database'),
                                  status.HTTP_200_OK)
 
