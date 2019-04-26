@@ -51,8 +51,11 @@ app.config(['$routeProvider', function ($routeProvider) {
         templateUrl:'static/partials/inlist2.html',
         controller : "adminController"
     }).when('/admin',{
-              templateUrl:'static/partials/admin.html',
-              controller : "adminController"
+        templateUrl:'static/partials/admin.html',
+        controller : "adminController"
+    }).when('/profileImage',{
+        templateUrl:'static/partials/uploadProfileImage.html',
+        controller : "influencerController"
     }).otherwise({
         redirectTo: '/'
     })

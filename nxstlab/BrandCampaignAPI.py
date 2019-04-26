@@ -61,6 +61,7 @@ class BrandCampaignRequestAPI(Resource):
             data['campaign_info_rqmts'] = campaign.campaign_information_requirements
             data['isApproved'] = campaign.isApproved
             data['requested_influencers'] = campaign.requested_influencers
+            data['image'] = campaign.image
             result.append(data)
         if not result:
             return make_response(jsonify(role='admin', message='No campaign requests left to be approved/denied'),
