@@ -66,7 +66,75 @@
 						<textarea name="cInfo" id="cInfo" placeholder="Enter here" rows="5" ng-model="cInfo"></textarea>
 					</div>
                     <br>
-                    <h3> Select Influencers </h3>
+                        <input type="checkbox" id="website" name="website" ng-model="abc">
+                        <label for="website"> <h3>Select Influencers </h3></label>
+
+                        <div ng-show="abc">
+
+                            <div class="6u 12u$(xsmall)">
+                                <h4>Age:</h4>
+                                <input type="text" id="fromAge" ng-model="from" value="" placeholder="From" >
+                                <input type="text" id="toAge" ng-model="to" value="" placeholder="To" >
+                            </div>
+
+                            <div class="6u 12u$(small)">
+                                <input type="radio" id="gender1" name="gender" value="true" ng-model="gender">
+                                <label for="gender1">Male</label>
+                                <input type="radio" id="gender2" name="gender" value="false" ng-model="gender">
+                                <label for="gender2">Female</label>
+                            </div>
+
+                            <div class="12u$">
+                                <h3>Area of Interest</h3>
+                                <table class="table-wrapper" id="page">
+                                    <tbody>
+                                    <tr>
+                                        <td ng-repeat="x in records1">
+                                            <img src={{x.path}} class= {{x.class}} ng-click='addClass1(x.index)'/>
+
+                                        </td></tr>
+                                    <tr>
+                                        <td ng-repeat="x in records2">
+                                            <img src={{x.path}} class= {{x.class}} ng-click='addClass2(x.index)'/>
+
+                                        </td></tr>
+                                    <tr>
+                                        <td ng-repeat="x in records3">
+                                            <img src={{x.path}} class= {{x.class}} ng-click='addClass3(x.index)'/>
+
+                                        </td></tr>
+                                    <tr>
+                                        <td ng-repeat="x in records4">
+                                            <img src={{x.path}} class= {{x.class}} ng-click='addClass4(x.index)'/>
+
+                                        </td></tr>
+                                    <tr>
+                                        <td ng-repeat="x in records5">
+                                            <img src={{x.path}} class= {{x.class}} ng-click='addClass5(x.index)'/>
+
+                                        </td></tr>
+                                    <tr>
+                                        <td ng-repeat="x in records6">
+                                            <img src={{x.path}} class= {{x.class}} ng-click='addClass6(x.index)'/>
+
+                                        </td></tr>
+                                    <tr>
+                                        <td ng-repeat="x in records7">
+                                            <img src={{x.path}} class= {{x.class}} ng-click='addClass7(x.index)'/>
+
+                                        </td></tr>
+                                    <tr>
+                                        <td ng-repeat="x in records8">
+                                            <img src={{x.path}} class= {{x.class}} ng-click='addClass8(x.index)'/>
+
+                                        </td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <ul class="actions">
+                                <li><input type="button" value="Search" ng-click="searchInfluencer()"/></li>
+                            </ul>
+                        </div>
                     <br>
                     <div class="cards-container">
                         <div class="myCards fade">
