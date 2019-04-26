@@ -24,10 +24,13 @@ class BrandAPI(Resource):
               password=data['password'],
               confirm_password=data['confirm_password']
             ).save()
-            if 'password' in data:
-                user = User.objects(email=data['email']).first()
-                user.password = User.generate_hash(data['password'])
-                user.save()
+
+            User(
+                email=data['email'],
+                password=User.generate_hash(data['password']),
+                role="brand"
+            ).save()
+
             return make_response(jsonify(role='brand', message='brand added successfully in database'),
                              status.HTTP_201_CREATED)
 

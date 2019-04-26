@@ -32,7 +32,8 @@ from nxstlab.models import Influencer
 from nxstlab.revokedtoken import RevokedToken
 from flask_cors import CORS
 import os
-
+from nxstlab.admin import Admin
+from nxstlab.user import User
 
 app = Flask(__name__)
 api = Api(app)
@@ -57,6 +58,13 @@ for line in configFile:
 configFile.close()
 #print(config)
 connect(config['dbname'], host=config['host'])
+
+defaultAdminEmail = "nxstadmin@gmail.com"
+defaultAdminPassword = "password"
+
+if not Admin.objects(email=defaultAdminEmail):
+    Admin(email=defaultAdminEmail,password=Admin.generate_hash(defaultAdminPassword)).save()
+    User(email=defaultAdminEmail,password=User.generate_hash(defaultAdminPassword),role='admin').save()
 
 @app.route("/")
 def hello():

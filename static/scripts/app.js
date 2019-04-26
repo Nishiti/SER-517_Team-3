@@ -44,6 +44,9 @@ app.config(['$routeProvider', function ($routeProvider) {
     }).when('/campaign2',{
         templateUrl:'static/partials/campaign2.html',
         controller : "brandController"
+    }).when('/bcampaignimage',{
+        templateUrl:'static/partials/bcampaignimage.html',
+        controller : "brandController"
     }).when('/inlist2',{
         templateUrl:'static/partials/inlist2.html',
         controller : "adminController"

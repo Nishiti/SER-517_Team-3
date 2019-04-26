@@ -46,6 +46,11 @@ show above only before log in then depending on role show below
                 <h2><u>Sign Up Form</u></h2>
 			<form name="signupForm" class="alt">
                 <div class="6u 12u$(xsmall) form-group">
+                    <div>
+                        <h6 ng-if="brandFound" style="color: red">
+                            Brand already exisits in system
+                        </h6>
+                    </div>
                     <input ng-model="cname" id="cname" type="text" placeholder="Enter Company Name" name="cname" required>
                         <div ng-if="signupForm.cname.$touched || signupSubmitted">
                             <p ng-show="signupForm.cname.$error.required" class="help-block">Company Name is required</p>
@@ -72,6 +77,7 @@ show above only before log in then depending on role show below
                     <ul class="actions">
                         <li><input type="submit" value="Submit" ng-click="brandsignup()" /></li>
                     </ul>
+                
 				</div>
 			</form>
             
