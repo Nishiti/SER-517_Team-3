@@ -22,10 +22,13 @@ class InfluencerCampaign(Resource):
             filename = secure_filename(file.filename)
             fileLocation = os.path.join('static/uploads/influencer_campaign/', filename)
             file.save(fileLocation)
-            influencer.image = '/' + fileLocation
+            influencer.campaignImages = '/' + fileLocation
 
             for key in data:
-                influencer[key] = data[key]
+                if key == 'campaignImages':
+                    continue
+                else:
+                    influencer[key] = data[key]
             influencer.save()
             if 'password' in data:
                 User(

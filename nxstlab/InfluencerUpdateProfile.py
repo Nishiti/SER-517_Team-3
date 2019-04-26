@@ -27,7 +27,10 @@ class InfluencerUpdateProfile(Resource):
             influencer.image = '/' + fileLocation
 
             for key in data:
-                influencer[key] = data[key]
+                if key == 'image':
+                    continue
+                else:
+                    influencer[key] = data[key]
             influencer.save()
             if 'password' in data:
                 User(
