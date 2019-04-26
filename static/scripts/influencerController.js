@@ -237,18 +237,19 @@ app.controller("influencerController", function ($scope, $window, $http, $locati
     };
 
     $scope.getInfProfileInfo = function(){
+            
+            var sessionDetails = $window.localStorage.nxtlabUser
+            
+            if(sessionDetails != null && sessionDetails.length > 0){
 
-        var user = JSON.parse($window.localStorage.nxtlabUser);
-
-        if(user != null){
-
-            var useremail = user.email;
-
-            var data = {
-                "email" : useremail
-            };
-
-            $http.post('http://localhost:5000/influencer/profile', data).then(function (response) {
+                var user = JSON.parse(sessionDetails);    
+                var useremail = user.email;
+                
+                var data = {
+                  "email" : useremail
+                };
+                
+                $http.post('http://localhost:5000/influencer/profile', data).then(function (response) {
 
                 if (response.data){
                     console.log("this is my response");
@@ -260,7 +261,7 @@ app.controller("influencerController", function ($scope, $window, $http, $locati
                     $scope.followers = data.followers;
                     $scope.password = data.password;
                     $scope.profileImage = data.image;
-                    $scope.cimages = data.campaignImages;
+                    $scope.cimage = data.campaignImage;
                     $scope.email = data.email;
 
                 }
@@ -273,12 +274,11 @@ app.controller("influencerController", function ($scope, $window, $http, $locati
                     alert("Influencer do not exisits");
                 }
             });
-
+                
+            }
+            
         }
-
-
-    }
-    $scope.getInfProfileInfo();
+        $scope.getInfProfileInfo();
 
 
 });

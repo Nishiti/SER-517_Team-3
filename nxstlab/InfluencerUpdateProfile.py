@@ -19,25 +19,39 @@ class InfluencerUpdateProfile(Resource):
             return make_response(jsonify(role='influencer', message='Influencer does not exist in database'),
                              status.HTTP_404_NOT_FOUND)
         else:
+            file1 = None
+            file2 = None
+
             influencer = Influencer.objects(email=data['email']).first()
-            file = request.files['file']
-            filename = secure_filename(file.filename)
-            fileLocation = os.path.join('static/uploads/influencer_profile/', filename)
-            file.save(fileLocation)
-            influencer.image = '/' + fileLocation
+            if 'file1' in request.files:
+                file1 = request.files['file1']
+            if 'file2' in request.files:
+                file2 = request.files['file2']
+            if file1:
+                filename = secure_filename(file1.filename)
+                fileLocation = os.path.join('static/uploads/influencer_profile/', filename)
+                file1.save(fileLocation)
+                influencer.image = '/' + fileLocation
+
+            if file2:
+                filename2 = secure_filename(file2.filename)
+                fileLocation2 = os.path.join('static/uploads/influencer_campaign/', filename2)
+                file2.save(fileLocation2)
+                influencer.campaignImages = '/' + fileLocation2
 
             for key in data:
-                if key == 'image':
+                print(key)
+                if key == 'file1' or key == 'file2':
                     continue
                 else:
+
                     influencer[key] = data[key]
             influencer.save()
+
             if 'password' in data:
-                User(
-                    email=data['email'],
-                    password=User.generate_hash(data['password']),
-                    role='influencer'
-                ).save()
+                temp = User.objects(email=data['email']).first()
+                temp.password = User.generate_hash(data['password'])
+                temp.save()
             return make_response(jsonify(role='influencer', message='Influencer details updated successfully in database'),
                                  status.HTTP_200_OK)
 

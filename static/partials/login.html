@@ -67,6 +67,12 @@ show above only before log in then depending on role show below
                     <li><a href="#/brands">Don't have an account? Brands Sign-up here</a></li>
                     <li><a href="#/influencer">Influencers Sign-up here</a></li>
                 </ul>
+                <div>
+                <h6 ng-if="showNotFound" style="color: red"> Email not found, Please signup</h6>
+                </div>
+                <div>
+                <h6 ng-if="showUnauthorozed" style="color: red"> Password is not matching, Please try again</h6>
+                </div>
 
             </div>
         </div>
