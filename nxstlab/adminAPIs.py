@@ -4,8 +4,10 @@ from flask_jwt_extended import jwt_required
 from flask_restful import Resource
 from flask import jsonify, request, make_response
 from mongoengine import Q
+from nxstlab.BrandCampaign import BrandCampaign
 
 from nxstlab.brand import Brand
+
 from flask_api import status
 from nxstlab.models import Influencer
 from nxstlab.user import User
@@ -106,6 +108,7 @@ class AdminGetBrandsWithFilterAPI(Resource):
                 temp['address'] = brand.address
                 temp['email'] = brand.email
             res.append(temp)
+            print(res)
         return make_response(jsonify(data=res, role='admin', message='list of brands for given filter'),
                              status.HTTP_200_OK)
 
@@ -193,7 +196,7 @@ class AdminGetInfluencerWithFilterAPIAll(Resource):
             temp['dob'] = user.dob
             temp['gender'] = user.gender
             temp['image'] = user.image
-            temp['campaignImage'] = user.campaignImages
+            temp['campaignImages'] = user.campaignImages
             res.append(temp)
         return make_response(jsonify(data=res, role='admin', message='list of brands for given filter'),
                              status.HTTP_200_OK)
@@ -224,4 +227,27 @@ class AdminGetInfluencersWithFilterAPI(Resource):
             temp['dob'] = user.dob
             res.append(temp)
         return make_response(jsonify(data=res, role='admin', message='list of influencers for given filter'),
+                             status.HTTP_200_OK)
+
+
+class AdminGetBrandCampaignsWithFilterAPI(Resource):
+    def get(self):
+        brandCampaigns = [brand for brand in BrandCampaign.objects()]
+        print('brand campaigns = ', brandCampaigns)
+        #brandCampaigns = BrandCampaign.objects()
+        res = []
+        for brandCampaign in brandCampaigns:
+            if brandCampaign.isApproved == False:
+                continue
+            else:
+                temp = dict()
+                temp['campaign_name'] = brandCampaign.campaign_name
+                temp['email'] = brandCampaign.email
+                temp['gift_campaign'] = brandCampaign.gift_campaign
+                temp['gift_code'] = brandCampaign.gift_code
+                temp['campaign_information_requirements'] = brandCampaign.campaign_information_requirements
+                temp['requested_influencers'] = brandCampaign.requested_influencers
+                temp['image'] = brandCampaign.image
+            res.append(temp)
+        return make_response(jsonify(data=res, role='admin', message='list of campaign for given filter'),
                              status.HTTP_200_OK)

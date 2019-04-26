@@ -5,9 +5,10 @@
 
         <li><a href="#/admin">Admin</a></li>
         <li><a href="#/influmanage">Influ Manage</a></li>
-        <li class="active"><a href="#/manage">Search/Manage</a></li>
         <li><a href="#/inlist">Search Influencers</a></li>
+        <li><a href="#/manage">Search/Manage</a></li>
         <li><a href="#/adminSignUp">Admin Signup</a></li>
+        <li class="active"><a href="#/approvecamp">Approve Campaign</a></li>
 
 
     </ul>
@@ -21,6 +22,12 @@
 
 <!-- Main -->
     <div id="main">
+        <div>
+            <ul class="actions">
+                <input  ng-model = "campaignName" for="campaignsearch" type="text" name="search" placeholder="Search by campaign name" style="width: 60%; ">
+                <button ng-click="searchCampaigns()" type="submit" style="margin-top: 10px; " >Find</button>
+            </ul>
+        </div>
 
         <!-- Post -->
         <article class="post featured">
@@ -30,8 +37,8 @@
             </div>
                 <!--</form>-->
             <div>
-                <div ng-show="brands.length < 1">There are no campaigns with this name in database</div>
-                <table ng-show = "brands.length > 0">
+                <div ng-show="campaigns.length < 1">There are no Approved campaigns in the database</div>
+                <table ng-show = "campaigns.length > 0">
                     <thead>
                     <tr>
                         <th align="center">Name</th>
@@ -40,12 +47,12 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="brand in brands">
-                        <td>{{ brand.company_name }}</td>
-                        <td>{{ brand.email }}</td>
-                        <td>{{ brand.address }}</td>
-                        <td><button type="button">deactivate</button></td>
-                        <td><button ng-click=removeBrand($index) type="button">remove</button></td>
+                    <tr ng-repeat="campaign in campaigns">
+                        <td>{{ campaign.campaign_name }}</td>
+                        <td>{{ campaign.email }}</td>
+                        <!--<td>{{ campaign.address }}</td>-->
+                        <!--<td><button type="button">deactivate</button></td>
+                        <td><button ng-click=removeCampaign($index) type="button">remove</button></td>-->
                     </tr>
                     </tbody>
                 </table>
