@@ -137,92 +137,19 @@
                         </div>
                     <br>
                     <div class="cards-container">
-                        <div class="myCards fade">
-                            <div class="row">
-                                <div class="column">
+                        <div class="myCards fade" ng-repeat="y in influencers">
                             <div class="pic-container">
                                 <div class="field">
-                                    <img class="image fit" src="/static/images/pic01.jpg">
-                                        <label for="iname"><b>Influencer 1</b></label>
-                                        </div>
+                                    <img class="image fit" src={{y.image}}>
+                                    <h3>Influencer</h3>
+                                        <label><b>{{y.first_name}}</b></label>
                                 </div>
+
+                                </div>
+                            <br>
                             </div>
-                                <div class="column">
-                                    <div class="pic-container">
-                                        <div class="field">
-                                            <img class="image fit" src="/static/images/pic02.jpg">
-                                                <label for="inamet"><b>Influencer 2</b></label>
-                                                </div>
-                                    </div>
-                                </div>
-                                <div class="column">
-                                    <div class="pic-container">
-                                        <div class="field">
-                                            <img class="image fit" src="/static/images/pic03.jpg">
-                                                <label for="inameth"><b>Influencer 3</b></label>
-                                                </div>
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
-                            <div class="myCards fade">
-                                <div class="row">
-                                    <div class="column">
-                                        <div class="pic-container">
-                                            <div class="field">
-                                                <img class="image fit" src="/static/images/pic04.jpg">
-                                                    <label for="iname"><b>Influencer 4</b></label>
-                                                    </div>
-                                        </div>
-                                    </div>
-                                    <div class="column">
-                                        <div class="pic-container">
-                                            <div class="field">
-                                                <img class="image fit" src="/static/images/pic05.jpg">
-                                                    <label for="inamet"><b>Influencer 5</b></label>
-                                                    </div>
-                                        </div>
-                                    </div>
-                                    <div class="column">
-                                        <div class="pic-container">
-                                            <div class="field">
-                                                <img class="image fit" src="/static/images/pic06.jpg">
-                                                    <label for="inameth"><b>Influencer 6</b></label>
-                                                    </div>
-                                        </div>
-                                    </div>
-                                </div>
                         </div>
-                            <div class="myCards fade">
-                                <div class="row">
-                                    <div class="column">
-                                        <div class="pic-container">                                            <div class="field">
-                                                <img class="image fit" src="/static/images/pic07.jpg">
-                                                    <label for="iname"><b>Influencer 7</b></label>
-                                                    </div>
-                                        </div>
-                                    </div>
-                                    <div class="column">
-                                        <div class="pic-container">
-                                            <div class="field">
-                                                <img class="image fit" src="/static/images/pic08.jpg">
-                                                    <label for="inamet"><b>Influencer 8</b></label>
-                                                    </div>
-                                        </div>
-                                    </div>
-                                    <div class="column">
-                                        <div class="pic-container">
-                                            <div class="field">
-                                                <img class="image fit" src="/static/images/pic09.jpg">
-                                                    <label for="inameth"><b>Influencer 9</b></label>
-                                                    </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
-                        <a class="prevv" onclick="plusCards(-1)">&#10094;</a>
-                        <a class="nextt" onclick="plusCards(1)">&#10095;</a>
+
                     
 					<ul class="actions">
 						<br>
@@ -287,8 +214,8 @@
 					<li><a href="#" class="icon alt fa-github"><span class="label">GitHub</span></a></li>
 				</ul>
 			</section>
-		</section>-->
-	</footer>
+		</section>
+	</footer>-->
 
 	<!-- Copyright -->
 	<div id="copyright">

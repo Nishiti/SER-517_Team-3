@@ -193,72 +193,81 @@ $scope.count=0;
              //console.log('response',records[val].index);
            }
 
-     $scope.searchInfluencer = function() {
 
-//         $scope.areas=[];
-//
-//             for (var i=0; i<4; i++) {
-//                   if($scope.records1[i].class === "activeone")
-//                         $scope.areas.push($scope.records1[i].label);
-//                 }
-//             for (var i=0; i<4; i++) {
-//                   if($scope.records2[i].class === "activeone")
-//                         $scope.areas.push($scope.records2[i].label);
-//                 }
-//             for (var i=0; i<4; i++) {
-//                   if($scope.records3[i].class === "activeone")
-//                         $scope.areas.push($scope.records3[i].label);
-//                 }
-//             for (var i=0; i<4; i++) {
-//                   if($scope.records4[i].class === "activeone")
-//                         $scope.areas.push($scope.records4[i].label);
-//                 }
-//             for (var i=0; i<4; i++) {
-//                   if($scope.records5[i].class === "activeone")
-//                         $scope.areas.push($scope.records5[i].label);
-//                 }
-//             for (var i=0; i<4; i++) {
-//                   if($scope.records6[i].class === "activeone")
-//                         $scope.areas.push($scope.records6[i].label);
-//                 }
-//             for (var i=0; i<4; i++) {
-//                   if($scope.records7[i].class === "activeone")
-//                         $scope.areas.push($scope.records7[i].label);
-//                 }
-//             for (var i=0; i<2; i++) {
-//                   if($scope.records8[i].class === "activeone")
-//                         $scope.areas.push($scope.records8[i].label);
-//                 }
-//
-//             $scope.genderStr="male"
-//             if($scope.gender===false)
-//                $scope.genderStr="female"
-//
-//             $scope.influencerData=[]
-//
-//             $scope.influData=[]
-//
-//              var data =
-//                      {
-//                          "gender" : $scope.genderStr,
-//                          "areas_of_interest": $scope.areas
-//
-//                      }
-//              $http.post('http://localhost:5000/admin/getInfluencers', data).then(function (response) {
-//
-//                              console.log(response.data);
-//                              }, function (response) {
-//                                              status = response.status;
-//                                              if(status >= 500){
-//                                                  alert("something went wrong with server");
-//                                              }else if(status == 409){
-//                                                  alert("brand with this email id already exists in our system");
-//                                              }else{
-//                                              $scope.influData=response.data;
-//                                              console.log(response.data)
-//                                              }
-//
-//                                          });
+        $scope.influencers=[];
+        $scope.influTempData=[];
+
+              $scope.searchInfluencer = function() {
+
+                  $scope.areas=[];
+
+                  for (var i=0; i<4; i++) {
+                        if($scope.records1[i].class === "activeone")
+                              $scope.areas.push($scope.records1[i].label);
+                      }
+                  for (var i=0; i<4; i++) {
+                        if($scope.records2[i].class === "activeone")
+                              $scope.areas.push($scope.records2[i].label);
+                      }
+                  for (var i=0; i<4; i++) {
+                        if($scope.records3[i].class === "activeone")
+                              $scope.areas.push($scope.records3[i].label);
+                      }
+                  for (var i=0; i<4; i++) {
+                        if($scope.records4[i].class === "activeone")
+                              $scope.areas.push($scope.records4[i].label);
+                      }
+                  for (var i=0; i<4; i++) {
+                        if($scope.records5[i].class === "activeone")
+                              $scope.areas.push($scope.records5[i].label);
+                      }
+                  for (var i=0; i<4; i++) {
+                        if($scope.records6[i].class === "activeone")
+                              $scope.areas.push($scope.records6[i].label);
+                      }
+                  for (var i=0; i<4; i++) {
+                        if($scope.records7[i].class === "activeone")
+                              $scope.areas.push($scope.records7[i].label);
+                      }
+                  for (var i=0; i<2; i++) {
+                        if($scope.records8[i].class === "activeone")
+                              $scope.areas.push($scope.records8[i].label);
+                      }
+
+                  var data2 ={
+                              "start" : parseInt($scope.from),
+                              "end" : parseInt($scope.to),
+                              "gender": $scope.gender,
+                              "areas_of_interest" : $scope.areas
+                             }
+
+                 $http.post('http://localhost:5000/brand/brandGetInfluencers', data2).then(function (response2) {
+
+                                 if (response2.data){
+                                     $scope.influencers=response2.data.data;
+                                     //console.log(response2.data);
+
+//                                 for (var i=0;i<$scope.influTempData.length;i++)
+//                                     {
+//                                         if ($scope.influTempData[i].isapproved === false)
+//                                             $scope.influencers.push($scope.influTempData[i])
+//                                     }
+
+                                     console.log($scope.influencers);
+                                     //$scope.showCards.hide('show')
+
+                                     //$scope.showCards=true;
+                                 }
+
+                             }, function (response) {
+                                 status = response.status;
+                                 if(status >= 500){
+                                     alert("something went wrong with server");
+                                 }else if(status == 404){
+                                     alert("Influencer do not exisits");
+                                 }
+                             });
+
 
 
 
