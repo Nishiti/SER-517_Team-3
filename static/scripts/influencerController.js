@@ -193,7 +193,6 @@ app.controller("influencerController", function ($scope, $window, $http, $locati
             if($scope.records8[i].class === "activeone")
                 $scope.areas.push($scope.records8[i].label);
         }
-        $scope.areas=[];
 
 
         //if($('.image1').hasClass('activeone'))
