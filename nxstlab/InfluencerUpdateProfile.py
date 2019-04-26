@@ -54,6 +54,7 @@ class InfluencerProfile(Resource):
             temp['gender'] = influencer.gender
             temp['image'] = influencer.image
             temp['campaignImage'] = influencer.campaignImages
+            temp['password'] = influencer.password
 
             return make_response(jsonify(data=temp, role='influencer', message='Influencer profile details'),
                              status.HTTP_200_OK)
