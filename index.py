@@ -2,6 +2,8 @@ from flask import Flask, send_file
 from flask_restful import Api
 from flask_login import LoginManager
 from mongoengine import connect
+
+from nxstlab.InfluencerCampaign import InfluencerCampaign
 from nxstlab.InfluencerUpdateProfile import InfluencerProfile
 from nxstlab.InfluencerUpdateProfile import InfluencerUpdateProfile
 from nxstlab.UploadProfileImage import UploadProfileImage
@@ -88,6 +90,7 @@ api.add_resource(UserLogoutRefresh, '/admin/signoutrefresh')
 api.add_resource(InfluencerUpdateProfile, '/influencer/updateprofile')
 api.add_resource(UploadProfileImage, '/influencer/uploadProfileImage')
 api.add_resource(InfluencerProfile, '/influencer/profile')
+api.add_resource(InfluencerCampaign, '/influencer/updatecampaign')
 api.add_resource(BrandGetInfluencerWithFilterAPIAll, '/brand/brandGetInfluencers')
 
 # Test Resource
