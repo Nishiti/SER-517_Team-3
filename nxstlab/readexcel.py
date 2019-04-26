@@ -28,6 +28,9 @@ for each in reader:
     follow = []
     follow_count = 0
 
+    # The records that have an email that already exists in the database
+    # or if the email field is bank, then they are being stored
+    # in another collection as it requires Sponsors attention
     if each["Email:"] == "" or each["Email:"] in email:
       row["first_name"] = each["First Name"]
       row["last_name"] = each["Last Name"]
@@ -35,6 +38,9 @@ for each in reader:
       db.email_error.insert_one(row)
       continue
 
+    # Add data to the collection as per the match between
+    # column header of the csv and
+    # fields in the project database collection
     for field in header:
       if field == "Email:":
         row["email"] = each[field]
@@ -108,6 +114,16 @@ for each in reader:
         row["followers"] = "moderate"
       else:
         row["followers"] = "high"
+
+      # The gender field is being hardcoded as it is not available in current sponsors data
+      # and the gender field is a required field for the database
+      row["gender"] = "Male"
+
+      # The path of a default image is being hardcoded as the available data from Sponsor
+      # has no images for the influencers but a influencer can upload a image 
+      # through the project website
+      row["image"] = "/static/uploads/influencer_profile/default.png"
     
+    # Add the row to the project database collection if the row has valid data
     if bool(row):    
       db.influencer.insert_one(row)
