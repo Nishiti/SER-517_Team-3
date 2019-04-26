@@ -1,6 +1,24 @@
 
 var brandController = app.controller("brandController", function ($scope, $window, $http, $location) {
 
+
+    //console.log($window.localStorage.nxtlabUser)
+
+
+    $scope.login = function checkIfLoginActive(){
+
+        console.log($window.localStorage.nxtlabUser);
+        console.log($window.localStorage.needlogin);
+        if ($window.localStorage.needlogin == "true") {
+            $location.path("/login")
+        }
+
+
+    };
+
+    $scope.login();
+
+
     $scope.brandsignup = function() {
         console.log($scope.socialhandles);
         var data =
@@ -46,38 +64,7 @@ var brandController = app.controller("brandController", function ($scope, $windo
         
     }
 
-    $scope.submitCampRequest = function() {
-        var data =
-            {
-                "campaign_name" : $scope.campaignName,
-                "email" : $scope.campaignEmail,
-                "gift_campaign" : $scope.cType.value,
-                "gift_code" : $scope.gCode.value,
-                "campaign_info_rqmts" : $scope.cInfo,
-                "isApproved": false,
-                "isDenied": false
-            }
 
-        $http.post('http://localhost:5000/brandcampaignrequest', data).then(function (response) {
-
-            if (response.data)
-
-                console.log($scope.msg);
-            console.log("Added to the database");
-            $location.path( "/campaign" );
-
-        }, function (response) {
-
-            $scope.msg = "Service not Exists";
-
-            $scope.statusval = response.status;
-
-            $scope.statustext = response.statusText;
-
-            $scope.headers = response.headers();
-
-        });
-    };
 
     $scope.getBrandProfileInfo();
 
@@ -193,6 +180,14 @@ $scope.count=0;
              //console.log('response',records[val].index);
            }
 
+       $scope.addClass = function(i){
+                   if($scope.influencers[i].class === "pic-container-sel" )
+                       $scope.influencers[i].class = "pic-container";
+                   else
+                       $scope.influencers[i].class = "pic-container-sel";
+                   //console.log('response',records[val].index);
+                 }
+
 
         $scope.influencers=[];
         $scope.influTempData=[];
@@ -247,11 +242,10 @@ $scope.count=0;
                                      $scope.influencers=response2.data.data;
                                      //console.log(response2.data);
 
-//                                 for (var i=0;i<$scope.influTempData.length;i++)
-//                                     {
-//                                         if ($scope.influTempData[i].isapproved === false)
-//                                             $scope.influencers.push($scope.influTempData[i])
-//                                     }
+                                 for (var i=0;i<$scope.influencers.length;i++)
+                                     {
+                                         $scope.influencers[i].class="pic-container"
+                                     }
 
                                      console.log($scope.influencers);
                                      //$scope.showCards.hide('show')
@@ -268,10 +262,46 @@ $scope.count=0;
                                  }
                              });
 
-
-
-
                }
+
+               $scope.submitCampRequest = function() {
+
+                       $scope.influData=[]
+                       for (var i=0;i<$scope.influencers.length;i++)
+                            {
+                                if($scope.influencers[i].class === "pic-container-sel")
+                                    $scope.influData.push($scope.records3[i].label);
+                            }
+                       var data3 =
+                           {
+                               "campaign_name" : $scope.campaignName,
+                               "email" : $scope.campaignEmail,
+                               "campaign_info_rqmts" : $scope.cInfo,
+                               "requested_influencers" : $scope.influData
+                           }
+
+                       $http.post('http://localhost:5000/brandcampaignrequest', data3).then(function (response3) {
+
+                           if (response3.data)
+
+                               console.log($scope.msg);
+                           console.log("Added to the database");
+                           $location.path( "/blogin" );
+
+                       }, function (response3) {
+
+                           $scope.msg = "Service not Exists";
+
+                           $scope.statusval = response3.status;
+
+                           $scope.statustext = response3.statusText;
+
+                           $scope.headers = response3.headers();
+
+                       });
+                   };
+
+
 
 
 

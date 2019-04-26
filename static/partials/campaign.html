@@ -135,20 +135,20 @@
                                 <li><input type="button" value="Search" ng-click="searchInfluencer()"/></li>
                             </ul>
                         </div>
+
                     <br>
                     <div class="cards-container">
-                        <div class="myCards fade" ng-repeat="y in influencers">
-                            <div class="pic-container">
+                        <div class="myCards fade" ng-repeat="y in influencers track by $index">
+                            <div  class={{y.class}} ng-click="addClass($index)">
                                 <div class="field">
                                     <img class="image fit" src={{y.image}}>
                                     <h3>Influencer</h3>
-                                        <label><b>{{y.first_name}}</b></label>
+                                    <label><b>{{y.first_name}}</b></label>
                                 </div>
-
-                                </div>
-                            <br>
                             </div>
+                            <br>
                         </div>
+                    </div>
 
                     
 					<ul class="actions">

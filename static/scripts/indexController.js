@@ -1,7 +1,7 @@
 // index contorller will deal with only functions required on index page
 var indexController = app.controller("indexController", function ($scope, $window, $http,$location) {
-    
-    $scope.needlogin = true;
+
+    $window.localStorage.needlogin = "true";
     
     $scope.companyName = "nxstlab";
     
@@ -35,7 +35,8 @@ var indexController = app.controller("indexController", function ($scope, $windo
             };
             
             $window.localStorage.nxtlabUser = JSON.stringify(temp);
-            $scope.needlogin = false;
+            $window.localStorage.needlogin = "false";
+            //$window.needlogin = false;
             $http.defaults.headers.common.Authorization = 'Bearer ' + data.access_token;
             
             
