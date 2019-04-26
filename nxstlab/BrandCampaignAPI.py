@@ -146,3 +146,4 @@ class UpdateCampaignImage(Resource):
             return make_response(
                 jsonify(role='brand', message='Brand Campaign Image updated successfully in database'),
                 status.HTTP_200_OK)
+

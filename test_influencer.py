@@ -12,7 +12,7 @@ class TestInfluencer(unittest.TestCase):
         index.app.config["MONGODB_DB"] = 'test_ser517'
         self.app = index.app.test_client()
 
-# Tests the addition of new user to the database
+# Tests the addition of new influencer to the database
     def test_signup_correct(self):
 
         res = self.app.post('/influencer/signup', data=json.dumps({
@@ -23,10 +23,9 @@ class TestInfluencer(unittest.TestCase):
                                                     "confirm_password":
                                                     "abcdefgh"}),
                             content_type='application/json')
-
         self.assertEqual(res.status_code, 201)
 
-# Tests addition of an already existing user
+# Tests addition of an already existing influencer
     def test_signup_incorrect(self):
 
         res = self.app.post('/influencer/signup', data=json.dumps({
@@ -76,7 +75,7 @@ class TestInfluencer(unittest.TestCase):
 # Tests the updation of invalid influencer profile
     def test_incorrect_influencer_update(self):
 
-        res = self.app.put('/influencer/updateprofile', data=json.dumps({
+        res = self.app.post('/influencer/updateprofile', data=json.dumps({
                                                         "email": "first"}),
                            content_type='application/json')
         self.assertEqual(res.status_code, 404)
@@ -84,7 +83,7 @@ class TestInfluencer(unittest.TestCase):
 # Tests the updation of valid influencer profile
     def test_correct_influencer_update(self):
 
-        res = self.app.put('/influencer/updateprofile', data=json.dumps({
+        res = self.app.post('/influencer/updateprofile', data=json.dumps({
                                                         "email":
                                                         "zux@mail.com"}),
                            content_type='application/json')

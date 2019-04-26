@@ -4,9 +4,6 @@ from flask_restful import Resource, Api, reqparse
 from nxstlab.BrandCampaign import BrandCampaign
 from mongoengine import connect
 
-# app = Flask(__name__)
-# api = Api(app)
-# connect('BrandCampaign')
 
 class BrandCampaignRequestApproveAPI(Resource):
 
@@ -32,5 +29,3 @@ class BrandCampaignRequestApproveAPI(Resource):
                                  status.HTTP_201_CREATED)
 
 	
-# api.add_resource(BrandCampaignRequestApproveAPI, '/brandcampaignrequestapprove')
-# app.run(port=5000, debug=True)

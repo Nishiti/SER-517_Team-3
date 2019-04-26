@@ -104,7 +104,6 @@ class TestAdmin(unittest.TestCase):
                                                     "email":
                                                     "ruffles@mail.com"}),
                             content_type='application/json')
-        print("here=", json.loads(res.data)['data'])
         self.assertEqual(res.status_code, 200)
 
 # Tests the deactivation of an influencer that does not exist in the database,
@@ -126,6 +125,11 @@ class TestAdmin(unittest.TestCase):
                             content_type='application/json')
         self.assertEqual(res.status_code, 200)
 
+# Test the retrieval of a brand campaign that is in the database using filters
+    def test_get_brand_campaign(self):
+
+        res = self.app.get('/approvecamp')
+        self.assertEqual(res.status_code, 200)
 
 if __name__ == "__main__":
     unittest.main()

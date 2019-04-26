@@ -83,7 +83,7 @@ class TestBrands(unittest.TestCase):
 # Tests the retrieval of profile details for brand that does not exist in the database
     def test_get_incorrect_brand_profile(self):
 
-        res = self.app.get('/brand/getProfileDetails', data=json.dumps({
+        res = self.app.post('/brand/getProfileDetails', data=json.dumps({
                                                     "email":
                                                     "ruff@mail.com"}),
                             content_type='application/json')
@@ -92,7 +92,7 @@ class TestBrands(unittest.TestCase):
 # Tests the retrieval of profile details for brand that exist in the database
     def test_get_correct_brand_profile(self):
 
-        res = self.app.get('/brand/getProfileDetails', data=json.dumps({
+        res = self.app.post('/brand/getProfileDetails', data=json.dumps({
                                                     "email":
                                                     "ruffles@mail.com"}),
                             content_type='application/json')
