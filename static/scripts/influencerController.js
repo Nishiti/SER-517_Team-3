@@ -219,38 +219,19 @@ app.controller("influencerController", function ($scope, $window, $http, $locati
     };
 
     $scope.getInfProfileInfo = function(){
-            var user = $window.localStorage.nxtlabUser;
-            var user = "";
-            status = response.status;
-            if(status >= 500){
-                alert("something went wrong with server");
-            }else if(status == 409){
-                alert("Influencer with this email id already exisits");
-            }
-        });
+            
+            var user = JSON.parse($window.localStorage.nxtlabUser);
 
             if(user != null){
-
+                
+                var useremail = user.email;
+                
                 var data = {
-                  "email" : "inf2@gmail.com"
+                  "email" : useremail
                 };
-
-                $http.post('http://localhost:5000/influencer/profile', data).then(function (response) {
-    };
-
-    $scope.getInfProfileInfo = function(){
-            var user = $window.localStorage.nxtlabUser;
-            var user = "";
-
-            if(user != null){
-                var data = {
-                  "email" : "inf2@gmail.com"
-                };
+                
                 $http.post('http://localhost:5000/influencer/profile', data).then(function (response) {
 
-                if (response.data){
-                    console.log(response.data);
-                }
                 if (response.data){
                     console.log("this is my response");
                     var data = response.data.data;
@@ -261,11 +242,11 @@ app.controller("influencerController", function ($scope, $window, $http, $locati
                     $scope.followers = data.followers;
                     $scope.password = data.password;
                     $scope.profileImage = data.image;
-
+                    $scope.cimages = data.campaignImages;
+                    $scope.email = data.email;
+                    
                 }
-
-
-
+                    
             }, function (response) {
                 status = response.status;
                 if(status >= 500){

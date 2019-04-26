@@ -19,7 +19,7 @@ class InfluencerUpdateProfile(Resource):
                              status.HTTP_404_NOT_FOUND)
         else:
             influencer = Influencer.objects(email=data['email']).first()
-            file = request.files['file']
+            file = request.files['profileimage']
             filename = secure_filename(file.filename)
             fileLocation = os.path.join('static/uploads/influencer_profile/', filename)
             file.save(fileLocation)

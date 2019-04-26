@@ -47,7 +47,7 @@ class UserSignInAPI(Resource):
                     temp['isapproved'] = brand.isapproved
                     temp['isactive'] = brand.isactive
 
-                return make_response(jsonify(role=user['role'], influencerobject=temp, message='login successful!', access_token=access_token,
+                return make_response(jsonify(role=user['role'],email=temp['email'], userobject=temp, message='login successful!', access_token=access_token,
                                                  refresh_token=refresh_token), status.HTTP_200_OK)
             else:
                 print('Password mismatch!')

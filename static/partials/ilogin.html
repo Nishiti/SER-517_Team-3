@@ -37,7 +37,14 @@
                     <div class="field">
                         <img ng-src={{profileImage}} class="image fit" alt="">
                         <h6>Upload a different photo...</h6>
-                        <input type="file" class="form-control">
+                        <input type="file" name="profileimage" class="form-control">
+                    </div>
+                    <div ng-repeate="cimage in cimages">
+                        <img ng-src={{cimage}} class="image fit" alt="">
+                    </div>
+                    <div class="field">
+                        <h6>Add campaign images</h6>
+                        <input type="file" name="campaignimages" multiple>
                     </div>
                     <div class="field">
                         <label for="fname"><b>First Name</b></label>
@@ -60,7 +67,9 @@
                             <option value="high">50k+</option>
                         </select>
                     </div>
-                    
+                    <div>
+                        <input name="email" ng-model="email" type="hidden">
+                    </div>
                     <div class="field">
                         <label for="pass1"><b>Password</b></label>
                         <input ng-model = "password" type="text" placeholder="Enter Password" name="password">
