@@ -1,4 +1,4 @@
-from flask_restful.representations import json
+from flask_jwt_extended import jwt_required
 from nxstlab.models import Influencer
 from flask_restful import Resource
 from flask import jsonify, request, make_response
@@ -10,6 +10,7 @@ from nxstlab.user import User
 
 
 class InfluencerUpdateProfile(Resource):
+    @jwt_required
     def post(self):
         print('INFLUENCER')
         data = dict()
@@ -56,6 +57,7 @@ class InfluencerUpdateProfile(Resource):
                                  status.HTTP_200_OK)
 
 class InfluencerProfile(Resource):
+    @jwt_required
     def post(self):
         data = request.get_json(force=True)
         influencer = Influencer.objects(email=data['email']).first()

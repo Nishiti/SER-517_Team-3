@@ -1,18 +1,5 @@
-from flask import Flask, request
-from flask_restful import Resource, Api, reqparse
-from flask_jwt import JWT
-from werkzeug.security import safe_str_cmp
-
-'''app = Flask(__name__)
-app.secret_key = 'vihar'
-api = Api(app)'''
-
-users = [
-    {
-        'email':'bob',
-        'password':'abc'
-    }
-]
+'''from flask_jwt_extended import jwt_required
+from flask_restful import Resource, reqparse
 
 class InfluencerSignIn(Resource):
 
@@ -20,6 +7,7 @@ class InfluencerSignIn(Resource):
     parser.add_argument('email', type=str, required=True, help='This field cannot be blank.')
     parser.add_argument('password', type=str, required=True, help='This field cannot be blank.')
 
+    @jwt_required
     def post(self):
 
         data = InfluencerSignIn.parser.parse_args()
@@ -29,7 +17,7 @@ class InfluencerSignIn(Resource):
 
             return {"message":"Login Successfull."}
 
-        return {"message":"Invalid credentials."}
+        return {"message":"Invalid credentials."}'''
 
 
         # for user in users:
@@ -42,6 +30,4 @@ class InfluencerSignIn(Resource):
         #         {"message":"The given username doesn't exist."}
 
 
-'''api.add_resource(InfluencerSignIn, '/influencersignin')
-app.run(port=5000, debug=True)'''
 

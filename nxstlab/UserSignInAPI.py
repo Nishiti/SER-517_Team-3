@@ -10,6 +10,7 @@ from flask_jwt_extended import (create_access_token, create_refresh_token, jwt_r
 
 
 class UserSignInAPI(Resource):
+    @jwt_required
     def post(self):
         data = request.get_json(force=True)
         user = User.objects(email=data['email']).first()
