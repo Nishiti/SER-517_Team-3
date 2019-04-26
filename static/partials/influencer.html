@@ -76,7 +76,21 @@ show above only before log in then depending on role show below
                 </div>
             </div>
             <br>
-<div class="12u$">
+            <div class="6u$ 12u$(xsmall) form-group">
+            <input type="date" class="form-control"  ng-model="dob" placeholder="Date of Birth" name="dob" required="required"/>
+            <div ng-if="signupForm.dob.$touched || signupSubmitted">
+            <p ng-show="signupForm.dob.$error.required" class="help-block">Date of Birth is required</p>
+            </div>
+            </div>
+            <div class="6u 12u$(small)">
+            <input type="radio" id="gender1" name="gender" value="true" ng-model="gender" ng-value='"male"' required>
+            <label for="gender1">Male</label>
+            <input type="radio" id="gender2" name="gender" value="false" ng-model="gender" ng-value='"female"'>
+            <label for="gender2">Female</label>
+
+            </div>
+            <br>
+            <div class="12u$">
                 <div class="field">
                     <h3>Kind of a big deal on... ?</h3>
                         <input type="checkbox" id="website" name="website" ng-model="big_deal.website">

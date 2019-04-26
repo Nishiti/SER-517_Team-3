@@ -4,6 +4,7 @@ from flask_login import LoginManager
 from mongoengine import connect
 
 from nxstlab.InfluencerUpdateProfile import InfluencerUpdateProfile
+from nxstlab.UploadProfileImage import UploadProfileImage
 from nxstlab.adminSignupAPI import AdminSignupAPI
 from nxstlab.UserSignInAPI import UserSignInAPI, SecretResource
 from nxstlab.brandAPI import BrandAPI
@@ -83,6 +84,7 @@ api.add_resource(BrandCampaignRequestApproveAPI, '/brandcampaignrequestapprove')
 api.add_resource(UserLogoutAccess, '/admin/signoutaccess')
 api.add_resource(UserLogoutRefresh, '/admin/signoutrefresh')
 api.add_resource(InfluencerUpdateProfile, '/influencer/updateprofile')
+api.add_resource(UploadProfileImage, '/influencer/uploadProfileImage')
 
 
 # Test Resource
