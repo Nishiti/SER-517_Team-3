@@ -1,3 +1,5 @@
+import datetime
+
 from flask_jwt_extended import jwt_required
 from flask_restful import Resource
 from flask import jsonify, request, make_response
@@ -126,13 +128,33 @@ class AdminGetInfluencerWithFilterAPIAll(Resource):
         newdata = {}
         interestList = []
         finalList = []
+        startage = endage = 0
         for key in data:
             print('key = ', key)
             if key == 'areas_of_interest':
                 continue
+            elif key == 'startage':
+                startage = data[key]
+            elif key == 'endage':
+                endage = data[key]
             else:
                 newdata[key] = data[key]
-        print('newdata = ', newdata)
+        print('newdata = ', newdata, ' startage = ', startage, ' endage = ', endage)
+
+
+        if startage and endage:
+            current_year = datetime.datetime.now().year
+            # get the birth year given the age
+            startYear = current_year - int(startage)
+            endYear = current_year - int(endage)
+            print('start and end year = ', startYear, endYear)
+            # query
+            agesList = Influencer.objects(Q(dob__gte=str(datetime.datetime(endYear, 1, 1))) & Q(
+                dob__lte=str(datetime.datetime(startYear, 1, 1)))).all().select_related()
+            for a in agesList:
+                print('a = ', a.first_name)
+            finalList = agesList
+
         if newdata:
             users = [user for user in Influencer.objects(__raw__=newdata)]
             for u in users:
@@ -166,6 +188,8 @@ class AdminGetInfluencerWithFilterAPIAll(Resource):
             temp['followers'] = user.followers
             temp['dob'] = user.dob
             temp['gender'] = user.gender
+            temp['image'] = user.image
+            temp['campaignImage'] = user.campaignImages
             res.append(temp)
         return make_response(jsonify(data=res, role='admin', message='list of brands for given filter'),
                              status.HTTP_200_OK)
