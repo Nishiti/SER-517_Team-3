@@ -31,6 +31,7 @@ app.controller("adminController", function ($scope, $window, $http, $location) {
 
         $http.post('http://localhost:5000/admin/getBrands', $scope.filterBrand).then(function (response) {
             $scope.brands = response.data.data;
+            console.log(response.data.data);
 
         }, function (errResponse) {
             console.log(errResponse);
@@ -215,4 +216,27 @@ app.controller("adminController", function ($scope, $window, $http, $location) {
             console.log(errResponse);
         });
     }
+
+
+$scope.searchCampaigns = function(){
+
+    // if ($scope.campaignName == undefined){
+    //     $scope.campaignName = "";
+    // }
+
+    // $scope.filterCampaign = {
+    //     'campaign_name' : $scope.campaignName
+    // };
+    $scope.campaigns = []
+    $http.get('http://localhost:5000/approvecamp').then(function (response) {
+        $scope.campaigns = response.data.data;
+        console.log(respose.data);
+        console.log(response.data.data);
+
+    }, function (errResponse) {
+        console.log(errResponse);
+    });
+
+}
+$scope.searchCampaigns();
 });

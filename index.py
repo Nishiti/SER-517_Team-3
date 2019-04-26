@@ -23,6 +23,7 @@ from nxstlab.BrandCampaignAPI import BrandCampaignRequestAPI, UpdateCampaignImag
 from nxstlab.BrandCampaignRequestApprove import BrandCampaignRequestApproveAPI
 from nxstlab.adminAPIs import AdminDeactivateInfluencerAPI
 from nxstlab.BrandCampaignAPI import BrandGetInfluencerWithFilterAPIAll
+from nxstlab.adminAPIs import AdminGetBrandCampaignsWithFilterAPI
 
 from nxstlab.AdminSignoutAPI import UserLogoutAccess, UserLogoutRefresh
 from flask_jwt_extended import JWTManager
@@ -85,6 +86,7 @@ api.add_resource(AdminRemoveInfluencerAPI, '/admin/removeInfluencers')
 api.add_resource(InfluencerSignUpAPI, '/influencer/signup')
 api.add_resource(BrandCampaignRequestAPI, '/brandcampaignrequest')
 api.add_resource(BrandCampaignRequestApproveAPI, '/brandcampaignrequestapprove')
+api.add_resource(AdminGetBrandCampaignsWithFilterAPI, '/approvecamp')
 # api.add_resource(AdminSignoutAPI, '/admin/signout')
 api.add_resource(UserLogoutAccess, '/admin/signoutaccess')
 api.add_resource(UserLogoutRefresh, '/admin/signoutrefresh')
