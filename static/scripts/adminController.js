@@ -1,5 +1,19 @@
 app.controller("adminController", function ($scope, $window, $http, $location) {
 
+    $scope.login = function checkIfLoginActive(){
+
+        console.log($window.localStorage.nxtlabUser);
+        console.log($window.localStorage.needlogin);
+        if ($window.localStorage.needlogin == "true") {
+            $location.path("/login")
+        }
+
+
+    };
+
+    $scope.login();
+
+
     $scope.searchBrands = function(){
 
         if ($scope.brandName == undefined){
@@ -177,6 +191,8 @@ app.controller("adminController", function ($scope, $window, $http, $location) {
                 console.log(errResponse);
             });
     }
+
+
 
     $scope.denyCampaign = function(x){
                 var data =
