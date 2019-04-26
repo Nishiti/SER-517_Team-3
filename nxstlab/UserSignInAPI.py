@@ -2,6 +2,7 @@ from flask_restful import Resource
 from flask import jsonify, request, make_response
 from flask_api import status
 
+from nxstlab.admin import Admin
 from nxstlab.brand import Brand
 from nxstlab.models import Influencer
 from nxstlab.user import User
@@ -22,9 +23,9 @@ class UserSignInAPI(Resource):
                 user.save()
                 access_token = create_access_token(identity=data['email'])
                 refresh_token = create_refresh_token(identity=data['email'])
+                temp = {}
                 if user['role'] == 'influencer':
                     influencer = Influencer.objects(email=data['email']).first()
-                    temp = {}
                     temp['first_name'] = influencer.first_name
                     temp['last_name'] = influencer.last_name
                     temp['email'] = influencer.email
@@ -40,13 +41,14 @@ class UserSignInAPI(Resource):
                     temp['dob'] = influencer.dob
                 elif user['role'] == 'brand':
                     brand = Brand.objects(email=data['email']).first()
-                    temp = {}
                     temp['company_name'] = brand.company_name
                     temp['email'] = brand.email
                     temp['address'] = brand.address
                     temp['isapproved'] = brand.isapproved
                     temp['isactive'] = brand.isactive
-
+                elif user['role'] == 'admin':
+                    admin = Admin.objects(email=data['email']).first()
+                    temp['email'] = admin.email
                 return make_response(jsonify(role=user['role'],email=temp['email'], userobject=temp, message='login successful!', access_token=access_token,
                                                  refresh_token=refresh_token), status.HTTP_200_OK)
             else:
