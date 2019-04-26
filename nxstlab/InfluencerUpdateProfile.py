@@ -39,7 +39,6 @@ class InfluencerUpdateProfile(Resource):
                                  status.HTTP_200_OK)
 
 class InfluencerProfile(Resource):
-
     def post(self):
         data = request.get_json(force=True)
         influencer = Influencer.objects(email=data['email']).first()
@@ -60,6 +59,10 @@ class InfluencerProfile(Resource):
             temp['image'] = influencer.image
             temp['campaignImage'] = influencer.campaignImages
             temp['password'] = influencer.password
-
+            temp['big_deal_on_option1'] = influencer.big_deal_on_option1
+            temp['big_deal_on_option2'] = influencer.big_deal_on_option2
+            temp['big_deal_on_option3'] = influencer.big_deal_on_option3
+            temp['big_deal_on_option4'] = influencer.big_deal_on_option4
+            temp['big_deal_on_option5'] = influencer.big_deal_on_option5
             return make_response(jsonify(data=temp, role='influencer', message='Influencer profile details'),
                              status.HTTP_200_OK)
