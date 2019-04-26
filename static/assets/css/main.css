@@ -2447,7 +2447,7 @@
 		.image.fit {
 			display: block;
 			margin: 0.5rem 0;
-			width: 200px;
+			width: 100%;
 		}
 
 			.image.fit:first-child {
