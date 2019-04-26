@@ -1,5 +1,3 @@
-from flask_jwt_extended import jwt_required
-
 from nxstlab.models import Influencer
 from flask_restful import Resource
 from flask import jsonify, request, make_response
@@ -10,7 +8,6 @@ from nxstlab.user import User
 
 
 class InfluencerCampaign(Resource):
-    @jwt_required
     def post(self):
         print('INFLUENCER Campaign')
         data = dict()
