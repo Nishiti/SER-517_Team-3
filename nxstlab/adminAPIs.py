@@ -193,7 +193,7 @@ class AdminGetInfluencerWithFilterAPIAll(Resource):
             temp['dob'] = user.dob
             temp['gender'] = user.gender
             temp['image'] = user.image
-            temp['campaignImage'] = user.campaignImages
+            temp['campaignImages'] = user.campaignImages
             res.append(temp)
         return make_response(jsonify(data=res, role='admin', message='list of brands for given filter'),
                              status.HTTP_200_OK)
