@@ -5,7 +5,7 @@
 
         <li><a href="#/admin">Admin</a></li>
         <li><a href="#/influmanage">Influencer Manage</a></li>
-        <li class="active"><a href="#/manage">Branch Manage</a></li>
+        <li class="active"><a href="#/manage">Brand Manage</a></li>
         <li><a href="#/inlist">Search Influencers</a></li>
         <li><a href="#/adminSignUp">Admin Signup</a></li>
         <li><a href="#/approvecamp">Campaign</a></li>
@@ -61,7 +61,6 @@
                         <td>{{ brand.company_name }}</td>
                         <td>{{ brand.email }}</td>
                         <td>{{ brand.address }}</td>
-                        <td><button type="button">deactivate</button></td>
                         <td><button ng-click=removeBrand($index) type="button">remove</button></td>
                     </tr>
                     </tbody>
