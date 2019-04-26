@@ -9,7 +9,7 @@ from nxstlab.InfluencerUpdateProfile import InfluencerUpdateProfile
 from nxstlab.UploadProfileImage import UploadProfileImage
 from nxstlab.adminSignupAPI import AdminSignupAPI
 from nxstlab.UserSignInAPI import UserSignInAPI, SecretResource
-from nxstlab.brandAPI import BrandAPI
+from nxstlab.brandAPI import BrandAPI, BrandGetProfileDetails
 from nxstlab.adminAPIs import AdminDeactivateBrandAPI
 from nxstlab.adminAPIs import AdminApproveBrandSignupAPI
 from nxstlab.adminAPIs import AdminRemoveBrandAPI
@@ -68,6 +68,7 @@ def check_if_token_in_blacklist(decrypted_token):
     return RevokedToken.is_jti_blacklisted(jti)
 
 api.add_resource(BrandAPI, '/brand')
+api.add_resource(BrandGetProfileDetails, '/brand/getProfileDetails')
 api.add_resource(UserSignInAPI, '/user/signin')
 api.add_resource(AdminSignupAPI, '/admin/signup')
 api.add_resource(AdminRemoveBrandAPI, '/admin/removebrand')

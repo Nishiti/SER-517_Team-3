@@ -79,3 +79,20 @@ class BrandAPI(Resource):
             return make_response(jsonify(role='admin', message='No brand requests left to be approved/denied'),
                                  status.HTTP_204_NO_CONTENT)
         return jsonify(res)
+
+
+class BrandGetProfileDetails(Resource):
+    def post(self):
+        data = request.get_json(force=True)
+        if not Brand.objects(email=data['email']):
+            return make_response(jsonify(role='brand', message='brand does not exist in database'),
+                                 status.HTTP_404_NOT_FOUND)
+        else:
+            brand = Brand.objects(email=data['email']).first()
+            temp = dict()
+            temp['company_name'] = brand.company_name
+            temp['address'] = brand.address
+            temp['email'] = brand.email
+            temp['isapproved'] = brand.isapproved
+            temp['image'] = brand.image
+        return make_response(jsonify(data=temp, role='brand', message='Brand details'), status.HTTP_200_OK)
