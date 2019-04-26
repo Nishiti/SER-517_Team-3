@@ -167,6 +167,7 @@ class AdminGetInfluencerWithFilterAPIAll(Resource):
                 interestList += temp1
             print('interestlist = ', interestList)
             finalList += interestList
+        finalList = list(set(finalList))
 
         '''for f in interestList:
             print('f = ', f.first_name)
