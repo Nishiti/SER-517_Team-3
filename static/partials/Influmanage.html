@@ -31,7 +31,7 @@
                 <button ng-click="searchInfluencers()" type="submit" style="margin-top: 10px; display: inline" >Find</button>
             </ul>
             <div>
-                <div ng-show="influencers.length < 1">There are no influencers with this name in database</div>
+                <div ng-if="noInfluencersFound">There are no influencers with this name in database</div>
                 <table ng-show = "influencers.length > 0">
                     <thead>
                     <tr>

@@ -18,7 +18,7 @@ app.controller("adminController", function ($scope, $window, $http, $location) {
 
     $scope.login();
    
-
+    $scope.noInfluencersFound = false;
     $scope.searchBrands = function(){
 
         if ($scope.brandName == undefined){
@@ -47,9 +47,12 @@ app.controller("adminController", function ($scope, $window, $http, $location) {
         $scope.filterInfluencers = {
             'name' : $scope.influencerName
         };
-
+        $scope.noInfluencersFound = false;
         $http.post('http://localhost:5000/admin/getInfluencers', $scope.filterInfluencers).then(function (response) {
             $scope.influencers = response.data.data;
+            if ($scope.influencers.length == 0){
+                $scope.noInfluencersFound = true;
+            }
 
         }, function (errResponse) {
             console.log(errResponse);
