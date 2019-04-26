@@ -7,12 +7,17 @@ var brandController = app.controller("brandController", function ($scope, $windo
 
     $scope.login = function checkIfLoginActive(){
 
-        console.log($window.localStorage.nxtlabUser);
+        //console.log($window.localStorage.nxtlabUser);
         console.log($window.localStorage.needlogin);
-        if ($window.localStorage.needlogin == "true") {
-            $location.path("/login")
-        }
+        //if($location.path() ==/)
+        var currentpath = $location.path();
+        if (currentpath == "/brand" || currentpath == "/home") {
 
+        }else{
+            if ($window.localStorage.needlogin == "true") {
+                $location.path("/login")
+            }
+        }
 
     };
 
