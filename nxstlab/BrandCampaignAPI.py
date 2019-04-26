@@ -1,7 +1,11 @@
+import os
+
 from flask import jsonify, make_response
 from flask_api import status
 from flask_restful import Resource, reqparse
 from flask import jsonify, request, make_response
+from werkzeug.utils import secure_filename
+
 from nxstlab.BrandCampaign import BrandCampaign
 from nxstlab.models import Influencer
 from nxstlab.brand import Brand
@@ -127,7 +131,27 @@ class BrandGetInfluencerWithFilterAPIAll(Resource):
         return make_response(jsonify(data=res, role='admin', message='list of brands for given filter'),
                              status.HTTP_200_OK)
 
+class UpdateCampaignImage(Resource):
+    def post(self):
+        print('Campaign Profile Update!')
+        data = dict()
+        for key in request.form:
+            data[key] = request.form[key]
+        if not BrandCampaign.objects(email=data['email'], campaign_name=data['campaign_name']):
+            return make_response(jsonify(role='brand', message='Brand Campaign does not exist in database'),
+                             status.HTTP_404_NOT_FOUND)
+        else:
+            file1 = None
+            brandCampaign = BrandCampaign.objects(email=data['email'], campaign_name=data['campaign_name']).first()
+            if 'file1' in request.files:
+                file1 = request.files['file1']
+            if file1:
+                filename = secure_filename(file1.filename)
+                fileLocation = os.path.join('static/uploads/campaign_profile/', filename)
+                file1.save(fileLocation)
+                brandCampaign.image = '/' + fileLocation
+                brandCampaign.save()
 
-
-# api.add_resource(BrandCampaignRequestAPI, '/brandcampaignrequest')
-# app.run(port=5000, debug=True)
+            return make_response(
+                jsonify(role='brand', message='Brand Campaign Image updated successfully in database'),
+                status.HTTP_200_OK)

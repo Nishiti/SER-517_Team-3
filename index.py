@@ -19,7 +19,7 @@ from nxstlab.adminAPIs import AdminGetBrandsWithFilterAPIAll
 from nxstlab.adminAPIs import AdminGetInfluencerWithFilterAPIAll
 from nxstlab.adminAPIs import AdminGetBrandsWithFilterAPI
 from nxstlab.adminAPIs import AdminGetInfluencersWithFilterAPI
-from nxstlab.BrandCampaignAPI import BrandCampaignRequestAPI
+from nxstlab.BrandCampaignAPI import BrandCampaignRequestAPI, UpdateCampaignImage
 from nxstlab.BrandCampaignRequestApprove import BrandCampaignRequestApproveAPI
 from nxstlab.adminAPIs import AdminDeactivateInfluencerAPI
 from nxstlab.BrandCampaignAPI import BrandGetInfluencerWithFilterAPIAll
@@ -93,6 +93,7 @@ api.add_resource(UploadProfileImage, '/influencer/uploadProfileImage')
 api.add_resource(InfluencerProfile, '/influencer/profile')
 api.add_resource(InfluencerCampaign, '/influencer/updatecampaign')
 api.add_resource(BrandGetInfluencerWithFilterAPIAll, '/brand/brandGetInfluencers')
+api.add_resource(UpdateCampaignImage, '/brand/updatecampaignimage')
 
 # Test Resource
 api.add_resource(SecretResource, '/admin/secret')
