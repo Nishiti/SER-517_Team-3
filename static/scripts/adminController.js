@@ -229,8 +229,7 @@ $scope.searchCampaigns = function(){
     $scope.campaigns = []
     $http.get('http://localhost:5000/approvecamp').then(function (response) {
         $scope.campaigns = response.data.data;
-        console.log(respose.data);
-        console.log(response.data.data);
+
 
     }, function (errResponse) {
         console.log(errResponse);
