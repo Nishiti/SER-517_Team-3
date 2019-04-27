@@ -10,6 +10,7 @@ from nxstlab.user import User
 
 
 class UploadProfileImage(Resource):
+    # post method to upload profile image
     def post(self):
         data = dict()
         data['email'] = request.form['email']

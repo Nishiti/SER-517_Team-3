@@ -1,9 +1,6 @@
-import datetime
-
 from flask_jwt_extended import jwt_required
 from flask_restful import Resource
 from flask import jsonify, request, make_response
-from mongoengine import Q
 from nxstlab.BrandCampaign import BrandCampaign
 
 from nxstlab.brand import Brand
@@ -12,7 +9,9 @@ from flask_api import status
 from nxstlab.models import Influencer
 from nxstlab.user import User
 
+
 class AdminRemoveBrandAPI(Resource):
+    # post method to remove brand by admin
     @jwt_required
     def post(self):
         data = request.get_json(force=True)
@@ -29,6 +28,7 @@ class AdminRemoveBrandAPI(Resource):
                                  status.HTTP_200_OK)
 
 class AdminDeactivateBrandAPI(Resource):
+    # post method to deactivate brand by admin
     def post(self):
         data = request.get_json(force=True)
 
@@ -45,6 +45,7 @@ class AdminDeactivateBrandAPI(Resource):
 
 
 class AdminRemoveInfluencerAPI(Resource):
+    # post method to remove influencer by admin
     def post(self):
         data = request.get_json(force=True)
         if not Influencer.objects(email=data['email']):
@@ -60,6 +61,7 @@ class AdminRemoveInfluencerAPI(Resource):
 
 
 class AdminDeactivateInfluencerAPI(Resource):
+    # post method to deactivate influencer by admin
     def post(self):
         data = request.get_json(force=True)
 
@@ -76,6 +78,7 @@ class AdminDeactivateInfluencerAPI(Resource):
 
 
 class AdminApproveBrandSignupAPI(Resource):
+    #post method to approve brand signup by admin
     def post(self):
         data = request.get_json(force=True)
 
@@ -94,6 +97,7 @@ class AdminApproveBrandSignupAPI(Resource):
                 return make_response(jsonify(role='admin', message='brand is already approved'), status.HTTP_200_OK)
 
 class AdminGetBrandsWithFilterAPI(Resource):
+    # post method to get brands by company name
     def post(self):
         data = request.get_json(force=True)
         name = data['company_name']
@@ -113,6 +117,7 @@ class AdminGetBrandsWithFilterAPI(Resource):
                              status.HTTP_200_OK)
 
 class AdminGetBrandsWithFilterAPIAll(Resource):
+    # post method to get brands by all filters
     def post(self):
         data = request.get_json(force=True)
         brands = [brand for brand in Brand.objects(__raw__ = data)]
@@ -126,11 +131,9 @@ class AdminGetBrandsWithFilterAPIAll(Resource):
         return make_response(jsonify(data=res, role='admin', message='list of brands for given filter'),
                              status.HTTP_200_OK)
 class AdminGetInfluencerWithFilterAPIAll(Resource):
+    # post method to get influencers for certain criteria
     def post(self):
         data = request.get_json(force=True)
-        #users = [user for user in Influencer.objects(__raw__=data)]
-        #users = Influencer.objects(Q(__raw__=data) | Q(areas_of_interest__contains='fashion'))
-        print('data = ', data)
         newdata = {}
         interestList = []
         finalList = []
@@ -145,21 +148,6 @@ class AdminGetInfluencerWithFilterAPIAll(Resource):
                 endage = data[key]
             else:
                 newdata[key] = data[key]
-        #print('newdata = ', newdata, ' startage = ', startage, ' endage = ', endage)
-
-
-        '''if startage and endage:
-            current_year = datetime.datetime.now().year
-            # get the birth year given the age
-            startYear = current_year - int(startage)
-            endYear = current_year - int(endage)
-            print('start and end year = ', startYear, endYear)
-            # query
-            agesList = Influencer.objects(Q(dob__gte=str(datetime.datetime(endYear, 1, 1))) & Q(
-                dob__lte=str(datetime.datetime(startYear, 1, 1)))).all().select_related()
-            for a in agesList:
-                print('a = ', a.first_name)
-            finalList = agesList'''
 
         if newdata:
             users = [user for user in Influencer.objects(__raw__=newdata)]
@@ -168,19 +156,12 @@ class AdminGetInfluencerWithFilterAPIAll(Resource):
             finalList = users
         if 'areas_of_interest' in data:
             for interest in data['areas_of_interest']:
-                # temp1 = Influencer.objects(Q(areas_of_interest__contains=interest)).select_related()
                 temp1 = Influencer.objects(areas_of_interest=interest)
                 interestList += temp1
-            print('interestlist = ', interestList)
             finalList += interestList
         finalList = list(set(finalList))
 
-        '''for f in interestList:
-            print('f = ', f.first_name)
-        for final in finalList:
-            print('final = ', final.first_name)'''
         res = []
-        #for user in users:
         for user in finalList:
             temp = dict()
             temp['first_name'] = user.first_name
@@ -203,12 +184,11 @@ class AdminGetInfluencerWithFilterAPIAll(Resource):
 
 
 class AdminGetInfluencersWithFilterAPI(Resource):
+    # post method to get influencers with name filter
     def post(self):
         data = request.get_json(force=True)
         name = data['name']
-        print('name = ', name)
         influencers = [influencer for influencer in Influencer.objects(first_name__contains=name)]
-        print('influencers = ', influencers)
         influencers.extend([influencer for influencer in Influencer.objects(last_name__contains=name)])
         res = []
         for user in influencers:
@@ -231,10 +211,10 @@ class AdminGetInfluencersWithFilterAPI(Resource):
 
 
 class AdminGetBrandCampaignsWithFilterAPI(Resource):
+    # get method to get brand campaign details with certain refresh
     def get(self):
         brandCampaigns = [brand for brand in BrandCampaign.objects()]
         print('brand campaigns = ', brandCampaigns)
-        #brandCampaigns = BrandCampaign.objects()
         res = []
         for brandCampaign in brandCampaigns:
             if brandCampaign.isApproved == False:

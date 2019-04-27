@@ -7,11 +7,11 @@ from nxstlab.revokedtoken import RevokedToken
 
 
 class AdminSignoutAPI(Resource):
+    # post api to signout admin
     def post(self):
         data = request.get_json(force=True)
         admin = Admin.objects(email=data['email']).first()
         if not admin.is_authenticated():
-            print('user never logged in!')
             return make_response(jsonify(role='admin', message='user never logged in'),
                                  status.HTTP_200_OK)
         else:
