@@ -10,16 +10,13 @@ from flask_jwt_extended import (create_access_token, create_refresh_token, jwt_r
 
 
 class UserSignInAPI(Resource):
+    # Common API for admin, brands and influencers to sign in
     def post(self):
         data = request.get_json(force=True)
         user = User.objects(email=data['email']).first()
-        print('password in db = ', data['password'])
         if user:
-            print('password received = ', user['password'])
             if User.verify_hash(data['password'], user['password']):
-                print('password match!')
                 user.authenticated=True
-                print('saving ..')
                 user.save()
                 access_token = create_access_token(identity=data['email'])
                 refresh_token = create_refresh_token(identity=data['email'])
@@ -52,7 +49,6 @@ class UserSignInAPI(Resource):
                 return make_response(jsonify(role=user['role'],email=temp['email'], userobject=temp, message='login successful!', access_token=access_token,
                                                  refresh_token=refresh_token), status.HTTP_200_OK)
             else:
-                print('Password mismatch!')
                 return make_response(jsonify(role=user['role'], message='Incorrect password!'),
                                         status.HTTP_401_UNAUTHORIZED)
         else:
