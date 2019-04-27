@@ -70,6 +70,7 @@ def check_if_token_in_blacklist(decrypted_token):
     jti = decrypted_token['jti']
     return RevokedToken.is_jti_blacklisted(jti)
 
+
 api.add_resource(BrandAPI, '/brand')
 api.add_resource(BrandGetProfileDetails, '/brand/getProfileDetails')
 api.add_resource(UserSignInAPI, '/user/signin')
@@ -78,12 +79,8 @@ api.add_resource(AdminRemoveBrandAPI, '/admin/removebrand')
 api.add_resource(AdminDeactivateBrandAPI, '/admin/deactivatebrand')
 api.add_resource(AdminDeactivateInfluencerAPI, '/admin/deactivateinf')
 api.add_resource(AdminApproveBrandSignupAPI, '/admin/approve/brandsingup')
-
-# Brand Search name and all
 api.add_resource(AdminGetBrandsWithFilterAPI, '/admin/getBrands')
 api.add_resource(AdminGetBrandsWithFilterAPIAll, '/admin/getAllBrands')
-
-# Influencer search - name and all
 api.add_resource(AdminGetInfluencerWithFilterAPIAll, '/admin/getAllInfluencer')
 api.add_resource(AdminGetInfluencersWithFilterAPI, '/admin/getInfluencers')
 api.add_resource(AdminRemoveInfluencerAPI, '/admin/removeInfluencers')
@@ -99,8 +96,6 @@ api.add_resource(InfluencerProfile, '/influencer/profile')
 api.add_resource(InfluencerCampaign, '/influencer/updatecampaign')
 api.add_resource(BrandGetInfluencerWithFilterAPIAll, '/brand/brandGetInfluencers')
 api.add_resource(UpdateCampaignImage, '/brand/updatecampaignimage')
-
-# Test Resource
 api.add_resource(SecretResource, '/admin/secret')
 
 if __name__ == '__main__':
