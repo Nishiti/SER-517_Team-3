@@ -46,6 +46,7 @@ jwt = JWTManager(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
+# read config details into configFile dictionary
 configFile = open("config.txt")
 config = dict()
 for line in configFile:
@@ -56,6 +57,7 @@ connect(config['dbname'], host=config['host'])
 defaultAdminEmail = "nxstadmin@gmail.com"
 defaultAdminPassword = "password"
 
+# add default admin for this system
 if not Admin.objects(email=defaultAdminEmail):
     Admin(email=defaultAdminEmail,password=Admin.generate_hash(defaultAdminPassword)).save()
     User(email=defaultAdminEmail,password=User.generate_hash(defaultAdminPassword),role='admin').save()
