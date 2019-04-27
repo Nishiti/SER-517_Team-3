@@ -9,6 +9,8 @@ from nxstlab.user import User
 
 
 class BrandAPI(Resource):
+
+    # Performs sign up for the brands
     def post(self):
         data = request.get_json(force=True)
         if Brand.objects(email=data['email']):
@@ -32,8 +34,8 @@ class BrandAPI(Resource):
             return make_response(jsonify(role='brand', message='brand added successfully in database'),
                              status.HTTP_201_CREATED)
 
+    # Performs updation of brand profile
     def put(self):
-        print('Brand Update Profile!')
         data = dict()
         for key in request.form:
             data[key] = request.form[key]
@@ -61,6 +63,7 @@ class BrandAPI(Resource):
             return make_response(jsonify(role='brand', message='brand details updated successfully in database'),
                                  status.HTTP_200_OK)
 
+    # Used to retrieve all the brands from the database
     def get(self):
         brands = [brand for brand in Brand.objects()]
         res = []
@@ -80,6 +83,8 @@ class BrandAPI(Resource):
 
 
 class BrandGetProfileDetails(Resource):
+
+    # Used to get the brand profile details
     def post(self):
         data = request.get_json(force=True)
         if not Brand.objects(email=data['email']):

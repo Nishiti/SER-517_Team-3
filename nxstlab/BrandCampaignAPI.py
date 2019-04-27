@@ -26,6 +26,7 @@ class BrandCampaignRequestAPI(Resource):
                         required=True,
                         help='This field cannot be blank.')
 
+    # Adds new brand campaign request to the database
     def post(self):
         data = BrandCampaignRequestAPI.parser.parse_args()
         if BrandCampaign.objects(email=data['email'],
@@ -46,6 +47,7 @@ class BrandCampaignRequestAPI(Resource):
             return make_response(jsonify(role='brand', message='Campaign: ' + data['campaign_name'] + ' request successfully created!'),
                                  status.HTTP_201_CREATED)
 
+    # Performs retrieval of brand campaign requests from the database
     def get(self):
         brand_campaign = [brand_campaign
                           for brand_campaign in BrandCampaign.objects(isApproved=False, isDenied=False)]
@@ -67,6 +69,8 @@ class BrandCampaignRequestAPI(Resource):
 
 
 class BrandGetInfluencerWithFilterAPIAll(Resource):
+
+    # Retrieves brand campaign request from the database according to the filters
     def post(self):
         data = request.get_json(force=True)
         print('data = ', data)
@@ -116,6 +120,8 @@ class BrandGetInfluencerWithFilterAPIAll(Resource):
                              status.HTTP_200_OK)
 
 class UpdateCampaignImage(Resource):
+
+    # Updates the campaign image in the database
     def post(self):
         print('Campaign Profile Update!')
         data = dict()

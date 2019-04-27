@@ -12,6 +12,7 @@ class BrandCampaignRequestApproveAPI(Resource):
 	parser.add_argument('email', type=str, required=True, help='This field cannot be blank.')
 	parser.add_argument('status', type=bool, required=True, help='This field cannot be blank.')
 
+	# Updates the approval/denial of brand campaign request by the admin
 	def post(self):
 		data = BrandCampaignRequestApproveAPI.parser.parse_args()
 		campaign = BrandCampaign.objects(email=data['email'], campaign_name=data['campaign_name']).first()
