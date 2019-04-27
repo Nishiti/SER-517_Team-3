@@ -7,8 +7,8 @@ from nxstlab.user import User
 
 
 class AdminSignupAPI(Resource):
+    # api to signup admin
     def post(self):
-      print('AdminSignup!')
       data = request.get_json(force=True)
       if Admin.objects(email=data['email']):
         return make_response(jsonify(role='admin', message='Email Address: ' + data['email'] + ' already exists!'),
@@ -25,10 +25,6 @@ class AdminSignupAPI(Resource):
             role='admin'
         ).save()
         try:
-            #access_token = create_access_token(identity=data['email'])
-            #refresh_token = create_refresh_token(identity=data['email'])
-            #return make_response(jsonify(role='admin', message='admin added successfully in database', access_token=access_token,
-            #                             refresh_token=refresh_token, email=data['email']), status.HTTP_201_CREATED)
             return make_response(
                 jsonify(role='admin', message='admin added successfully in database', email=data['email']),
                 status.HTTP_201_CREATED)

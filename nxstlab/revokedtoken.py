@@ -8,8 +8,6 @@ class RevokedToken(Document):
     id = IntField(primary_key=True)
     jti = StringField(max_length=120)
 
-    '''def add(self):
-        print('add')'''
 
     @classmethod
     def is_jti_blacklisted(self, jti):

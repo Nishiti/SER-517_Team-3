@@ -5,7 +5,6 @@ from passlib.hash import pbkdf2_sha256 as sha256
 class Admin(Document):
     email = EmailField(required=True, unique=True)
     password = StringField(max_length=160, required=True)
-    # confirm_password = StringField(max_length=160, required=True)
     authenticated=BooleanField(default=False)
 
     def is_authenticated(self):

@@ -29,8 +29,8 @@ from nxstlab.models import Influencer
 from nxstlab.revokedtoken import RevokedToken
 from flask_cors import CORS
 import os
-
-
+from nxstlab.admin import Admin
+from nxstlab.user import User
 app = Flask(__name__)
 api = Api(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
@@ -46,6 +46,7 @@ jwt = JWTManager(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
+# read config details into configFile dictionary
 configFile = open("config.txt")
 config = dict()
 for line in configFile:
@@ -53,6 +54,13 @@ for line in configFile:
     config[arr[0]] = arr[1]
 configFile.close()
 connect(config['dbname'], host=config['host'])
+defaultAdminEmail = "nxstadmin@gmail.com"
+defaultAdminPassword = "password"
+
+# add default admin for this system
+if not Admin.objects(email=defaultAdminEmail):
+    Admin(email=defaultAdminEmail,password=Admin.generate_hash(defaultAdminPassword)).save()
+    User(email=defaultAdminEmail,password=User.generate_hash(defaultAdminPassword),role='admin').save()
 
 @app.route("/")
 def hello():
@@ -64,6 +72,7 @@ def check_if_token_in_blacklist(decrypted_token):
     jti = decrypted_token['jti']
     return RevokedToken.is_jti_blacklisted(jti)
 
+
 api.add_resource(BrandAPI, '/brand')
 api.add_resource(BrandGetProfileDetails, '/brand/getProfileDetails')
 api.add_resource(UserSignInAPI, '/user/signin')
@@ -72,12 +81,8 @@ api.add_resource(AdminRemoveBrandAPI, '/admin/removebrand')
 api.add_resource(AdminDeactivateBrandAPI, '/admin/deactivatebrand')
 api.add_resource(AdminDeactivateInfluencerAPI, '/admin/deactivateinf')
 api.add_resource(AdminApproveBrandSignupAPI, '/admin/approve/brandsingup')
-
-# Brand Search name and all
 api.add_resource(AdminGetBrandsWithFilterAPI, '/admin/getBrands')
 api.add_resource(AdminGetBrandsWithFilterAPIAll, '/admin/getAllBrands')
-
-# Influencer search - name and all
 api.add_resource(AdminGetInfluencerWithFilterAPIAll, '/admin/getAllInfluencer')
 api.add_resource(AdminGetInfluencersWithFilterAPI, '/admin/getInfluencers')
 api.add_resource(AdminRemoveInfluencerAPI, '/admin/removeInfluencers')
@@ -93,8 +98,6 @@ api.add_resource(InfluencerProfile, '/influencer/profile')
 api.add_resource(InfluencerCampaign, '/influencer/updatecampaign')
 api.add_resource(BrandGetInfluencerWithFilterAPIAll, '/brand/brandGetInfluencers')
 api.add_resource(UpdateCampaignImage, '/brand/updatecampaignimage')
-
-# Test Resource
 api.add_resource(SecretResource, '/admin/secret')
 
 if __name__ == '__main__':
