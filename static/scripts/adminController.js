@@ -1,9 +1,7 @@
 app.controller("adminController", function ($scope, $window, $http, $location) {
     $scope.login = function checkIfLoginActive(){
 
-        //console.log($window.localStorage.nxtlabUser);
         console.log($window.localStorage.needlogin);
-        //if($location.path() ==/)
         var currentpath = $location.path();
         console.log(currentpath);
         if (currentpath == "/admin" || currentpath == "/home") {
@@ -73,7 +71,6 @@ app.controller("adminController", function ($scope, $window, $http, $location) {
         $http.post('http://localhost:5000/admin/removeInfluencers ', data).then(function (response) {
             data = response.data;
             console.log(data);
-            //$scope.brands = $scope.brands.filter(item => item !== $scope.brand);
 
         }, function (errResponse) {
             console.log(errResponse);
@@ -221,13 +218,6 @@ app.controller("adminController", function ($scope, $window, $http, $location) {
 
 $scope.searchCampaigns = function(){
 
-    // if ($scope.campaignName == undefined){
-    //     $scope.campaignName = "";
-    // }
-
-    // $scope.filterCampaign = {
-    //     'campaign_name' : $scope.campaignName
-    // };
     $scope.campaigns = []
     $http.get('http://localhost:5000/approvecamp').then(function (response) {
         $scope.campaigns = response.data.data;
@@ -303,28 +293,24 @@ $scope.searchCampaigns();
                 $scope.records1[val].class = "";
             else
                 $scope.records1[val].class = "activeone";
-            //console.log('response',records[val].index);
           }
      $scope.addClass2 = function(val){
              if($scope.records2[val].class === "activeone" )
                  $scope.records2[val].class = "";
              else
                  $scope.records2[val].class = "activeone";
-             //console.log('response',records[val].index);
            }
      $scope.addClass3 = function(val){
              if($scope.records3[val].class === "activeone" )
                  $scope.records3[val].class = "";
              else
                  $scope.records3[val].class = "activeone";
-             //console.log('response',records[val].index);
            }
      $scope.addClass4 = function(val){
              if($scope.records4[val].class === "activeone" )
                  $scope.records4[val].class = "";
              else
                  $scope.records4[val].class = "activeone";
-             //console.log('response',records[val].index);
            }
      $scope.addClass5 = function(val){
              if($scope.records5[val].class === "activeone" )
@@ -338,7 +324,6 @@ $scope.searchCampaigns();
                  $scope.records6[val].class = "";
              else
                  $scope.records6[val].class = "activeone";
-             //console.log('response',records[val].index);
            }
      $scope.addClass7 = function(val){
              if($scope.records7[val].class === "activeone" )
@@ -352,7 +337,6 @@ $scope.searchCampaigns();
                  $scope.records8[val].class = "";
              else
                  $scope.records8[val].class = "activeone";
-             //console.log('response',records[val].index);
            }
 
        $scope.addClass = function(i){
@@ -360,7 +344,6 @@ $scope.searchCampaigns();
                        $scope.influencers[i].class = "pic-container";
                    else
                        $scope.influencers[i].class = "pic-container-sel";
-                   //console.log('response',records[val].index);
                  }
 
 

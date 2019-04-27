@@ -2,16 +2,12 @@
 var brandController = app.controller("brandController", function ($scope, $window, $http, $location) {
 
     $scope.brandFound = false;
-    //console.log($window.localStorage.nxtlabUser)
     $scope.campaignName = $window.localStorage.campaignName
     $scope.campaignEmail = $window.localStorage.campaignEmail
             
 
     $scope.login = function checkIfLoginActive(){
-
-        //console.log($window.localStorage.nxtlabUser);
         console.log($window.localStorage.needlogin);
-        //if($location.path() ==/)
         var currentpath = $location.path();
         if (currentpath == "/brand" || currentpath == "/home") {
 
@@ -126,31 +122,23 @@ var brandController = app.controller("brandController", function ($scope, $windo
     ]
 
 
-
-
-    //$scope.class= false;
-
-
     $scope.addClass1 = function(val){
         if($scope.records1[val].class === "activeone" )
             $scope.records1[val].class = "";
         else
             $scope.records1[val].class = "activeone";
-        //console.log('response',records[val].index);
     }
     $scope.addClass2 = function(val){
         if($scope.records2[val].class === "activeone" )
             $scope.records2[val].class = "";
         else
             $scope.records2[val].class = "activeone";
-        //console.log('response',records[val].index);
     }
     $scope.addClass3 = function(val){
         if($scope.records3[val].class === "activeone" )
             $scope.records3[val].class = "";
         else
             $scope.records3[val].class = "activeone";
-        //console.log('response',records[val].index);
     }
     $scope.addClass4 = function(val){
         if($scope.records4[val].class === "activeone" )
@@ -164,14 +152,12 @@ var brandController = app.controller("brandController", function ($scope, $windo
             $scope.records5[val].class = "";
         else
             $scope.records5[val].class = "activeone";
-        //console.log('response',records[val].index);
     }
     $scope.addClass6 = function(val){
         if($scope.records6[val].class === "activeone" )
             $scope.records6[val].class = "";
         else
             $scope.records6[val].class = "activeone";
-        //console.log('response',records[val].index);
     }
     $scope.addClass7 = function(val){
         if($scope.records7[val].class === "activeone" )
@@ -185,7 +171,6 @@ var brandController = app.controller("brandController", function ($scope, $windo
             $scope.records8[val].class = "";
         else
             $scope.records8[val].class = "activeone";
-        //console.log('response',records[val].index);
     }
 
     $scope.addClass = function(i){
@@ -193,7 +178,6 @@ var brandController = app.controller("brandController", function ($scope, $windo
             $scope.influencers[i].class = "pic-container";
         else
             $scope.influencers[i].class = "pic-container-sel";
-        //console.log('response',records[val].index);
     }
 
 
@@ -248,7 +232,6 @@ var brandController = app.controller("brandController", function ($scope, $windo
 
             if (response2.data){
                 $scope.influencers=response2.data.data;
-                //console.log(response2.data);
 
                 for (var i=0;i<$scope.influencers.length;i++)
                 {
@@ -256,9 +239,6 @@ var brandController = app.controller("brandController", function ($scope, $windo
                 }
 
                 console.log($scope.influencers);
-                //$scope.showCards.hide('show')
-
-                //$scope.showCards=true;
             }
 
         }, function (response) {
@@ -278,7 +258,7 @@ var brandController = app.controller("brandController", function ($scope, $windo
         for (var i=0;i<$scope.influencers.length;i++)
         {
             if($scope.influencers[i].class === "pic-container-sel")
-                $scope.influData.push($scope.records3[i].label);
+                $scope.influData.push($scope.influencers[i].email);
         }
         var data3 =
             {

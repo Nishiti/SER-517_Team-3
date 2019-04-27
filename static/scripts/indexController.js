@@ -1,4 +1,3 @@
-// index contorller will deal with only functions required on index page
 var indexController = app.controller("indexController", function ($scope, $window, $http,$location) {
 
     $window.localStorage.needlogin = "true";

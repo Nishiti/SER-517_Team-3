@@ -194,10 +194,6 @@ app.controller("influencerController", function ($scope, $window, $http, $locati
                 $scope.areas.push($scope.records8[i].label);
         }
 
-
-        //if($('.image1').hasClass('activeone'))
-
-
         var data =
             {
                 "first_name" : $scope.fname,
@@ -221,7 +217,6 @@ app.controller("influencerController", function ($scope, $window, $http, $locati
             if (response.data)
 
                 $scope.msg = "Post Data Submitted Successfully!";
-            console.log($scope.msg);
             $location.path( "/login" );
 
         }, function (response) {

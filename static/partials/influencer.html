@@ -75,7 +75,6 @@ show above only before log in then depending on role show below
                     <p ng-show="signupForm.confirm_password.$error.matchPassword && !signupForm.confirm_password.$error.required" class="help-block">Confirm password didn't match</p>
                 </div>
             </div>
-            <br>
             <div class="6u$ 12u$(xsmall) form-group">
             <input type="date" class="form-control"  ng-model="dob" placeholder="Date of Birth" name="dob" required="required"/>
             <div ng-if="signupForm.dob.$touched || signupSubmitted">
