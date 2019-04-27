@@ -69,8 +69,6 @@ class BrandCampaignRequestAPI(Resource):
 class BrandGetInfluencerWithFilterAPIAll(Resource):
     def post(self):
         data = request.get_json(force=True)
-        #users = [user for user in Influencer.objects(__raw__=data)]
-        #users = Influencer.objects(Q(__raw__=data) | Q(areas_of_interest__contains='fashion'))
         print('data = ', data)
         newdata = {}
         interestList = []
@@ -89,19 +87,13 @@ class BrandGetInfluencerWithFilterAPIAll(Resource):
             finalList += users
         if 'areas_of_interest' in data:
             for interest in data['areas_of_interest']:
-                # temp1 = Influencer.objects(Q(areas_of_interest__contains=interest)).select_related()
                 temp1 = Influencer.objects(areas_of_interest=interest)
                 interestList += temp1
             print('interestlist = ', interestList)
             finalList += interestList
         finalList = list(set(finalList))
 
-        '''for f in interestList:
-            print('f = ', f.first_name)
-        for final in finalList:
-            print('final = ', final.first_name)'''
         res = []
-        #for user in users:
         for user in finalList:
             temp = dict()
             temp['first_name'] = user.first_name
