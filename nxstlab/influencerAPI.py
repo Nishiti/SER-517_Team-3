@@ -6,15 +6,13 @@ from nxstlab.user import User
 
 
 class InfluencerSignUpAPI(Resource):
+    # API for influencer signup
     def post(self):
         data = request.get_json()
-        print('data = ', data)
         if Influencer.objects(email=data['email']):
-            print("Influencer Signup - Exists!")
             return make_response(jsonify(role='influencer', message='Influencer already exists in the database'),
                                  status.HTTP_409_CONFLICT)
         else:
-            print("Influencer Signup!")
             influencer = Influencer()
             for key in data:
                 influencer[key] = data[key]

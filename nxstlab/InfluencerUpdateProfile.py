@@ -9,8 +9,8 @@ from nxstlab.user import User
 
 
 class InfluencerUpdateProfile(Resource):
+    # API to update signed up influencer profile
     def post(self):
-        print('INFLUENCER')
         data = dict()
         for key in request.form:
             data[key] = request.form[key]

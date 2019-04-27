@@ -8,8 +8,8 @@ from nxstlab.user import User
 
 
 class InfluencerCampaign(Resource):
+    # API for influencers to update/upload campaign pictures
     def post(self):
-        print('INFLUENCER Campaign')
         data = dict()
         for key in request.form:
             data[key] = request.form[key]
