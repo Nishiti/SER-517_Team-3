@@ -2,7 +2,6 @@ from flask import Flask, send_file
 from flask_restful import Api
 from flask_login import LoginManager
 from mongoengine import connect
-
 from nxstlab.InfluencerCampaign import InfluencerCampaign
 from nxstlab.InfluencerUpdateProfile import InfluencerProfile
 from nxstlab.InfluencerUpdateProfile import InfluencerUpdateProfile
@@ -24,16 +23,13 @@ from nxstlab.BrandCampaignRequestApprove import BrandCampaignRequestApproveAPI
 from nxstlab.adminAPIs import AdminDeactivateInfluencerAPI
 from nxstlab.BrandCampaignAPI import BrandGetInfluencerWithFilterAPIAll
 from nxstlab.adminAPIs import AdminGetBrandCampaignsWithFilterAPI
-
 from nxstlab.AdminSignoutAPI import UserLogoutAccess, UserLogoutRefresh
 from flask_jwt_extended import JWTManager
-
 from nxstlab.models import Influencer
 from nxstlab.revokedtoken import RevokedToken
 from flask_cors import CORS
 import os
-from nxstlab.admin import Admin
-from nxstlab.user import User
+
 
 app = Flask(__name__)
 api = Api(app)
@@ -56,15 +52,7 @@ for line in configFile:
     arr = line[:-1].split("=")
     config[arr[0]] = arr[1]
 configFile.close()
-#print(config)
 connect(config['dbname'], host=config['host'])
-
-defaultAdminEmail = "nxstadmin@gmail.com"
-defaultAdminPassword = "password"
-
-if not Admin.objects(email=defaultAdminEmail):
-    Admin(email=defaultAdminEmail,password=Admin.generate_hash(defaultAdminPassword)).save()
-    User(email=defaultAdminEmail,password=User.generate_hash(defaultAdminPassword),role='admin').save()
 
 @app.route("/")
 def hello():
@@ -84,10 +72,12 @@ api.add_resource(AdminRemoveBrandAPI, '/admin/removebrand')
 api.add_resource(AdminDeactivateBrandAPI, '/admin/deactivatebrand')
 api.add_resource(AdminDeactivateInfluencerAPI, '/admin/deactivateinf')
 api.add_resource(AdminApproveBrandSignupAPI, '/admin/approve/brandsingup')
-#Brand Search name and all
+
+# Brand Search name and all
 api.add_resource(AdminGetBrandsWithFilterAPI, '/admin/getBrands')
 api.add_resource(AdminGetBrandsWithFilterAPIAll, '/admin/getAllBrands')
-#Influencer search - name and all
+
+# Influencer search - name and all
 api.add_resource(AdminGetInfluencerWithFilterAPIAll, '/admin/getAllInfluencer')
 api.add_resource(AdminGetInfluencersWithFilterAPI, '/admin/getInfluencers')
 api.add_resource(AdminRemoveInfluencerAPI, '/admin/removeInfluencers')
@@ -95,7 +85,6 @@ api.add_resource(InfluencerSignUpAPI, '/influencer/signup')
 api.add_resource(BrandCampaignRequestAPI, '/brandcampaignrequest')
 api.add_resource(BrandCampaignRequestApproveAPI, '/brandcampaignrequestapprove')
 api.add_resource(AdminGetBrandCampaignsWithFilterAPI, '/approvecamp')
-# api.add_resource(AdminSignoutAPI, '/admin/signout')
 api.add_resource(UserLogoutAccess, '/admin/signoutaccess')
 api.add_resource(UserLogoutRefresh, '/admin/signoutrefresh')
 api.add_resource(InfluencerUpdateProfile, '/influencer/updateprofile')
@@ -112,3 +101,4 @@ if __name__ == '__main__':
     app.secret_key = os.urandom(16)
     app.debug = True
     app.run(port=5000)
+
