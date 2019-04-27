@@ -1,11 +1,9 @@
-from flask import Flask, request
+from flask import Flask, jsonify, request, make_response
+from flask_api import status
 from flask_restful import Resource, Api, reqparse
 from nxstlab.BrandCampaign import BrandCampaign
 from mongoengine import connect
 
-# app = Flask(__name__)
-# api = Api(app)
-# connect('BrandCampaign')
 
 class BrandCampaignRequestApproveAPI(Resource):
 
@@ -14,6 +12,7 @@ class BrandCampaignRequestApproveAPI(Resource):
 	parser.add_argument('email', type=str, required=True, help='This field cannot be blank.')
 	parser.add_argument('status', type=bool, required=True, help='This field cannot be blank.')
 
+	# Updates the approval/denial of brand campaign request by the admin
 	def post(self):
 		data = BrandCampaignRequestApproveAPI.parser.parse_args()
 		campaign = BrandCampaign.objects(email=data['email'], campaign_name=data['campaign_name']).first()
@@ -21,13 +20,13 @@ class BrandCampaignRequestApproveAPI(Resource):
 			campaign.isApproved = True
 			campaign.isDenied = False
 			campaign.save()
-			return {"message":"Campaign request approved"}
+			return make_response(jsonify(role='admin', message='Campaign: ' + data['campaign_name'] + ' request approved!'),
+                                 status.HTTP_201_CREATED)
 		else:
 			campaign.isApproved = False
 			campaign.isDenied = True
 			campaign.save()
-			return {"message":"Campaign request denied"}
+			return make_response(jsonify(role='admin', message='Campaign: ' + data['campaign_name'] + ' request denied!'),
+                                 status.HTTP_201_CREATED)
 
 	
-# api.add_resource(BrandCampaignRequestApproveAPI, '/brandcampaignrequestapprove')
-# app.run(port=5000, debug=True)

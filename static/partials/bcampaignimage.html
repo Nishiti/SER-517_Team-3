@@ -1,0 +1,50 @@
+<!-- Nav -->
+<nav id="nav">
+    <ul class="links">
+        <li><a href="#/blogin">Brand Profile</a></li>
+        <li><a href="#/campaign">campaign request</a></li>
+        <li class="active"><a href="#/bcampaignimage">Campaign image</a></li>
+    </ul>
+    
+    <ul class="icons">
+        <li><a href="#/logout" class="icon fa-sign-out" alt="Sign Out" title="Sign Out"></a></li>
+        <li><a href="https://twitter.com/nxstlab" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+        <li><a href="https://www.facebook.com/nxstlab/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+        <li><a href="https://www.instagram.com/nxstlab/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+    </ul>
+</nav>
+
+<!-- Main -->
+<div id="main">
+
+    <!-- Post -->
+    <section class="post">
+        <div class="field">
+            <form action="http://localhost:5000/brand/updatecampaignimage" method="POST" enctype = "multipart/form-data" target="_blank">
+
+                <b>Select image for campaign:</b>
+                <input type="file" name="file1">
+                <input type="text" placeholder="your campaign name" name="campaign_name" value={{campaignName}} readonly>
+                <input type="text" placeholder="your campaign email" name="email" ng-model="campaignEmail" readonly>
+                <input type="submit">
+            </form>
+
+        </div>
+    </section>
+    <center>
+        <div class="6u$ 12u$(small)">
+            <h3>Social Media Links</h3>
+            <ul class="icons alt">
+                <li><a href="https://www.facebook.com/nxstlab/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                <li><a href="https://www.instagram.com/nxstlab/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+                <li><a href="https://twitter.com/nxstlab" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+            </ul>
+        </div>
+    </center>
+    <footer id="footer">
+    </footer>
+    <!-- Copyright -->
+
+
+    </section>
+</div>

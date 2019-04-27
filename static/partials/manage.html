@@ -1,44 +1,77 @@
+
+<nav id="nav">
+    <ul class="links">
+
+
+        <li><a href="#/admin">Admin</a></li>
+        <li><a href="#/influmanage">Influencer Manage</a></li>
+        <li class="active"><a href="#/manage">Brand Manage</a></li>
+        <li><a href="#/inlist">Search Influencers</a></li>
+        <li><a href="#/adminSignUp">Admin Signup</a></li>
+        <li><a href="#/approvecamp">Campaign</a></li>
+
+
+    </ul>
+    <ul class="icons">
+        <li><a href="#/logout" class="icon fa-sign-out" alt="Sign Out" title="Sign Out"></a></li>
+        <li><a href="https://twitter.com/nxstlab" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+        <li><a href="https://www.facebook.com/nxstlab/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+        <li><a href="https://www.instagram.com/nxstlab/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+    </ul>
+</nav>
+
 <!-- Main -->
     <div id="main">
 
         <!-- Post -->
+        <article class="post featured">
         <section class="posts">
-            <div class="parts" ng-controller="adminController">
-                <h2>Brands</h2>
+            <div>
+                <h2 style="margin-top: 0px">Brands</h2>
 
-                <table>
+                
+                <!--<form method="post" action="/action_page.php" class="alt">-->
+                    <div class="row uniform">
+                        <div class="6u 12u$(xsmall)">
+                            <!--<h3><left>Search for Brands</left></h3>-->
+                        </div>
+                    </div>
+
+
+                            <ul class="actions">
+                                <input  ng-model = "brandName" for="brandsearch" type="text" name="search" placeholder="Search by brand name" style="width: 60%; display: inline; ">
+                                <button ng-click="searchBrands()" type="submit" style="margin-top: 10px; display: inline" >Find</button>
+                            </ul>
+
+
+            </div>
+                <!--</form>-->
+            <div>
+                <div ng-show="brands.length < 1">There are no brands with this name in database</div>
+                <table ng-show = "brands.length > 0">
                     <thead>
                     <tr>
-                        <th>Name</th>
+                        <th align="center">Name</th>
                         <th>Email</th>
-                        <th>Interested in</th>
+                        <th>Address </th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="brand in brands track by $index" ng-click="showBrand(brand)">
-                        <<td>{{ brand.name }}</td>
+                    <tr ng-repeat="brand in brands">
+                        <td>{{ brand.company_name }}</td>
                         <td>{{ brand.email }}</td>
-                        <td>{{ brand.service }}</td>
+                        <td>{{ brand.address }}</td>
+
+                        <td><button ng-click=removeBrand($index) type="button">remove</button></td>
                     </tr>
                     </tbody>
                 </table>
+
             </div>
-            <article>
-                <h2><a href="#">Influencers</a></h2>
-                <ul class="displayLists">
-                    <li><a onclick="getInfluencerDetails()">Influencer 1</a></li>
-                    <li><a onclick="getInfluencerDetails()">Influencer 2</a></li>
-                    <li><a onclick="getInfluencerDetails()">Influencer 3</a></li>
-                </ul>
-            </article>
         </section>
     </div>
     <!-- Table -->
-
-    <!-- Social Media Links -->
-    <div id="copyright">
-        <ul><li>Copyright &copy; 2017 new story telling lab</li><li>nxstlab</li><li>Kulina Inc.</li></ul>
-    </div>
+</article>
 </div>
 
 </body>

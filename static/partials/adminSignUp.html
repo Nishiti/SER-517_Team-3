@@ -1,6 +1,28 @@
+<!-- Nav -->
+<nav id="nav">
+	<ul class="links">
+        <li><a href="#/admin">Admin</a></li>
+        <li><a href="#/influmanage">Influencer Manage</a></li>
+        <li><a href="#/manage">Brand Manage</a></li>
+        <li><a href="#/inlist">Search Influencers</a></li>
+        <li class="active"><a href="#/adminSignUp">Admin Signup</a></li>
+        <li><a href="#/approvecamp">Approve Campaign</a></li>
+
+
+	</ul>
+	<ul class="icons">
+		<li><a href="https://twitter.com/nxstlab" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+		<li><a href="https://www.facebook.com/nxstlab/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+		<li><a href="https://www.instagram.com/nxstlab/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+	</ul>
+</nav>
+
 <div id="main">
 	<section>
-		<input type="text" placeholder="Enter Email ID" name="aemail" required>
-		<input type="password" placeholder="Enter a Password" name="apass" required>
+		<div class="6u$ 12u$(xsmall)">
+		<input type="email" name="aemail" id="email" value="" placeholder="Enter Email ID" ng-model="adminemail" required/></div>
+		<div class="6u$ 12u$(xsmall)">
+		<input type="password" placeholder="Enter a Password" name="apass" ng-model="adminpassword" required></div>
+        <input type="button" ng-click=adminSignup() value="Add an Admin"></input>
 	</section>
 </div>

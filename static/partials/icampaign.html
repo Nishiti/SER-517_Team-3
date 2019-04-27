@@ -1,11 +1,27 @@
+<nav id="nav">
+    <ul class="links">
+        <li><a href="#/ilogin">Influencer Home</a></li>
+        <li class="active"><a href="#/icampaign">Influencer Campaign</a></li>
 
-	<!-- Main -->
+
+    </ul>
+    <ul class="icons">
+        <li><a href="#/logout" class="icon fa-sign-out" alt="Sign Out" title="Sign Out"></a></li>
+        <li><a href="https://twitter.com/nxstlab" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+        <li><a href="https://www.facebook.com/nxstlab/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+        <li><a href="https://www.instagram.com/nxstlab/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+    </ul>
+</nav>
+
+<!-- Main -->
 	<div id="main">
         <div class="field">
-           <h3>Upload Campaign Images</h3>
-                <input type="file" class="form-control">
-                    <br>
-                    <button>Add another</button>
-                    </div>
-                    </div>
+            <h3>Upload Campaign Images</h3>
+            <form action="http://localhost:5000/influencer/updateprofile" method="POST" enctype = "multipart/form-data">   
+            <b>Select images:</b>
+                <input type="file" name="file" multiple>
+                <input name="email" value="inf1@gmail.com">
+                <input type="submit">
+            </form>
         </div>
+    </div>

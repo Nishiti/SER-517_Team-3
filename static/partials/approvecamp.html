@@ -1,0 +1,57 @@
+
+<nav id="nav">
+    <ul class="links">
+
+
+        <li><a href="#/admin">Admin</a></li>
+        <li><a href="#/influmanage">Influencer Manage</a></li>
+        <li><a href="#/manage">Brand Manage</a></li>
+        <li><a href="#/inlist">Search Influencers</a></li>
+        <li><a href="#/adminSignUp">Admin Signup</a></li>
+        <li class="active"><a href="#/approvecamp">Approve Campaign</a></li>
+
+
+    </ul>
+    <ul class="icons">
+        <li><a href="#/logout" class="icon fa-sign-out" alt="Sign Out" title="Sign Out"></a></li>
+        <li><a href="https://twitter.com/nxstlab" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+        <li><a href="https://www.facebook.com/nxstlab/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+        <li><a href="https://www.instagram.com/nxstlab/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+    </ul>
+</nav>
+
+<!-- Main -->
+    <div id="main">
+
+        <!-- Post -->
+        <article class="post featured">
+        <section class="posts">
+            <div>
+                <h2 style="margin-top: 0px">Approved Campaigns</h2>
+            </div>
+                <!--</form>-->
+            <div>
+                <div ng-show="campaigns.length < 1">There are no Approved campaigns in the database</div>
+                <table ng-show = "campaigns.length > 0">
+                    <thead>
+                    <tr>
+                        <th align="center">Name</th>
+                        <th>Email</th>
+                        <th>Gift Campaign</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="campaign in campaigns">
+                        <td>{{ campaign.campaign_name }}</td>
+                        <td>{{ campaign.email }}</td>
+                        <td>{{ campaign.gift_campaign }}</td>
+
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </section>
+        </article>
+    </div>

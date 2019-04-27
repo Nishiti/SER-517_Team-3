@@ -3923,7 +3923,7 @@
 
 /* Add styles to the form container */
 .form-container {
-	max-width: 600px;
+	width: 100%;
 	position: static;
 	clear: both;
   background-color: white;
@@ -3942,9 +3942,23 @@
 	text-align: center;
 }
 
+.pic-container {
+	padding-top: 12px;
+	padding-right: 7px;
+	padding-left: 7px;
+	background-color: white;
+	box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.3);
+	max-width: 250px;
+	
+	border: 0.4px solid grey;
+	border-radius: 5px;
+	text-align: center;
+	margin-left: 27px;
+}
+
 /* Full-width input fields */
 .form-container input[type=text], .form-container input[type=password], .form-container input[type=message] {
-  max-width: 580px;
+  width: 97%;
   position: static;
   right: 0px;
   border: 0.2px solid grey;
@@ -3953,6 +3967,14 @@
 
 .card-container input[type=text], .card-container input[type=password] {
   max-width: 300px;
+  position: absolute;
+  right: 0px;
+  border: none;
+  background: #f1f1f1;
+}
+
+.pic-container input[type=text], .card-container input[type=password] {
+  max-width: 200px;
   position: absolute;
   right: 0px;
   border: none;
@@ -4067,31 +4089,32 @@ padding: none;
 
 .circle-text {
 display: table-cell;
-height: 60px; /*change this and the width
+height: 30px; /*change this and the width
 for the size of your initial circle*/
-width: 60px;
+width: 40px;
 text-align: center;
 vertical-align: middle;
-border-radius: 50%;
+border-radius: 13%;
 /*make it pretty*/
 background: #737373;
 color: #fff;
-font: 18px "josefin sans", arial; /*change this
+margin-left: 2px;
+font: 15px "josefin sans", arial; /*change this
 for font-size and font-family*/
 }
 
 .square-text {
 display: table-cell;
-height: 32px; /*change this and the width
+height: 30px; /*change this and the width
 for the size of your initial circle*/
-width: 85px;
+width: 40px;
 text-align: center;
 vertical-align: middle;
-border-radius: 10px;
+border-radius: 13%;
 /*make it pretty*/
 background: #DC143C;
 color: #fff;
-font: 18px "josefin sans", arial; /*change this
+font: 15px "josefin sans", arial; /*change this
 for font-size and font-family*/
 }
 
@@ -4155,7 +4178,122 @@ font: 18px "josefin sans", arial; /*change this
 for font-size and font-family*/
 }
 
+/* Admin Page */
 
+.cards-container {
+	position: relative;
+	margin: auto;
+}
+
+.camps-container {
+	position: relative;
+	margin: auto;
+}
+
+.myCards {
+	display: none;
+}
+
+.myCamps {
+	display: none;
+}
+
+.pic-container-sel {
+        padding-top: 12px;
+        padding-right: 7px;
+        padding-left: 7px;
+        background-color: lightskyblue;
+        box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.3);
+        max-width: 250px;
+        border: 0.4px solid grey;
+        border-radius: 5px;
+        text-align: center;
+        margin-left: 27px;
+}
+
+.prevv{
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	width: auto;
+	margin-top: 302px;
+	margin-left: -20px;
+	padding: 16px;
+	color: black;
+	font-weight: bold;
+	font-size: 18px;
+	transition: 0.6s ease;
+	border-radius: 0 3px 3px 0;
+	user-select: none;
+}
+
+.nextt {
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	width: auto;
+	margin-top: 302px;
+	margin-right: 100px;
+	padding: 16px;
+	color: black;
+	font-weight: bold;
+	font-size: 18px;
+	transition: 0.6s ease;
+	border-radius: 0 3px 3px 0;
+	user-select: none;
+}
+
+
+.prev, .next {
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	width: auto;
+	margin-top: -22px;
+	padding: 16px;
+	color: black;
+	font-weight: bold;
+	font-size: 18px;
+	transition: 0.6s ease;
+	border-radius: 0 3px 3px 0;
+	user-select: none;
+}
+
+.next {
+	right: 0;
+	border-radius: 3px 0 0 3px;
+}
+
+.nextt {
+	right: 0;
+	border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+	background-color: rgba(0,0,0,0.8);
+}
+
+.prevv:hover, .nextt:hover {
+	background-color: rgba(0,0,0,0.8);
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
 
 /* Footer */
 
@@ -5001,7 +5139,12 @@ width: 100%;
 	border-collapse: collapse;
 }
 
-img{margin:10px;}
+img{
+	display: block;
+			width: 100%;
+			padding-left: 2.5px;
+			padding-right: 2.5px;
+			margin:15px;}
 .selected{
 	box-shadow:100px 10px 8px 100px #ccfffd;
 }
@@ -5024,4 +5167,12 @@ input[type=button]{
 .activeone{
 	border:3.5px solid #37a4ff;
 
+}
+
+image{
+	display: inline;
+}
+.fitt{
+	width: 300px;
+	height: 300px;
 }

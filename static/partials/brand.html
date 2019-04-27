@@ -1,3 +1,39 @@
+<!-- Nav -->
+<!-- Nav -->
+<nav id="nav">
+    <ul class="links">
+        <li><a href="#/">Home</a></li>
+        <li><a href="#/influencer">Influencers Signup</a></li>
+        <li class="active"><a href="#/brand">Brands Signup</a></li>
+        <li><a href="#/login">Log In</a></li>
+        <!--<li><a href="#/campaign">Campaign</a></li>
+        <li><a href="#/login">Log In</a></li>
+        <li><a href="#/blogin">Brand Profile</a></li>
+
+show above only before log in then depending on role show below
+ for admin
+        <li><a href="#/admin">Admin</a></li>
+        <li><a href="#/influmanage">Influ Manage</a></li>
+        <li><a href="#/manage">Search/Manage</a></li>
+ for brand. search is common for admin and brand
+
+        <li><a href="#/inlist">Search Influencers</a></li>
+        <li><a href="#/campaign">campaign request</a></li>
+
+ for influencer
+
+        <li><a href="#/ilogin">Influencer Home</a></li>
+        <li><a href="#/icampaign">Influencer Campaign</a></li>
+
+        <li><a href="#/logout">Logout</a></li>-->
+
+    </ul>
+    <ul class="icons">
+        <li><a href="https://twitter.com/nxstlab" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+        <li><a href="https://www.facebook.com/nxstlab/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+        <li><a href="https://www.instagram.com/nxstlab/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+    </ul>
+</nav>
 
 	<!-- Main -->
 	<div id="main">
@@ -7,68 +43,43 @@
 			<header class="major">
 				<h2>brands x products x services</h2>
 			</header>
-			<center>
                 <h2><u>Sign Up Form</u></h2>
-                </center>
-			<form method="post" action="#" class="alt">
-                <div class="field">
-                    <label for="cname"><b><h3>Company Name</h3></b></label>
-                    <input type="text" placeholder="Enter Company Name" name="cname" required>
-                        </div>
-                <div class="field">
-                    <label for="cadd"><b><h3>Company Address</h3></b></label>
-                    <input type="text" placeholder="Enter Company Address" name="cadd" required>
-                        </div>
-                <div class="field">
-                    <label for="num"><b><h3>Phone Number</h3></b></label>
-                    <input type="text" placeholder="Enter Phone Number" name="num">
-                        </div>
-                <div class="field">
-                    <label for="email"><b><h3>Email Address</h3></b></label>
-                    <input type="text" placeholder="Enter Email Address" name="email" required>
-                        </div>
-                <div class="field">
-                    <label for="password"><b><h3>Password</h3></b></label>
-                    <input type="text" placeholder="Enter Password" name="password" required>
-                        </div>
-                <div class="field">
-                    <label for="pass2"><b><h3>Confirm Password</h3></b></label>
-                    <input type="text" placeholder="Re-Enter Password" name="pass2" required>
-                        </div>
-                    <div class="field">
-                        <h3>Looking for the following services...</h3>
-                        <div class="6u 12u$(small)">
-                            <input type="checkbox" id="demo-post" name="demo-post">
-                                <label for="demo-post">Collaboration with Influencers</label>
-                                </div>
-                        <div class="6u 12u$(small)">
-                            <input type="checkbox" id="demo-product" name="demo-product">
-                                <label for="demo-product">Give Away Products for Endorsement</label>
-                                </div>
-                        <div class="6u$ 12u$(small)">
-                            <input type="checkbox" id="demo-strategy" name="demo-strategy">
-                                <label for="demo-strategy">Digital Strategy for selling more</label>
-                                </div>
+			<form name="signupForm" class="alt">
+                <div class="6u 12u$(xsmall) form-group">
+                    <div>
+                        <h6 ng-if="brandFound" style="color: red">
+                            Brand already exisits in system
+                        </h6>
                     </div>
-                    <div class="field">
-                        <h3>Website and Social Media Handles?</h3>
-                        <textarea name="demo-message" id="demo-message" placeholder="Enter here" rows="0"></textarea>
-                    </div>
-    
+                    <input ng-model="cname" id="cname" type="text" placeholder="Enter Company Name" name="cname" required>
+                        <div ng-if="signupForm.cname.$touched || signupSubmitted">
+                            <p ng-show="signupForm.cname.$error.required" class="help-block">Company Name is required</p>
+                        </div>
+                    <input ng-model="address" id="address" type="text" placeholder="Enter Company Address" name="address" required>
+                        <div ng-if="signupForm.address.$touched || signupSubmitted">
+                            <p ng-show="signupForm.address.$error.required" class="help-block">Address is required</p>
+                        </div>
+                    <input ng-model="email" id="email" type="text" placeholder="Enter Email Address" name="email" required>
+                        <div ng-if="signupForm.email.$touched || signupSubmitted">
+                            <p ng-show="signupForm.email.$error.required" class="help-block">Email is required</p>
+                        </div>
+                    <input ng-model="password" type="password" placeholder="Enter Password" name="password" required ng-minlength="6">
+                        <div ng-if="signupForm.password.$touched || signupSubmitted">
+                            <p ng-show="signupForm.password.$error.required" class="help-block">Password is required</p>
+                            <p ng-show="signupForm.password.$error.minlength" class="help-block">Minimum 6 character</p>
+                        </div>
+                    <input ng-model="confirm_password" type="password" placeholder="Re-Enter Password" name="confirm_password" match-password="password" required>
+                        <div ng-if="signupForm.confirm_password.$touched || signupSubmitted">
+                            <p ng-show="signupForm.confirm_password.$error.required" class="help-block">Confirm password is required</p>
+                            <p ng-show="signupForm.confirm_password.$error.matchPassword && !signupForm.confirm_password.$error.required" class="help-block">Confirm password didn't match</p>
+                        </div>
+                        </div>
                     <ul class="actions">
-                        <li><input type="submit" value="Submit" /></li>
+                        <li><input type="submit" value="Submit" ng-click="brandsignup()" /></li>
                     </ul>
+                
 				</div>
 			</form>
             
     <!-- Social Media Links -->
-    <center>
-    <div class="6u$ 12u$(small)">
-        <h3>Social Media Links</h3>
-        <ul class="icons alt">
-            <li><a href="https://www.facebook.com/nxstlab/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-            <li><a href="https://www.instagram.com/nxstlab/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-            <li><a href="https://twitter.com/nxstlab" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-        </ul>
-    </div>
-    </center>
+

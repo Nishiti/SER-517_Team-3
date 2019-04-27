@@ -1,20 +1,5 @@
 var app = angular.module("mainApp", ["ngRoute"]);
 
-// index contorller will deal with only functions required on index page
-var indexController = app.controller("indexController", function ($scope, $window) {
-
-    $scope.companyName = "nxstlab";
-    
-    $scope.popupGreet = function(){
-        $window.alert("Hi there " + $scope.companyName);
-    };
-
-
-    // here we will have login api which would return session/token and role for that user
-    // based on role we can hide/show necessary tabs using ng if. Currently showing all
-    //
-    
-});
 
 app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/', {
@@ -35,6 +20,9 @@ app.config(['$routeProvider', function ($routeProvider) {
     }).when('/manage', {
         templateUrl: 'static/partials/manage.html',
         controller: "adminController"
+    }).when('/influmanage', {
+        templateUrl: 'static/partials/influmanage.html',
+        controller: "adminController"
     }).when('/blogin', {
         templateUrl: 'static/partials/blogin.html',
         controller: "brandController"
@@ -47,11 +35,29 @@ app.config(['$routeProvider', function ($routeProvider) {
     }).when('/ilogin', {
         templateUrl: 'static/partials/ilogin.html',
         controller: "influencerController"
-    }).when('/icampaign', {
-        templateUrl: 'static/partials/icampaign.html',
-        controller: "influencerController"
     }).when('/adminSignUp',{
         templateUrl:'static/partials/adminSignUp.html',
+        controller : "adminController"
+    }).when('/logout',{
+        templateUrl:'static/partials/home.html',
+        controller : "logoutController"
+    }).when('/campaign2',{
+        templateUrl:'static/partials/campaign2.html',
+        controller : "brandController"
+    }).when('/bcampaignimage',{
+        templateUrl:'static/partials/bcampaignimage.html',
+        controller : "brandController"
+    }).when('/inlist2',{
+        templateUrl:'static/partials/inlist2.html',
+        controller : "adminController"
+    }).when('/admin',{
+        templateUrl:'static/partials/admin.html',
+        controller : "adminController"
+    }).when('/profileImage',{
+        templateUrl:'static/partials/uploadProfileImage.html',
+        controller : "influencerController"
+    }).when('/approvecamp',{
+        templateUrl:'static/partials/approvecamp.html',
         controller : "adminController"
     }).otherwise({
         redirectTo: '/'

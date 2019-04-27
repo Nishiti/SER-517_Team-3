@@ -1,59 +1,97 @@
 
     <!-- Main -->
+    <nav id="nav">
+        <ul class="links">
+
+
+            <li class="active"><a href="#/admin">Admin</a></li>
+            <li><a href="#/influmanage">Influencer Manage</a></li>
+            <li><a href="#/manage">Brand Manage</a></li>
+            <li><a href="#/inlist">Search Influencers</a></li>
+            <li><a href="#/adminSignUp">Admin Signup</a></li>
+            <li><a href="#/approvecamp">Approve Campaign</a></li>
+
+
+        </ul>
+        <ul class="icons">
+            <li><a href="#/logout" class="icon fa-sign-out" alt="Sign Out" title="Sign Out"></a></li>
+            <li><a href="https://twitter.com/nxstlab" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="https://www.facebook.com/nxstlab/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="https://www.instagram.com/nxstlab/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+        </ul>
+    </nav>
     <div id="main">
 
         <!-- Post -->
+
         <section class="posts">
             <article>
                 <h2>Brand Requests</h2>
-                <div class="container">
-                    <a class="prev container-nav-a" onclick="">❮</a>
-                    <form action="/action_page.php" class="card-container">
-                        <div class="field">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar6.png">
-                                <label for="cname"><b>Company Name</b></label>
-                                <label for="plist"><b>Company Description and Products List</b></label>
-                                <button>Approve</button>
-                                <button>Deny   </button>
-                                <h3></h3>
+                <br>
+                <div class="cards-container">
+                    <div class="myCards fade" ng-repeat="x in brandData">
+                        <center>
+                            <form class="card-container">
+                                <div class="field">
+                                    <img class="image fit" src={{x.image}}>
+                                    <label><b>{{x.company_name}}</b></label>
+                                    <label><b>{{x.address}}</b></label>
+                                    <!--<label ng-model="cinfo"><b>{{x.campaign_info_rqmts}}</b></label>-->
+                                    <button ng-click="approveBrand(x)">Approve</button>
+                                    <button ng-click="denyBrand(x)">Deny   </button>
                                 </div>
-                    </form>
-                    <a class="next container-nav-a" onclick="">❯</a>
+                            </form>
+                        </center>
                     </div>
+
+                    <!--<a class="prev" onclick="plusCards(-1, 0)">&#10094;</a>-->
+                    <!--<a class="next" onclick="plusCards(1, 0)">&#10095;</a>-->
+                </div>
             </article>
             <article>
-                <h2><a href="#">Campaign Requests</a></h2>
-                <div class="container">
-                    <form action="/action_page.php" class="card-container">
-                        <div class="field">
-                            <img class="image fit" src="images/pic04.jpg">
-                                <label for="camname"><b>Campaign Name</b></label>
-                                <label for="assbrand"><b>Associated Brand</b></label>
-                                <label for="plist"><b>Campaign Description and Details</b></label>
-                                <button>Approve</button>
-                                <button>Deny   </button>
-                                <h3></h3>
+                <h2>Campaign Requests</h2>
+                <br>
+                <div class="cards-container">
+                    <div class="myCamps fade" ng-repeat="y in campaignData">
+                        <center>
+                            <form class="card-container">
+                                <div class="field">
+                                    <img class="image fit" src={{y.image}}>
+                                    <label><b>{{y.campaign_name}}</b></label>
+                                    <label><b>{{y.associated_brand}}</b></label>
+                                    <!--<label ng-model="cinfo"><b>{{x.campaign_info_rqmts}}</b></label>-->
+                                    <button ng-click="approveCampaign(y)">Approve</button>
+                                    <button ng-click="denyCampaign(y)">Deny   </button>
                                 </div>
-                    </form>
-                    <a class="prev container-nav-a" onclick="">❮</a>
-                    <a class="next container-nav-a" onclick="">❯</a>
-                </div>
-
-                <!--a href="#" class="prev">&#8249;</a>
-                <div class="card">
-                    <img src="images/pic05.jpg" alt="John" style="width:100%">
-                    <h2>John Doe</h2>
-                    <p class="cardTitle">CEO & Founder, Example</p>
-                    <p>Harvard University</p>
-                    <div style="margin: 24px 0;">
-                        <a href="#"><i class="fa fa-dribbble"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-linkedin"></i></a>
-                        <a href="#"><i class="fa fa-facebook"></i></a>
+                            </form>
+                        </center>
                     </div>
-                    <p><button class="cardButton">Approve</button><button class="cardButton">Deny</button></p>
+
                 </div>
-                <a href="#" class="next">&#8250;</a-->
             </article>
         </section>
     </div>
+<script>
+    var cardIndex = [1,1];
+    var cardId = ["myCards", "myCamps"]
+    showCards(1, 0);
+    showCards(1, 1);
+
+    function plusCards(n, no) {
+        showCards(cardIndex[no] += n, no);
+    }
+
+
+function showCards(n, no) {
+    var i;
+    var x = document.getElementsByClassName(cardId[no]);
+    if (n > x.length) {cardIndex[no] = 1}
+    if (n < 1) {cardIndex[no] = x.length}
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+    }
+    x[cardIndex[no]-1].style.display = "block";
+}
+</script>
+
+

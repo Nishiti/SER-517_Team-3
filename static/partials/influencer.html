@@ -1,16 +1,42 @@
-<script src="/static/assets/js/jquery.min.js"></script>
-<script src="/static/assets/js/jquery.scrollex.min.js"></script>
-<script src="/static/assets/js/jquery.scrolly.min.js"></script>
-<script src="/static/assets/js/skel.min.js"></script>
-<script src="/static/assets/js/util.js"></script>
-<script src="/static/assets/js/main.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-<script src="/static/assets/js/influencerData.js"></script>
+<!-- Nav -->
+<nav id="nav">
+    <ul class="links">
+        <li><a href="#/">Home</a></li>
 
+        <li class="active"><a href="#/influencer">Influencers Signup</a></li>
+        <li><a href="#/brand">Brands Signup</a></li>
+        <li><a href="#/login">Log In</a></li>
+        <!--<li><a href="#/campaign">Campaign</a></li>
+        <li><a href="#/login">Log In</a></li>
+        <li><a href="#/blogin">Brand Profile</a></li>
+
+show above only before log in then depending on role show below
+ for admin
+        <li><a href="#/admin">Admin</a></li>
+        <li><a href="#/influmanage">Influ Manage</a></li>
+        <li><a href="#/manage">Search/Manage</a></li>
+ for brand. search is common for admin and brand
+
+        <li><a href="#/inlist">Search Influencers</a></li>
+        <li><a href="#/campaign">campaign request</a></li>
+
+ for influencer
+
+        <li><a href="#/ilogin">Influencer Home</a></li>
+        <li><a href="#/icampaign">Influencer Campaign</a></li>
+
+        <li><a href="#/logout">Logout</a></li>-->
+
+    </ul>
+    <ul class="icons">
+        <li><a href="https://twitter.com/nxstlab" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+        <li><a href="https://www.facebook.com/nxstlab/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+        <li><a href="https://www.instagram.com/nxstlab/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+    </ul>
+</nav>
 
 <!-- Main -->
-<div id="main" ng-app="app" ng-controller="influencerController">
-
+<div id="main"  ng-controller="influencerController">
     <!-- Post -->
     <section class="post">
         <!-- Table -->
@@ -18,7 +44,7 @@
         <center>
             <h2><u>Sign Up Form</u></h2>
         </center>
-        <form name="signupForm" method="post" action="#" class="alt">
+        <form name="signupForm" class="alt">
             <div class="6u 12u$(xsmall) form-group">
                 <input type="text" name="fname" id="fname" ng-model="fname" placeholder="First Name" required="required"/>
                 <div ng-if="signupForm.fname.$touched || signupSubmitted">
@@ -49,114 +75,103 @@
                     <p ng-show="signupForm.confirm_password.$error.matchPassword && !signupForm.confirm_password.$error.required" class="help-block">Confirm password didn't match</p>
                 </div>
             </div>
+            <div class="6u$ 12u$(xsmall) form-group">
+            <input type="date" class="form-control"  ng-model="dob" placeholder="Date of Birth" name="dob" required="required"/>
+            <div ng-if="signupForm.dob.$touched || signupSubmitted">
+            <p ng-show="signupForm.dob.$error.required" class="help-block">Date of Birth is required</p>
+            </div>
+            </div>
+            <div class="6u 12u$(small)">
+            <input type="radio" id="gender1" name="gender" value="true" ng-model="gender" ng-value='"male"' required>
+            <label for="gender1">Male</label>
+            <input type="radio" id="gender2" name="gender" value="false" ng-model="gender" ng-value='"female"'>
+            <label for="gender2">Female</label>
+
+            </div>
+            <br>
             <div class="12u$">
                 <div class="field">
                     <h3>Kind of a big deal on... ?</h3>
-                    <div class="6u 12u$(small)">
-                        <input type="checkbox" id="website" name="website" ng-model="website">
+                        <input type="checkbox" id="website" name="website" ng-model="big_deal.website">
                         <label for="website">Own website/ Blog</label>
-                    </div>
-                    <div class="6u 12u$(small)">
-                        <input type="checkbox" id="insta" name="insta" ng-model="insta">
+                        <input type="checkbox" id="insta" name="insta" ng-model="big_deal.insta">
                         <label for="insta">Instagram</label>
-                    </div>
-                    <div class="6u$ 12u$(small)">
-                        <input type="checkbox" id="youtube" name="youtube" ng-model="youtube">
+                        <input type="checkbox" id="youtube" name="youtube" ng-model="big_deal.youtube">
                         <label for="youtube">YouTube</label>
-                    </div>
-                    <div class="6u$ 12u$(small)">
-                        <input type="checkbox" id="facebook" name="facebook" ng-model="facebook">
+                        <input type="checkbox" id="facebook" name="facebook" ng-model="big_deal.facebook">
                         <label for="facebook">Facebook</label>
-                    </div>
-                    <div class="6u$ 12u$(small)">
-                        <input type="checkbox" id="other" name="other" ng-model="other">
-                        <label for="other">Other - If Other, describe below!</label>
-                    </div>
+                        <input type="checkbox" id="other" name="other" ng-model="big_deal.other">
+                        <label for="other">Other</label>
                 </div>
             </div>
+<br>
             <div class="12u$">
-                <h3>Website and Social Media Handles?</h3>
-                <textarea name="socialmedia" id="socialmedia" placeholder="Enter here" rows="1" ng-model="socialmedia"></textarea>
+                <textarea name="socialmedia" id="socialmedia" placeholder="Enter Website and Social Media Handles here" rows="1" ng-model="socialmedia"></textarea>
             </div>
+            <br>
             <div class="12u$">
-                <h3>Number of followers</h3>
                 <select name="followers" id="followers" ng-model="followers">
+                    <option value="" selected disabled><b>Click to Select No. of Followers</b></option>
                     <option value="low">500-2k</option>
                     <option value="moderate">2k-50k</option>
                     <option value="high">50k+</option>
                 </select>
             </div>
+            <br>
             <div class="12u$">
                 <h3>Area of Interest</h3>
                 <table class="table-wrapper" id="page">
                     <tbody>
                     <tr>
-                        <td><img src="../images/searchFilterImages/animals.jpg" class="image1"/></td>
-                        <td><img src="images/searchFilterImages/art.jpg" class="image2"/></td>
-                        <td><img src="images/searchFilterImages/books.jpg" class="image3" /> </td>
-                        <td><img src="images/searchFilterImages/science.jpg" class="image4" /></td>
-                    </tr>
-                    <tr >
-                        <td><img src="images/searchFilterImages/tech.jpg" class="image5" /></td>
-                        <td><img src="images/searchFilterImages/business.jpg" class="image6" /></td>
-                        <td><img src="images/searchFilterImages/causes.jpg" class="image7" /></td>
-                        <td><img src="images/searchFilterImages/comedy.jpg" class="image8" /></td>
-                    </tr>
-                    <tr >
-                        <td><img src="images/searchFilterImages/dance.jpg" class="image9" /></td>
-                        <td><img src="images/searchFilterImages/sport.jpg" class="image10" /></td>
-                        <td><img src="images/searchFilterImages/education.jpg" class="image11"  /></td>
-                        <td><img src="images/searchFilterImages/style.jpg" class="image12" /></td>
-                    </tr>
-                    <tr >
-                        <td><img src="images/searchFilterImages/entertainment.jpg" class="image13" /></td>
-                        <td><img src="images/searchFilterImages/beauty.jpg" class="image14" /></td>
-                        <td><img src="images/searchFilterImages/photograph.jpg" class="image15"  /></td>
-                        <td><img src="images/searchFilterImages/family.jpg" class="image16" /></td>
-                    </tr>
-                    <tr>
-                        <td><img src="images/searchFilterImages/fashion.jpg" class="image17" /></td>
-                        <td><img src="images/searchFilterImages/fitness.jpg" class="image18" /></td>
-                        <td><img src="images/searchFilterImages/tv.jpg" class="image19" /></td>
-                        <td><img src="images/searchFilterImages/film.jpg" class="image20" /></td>
-                    </tr>
-                    <tr >
-                        <td><img src="images/searchFilterImages/DIY.jpg" class="image21" /></td>
-                        <td><img src="images/searchFilterImages/food.jpg" class="image22" /></td>
-                        <td><img src="images/searchFilterImages/gaming.jpg" class="image23" /></td>
-                        <td><img src="images/searchFilterImages/lifestyle.jpg" class="image24" /></td>
-                    </tr>
-                    <tr >
-                        <td><img src="images/searchFilterImages/politics.jpg" class="image25" /></td>
-                        <td><img src="images/searchFilterImages/news.jpg" class="image26" /></td>
-                        <td><img src="images/searchFilterImages/journalism.jpg" class="image27" /></td>
-                        <td><img src="images/searchFilterImages/travel.jpg" class="image28" /></td>
-                    </tr>
-                    <tr>
-                        <td><img src="images/searchFilterImages/radio.jpg" class="image29" /></td>
-                        <td><img src="images/searchFilterImages/music.jpg" class="image30" /></td>
+                    <td ng-repeat="x in records1">
+                        <img src={{x.path}} class= {{x.class}} ng-click='addClass1(x.index)'/>
 
+                    </td></tr>
+                    <tr>
+                        <td ng-repeat="x in records2">
+                            <img src={{x.path}} class= {{x.class}} ng-click='addClass2(x.index)'/>
 
-                    </tr>
+                        </td></tr>
+                    <tr>
+                        <td ng-repeat="x in records3">
+                            <img src={{x.path}} class= {{x.class}} ng-click='addClass3(x.index)'/>
+
+                        </td></tr>
+                    <tr>
+                        <td ng-repeat="x in records4">
+                            <img src={{x.path}} class= {{x.class}} ng-click='addClass4(x.index)'/>
+
+                        </td></tr>
+                    <tr>
+                        <td ng-repeat="x in records5">
+                            <img src={{x.path}} class= {{x.class}} ng-click='addClass5(x.index)'/>
+
+                        </td></tr>
+                    <tr>
+                        <td ng-repeat="x in records6">
+                            <img src={{x.path}} class= {{x.class}} ng-click='addClass6(x.index)'/>
+
+                        </td></tr>
+                    <tr>
+                        <td ng-repeat="x in records7">
+                            <img src={{x.path}} class= {{x.class}} ng-click='addClass7(x.index)'/>
+
+                        </td></tr>
+                    <tr>
+                        <td ng-repeat="x in records8">
+                            <img src={{x.path}} class= {{x.class}} ng-click='addClass8(x.index)'/>
+
+                        </td></tr>
 
                     </tbody>
                 </table>
             </div>
             <ul class="actions">
-                <li><input type="submit" value="Submit"  ng-click="updateinflu()"/></li>
+                <li><input type="submit" value="Sign-up" ng-click="updateinflu()"/></li>
             </ul>
         </form>
         <hr />
         <!-- Social Media Links -->
-        <center>
-            <div class="6u$ 12u$(small)">
-                <h3>Social Media Links</h3>
-                <ul class="icons alt">
-                    <li><a href="https://www.facebook.com/nxstlab/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-                    <li><a href="https://www.instagram.com/nxstlab/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-                    <li><a href="https://twitter.com/nxstlab" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-                </ul>
-            </div>
-        </center>
+
     </section>
 </div>
